@@ -6,6 +6,11 @@ import { OfficesService } from './offices.service';
 import { MotionsService } from './motions.service';
 import { PrestigeService } from './prestige.service';
 
+import { CoteriesAdapter } from './coteries.adapter';
+import { HoldingsService } from './holdings.service';
+import { TaxService } from './tax.service';
+import { BoonEnforcementService } from './boon-enforcement.service';
+
 @Module({
   providers: [
     BoonsService,
@@ -14,6 +19,10 @@ import { PrestigeService } from './prestige.service';
     OfficesService,
     MotionsService,
     PrestigeService,
+    CoteriesAdapter,
+    HoldingsService,
+    TaxService,
+    BoonEnforcementService,
   ],
   exports: [
     BoonsService,
@@ -22,6 +31,9 @@ import { PrestigeService } from './prestige.service';
     OfficesService,
     MotionsService,
     PrestigeService,
+    HoldingsService,
+    TaxService,
+    BoonEnforcementService,
   ],
 })
 export class PoliticsModule {}
