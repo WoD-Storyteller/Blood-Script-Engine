@@ -4,7 +4,12 @@ import { Injectable } from '@nestjs/common';
 export class DashboardService {
   async getWorldState(client: any, engineId: string) {
     const arcs = await client.query(
-      `SELECT arc_id, title, status FROM chronicle_arcs WHERE engine_id = $1`,
+      `
+      SELECT arc_id, title, status
+      FROM chronicle_arcs
+      WHERE engine_id = $1
+      ORDER BY updated_at DESC
+      `,
       [engineId],
     );
 
@@ -13,6 +18,7 @@ export class DashboardService {
       SELECT clock_id, title, progress, segments, status, nightly
       FROM story_clocks
       WHERE engine_id = $1
+      ORDER BY updated_at DESC
       `,
       [engineId],
     );
@@ -29,7 +35,11 @@ export class DashboardService {
     );
 
     const heat = await client.query(
-      `SELECT heat FROM inquisition_heat WHERE engine_id = $1`,
+      `
+      SELECT heat
+      FROM inquisition_heat
+      WHERE engine_id = $1
+      `,
       [engineId],
     );
 
