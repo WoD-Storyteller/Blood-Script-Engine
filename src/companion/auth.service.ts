@@ -3,13 +3,16 @@ import { uuid } from '../common/utils/uuid';
 
 @Injectable()
 export class CompanionAuthService {
-  async createSession(client: any, input: {
-    userId: string;
-    engineId: string;
-    role: 'player' | 'st' | 'admin';
-  }): Promise<{ token: string; expiresAt: string }> {
+  async createSession(
+    client: any,
+    input: {
+      userId: string;
+      engineId: string;
+      role: 'player' | 'st' | 'admin';
+    },
+  ): Promise<{ token: string; expiresAt: string }> {
     const token = uuid();
-    const expires = new Date(Date.now() + 1000 * 60 * 60 * 12); // 12h
+    const expires = new Date(Date.now() + 1000 * 60 * 60 * 12); // 12 hours
 
     await client.query(
       `
@@ -17,7 +20,14 @@ export class CompanionAuthService {
         (session_id, user_id, engine_id, access_token, role, expires_at)
       VALUES ($1,$2,$3,$4,$5,$6)
       `,
-      [uuid(), input.userId, input.engineId, token, input.role, expires.toISOString()],
+      [
+        uuid(),
+        input.userId,
+        input.engineId,
+        token,
+        input.role,
+        expires.toISOString(),
+      ],
     );
 
     return { token, expiresAt: expires.toISOString() };
