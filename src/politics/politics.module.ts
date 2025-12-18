@@ -3,9 +3,22 @@ import { BoonsService } from './boons.service';
 import { FactionsService } from './factions.service';
 import { DomainsService } from './domains.service';
 import { OfficesService } from './offices.service';
+import { MotionsService } from './motions.service';
 
 @Module({
-  providers: [BoonsService, FactionsService, DomainsService, OfficesService],
-  exports: [BoonsService, FactionsService, DomainsService, OfficesService],
+  providers: [
+    BoonsService,
+    FactionsService,
+    DomainsService,
+    OfficesService,
+    MotionsService,
+  ],
+  exports: [
+    BoonsService,
+    FactionsService,
+    DomainsService,
+    OfficesService,
+    MotionsService,
+  ],
 })
 export class PoliticsModule {}
