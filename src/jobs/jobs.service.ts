@@ -1,19 +1,21 @@
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { DatabaseService } from '../database/database.service';
 import { NightCycleService } from '../politics/night-cycle.service';
+import { EngineBootstrapService } from './engine-bootstrap.service';
 
 @Injectable()
 export class JobsService implements OnModuleInit {
   private readonly logger = new Logger(JobsService.name);
-  private readonly intervalMs = 5 * 60 * 1000; // every 5 minutes
+  private readonly intervalMs = 5 * 60 * 1000;
 
   constructor(
     private readonly db: DatabaseService,
     private readonly nightCycle: NightCycleService,
+    private readonly bootstrap: EngineBootstrapService,
   ) {}
 
   onModuleInit() {
-    this.logger.log('JobsService started. Nightly engine loop active.');
+    this.logger.log('JobsService started. Engine bootstrap + nightly loop active.');
     setInterval(() => this.tick(), this.intervalMs);
   }
 
@@ -28,20 +30,21 @@ export class JobsService implements OnModuleInit {
         );
 
         for (const row of engines.rows) {
+          const engineId = row.engine_id;
+
           try {
-            const result = await this.nightCycle.maybeRunNightly(
-              client,
-              row.engine_id,
-            );
+            // 1️⃣ Ensure engine baseline exists
+            await this.bootstrap.bootstrapEngine(client, engineId);
+
+            // 2️⃣ Run nightly if needed
+            const result = await this.nightCycle.maybeRunNightly(client, engineId);
 
             if (result.ran) {
-              this.logger.log(
-                `Night cycle executed for engine ${row.engine_id}`,
-              );
+              this.logger.log(`Night cycle executed for engine ${engineId}`);
             }
           } catch (engineErr: any) {
             this.logger.error(
-              `Night cycle failed for engine ${row.engine_id}: ${engineErr.message}`,
+              `Engine loop failed for ${engineId}: ${engineErr.message}`,
             );
           }
         }
