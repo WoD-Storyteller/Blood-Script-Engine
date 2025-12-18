@@ -1,51 +1,36 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
+import { DatabaseModule } from './database/database.module';
+
 import { AuthModule } from './auth/auth.module';
 import { EngineModule } from './engine/engine.module';
 import { SafetyModule } from './safety/safety.module';
 import { ScenesModule } from './scenes/scenes.module';
-import { CharactersModule } from './characters/characters.module';
-import { CoteriesModule } from './coteries/coteries.module';
-import { HavensModule } from './havens/havens.module';
 import { PoliticsModule } from './politics/politics.module';
-import { OccultModule } from './occult/occult.module';
-import { WorldModule } from './world/world.module';
+import { ChronicleModule } from './chronicle/chronicle.module';
 import { DiscordModule } from './discord/discord.module';
 import { AiModule } from './ai/ai.module';
-import { OwnerModule } from './owner/owner.module';
-import { JobsModule } from './jobs/jobs.module';
-
-@Module({
-  imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
-    AuthModule,
-    EngineModule,
-    SafetyModule,
-    ScenesModule,
-    CharactersModule,
-    CoteriesModule,
-    HavensModule,
-    PoliticsModule,
-    OccultModule,
-    WorldModule,
-    DiscordModule,
-    AiModule,
-    OwnerModule,
-    JobsModule,
-  ],
-})
-
-import { DatabaseModule } from './database/database.module';
+import { CompanionModule } from './companion/companion.module';
+import { ThreatsModule } from './threats/threats.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     DatabaseModule,
+
     AuthModule,
     EngineModule,
     SafetyModule,
     ScenesModule,
+    PoliticsModule,
+    ChronicleModule,
+    ThreatsModule,
+    AiModule,
+    DiscordModule,
+
+    // H10 backend services only (no controllers yet)
+    CompanionModule,
   ],
 })
 export class AppModule {}
