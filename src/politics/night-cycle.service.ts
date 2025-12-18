@@ -2,6 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { uuid } from '../common/utils/uuid';
 import { TaxService } from './tax.service';
 import { BoonEnforcementService } from './boon-enforcement.service';
+import { MasqueradeService } from '../threats/masquerade.service';
 
 @Injectable()
 export class NightCycleService {
@@ -10,13 +11,13 @@ export class NightCycleService {
   constructor(
     private readonly taxes: TaxService,
     private readonly enforcement: BoonEnforcementService,
+    private readonly masquerade: MasqueradeService,
   ) {}
 
-  /**
-   * Entry point. Safe to call on EVERY message.
-   * Will only run once per calendar day per engine.
-   */
-  async maybeRunNightly(client: any, engineId: string): Promise<{ ran: boolean; message?: string }> {
+  async maybeRunNightly(
+    client: any,
+    engineId: string,
+  ): Promise<{ ran: boolean; message?: string }> {
     const today = new Date().toISOString().slice(0, 10);
 
     try {
@@ -34,7 +35,7 @@ export class NightCycleService {
       }
 
       await this.runNightly(client, engineId, today);
-      return { ran: true, message: '🌑 **Nightly upkeep has occurred.**' };
+      return { ran: true, message: '🌑 **The night passes. The city shifts.**' };
     } catch (e: any) {
       this.logger.debug(`maybeRunNightly fallback: ${e.message}`);
       return { ran: false };
@@ -44,38 +45,40 @@ export class NightCycleService {
   private async runNightly(client: any, engineId: string, today: string) {
     this.logger.log(`Running nightly upkeep for engine ${engineId}`);
 
-    // 1️⃣ Collect taxes
+    // 1️⃣ Collect domain taxes → boons
     await this.taxes.collectTaxes(client, {
       engineId,
       collectedByUserId: 'system',
     });
 
-    // 2️⃣ Escalate overdue boons
+    // 2️⃣ Escalate overdue boons automatically
     await this.autoEscalateOverdueBoons(client, engineId);
 
-    // 3️⃣ Generate political pressure
+    // 3️⃣ Apply Masquerade heat decay
+    await this.masquerade.nightlyDecay(client, engineId);
+
+    // 4️⃣ Generate political pressure from instability
     await this.generatePressure(client, engineId);
 
-    // 4️⃣ Update night state
+    // 5️⃣ Mark night as processed
     await client.query(
       `
       INSERT INTO engine_night_state (engine_id, last_processed_date, last_processed_at)
       VALUES ($1,$2,now())
       ON CONFLICT (engine_id)
-      DO UPDATE SET last_processed_date = EXCLUDED.last_processed_date,
-                    last_processed_at = now()
+      DO UPDATE SET
+        last_processed_date = EXCLUDED.last_processed_date,
+        last_processed_at = now()
       `,
       [engineId, today],
     );
   }
 
-  // ─────────────────────────────────────────────
-
   private async autoEscalateOverdueBoons(client: any, engineId: string) {
     try {
       const overdue = await client.query(
         `
-        SELECT enforcement_id, boon_id
+        SELECT enforcement_id
         FROM boon_enforcements
         WHERE engine_id = $1
           AND status = 'active'
@@ -102,34 +105,7 @@ export class NightCycleService {
 
   private async generatePressure(client: any, engineId: string) {
     try {
-      // Simple v1 rule: unresolved escalations create pressure
       const escalations = await client.query(
         `
         SELECT COUNT(*)::int AS c
         FROM boon_enforcements
-        WHERE engine_id = $1 AND status = 'escalated'
-        `,
-        [engineId],
-      );
-
-      const count = escalations.rows[0]?.c ?? 0;
-      if (count === 0) return;
-
-      await client.query(
-        `
-        INSERT INTO political_pressure
-          (pressure_id, engine_id, source, severity, description)
-        VALUES ($1,$2,'boon_escalation',$3,$4)
-        `,
-        [
-          uuid(),
-          engineId,
-          Math.min(5, count),
-          `Unresolved boons are straining the social order (${count} escalated).`,
-        ],
-      );
-    } catch (e: any) {
-      this.logger.debug(`generatePressure fallback: ${e.message}`);
-    }
-  }
-}
