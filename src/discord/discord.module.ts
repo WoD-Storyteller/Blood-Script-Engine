@@ -1,13 +1,9 @@
-import { Module, OnModuleInit } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { DiscordService } from './discord.service';
+import { ScenesModule } from '../scenes/scenes.module';
 
 @Module({
+  imports: [ScenesModule],
   providers: [DiscordService],
 })
-export class DiscordModule implements OnModuleInit {
-  constructor(private readonly discordService: DiscordService) {}
-
-  async onModuleInit() {
-    await this.discordService.start();
-  }
-}
+export class DiscordModule {}
