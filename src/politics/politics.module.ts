@@ -12,7 +12,10 @@ import { TaxService } from './tax.service';
 import { BoonEnforcementService } from './boon-enforcement.service';
 import { NightCycleService } from './night-cycle.service';
 
+import { ChronicleModule } from '../chronicle/chronicle.module';
+
 @Module({
+  imports: [ChronicleModule],
   providers: [
     BoonsService,
     FactionsService,
