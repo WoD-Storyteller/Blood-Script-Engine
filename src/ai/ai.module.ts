@@ -1,18 +1,12 @@
 import { Module } from '@nestjs/common';
-import { GeminiClient } from './gemini.client';
-import { PromptBuilder } from './prompt.builder';
-import { TenetFilter } from './tenet.filter';
-import { OutputValidator } from './output.validator';
-import { NarrationService } from './narration.service';
+import { AiBrainService } from './ai-brain.service';
+import { IntentExecutorService } from './intent-executor.service';
+import { AutonomyService } from './autonomy.service';
+import { ChronicleModule } from '../chronicle/chronicle.module';
 
 @Module({
-  providers: [
-    GeminiClient,
-    PromptBuilder,
-    TenetFilter,
-    OutputValidator,
-    NarrationService,
-  ],
-  exports: [NarrationService],
+  imports: [ChronicleModule],
+  providers: [AiBrainService, IntentExecutorService, AutonomyService],
+  exports: [AutonomyService],
 })
 export class AiModule {}
