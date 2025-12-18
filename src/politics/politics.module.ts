@@ -10,6 +10,7 @@ import { CoteriesAdapter } from './coteries.adapter';
 import { HoldingsService } from './holdings.service';
 import { TaxService } from './tax.service';
 import { BoonEnforcementService } from './boon-enforcement.service';
+import { NightCycleService } from './night-cycle.service';
 
 @Module({
   providers: [
@@ -23,6 +24,7 @@ import { BoonEnforcementService } from './boon-enforcement.service';
     HoldingsService,
     TaxService,
     BoonEnforcementService,
+    NightCycleService,
   ],
   exports: [
     BoonsService,
@@ -34,6 +36,7 @@ import { BoonEnforcementService } from './boon-enforcement.service';
     HoldingsService,
     TaxService,
     BoonEnforcementService,
+    NightCycleService,
   ],
 })
 export class PoliticsModule {}
