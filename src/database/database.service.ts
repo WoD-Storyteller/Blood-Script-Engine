@@ -1,32 +1,31 @@
 import { Injectable, OnModuleDestroy } from '@nestjs/common';
-import { Pool, PoolClient, QueryResult } from 'pg';
+import { Pool, PoolClient } from 'pg';
 
 @Injectable()
 export class DatabaseService implements OnModuleDestroy {
   private readonly pool: Pool;
 
   constructor() {
-    if (!process.env.DATABASE_URL) {
-      throw new Error('DATABASE_URL is not set');
-    }
-
     this.pool = new Pool({
       connectionString: process.env.DATABASE_URL,
-      max: 10,
-      idleTimeoutMillis: 30_000,
-      connectionTimeoutMillis: 5_000,
     });
-  }
-
-  async query<T = any>(
-    text: string,
-    params?: any[],
-  ): Promise<QueryResult<T>> {
-    return this.pool.query<T>(text, params);
   }
 
   async getClient(): Promise<PoolClient> {
     return this.pool.connect();
+  }
+
+  async query(text: string, params?: any[]) {
+    return this.pool.query(text, params);
+  }
+
+  async withClient<T>(fn: (client: PoolClient) => Promise<T>): Promise<T> {
+    const client = await this.getClient();
+    try {
+      return await fn(client);
+    } finally {
+      client.release();
+    }
   }
 
   async onModuleDestroy() {
