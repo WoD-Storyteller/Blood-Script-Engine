@@ -3,6 +3,7 @@ import { uuid } from '../common/utils/uuid';
 import { TaxService } from './tax.service';
 import { BoonEnforcementService } from './boon-enforcement.service';
 import { MasqueradeService } from '../threats/masquerade.service';
+import { ChronicleService } from '../chronicle/chronicle.service';
 
 @Injectable()
 export class NightCycleService {
@@ -12,6 +13,7 @@ export class NightCycleService {
     private readonly taxes: TaxService,
     private readonly enforcement: BoonEnforcementService,
     private readonly masquerade: MasqueradeService,
+    private readonly chronicle: ChronicleService,
   ) {}
 
   async maybeRunNightly(
@@ -54,13 +56,16 @@ export class NightCycleService {
     // 2️⃣ Escalate overdue boons automatically
     await this.autoEscalateOverdueBoons(client, engineId);
 
-    // 3️⃣ Apply Masquerade heat decay
+    // 3️⃣ Apply Masquerade heat decay (H6)
     await this.masquerade.nightlyDecay(client, engineId);
 
-    // 4️⃣ Generate political pressure from instability
+    // 4️⃣ Chronicle nightly (H8): tick nightly clocks, process arc links
+    await this.chronicle.nightly(client, engineId);
+
+    // 5️⃣ Generate political pressure from instability
     await this.generatePressure(client, engineId);
 
-    // 5️⃣ Mark night as processed
+    // 6️⃣ Mark night as processed
     await client.query(
       `
       INSERT INTO engine_night_state (engine_id, last_processed_date, last_processed_at)
@@ -109,3 +114,29 @@ export class NightCycleService {
         `
         SELECT COUNT(*)::int AS c
         FROM boon_enforcements
+        WHERE engine_id = $1 AND status = 'escalated'
+        `,
+        [engineId],
+      );
+
+      const count = escalations.rows[0]?.c ?? 0;
+      if (count === 0) return;
+
+      await client.query(
+        `
+        INSERT INTO political_pressure
+          (pressure_id, engine_id, source, severity, description)
+        VALUES ($1,$2,'system_instability',$3,$4)
+        `,
+        [
+          uuid(),
+          engineId,
+          Math.min(5, count),
+          `Escalated boons and unrest threaten the domain (${count}).`,
+        ],
+      );
+    } catch (e: any) {
+      this.logger.debug(`generatePressure fallback: ${e.message}`);
+    }
+  }
+}
