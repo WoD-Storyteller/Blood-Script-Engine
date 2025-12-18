@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { ArcsService } from './arcs.service';
+import { ArcService } from './arc.service';
 import { ClocksService } from './clocks.service';
 import { ChronicleService } from './chronicle.service';
 
 @Module({
-  providers: [ArcsService, ClocksService, ChronicleService],
-  exports: [ArcsService, ClocksService, ChronicleService],
+  providers: [ArcService, ClocksService, ChronicleService],
+  exports: [ArcService, ClocksService, ChronicleService],
 })
 export class ChronicleModule {}
