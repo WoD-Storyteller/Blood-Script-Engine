@@ -13,6 +13,8 @@ import { DiscordModule } from './discord/discord.module';
 import { AiModule } from './ai/ai.module';
 import { CompanionModule } from './companion/companion.module';
 import { ThreatsModule } from './threats/threats.module';
+import { JobsModule } from './jobs/jobs.module';
+import { HealthModule } from './health/health.module';
 
 @Module({
   imports: [
@@ -29,8 +31,11 @@ import { ThreatsModule } from './threats/threats.module';
     AiModule,
     DiscordModule,
 
-    // H10 backend services only (no controllers yet)
     CompanionModule,
+    JobsModule,
+
+    // Probes
+    HealthModule,
   ],
 })
 export class AppModule {}
