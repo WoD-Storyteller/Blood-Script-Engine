@@ -14,6 +14,7 @@ import { FactionsService } from '../politics/factions.service';
 import { DomainsService } from '../politics/domains.service';
 import { OfficesService } from '../politics/offices.service';
 import { MotionsService } from '../politics/motions.service';
+import { PrestigeService } from '../politics/prestige.service';
 
 @Injectable()
 export class StCoreService {
@@ -29,6 +30,7 @@ export class StCoreService {
     private readonly domains: DomainsService,
     private readonly offices: OfficesService,
     private readonly motions: MotionsService,
+    private readonly prestige: PrestigeService,
   ) {}
 
   async handlePlayerIntent(dto: PlayerIntentDto) {
@@ -105,11 +107,122 @@ export class StCoreService {
       // PRESENCE
       await this.presence.markUserOnline(client, dto.engineId, userId);
 
-      // Helper: ST check
+      // Authority checks
       const isST = await this.isStoryteller(client, dto.engineId, userId);
+      const isHarpy = await this.isHarpy(client, dto.engineId, userId);
 
       // ─────────────────────────────────────────────
-      // COURT / OFFICES
+      // H3: STATUS / PRESTIGE COMMANDS
+      // ─────────────────────────────────────────────
+
+      // !status board
+      if (/^!status\s+board$/i.test(dto.content.trim())) {
+        const result = await this.prestige.leaderboard(client, dto.engineId);
+        return { ok: true, sceneId, publicMessage: result.message };
+      }
+
+      // !status me
+      if (/^!status\s+me$/i.test(dto.content.trim())) {
+        const score = await this.prestige.getScore(client, dto.engineId, userId);
+        if (score === null) return { ok: true, sceneId, publicMessage: `Status ledger unavailable right now.` };
+        return { ok: true, sceneId, publicMessage: `Your Status is **${score}**.` };
+      }
+
+      // !status @user
+      const statusUser = dto.content.match(/^!status\s+<@!?(\d+)>$/i);
+      if (statusUser) {
+        const targetUserId = await this.upsertUserByDiscordId(client, statusUser[1]);
+        const score = await this.prestige.getScore(client, dto.engineId, targetUserId);
+        if (score === null) return { ok: true, sceneId, publicMessage: `Status ledger unavailable right now.` };
+        return { ok: true, sceneId, publicMessage: `Status for <@${statusUser[1]}> is **${score}**.` };
+      }
+
+      // !status history @user
+      const statusHistory = dto.content.match(/^!status\s+history\s+<@!?(\d+)>$/i);
+      if (statusHistory) {
+        const targetUserId = await this.upsertUserByDiscordId(client, statusHistory[1]);
+        const result = await this.prestige.recentEvents(client, {
+          engineId: dto.engineId,
+          targetUserId,
+        });
+        return { ok: true, sceneId, publicMessage: result.message };
+      }
+
+      // Harpy/ST: award
+      const statusAward = dto.content.match(/^!status\s+award\s+<@!?(\d+)>\s+(\d+)\s+"([^"]+)"$/i);
+      if (statusAward) {
+        if (!(isST || isHarpy)) {
+          return { ok: false, sceneId, publicMessage: 'Only the Harpy or Storytellers may adjust Status.' };
+        }
+        const targetDiscordId = statusAward[1];
+        const amount = Number(statusAward[2]);
+        const reason = statusAward[3];
+
+        const targetUserId = await this.upsertUserByDiscordId(client, targetDiscordId);
+
+        const result = await this.prestige.adjustScore(client, {
+          engineId: dto.engineId,
+          targetUserId,
+          changedByUserId: userId,
+          delta: amount,
+          reason,
+          authority: isST ? 'st' : 'harpy',
+          harpyLimitPerAction: 2, // v1: Harpy can move status by max 2 each command
+        });
+
+        return { ok: true, sceneId, publicMessage: result.message };
+      }
+
+      // Harpy/ST: penalize
+      const statusPen = dto.content.match(/^!status\s+penalize\s+<@!?(\d+)>\s+(\d+)\s+"([^"]+)"$/i);
+      if (statusPen) {
+        if (!(isST || isHarpy)) {
+          return { ok: false, sceneId, publicMessage: 'Only the Harpy or Storytellers may adjust Status.' };
+        }
+        const targetDiscordId = statusPen[1];
+        const amount = Number(statusPen[2]);
+        const reason = statusPen[3];
+
+        const targetUserId = await this.upsertUserByDiscordId(client, targetDiscordId);
+
+        const result = await this.prestige.adjustScore(client, {
+          engineId: dto.engineId,
+          targetUserId,
+          changedByUserId: userId,
+          delta: -Math.abs(amount),
+          reason,
+          authority: isST ? 'st' : 'harpy',
+          harpyLimitPerAction: 2,
+        });
+
+        return { ok: true, sceneId, publicMessage: result.message };
+      }
+
+      // ST-only: set absolute
+      const statusSet = dto.content.match(/^!status\s+set\s+<@!?(\d+)>\s+(-?\d+)\s+"([^"]+)"$/i);
+      if (statusSet) {
+        if (!isST) {
+          return { ok: false, sceneId, publicMessage: 'Only Storytellers may set Status directly.' };
+        }
+        const targetDiscordId = statusSet[1];
+        const newScore = Number(statusSet[2]);
+        const reason = statusSet[3];
+
+        const targetUserId = await this.upsertUserByDiscordId(client, targetDiscordId);
+
+        const result = await this.prestige.setScore(client, {
+          engineId: dto.engineId,
+          targetUserId,
+          changedByUserId: userId,
+          newScore,
+          reason,
+        });
+
+        return { ok: true, sceneId, publicMessage: result.message };
+      }
+
+      // ─────────────────────────────────────────────
+      // COURT / OFFICES (H1)
       // ─────────────────────────────────────────────
 
       if (/^!court\s+list$/i.test(dto.content.trim())) {
@@ -139,60 +252,42 @@ export class StCoreService {
       const officeVac = dto.content.match(/^!office\s+vacate\s+(.+)$/i);
       if (officeVac) {
         if (!isST) return { ok: false, sceneId, publicMessage: 'Only Storytellers can vacate court offices.' };
-
-        const result = await this.offices.vacateOffice(client, {
-          engineId: dto.engineId,
-          office: officeVac[1].trim(),
-        });
-
+        const result = await this.offices.vacateOffice(client, { engineId: dto.engineId, office: officeVac[1].trim() });
         return { ok: true, sceneId, publicMessage: result.message };
       }
 
       // ─────────────────────────────────────────────
-      // ELYSIUM MOTIONS & VOTING
+      // MOTIONS (H2)
       // ─────────────────────────────────────────────
 
-      // !motion list
       if (/^!motion\s+list$/i.test(dto.content.trim())) {
         const result = await this.motions.list(client, { engineId: dto.engineId });
         return { ok: true, sceneId, publicMessage: result.message };
       }
 
-      // !motion propose "Title" in 30 details...
       const motionTimed = dto.content.match(/^!motion\s+propose\s+"([^"]+)"\s+in\s+(\d+)(?:\s+(.+))?$/i);
       if (motionTimed) {
-        const title = motionTimed[1].trim();
-        const minutes = Number(motionTimed[2]);
-        const details = motionTimed[3]?.trim();
-
         const result = await this.motions.propose(client, {
           engineId: dto.engineId,
           createdByUserId: userId,
-          title,
-          details,
-          closesInMinutes: minutes,
+          title: motionTimed[1].trim(),
+          closesInMinutes: Number(motionTimed[2]),
+          details: motionTimed[3]?.trim(),
         });
-
         return { ok: true, sceneId, publicMessage: result.message };
       }
 
-      // !motion propose "Title" details...
       const motionPropose = dto.content.match(/^!motion\s+propose\s+"([^"]+)"(?:\s+(.+))?$/i);
       if (motionPropose) {
-        const title = motionPropose[1].trim();
-        const details = motionPropose[2]?.trim();
-
         const result = await this.motions.propose(client, {
           engineId: dto.engineId,
           createdByUserId: userId,
-          title,
-          details,
+          title: motionPropose[1].trim(),
+          details: motionPropose[2]?.trim(),
         });
-
         return { ok: true, sceneId, publicMessage: result.message };
       }
 
-      // !motion vote <id> yes|no|abstain
       const motionVote = dto.content.match(/^!motion\s+vote\s+([a-f0-9\-]{4,})\s+(yes|no|abstain)$/i);
       if (motionVote) {
         const result = await this.motions.vote(client, {
@@ -204,43 +299,25 @@ export class StCoreService {
         return { ok: true, sceneId, publicMessage: result.message };
       }
 
-      // !motion close <id> (ST only)
       const motionClose = dto.content.match(/^!motion\s+close\s+([a-f0-9\-]{4,})$/i);
       if (motionClose) {
         if (!isST) return { ok: false, sceneId, publicMessage: 'Only Storytellers can close motions.' };
-
-        const result = await this.motions.close(client, {
-          engineId: dto.engineId,
-          motionIdPrefix: motionClose[1],
-        });
+        const result = await this.motions.close(client, { engineId: dto.engineId, motionIdPrefix: motionClose[1] });
         return { ok: true, sceneId, publicMessage: result.message };
       }
 
       // ─────────────────────────────────────────────
-      // EXISTING COMMANDS (kept)
+      // EXISTING: !as, !rest, !heal, !status/!sheet, boons/influence/domains
       // ─────────────────────────────────────────────
 
-      // ACTIVE CHARACTER
       const asMatch = dto.content.match(/^!as\s+(.+)$/i);
       if (asMatch) {
-        const result = await this.charCtx.setActiveCharacter(
-          client,
-          dto.engineId,
-          dto.channelId,
-          userId,
-          asMatch[1].trim(),
-        );
+        const result = await this.charCtx.setActiveCharacter(client, dto.engineId, dto.channelId, userId, asMatch[1].trim());
         return { ok: result.ok, sceneId, publicMessage: result.message };
       }
 
-      const character = await this.charCtx.getActiveCharacter(
-        client,
-        dto.engineId,
-        dto.channelId,
-        userId,
-      );
+      const character = await this.charCtx.getActiveCharacter(client, dto.engineId, dto.channelId, userId);
 
-      // REST / HEAL
       if (/^!rest$/i.test(dto.content.trim())) {
         if (!character) return { ok: false, sceneId, publicMessage: 'You have no active character in this scene.' };
         const result = await this.recovery.rest(client, { engineId: dto.engineId, characterId: character.character_id });
@@ -253,21 +330,15 @@ export class StCoreService {
         return { ok: true, sceneId, publicMessage: result.message };
       }
 
-      // STATUS / SHEET
       if (/^!(status|sheet)$/i.test(dto.content.trim())) {
         if (!character) return { ok: false, sceneId, publicMessage: 'You have no active character in this scene.' };
 
         const s = await this.status.getStatus(client, { engineId: dto.engineId, characterId: character.character_id });
-        const lines = [
-          `**Hunger:** ${s.hunger}/5`,
-          `**Health:** ${s.health}`,
-          `**Willpower:** ${s.willpower}`,
-        ];
+        const lines = [`**Hunger:** ${s.hunger}/5`, `**Health:** ${s.health}`, `**Willpower:** ${s.willpower}`];
         if (s.conditions.length) lines.push(`**Conditions:** ${s.conditions.join(', ')}`);
         return { ok: true, sceneId, publicMessage: lines.join('\n') };
       }
 
-      // BOONS
       const boonGive = dto.content.match(
         /^!boon\s+give\s+<@!?(\d+)>\s+(trivial|minor|major|blood|life)\s+"([^"]+)"(?:\s+(.+))?$/i,
       );
@@ -312,7 +383,6 @@ export class StCoreService {
         return { ok: true, sceneId, publicMessage: result.message };
       }
 
-      // INFLUENCE
       const inflSet = dto.content.match(/^!influence\s+set\s+"([^"]+)"\s+(-?\d+)$/i);
       if (inflSet) {
         const result = await this.factions.setInfluence(client, {
@@ -328,7 +398,6 @@ export class StCoreService {
         return { ok: true, sceneId, publicMessage: result.message };
       }
 
-      // DOMAINS
       const domClaim = dto.content.match(/^!domain\s+claim\s+"([^"]+)"(?:\s+(.+))?$/i);
       if (domClaim) {
         const result = await this.domains.claimDomain(client, {
@@ -364,6 +433,24 @@ export class StCoreService {
       [engineId, userId],
     );
     return res.rowCount && String(res.rows[0].role).toLowerCase() === 'st';
+  }
+
+  private async isHarpy(client: any, engineId: string, userId: string): Promise<boolean> {
+    try {
+      const res = await client.query(
+        `
+        SELECT holder_user_id
+        FROM court_offices
+        WHERE engine_id = $1 AND office = 'Harpy' AND status = 'active'
+        LIMIT 1
+        `,
+        [engineId],
+      );
+      return res.rowCount && res.rows[0].holder_user_id === userId;
+    } catch {
+      // If court table not migrated, Harpy power is unavailable (safe default)
+      return false;
+    }
   }
 
   private async upsertUserByDiscordId(client: any, discordUserId: string): Promise<string> {
