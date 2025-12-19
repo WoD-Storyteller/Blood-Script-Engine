@@ -16,7 +16,7 @@ export class OwnerController {
   }
 
   // =========================
-  // List all engines
+  // List engines + safety stats
   // =========================
   @Get('engines')
   async listEngines(@Req() req: Request, @Headers('authorization') auth: string) {
@@ -30,13 +30,29 @@ export class OwnerController {
       const r = await client.query(
         `
         SELECT
-          engine_id,
-          name,
-          banned,
-          banned_reason,
-          banned_at
-        FROM engines
-        ORDER BY created_at DESC
+          e.engine_id,
+          e.name,
+          e.banned,
+          e.banned_reason,
+          e.banned_at,
+
+          -- RED
+          COUNT(se.event_id) FILTER (WHERE se.type = 'red') AS red_total,
+          COUNT(se.event_id) FILTER (WHERE se.type = 'red' AND se.resolved = true) AS red_resolved,
+          COUNT(se.event_id) FILTER (WHERE se.type = 'red' AND se.resolved = false) AS red_unresolved,
+
+          -- YELLOW
+          COUNT(se.event_id) FILTER (WHERE se.type = 'yellow') AS yellow_total,
+          COUNT(se.event_id) FILTER (WHERE se.type = 'yellow' AND se.resolved = true) AS yellow_resolved,
+          COUNT(se.event_id) FILTER (WHERE se.type = 'yellow' AND se.resolved = false) AS yellow_unresolved,
+
+          -- GREEN
+          COUNT(se.event_id) FILTER (WHERE se.type = 'green') AS green_total
+
+        FROM engines e
+        LEFT JOIN safety_events se ON se.engine_id = e.engine_id
+        GROUP BY e.engine_id
+        ORDER BY e.created_at DESC
         `,
       );
 
@@ -74,7 +90,6 @@ export class OwnerController {
       );
 
       if (!r.rowCount) return { error: 'NotFound' };
-
       return { engine: r.rows[0] };
     });
   }
