@@ -1,21 +1,43 @@
 import { Injectable } from '@nestjs/common';
 import { v4 as uuid } from 'uuid';
 
+type SpendMeta = {
+  kind: 'skill' | 'attribute' | 'discipline' | 'blood_potency';
+  key: string;        // e.g. "Athletics", "Strength", "Dominate"
+  from: number;       // current dots
+  to: number;         // from + 1
+};
+
+function asInt(v: any, fallback = 0) {
+  const n = Number(v);
+  return Number.isFinite(n) ? Math.trunc(n) : fallback;
+}
+
+function normalizeKey(s: string) {
+  return String(s || '').trim();
+}
+
+function ensureObj(v: any) {
+  if (v && typeof v === 'object' && !Array.isArray(v)) return v;
+  return {};
+}
+
 @Injectable()
 export class XpService {
-  // V5 core XP costs (simplified but correct)
-  cost(input: { type: string; current: number }): number {
-    switch (input.type) {
+  // V5 core XP costs (simplified, standard)
+  cost(input: { kind: SpendMeta['kind']; current: number }): number {
+    const cur = Math.max(0, asInt(input.current, 0));
+    switch (input.kind) {
       case 'attribute':
-        return (input.current + 1) * 5;
+        return (cur + 1) * 5;
       case 'skill':
-        return (input.current + 1) * 3;
+        return (cur + 1) * 3;
       case 'discipline':
-        return (input.current + 1) * 5;
+        return (cur + 1) * 5;
       case 'blood_potency':
-        return (input.current + 1) * 10;
+        return (cur + 1) * 10;
       default:
-        throw new Error('Unknown XP type');
+        throw new Error('Unknown XP kind');
     }
   }
 
@@ -40,25 +62,15 @@ export class XpService {
     userId: string;
     amount: number;
     reason: string;
+    meta: SpendMeta;
   }) {
     await client.query(
       `
       INSERT INTO xp_ledger
-        (xp_id, engine_id, character_id, user_id, type, amount, reason)
-      VALUES ($1,$2,$3,$4,'spend',$5,$6)
+        (xp_id, engine_id, character_id, user_id, type, amount, reason, meta, approved, applied)
+      VALUES ($1,$2,$3,$4,'spend',$5,$6,$7,false,false)
       `,
-      [uuid(), input.engineId, input.characterId, input.userId, input.amount, input.reason],
-    );
-  }
-
-  async approveSpend(client: any, xpId: string, approverId: string) {
-    await client.query(
-      `
-      UPDATE xp_ledger
-      SET approved=true, approved_by=$2
-      WHERE xp_id=$1
-      `,
-      [xpId, approverId],
+      [uuid(), input.engineId, input.characterId, input.userId, input.amount, input.reason, input.meta],
     );
   }
 
@@ -72,10 +84,156 @@ export class XpService {
     await client.query(
       `
       INSERT INTO xp_ledger
-        (xp_id, engine_id, character_id, user_id, type, amount, approved)
-      VALUES ($1,$2,$3,$4,'earn',$5,true)
+        (xp_id, engine_id, character_id, user_id, type, amount, reason, approved, applied)
+      VALUES ($1,$2,$3,$4,'earn',$5,$6,true,true)
       `,
-      [uuid(), input.engineId, input.characterId, input.userId, input.amount],
+      [uuid(), input.engineId, input.characterId, input.userId, input.amount, input.reason],
     );
+  }
+
+  /**
+   * Approve + apply in one operation.
+   * Idempotent: if already applied, it does nothing and returns ok=true.
+   */
+  async approveAndApply(client: any, input: {
+    xpId: string;
+    approverId: string;
+    engineId: string;
+  }): Promise<{ ok: boolean; alreadyApplied: boolean; appliedTo?: any }> {
+    await client.query('BEGIN');
+
+    try {
+      const r = await client.query(
+        `
+        SELECT xp_id, engine_id, character_id, user_id, amount, approved, applied, meta
+        FROM xp_ledger
+        WHERE xp_id=$1 AND engine_id=$2 AND type='spend'
+        FOR UPDATE
+        `,
+        [input.xpId, input.engineId],
+      );
+
+      if (!r.rowCount) {
+        await client.query('ROLLBACK');
+        return { ok: false, alreadyApplied: false };
+      }
+
+      const row = r.rows[0];
+
+      if (row.applied === true) {
+        // already applied: idempotent success
+        await client.query('COMMIT');
+        return { ok: true, alreadyApplied: true };
+      }
+
+      const meta: SpendMeta | null = row.meta ?? null;
+      if (!meta || !meta.kind || !meta.key) {
+        await client.query('ROLLBACK');
+        throw new Error('XP spend request missing meta (kind/key).');
+      }
+
+      // Mark approved
+      if (row.approved !== true) {
+        await client.query(
+          `
+          UPDATE xp_ledger
+          SET approved=true, approved_by=$2
+          WHERE xp_id=$1
+          `,
+          [input.xpId, input.approverId],
+        );
+      }
+
+      // Load character sheet
+      const c = await client.query(
+        `
+        SELECT sheet
+        FROM characters
+        WHERE engine_id=$1 AND character_id=$2
+        FOR UPDATE
+        `,
+        [input.engineId, row.character_id],
+      );
+
+      if (!c.rowCount) {
+        await client.query('ROLLBACK');
+        throw new Error('Character not found for XP apply.');
+      }
+
+      const sheet = c.rows[0].sheet ?? {};
+      const updated = this.applyMetaToSheet(sheet, meta);
+
+      // Save sheet
+      await client.query(
+        `
+        UPDATE characters
+        SET sheet=$1
+        WHERE engine_id=$2 AND character_id=$3
+        `,
+        [updated, input.engineId, row.character_id],
+      );
+
+      // Mark applied
+      await client.query(
+        `
+        UPDATE xp_ledger
+        SET applied=true, applied_at=now()
+        WHERE xp_id=$1
+        `,
+        [input.xpId],
+      );
+
+      await client.query('COMMIT');
+      return { ok: true, alreadyApplied: false, appliedTo: meta };
+    } catch (e) {
+      await client.query('ROLLBACK');
+      throw e;
+    }
+  }
+
+  /**
+   * Writes upgrades into a canonical simple structure:
+   * sheet.attributes[name] = dots
+   * sheet.skills[name] = dots
+   * sheet.disciplines[name] = dots
+   * sheet.bloodPotency = dots
+   */
+  private applyMetaToSheet(sheetIn: any, meta: SpendMeta) {
+    const sheet = sheetIn && typeof sheetIn === 'object' ? { ...sheetIn } : {};
+    const key = normalizeKey(meta.key);
+
+    if (meta.kind === 'blood_potency') {
+      sheet.bloodPotency = meta.to;
+      sheet.blood_potency = sheet.blood_potency ?? meta.to; // harmless compatibility
+      return sheet;
+    }
+
+    if (meta.kind === 'attribute') {
+      const attrs = ensureObj(sheet.attributes);
+      attrs[key] = meta.to;
+      sheet.attributes = attrs;
+      return sheet;
+    }
+
+    if (meta.kind === 'skill') {
+      const skills = ensureObj(sheet.skills);
+      skills[key] = meta.to;
+      sheet.skills = skills;
+      return sheet;
+    }
+
+    if (meta.kind === 'discipline') {
+      const discs = ensureObj(sheet.disciplines);
+      // allow either number map or object map; we store number map by default
+      if (typeof discs[key] === 'object' && discs[key] !== null) {
+        discs[key] = { ...discs[key], dots: meta.to };
+      } else {
+        discs[key] = meta.to;
+      }
+      sheet.disciplines = discs;
+      return sheet;
+    }
+
+    return sheet;
   }
 }
