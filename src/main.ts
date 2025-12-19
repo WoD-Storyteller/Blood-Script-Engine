@@ -1,19 +1,12 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import cookieParser from 'cookie-parser';
+import { registerDiscordCommands } from './discord/discord.commands';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  const appUrl = process.env.COMPANION_APP_URL || 'http://localhost:5173';
+  await registerDiscordCommands();
 
-  app.use(cookieParser());
-
-  app.enableCors({
-    origin: appUrl,
-    credentials: true,
-  });
-
-  await app.listen(process.env.PORT ? Number(process.env.PORT) : 3000);
+  await app.listen(3000);
 }
 bootstrap();
