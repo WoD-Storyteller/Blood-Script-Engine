@@ -5,7 +5,21 @@ import { DiceService, V5RollResult } from '../dice/dice.service';
 
 type LastRoll = {
   base: V5RollResult;
-  hunger: number;
+};
+
+const DISCIPLINE_GOVERNORS: Record<string, string> = {
+  animalism: 'Resolve',
+  auspex: 'Resolve',
+  celerity: 'Dexterity',
+  dominate: 'Resolve',
+  fortitude: 'Stamina',
+  obfuscate: 'Wits',
+  potence: 'Strength',
+  presence: 'Charisma',
+  protean: 'Resolve',
+  bloodsorcery: 'Resolve',
+  oblivion: 'Resolve',
+  thinbloodalchemy: 'Resolve',
 };
 
 @Injectable()
@@ -22,22 +36,23 @@ export class DiscordInteractions implements OnModuleInit {
     this.client.on('interactionCreate', (i) => this.handle(i));
   }
 
-  private normalizeKey(s: string) {
-    return String(s || '').trim();
+  private norm(s: string) {
+    return String(s || '').toLowerCase().replace(/[^a-z]/g, '');
   }
 
-  private getStat(sheet: any, key: string): number {
-    if (!sheet || !key) return 0;
-    const k = this.normalizeKey(key);
-    const fromAttrs = sheet.attributes?.[k];
-    const fromSkills = sheet.skills?.[k];
-    const v =
-      typeof fromAttrs === 'number'
-        ? fromAttrs
-        : typeof fromSkills === 'number'
-        ? fromSkills
-        : 0;
-    return Number(v) || 0;
+  private getAttr(sheet: any, key: string): number {
+    return Number(sheet?.attributes?.[key] ?? 0) || 0;
+  }
+
+  private getSkill(sheet: any, key: string): number {
+    return Number(sheet?.skills?.[key] ?? 0) || 0;
+  }
+
+  private getDiscipline(sheet: any, key: string): number {
+    const v = sheet?.disciplines?.[key];
+    if (typeof v === 'number') return v;
+    if (typeof v === 'object' && v) return Number(v.dots ?? 0) || 0;
+    return 0;
   }
 
   async handle(interaction: Interaction) {
@@ -49,6 +64,7 @@ export class DiscordInteractions implements OnModuleInit {
     const poolOpt = interaction.options.getInteger('pool');
     const attrOpt = interaction.options.getString('attribute');
     const skillOpt = interaction.options.getString('skill');
+    const discOpt = interaction.options.getString('discipline');
     const willpower = interaction.options.getBoolean('willpower') ?? false;
     const label = interaction.options.getString('label') ?? 'Roll';
 
@@ -58,11 +74,7 @@ export class DiscordInteractions implements OnModuleInit {
       const out = await this.db.withClient(async (client) => {
         const r = await client.query(
           `
-          SELECT
-            c.character_id,
-            c.name AS character_name,
-            c.sheet,
-            c.sheet->>'hunger' AS hunger
+          SELECT c.name, c.sheet, c.sheet->>'hunger' AS hunger
           FROM users u
           JOIN characters c ON c.owner_user_id = u.user_id
           WHERE u.discord_user_id = $1
@@ -78,28 +90,14 @@ export class DiscordInteractions implements OnModuleInit {
         const sheet = row.sheet ?? {};
         const hunger = Number(row.hunger ?? 0) || 0;
 
-        let pool = 0;
-        let derived = '';
-
-        if (typeof poolOpt === 'number') {
-          pool = poolOpt;
-          derived = 'manual';
-        } else if (attrOpt && skillOpt) {
-          const a = this.getStat(sheet, attrOpt);
-          const s = this.getStat(sheet, skillOpt);
-          pool = a + s;
-          derived = `${attrOpt} (${a}) + ${skillOpt} (${s})`;
-        } else {
-          return { error: 'MISSING_POOL' };
-        }
-
+        // WILLPOWER REROLL
         if (willpower) {
           const last = this.lastRollByUser.get(discordUserId);
           if (!last) return { error: 'NO_PREVIOUS_ROLL' };
 
           const rerollable = last.base.rolls.filter((r) => r < 6).slice(0, 3);
           const rerolled = rerollable.map(() => 1 + Math.floor(Math.random() * 10));
-          const addedSuccesses = rerolled.reduce(
+          const added = rerolled.reduce(
             (s, r) => s + (r === 10 ? 2 : r >= 6 ? 1 : 0),
             0,
           );
@@ -108,47 +106,79 @@ export class DiscordInteractions implements OnModuleInit {
             .filter((r) => r >= 6)
             .concat(rerolled);
 
-          last.base.successes += addedSuccesses;
+          last.base.successes += added;
 
           return {
-            characterName: row.character_name,
+            name: row.name,
             hunger,
             label: `${label} (Willpower Reroll)`,
             roll: last.base,
-            derived,
-            reroll: true,
+            derived: 'Willpower',
           };
         }
 
-        const roll = this.dice.rollV5(pool, hunger);
+        let pool = 0;
+        let derived = '';
 
-        this.lastRollByUser.set(discordUserId, {
-          base: roll,
-          hunger,
-        });
+        // MANUAL
+        if (typeof poolOpt === 'number') {
+          pool = poolOpt;
+          derived = 'manual';
+        }
+
+        // ATTRIBUTE + SKILL
+        else if (attrOpt && skillOpt) {
+          const a = this.getAttr(sheet, attrOpt);
+          const s = this.getSkill(sheet, skillOpt);
+          pool = a + s;
+          derived = `${attrOpt} (${a}) + ${skillOpt} (${s})`;
+        }
+
+        // DISCIPLINE
+        else if (discOpt) {
+          const dk = this.norm(discOpt);
+          const dots = this.getDiscipline(sheet, dk);
+          if (!dots) return { error: 'NO_DISCIPLINE' };
+
+          const govName = DISCIPLINE_GOVERNORS[dk] ?? 'Resolve';
+          const gov = this.getAttr(sheet, govName);
+
+          pool = dots + gov;
+          derived = `${discOpt} (${dots}) + ${govName} (${gov})`;
+        }
+
+        else {
+          return { error: 'MISSING_POOL' };
+        }
+
+        const roll = this.dice.rollV5(pool, hunger);
+        this.lastRollByUser.set(discordUserId, { base: roll });
 
         return {
-          characterName: row.character_name,
+          name: row.name,
           hunger,
           label,
           roll,
           derived,
-          reroll: false,
         };
       });
 
       if ((out as any).error === 'NO_ACTIVE_CHARACTER') {
-        await interaction.editReply('❌ You have no active character set.');
+        await interaction.editReply('❌ You have no active character.');
         return;
       }
-
-      if ((out as any).error === 'MISSING_POOL') {
-        await interaction.editReply('❌ Provide either `pool` or both `attribute` and `skill`.');
-        return;
-      }
-
       if ((out as any).error === 'NO_PREVIOUS_ROLL') {
-        await interaction.editReply('❌ No previous roll to reroll with Willpower.');
+        await interaction.editReply('❌ No previous roll to reroll.');
+        return;
+      }
+      if ((out as any).error === 'NO_DISCIPLINE') {
+        await interaction.editReply('❌ You do not have dots in that Discipline.');
+        return;
+      }
+      if ((out as any).error === 'MISSING_POOL') {
+        await interaction.editReply(
+          '❌ Provide `pool`, `attribute + skill`, or `discipline`.',
+        );
         return;
       }
 
@@ -156,8 +186,8 @@ export class DiscordInteractions implements OnModuleInit {
       const lines: string[] = [];
 
       lines.push(`🎲 **${r.label}**`);
-      lines.push(`**Character:** ${r.characterName}`);
-      if (r.derived) lines.push(`**Pool:** ${r.derived}`);
+      lines.push(`**Character:** ${r.name}`);
+      lines.push(`**Pool:** ${r.derived}`);
       lines.push(`**Hunger:** ${r.hunger}`);
       lines.push('');
       lines.push(`**Successes:** ${r.roll.successes}`);
@@ -170,8 +200,9 @@ export class DiscordInteractions implements OnModuleInit {
 
       await interaction.editReply(lines.join('\n'));
     } catch (e) {
-      //eslint-disable-next-line no-console
+      // eslint-disable-next-line no-console
       console.error(e);
       await interaction.editReply('❌ Roll failed due to a server error.');
     }
   }
+}
