@@ -1,42 +1,46 @@
-import { Module } from '@nestjs/common';
+import { Module, MiddlewareConsumer } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
 import { DatabaseModule } from './database/database.module';
-
 import { AuthModule } from './auth/auth.module';
 import { EngineModule } from './engine/engine.module';
 import { SafetyModule } from './safety/safety.module';
 import { ScenesModule } from './scenes/scenes.module';
+import { CharactersModule } from './characters/characters.module';
+import { CoteriesModule } from './coteries/coteries.module';
+import { HavensModule } from './havens/havens.module';
 import { PoliticsModule } from './politics/politics.module';
-import { ChronicleModule } from './chronicle/chronicle.module';
+import { OccultModule } from './occult/occult.module';
+import { WorldModule } from './world/world.module';
 import { DiscordModule } from './discord/discord.module';
 import { AiModule } from './ai/ai.module';
-import { CompanionModule } from './companion/companion.module';
-import { ThreatsModule } from './threats/threats.module';
+import { OwnerModule } from './owner/owner.module';
 import { JobsModule } from './jobs/jobs.module';
-import { HealthModule } from './health/health.module';
-import { RealtimeModule } from './realtime/realtime.module';
+
+import { SessionMiddleware } from './common/middleware/session.middleware';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     DatabaseModule,
-    RealtimeModule,
     AuthModule,
     EngineModule,
     SafetyModule,
     ScenesModule,
+    CharactersModule,
+    CoteriesModule,
+    HavensModule,
     PoliticsModule,
-    ChronicleModule,
-    ThreatsModule,
-    AiModule,
+    OccultModule,
+    WorldModule,
     DiscordModule,
-
-    CompanionModule,
+    AiModule,
+    OwnerModule,
     JobsModule,
-
-    // Probes
-    HealthModule,
   ],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(SessionMiddleware).forRoutes('*');
+  }
+}
