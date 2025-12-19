@@ -3,6 +3,7 @@ import type { Request } from 'express';
 import { DatabaseService } from '../database/database.service';
 import { CompanionAuthService } from '../companion/auth.service';
 import { CharactersService } from './characters.service';
+import { RealtimeService } from '../realtime/realtime.service';
 
 @Controller('companion/characters')
 export class CharactersController {
@@ -10,6 +11,7 @@ export class CharactersController {
     private readonly db: DatabaseService,
     private readonly auth: CompanionAuthService,
     private readonly characters: CharactersService,
+    private readonly realtime: RealtimeService,
   ) {}
 
   private token(req: Request, auth?: string) {
@@ -78,6 +80,12 @@ export class CharactersController {
         characterId: id,
       });
 
+      this.realtime.emitToEngine(session.engine_id, 'active_character_changed', {
+        userId: session.user_id,
+        characterId: id,
+        at: new Date().toISOString(),
+      });
+
       return { ok: true };
     });
   }
@@ -102,6 +110,12 @@ export class CharactersController {
         role: session.role,
         characterId: id,
         sheet: body,
+      });
+
+      this.realtime.emitToEngine(session.engine_id, 'character_updated', {
+        characterId: id,
+        reason: 'sheet_updated',
+        at: new Date().toISOString(),
       });
 
       return { ok: true };
