@@ -16,9 +16,8 @@ import { DiscordModule } from './discord/discord.module';
 import { AiModule } from './ai/ai.module';
 import { OwnerModule } from './owner/owner.module';
 import { JobsModule } from './jobs/jobs.module';
-
 import { SessionMiddleware } from './common/middleware/session.middleware';
-
+import { DiceModule } from './dice/dice.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -37,6 +36,7 @@ import { SessionMiddleware } from './common/middleware/session.middleware';
     AiModule,
     OwnerModule,
     JobsModule,
+    DiceModule,
   ],
 })
 export class AppModule {
