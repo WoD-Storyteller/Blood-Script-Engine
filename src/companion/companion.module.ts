@@ -5,6 +5,7 @@ import { CompanionController } from './companion.controller';
 import { CharactersService } from './characters.service';
 import { CoteriesService } from './coteries.service';
 import { StAdminService } from './st-admin.service';
+import { SafetyEventsService } from '../safety/safety-events.service';
 
 import { WorldModule } from '../world/world.module';
 import { ChronicleModule } from '../chronicle/chronicle.module';
@@ -17,14 +18,8 @@ import { ChronicleModule } from '../chronicle/chronicle.module';
     CharactersService,
     CoteriesService,
     StAdminService,
+    SafetyEventsService,
   ],
   controllers: [CompanionController],
-  exports: [
-    CompanionAuthService,
-    DashboardService,
-    CharactersService,
-    CoteriesService,
-    StAdminService,
-  ],
 })
 export class CompanionModule {}
