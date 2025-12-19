@@ -1,11 +1,20 @@
 import { Module } from '@nestjs/common';
-import { DiscordService } from './discord.service';
-import { DiscordDmService } from './discord.dm.service';
 import { ConfigModule } from '@nestjs/config';
 import { Client, GatewayIntentBits } from 'discord.js';
 
+import { DatabaseModule } from '../database/database.module';
+import { DiceModule } from '../dice/dice.module';
+
+import { DiscordService } from './discord.service';
+import { DiscordDmService } from './discord.dm.service';
+import { DiscordInteractions } from './discord.interactions';
+
 @Module({
-  imports: [ConfigModule],
+  imports: [
+    ConfigModule,
+    DatabaseModule,
+    DiceModule,
+  ],
   providers: [
     {
       provide: Client,
@@ -22,7 +31,8 @@ import { Client, GatewayIntentBits } from 'discord.js';
     },
     DiscordService,
     DiscordDmService,
+    DiscordInteractions,
   ],
-  exports: [DiscordService, DiscordDmService, Client],
+  exports: [Client],
 })
 export class DiscordModule {}
