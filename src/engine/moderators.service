@@ -1,0 +1,54 @@
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class ModeratorsService {
+  async isModerator(client: any, engineId: string, userId: string): Promise<boolean> {
+    const r = await client.query(
+      `SELECT 1 FROM engine_moderators WHERE engine_id=$1 AND user_id=$2 LIMIT 1`,
+      [engineId, userId],
+    );
+    return r.rowCount > 0;
+  }
+
+  async list(client: any, engineId: string) {
+    const r = await client.query(
+      `
+      SELECT u.user_id, u.display_name, u.discord_user_id, em.created_at
+      FROM engine_moderators em
+      JOIN users u ON u.user_id = em.user_id
+      WHERE em.engine_id=$1
+      ORDER BY u.display_name
+      `,
+      [engineId],
+    );
+    return r.rows;
+  }
+
+  async add(client: any, input: {
+    engineId: string;
+    userId: string;
+    addedBy: string;
+  }) {
+    await client.query(
+      `
+      INSERT INTO engine_moderators (engine_id, user_id, added_by)
+      VALUES ($1,$2,$3)
+      ON CONFLICT DO NOTHING
+      `,
+      [input.engineId, input.userId, input.addedBy],
+    );
+  }
+
+  async remove(client: any, input: {
+    engineId: string;
+    userId: string;
+  }) {
+    await client.query(
+      `
+      DELETE FROM engine_moderators
+      WHERE engine_id=$1 AND user_id=$2
+      `,
+      [input.engineId, input.userId],
+    );
+  }
+}
