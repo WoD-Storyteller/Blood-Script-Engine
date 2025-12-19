@@ -170,3 +170,8 @@ export class DiscordInteractions implements OnModuleInit {
 
       await interaction.editReply(lines.join('\n'));
     } catch (e) {
+      //eslint-disable-next-line no-console
+      console.error(e);
+      await interaction.editReply('❌ Roll failed due to a server error.');
+    }
+  }
