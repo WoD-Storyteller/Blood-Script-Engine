@@ -18,6 +18,8 @@ import { OwnerModule } from './owner/owner.module';
 import { JobsModule } from './jobs/jobs.module';
 import { SessionMiddleware } from './common/middleware/session.middleware';
 import { DiceModule } from './dice/dice.module';
+import { XpModule } from './xp/xp.module';
+
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -37,6 +39,7 @@ import { DiceModule } from './dice/dice.module';
     OwnerModule,
     JobsModule,
     DiceModule,
+    XpModule,
   ],
 })
 export class AppModule {
