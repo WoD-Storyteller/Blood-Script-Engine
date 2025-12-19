@@ -4,10 +4,7 @@ import { CompanionModule } from '../companion/companion.module';
 import { DiscordOauthController } from './discord-oauth.controller';
 
 @Module({
-  imports: [
-    DatabaseModule,
-    CompanionModule,
-  ],
+  imports: [DatabaseModule, CompanionModule],
   controllers: [DiscordOauthController],
 })
 export class AuthModule {}
