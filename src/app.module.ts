@@ -15,12 +15,13 @@ import { CompanionModule } from './companion/companion.module';
 import { ThreatsModule } from './threats/threats.module';
 import { JobsModule } from './jobs/jobs.module';
 import { HealthModule } from './health/health.module';
+import { RealtimeModule } from './realtime/realtime.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     DatabaseModule,
-
+    RealtimeModule,
     AuthModule,
     EngineModule,
     SafetyModule,
