@@ -11,31 +11,37 @@ export async function registerDiscordCommands() {
       .addIntegerOption((o) =>
         o
           .setName('pool')
-          .setDescription('Manual dice pool (attributes + skills)')
+          .setDescription('Manual dice pool')
           .setRequired(false),
       )
       .addStringOption((o) =>
         o
           .setName('attribute')
-          .setDescription('Attribute name (e.g. Strength)')
+          .setDescription('Attribute (e.g. Strength)')
           .setRequired(false),
       )
       .addStringOption((o) =>
         o
           .setName('skill')
-          .setDescription('Skill name (e.g. Athletics)')
+          .setDescription('Skill (e.g. Athletics)')
+          .setRequired(false),
+      )
+      .addStringOption((o) =>
+        o
+          .setName('discipline')
+          .setDescription('Discipline (e.g. Dominate)')
           .setRequired(false),
       )
       .addBooleanOption((o) =>
         o
           .setName('willpower')
-          .setDescription('Spend Willpower to reroll up to 3 non-success dice')
+          .setDescription('Spend Willpower to reroll up to 3 failed dice')
           .setRequired(false),
       )
       .addStringOption((o) =>
         o
           .setName('label')
-          .setDescription('Optional label (e.g. Attack, Persuasion)')
+          .setDescription('Optional label')
           .setRequired(false),
       ),
   ].map((c) => c.toJSON());
