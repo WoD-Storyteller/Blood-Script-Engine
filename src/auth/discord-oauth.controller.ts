@@ -115,9 +115,15 @@ export class DiscordOauthController {
     return res.redirect(redirect.toString());
   }
 
-  @Get('logout')
-  async logout(@Res() res: Response) {
-    const appUrl = process.env.COMPANION_APP_URL || 'http://localhost:5173';
+ @Get('logout')
+  async logout(@Req() req: any, @Res() res: Response) {
+    const token = req.cookies?.bse_token;
+
+    if (token) {
+      await this.db.withClient((client) =>
+        this.companionAuth.revokeSession(client, token),
+      );
+    }
 
     res.clearCookie('bse_token', {
       httpOnly: true,
@@ -125,7 +131,7 @@ export class DiscordOauthController {
       path: '/',
     });
 
-    return res.redirect(appUrl);
+    return res.redirect(process.env.COMPANION_APP_URL || '/');
   }
 
   // ─────────────────────────────────────────────
