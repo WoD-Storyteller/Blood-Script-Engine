@@ -27,10 +27,7 @@ export class DiscordOauthController {
   ) {}
 
   @Get('login')
-  async login(
-    @Res() res: Response,
-    @Query('engineId') engineId?: string,
-  ) {
+  async login(@Res() res: Response, @Query('engineId') engineId?: string) {
     const clientId = process.env.DISCORD_CLIENT_ID;
     const redirectUri = process.env.DISCORD_OAUTH_REDIRECT_URI;
     const appUrl = process.env.COMPANION_APP_URL;
@@ -38,15 +35,11 @@ export class DiscordOauthController {
     if (!clientId || !redirectUri || !appUrl) {
       return res.status(500).send('Missing OAuth env config.');
     }
-
-    if (!engineId) {
-      // We require engineId so we can mint the correct engine-scoped Companion session.
-      return res.status(400).send('Missing engineId.');
-    }
+    if (!engineId) return res.status(400).send('Missing engineId.');
 
     const state = uuid();
 
-    // Store state temporarily (simple DB-backed approach)
+    // Persist state → engineId mapping (prevents replay)
     await this.db.withClient(async (client: any) => {
       await client.query(
         `
@@ -55,9 +48,6 @@ export class DiscordOauthController {
         `,
         [uuid(), state, engineId],
       );
-    }).catch(async () => {
-      // If oauth_states table doesn't exist yet, fall back to encoding state directly (unsafe to reuse across restarts).
-      // You should add the migration below if you want persistent state checking.
     });
 
     const params = new URLSearchParams({
@@ -86,49 +76,56 @@ export class DiscordOauthController {
     if (!clientId || !clientSecret || !redirectUri || !appUrl) {
       return res.status(500).send('Missing OAuth env config.');
     }
+    if (!code || !state) return res.status(400).send('Missing code/state.');
 
-    if (!code || !state) {
-      return res.status(400).send('Missing code/state.');
-    }
+    const engineId = await this.consumeOauthState(state);
+    if (!engineId) return res.status(400).send('Invalid/expired OAuth state.');
 
-    // Resolve engineId from state (best practice)
-    const engineId = await this.consumeOauthState(state).catch(() => null);
-    if (!engineId) {
-      // If oauth_states table isn't present, you can swap to a signed state strategy.
-      return res.status(400).send('Invalid/expired OAuth state.');
-    }
-
-    // Exchange code for token
-    const token = await this.exchangeCodeForToken({
-      code,
-      clientId,
-      clientSecret,
-      redirectUri,
-    });
-
-    // Get Discord identity
+    const token = await this.exchangeCodeForToken({ code, clientId, clientSecret, redirectUri });
     const discordUser = await this.fetchDiscordUser(token.access_token);
 
-    // Upsert user + determine role + mint companion session token
-    const { companionToken } = await this.db.withClient(async (client: any) => {
+    const { companionToken, role } = await this.db.withClient(async (client: any) => {
       const userId = await this.upsertUserByDiscordId(client, discordUser);
-
-      const role = await this.resolveRole(client, engineId, discordUser.id);
+      const resolvedRole = await this.resolveRole(client, engineId, discordUser.id);
 
       const session = await this.companionAuth.createSession(client, {
         userId,
         engineId,
-        role,
+        role: resolvedRole,
       });
 
-      return { companionToken: session.token };
+      return { companionToken: session.token, role: resolvedRole };
     });
 
-    // Redirect to app with token in query string
+    // HttpOnly cookie: not readable by JS (prevents token exfil)
+    const isProd = (process.env.NODE_ENV || '').toLowerCase() === 'production';
+
+    res.cookie('bse_token', companionToken, {
+      httpOnly: true,
+      secure: isProd, // true in production (https)
+      sameSite: 'lax',
+      path: '/',
+      maxAge: 1000 * 60 * 60 * 12, // 12h
+    });
+
+    // Redirect back to app without token in URL
     const redirect = new URL(appUrl);
-    redirect.searchParams.set('token', companionToken);
     redirect.searchParams.set('engineId', engineId);
+    redirect.searchParams.set('role', role);
     return res.redirect(redirect.toString());
+  }
+
+  @Get('logout')
+  async logout(@Res() res: Response) {
+    const appUrl = process.env.COMPANION_APP_URL || 'http://localhost:5173';
+
+    res.clearCookie('bse_token', {
+      httpOnly: true,
+      sameSite: 'lax',
+      path: '/',
+    });
+
+    return res.redirect(appUrl);
   }
 
   // ─────────────────────────────────────────────
@@ -177,9 +174,6 @@ export class DiscordOauthController {
   }
 
   private async upsertUserByDiscordId(client: any, discordUser: DiscordUser): Promise<string> {
-    // Assumes users(user_id uuid pk, discord_user_id text unique, username text nullable)
-    // If your schema differs, adjust here.
-
     const existing = await client.query(
       `SELECT user_id FROM users WHERE discord_user_id = $1 LIMIT 1`,
       [discordUser.id],
@@ -188,43 +182,33 @@ export class DiscordOauthController {
     if (existing.rowCount) return existing.rows[0].user_id;
 
     const newId = uuid();
-
     await client.query(
-      `
-      INSERT INTO users (user_id, discord_user_id, username)
-      VALUES ($1,$2,$3)
-      `,
+      `INSERT INTO users (user_id, discord_user_id, username) VALUES ($1,$2,$3)`,
       [newId, discordUser.id, discordUser.global_name ?? discordUser.username],
     );
-
     return newId;
   }
 
-  private async resolveRole(client: any, engineId: string, discordUserId: string): Promise<'player' | 'st' | 'admin'> {
-    // Default: player
-    // Best-effort: if engines has discord_owner_id (or similar), server owner becomes ST automatically.
+  private async resolveRole(
+    client: any,
+    engineId: string,
+    discordUserId: string,
+  ): Promise<'player' | 'st' | 'admin'> {
+    // Default: player. Best-effort: engine.discord_owner_id → ST.
     try {
       const r = await client.query(
-        `
-        SELECT discord_owner_id
-        FROM engines
-        WHERE engine_id = $1
-        LIMIT 1
-        `,
+        `SELECT discord_owner_id FROM engines WHERE engine_id = $1 LIMIT 1`,
         [engineId],
       );
-
       const owner = r.rowCount ? r.rows[0].discord_owner_id : null;
       if (owner && String(owner) === String(discordUserId)) return 'st';
     } catch {
-      // If column doesn't exist yet, ignore.
+      // ignore if column doesn't exist yet
     }
-
     return 'player';
   }
 
   private async consumeOauthState(state: string): Promise<string | null> {
-    // Requires oauth_states table. If you don't have it, add the migration below.
     return this.db.withClient(async (client: any) => {
       const r = await client.query(
         `
@@ -236,10 +220,8 @@ export class DiscordOauthController {
         `,
         [state],
       );
-
       if (!r.rowCount) return null;
 
-      // Consume (delete) state to prevent replay
       await client.query(`DELETE FROM oauth_states WHERE state = $1`, [state]);
       return r.rows[0].engine_id as string;
     });
