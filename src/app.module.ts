@@ -1,6 +1,5 @@
 import { Module, MiddlewareConsumer } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-
 import { DatabaseModule } from './database/database.module';
 import { AuthModule } from './auth/auth.module';
 import { EngineModule } from './engine/engine.module';
@@ -19,11 +18,13 @@ import { JobsModule } from './jobs/jobs.module';
 import { SessionMiddleware } from './common/middleware/session.middleware';
 import { DiceModule } from './dice/dice.module';
 import { XpModule } from './xp/xp.module';
+import { RealtimeModule } from './realtime/realtime.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     DatabaseModule,
+    RealtimeModule,
     AuthModule,
     EngineModule,
     SafetyModule,
