@@ -7,51 +7,35 @@ export async function registerDiscordCommands() {
   const commands = [
     new SlashCommandBuilder()
       .setName('roll')
-      .setDescription('Roll VTM V5 dice using your active character')
+      .setDescription('VTM V5 rolls using your active character')
       .addIntegerOption((o) =>
-        o
-          .setName('pool')
-          .setDescription('Manual dice pool')
-          .setRequired(false),
+        o.setName('pool').setDescription('Manual dice pool').setRequired(false),
       )
       .addStringOption((o) =>
-        o
-          .setName('attribute')
-          .setDescription('Attribute (e.g. Strength)')
-          .setRequired(false),
+        o.setName('attribute').setDescription('Attribute').setRequired(false),
       )
       .addStringOption((o) =>
-        o
-          .setName('skill')
-          .setDescription('Skill (e.g. Athletics)')
-          .setRequired(false),
+        o.setName('skill').setDescription('Skill').setRequired(false),
       )
       .addStringOption((o) =>
-        o
-          .setName('discipline')
-          .setDescription('Discipline (e.g. Dominate)')
-          .setRequired(false),
+        o.setName('discipline').setDescription('Discipline').setRequired(false),
       )
       .addBooleanOption((o) =>
-        o
-          .setName('willpower')
-          .setDescription('Spend Willpower to reroll up to 3 failed dice')
-          .setRequired(false),
+        o.setName('willpower').setDescription('Willpower reroll').setRequired(false),
+      )
+      .addBooleanOption((o) =>
+        o.setName('rouse').setDescription('Make a rouse check').setRequired(false),
+      )
+      .addBooleanOption((o) =>
+        o.setName('feed').setDescription('Make a feeding check').setRequired(false),
       )
       .addStringOption((o) =>
-        o
-          .setName('label')
-          .setDescription('Optional label')
-          .setRequired(false),
+        o.setName('label').setDescription('Optional label').setRequired(false),
       ),
   ].map((c) => c.toJSON());
 
   const rest = new REST({ version: '10' }).setToken(token);
+  await rest.put(Routes.applicationCommands(clientId), { body: commands });
 
-  await rest.put(Routes.applicationCommands(clientId), {
-    body: commands,
-  });
-
-  // eslint-disable-next-line no-console
   console.log('Discord slash commands registered');
 }
