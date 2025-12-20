@@ -1,8 +1,31 @@
 import { Injectable } from '@nestjs/common';
 import { v4 as uuid } from 'uuid';
+import querystring from 'querystring';
 
 @Injectable()
 export class AuthService {
+  /**
+   * Build Discord OAuth URL for companion login
+   */
+  getDiscordAuthUrl(): string {
+    const clientId = process.env.DISCORD_CLIENT_ID;
+    const redirectUri = `${process.env.APP_BASE_URL}/auth/discord/callback`;
+
+    if (!clientId || !redirectUri) {
+      throw new Error('Discord OAuth env vars not set');
+    }
+
+    const params = querystring.stringify({
+      client_id: clientId,
+      redirect_uri: redirectUri,
+      response_type: 'code',
+      scope: 'identify guilds',
+      prompt: 'consent',
+    });
+
+    return `https://discord.com/oauth2/authorize?${params}`;
+  }
+
   /**
    * Validate a session token and return session context
    */
