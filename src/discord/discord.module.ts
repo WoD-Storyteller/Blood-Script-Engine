@@ -1,38 +1,26 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
-import { Client, GatewayIntentBits } from 'discord.js';
-
-import { DatabaseModule } from '../database/database.module';
-import { DiceModule } from '../dice/dice.module';
-
-import { DiscordService } from './discord.service';
-import { DiscordDmService } from './discord.dm.service';
-import { DiscordInteractions } from './discord.interactions';
+import { Client, GatewayIntentBits, Partials } from 'discord.js';
+import { OwnerDmService } from './owner-dm.service';
 
 @Module({
-  imports: [
-    ConfigModule,
-    DatabaseModule,
-    DiceModule,
-  ],
   providers: [
     {
       provide: Client,
-      useFactory: () => {
+      useFactory: async () => {
         const client = new Client({
           intents: [
             GatewayIntentBits.Guilds,
             GatewayIntentBits.DirectMessages,
           ],
+          partials: [Partials.Channel],
         });
-        client.login(process.env.DISCORD_BOT_TOKEN);
+
+        await client.login(process.env.DISCORD_BOT_TOKEN);
         return client;
       },
     },
-    DiscordService,
-    DiscordDmService,
-    DiscordInteractions,
+    OwnerDmService,
   ],
-  exports: [Client],
+  exports: [OwnerDmService],
 })
 export class DiscordModule {}
