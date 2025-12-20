@@ -3,6 +3,7 @@ import type { Request } from 'express';
 import { DatabaseService } from '../database/database.service';
 import { CompanionAuthService } from '../companion/auth.service';
 import { ModeratorsService } from './moderators.service';
+import { enforceEngineAccess } from './engine.guard';
 
 @Controller('engine/moderators')
 export class ModeratorsController {
@@ -17,15 +18,25 @@ export class ModeratorsController {
   }
 
   @Get()
-  async list(@Req() req: Request, @Headers('authorization') auth: string) {
+  async list(@Req() req: Request, @Headers('authorization') auth?: string) {
     const token = this.token(req, auth);
     if (!token) return { error: 'Unauthorized' };
 
     return this.db.withClient(async client => {
       const session = await this.auth.validateToken(client, token);
-      if (!session || session.role !== 'st') return { error: 'Forbidden' };
+      if (!session) return { error: 'Unauthorized' };
 
-      return { moderators: await this.mods.list(client, session.engine_id) };
+      const engineRes = await client.query(
+        `SELECT banned FROM engines WHERE engine_id=$1`,
+        [session.engine_id],
+      );
+      if (!engineRes.rowCount) return { error: 'EngineNotFound' };
+      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+
+      if (session.role !== 'st') return { error: 'Forbidden' };
+
+      const moderators = await this.mods.list(client, session.engine_id);
+      return { moderators };
     });
   }
 
@@ -40,12 +51,20 @@ export class ModeratorsController {
 
     return this.db.withClient(async client => {
       const session = await this.auth.validateToken(client, token);
-      if (!session || session.role !== 'st') return { error: 'Forbidden' };
+      if (!session) return { error: 'Unauthorized' };
+
+      const engineRes = await client.query(
+        `SELECT banned FROM engines WHERE engine_id=$1`,
+        [session.engine_id],
+      );
+      if (!engineRes.rowCount) return { error: 'EngineNotFound' };
+      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+
+      if (session.role !== 'st') return { error: 'Forbidden' };
 
       await this.mods.add(client, {
         engineId: session.engine_id,
         userId: body.userId,
-        addedBy: session.user_id,
       });
 
       return { ok: true };
@@ -63,7 +82,16 @@ export class ModeratorsController {
 
     return this.db.withClient(async client => {
       const session = await this.auth.validateToken(client, token);
-      if (!session || session.role !== 'st') return { error: 'Forbidden' };
+      if (!session) return { error: 'Unauthorized' };
+
+      const engineRes = await client.query(
+        `SELECT banned FROM engines WHERE engine_id=$1`,
+        [session.engine_id],
+      );
+      if (!engineRes.rowCount) return { error: 'EngineNotFound' };
+      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+
+      if (session.role !== 'st') return { error: 'Forbidden' };
 
       await this.mods.remove(client, {
         engineId: session.engine_id,
