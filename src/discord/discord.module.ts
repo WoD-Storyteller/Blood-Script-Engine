@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { Client, GatewayIntentBits, Partials } from 'discord.js';
+
 import { OwnerDmService } from './owner-dm.service';
+import { DiscordDmService } from './discord.dm.service';
 
 @Module({
   providers: [
@@ -10,7 +12,9 @@ import { OwnerDmService } from './owner-dm.service';
         const client = new Client({
           intents: [
             GatewayIntentBits.Guilds,
+            GatewayIntentBits.GuildMessages,
             GatewayIntentBits.DirectMessages,
+            GatewayIntentBits.MessageContent,
           ],
           partials: [Partials.Channel],
         });
@@ -20,7 +24,8 @@ import { OwnerDmService } from './owner-dm.service';
       },
     },
     OwnerDmService,
+    DiscordDmService,
   ],
-  exports: [OwnerDmService],
+  exports: [Client, OwnerDmService, DiscordDmService],
 })
 export class DiscordModule {}
