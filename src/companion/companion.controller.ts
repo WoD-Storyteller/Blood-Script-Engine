@@ -6,7 +6,10 @@ import { DashboardService } from './dashboard.service';
 import { CharactersService } from './characters.service';
 import { CoteriesService } from './coteries.service';
 import { StAdminService } from './st-admin.service';
-import { SafetyEventsService } from '../safety/safety-events.service';
+import { SafetyEventsService } from './safety-events.service';
+import { RealtimeService } from '../realtime/realtime.service';
+import { enforceEngineAccess } from '../engine/engine.guard';
+import { isBotOwner } from '../owner/owner.guard';
 
 @Controller('companion')
 export class CompanionController {
@@ -18,16 +21,14 @@ export class CompanionController {
     private readonly coteries: CoteriesService,
     private readonly st: StAdminService,
     private readonly safety: SafetyEventsService,
+    private readonly realtime: RealtimeService,
   ) {}
 
   private getToken(req: Request, authHeader?: string) {
-    const bearer = authHeader?.replace('Bearer ', '').trim();
-    if (bearer) return bearer;
-    const cookieToken = (req as any)?.cookies?.bse_token;
-    return cookieToken && String(cookieToken).length ? String(cookieToken) : null;
+    return req.cookies?.bse_token ?? authHeader?.replace('Bearer ', '');
   }
 
-  private isStOrAdmin(role: string) {
+  private isStOrAdmin(role: any) {
     const r = String(role).toLowerCase();
     return r === 'st' || r === 'admin';
   }
@@ -41,10 +42,20 @@ export class CompanionController {
       const session = await this.auth.validateToken(client, token);
       if (!session) return { error: 'Unauthorized' };
 
+      const engineRes = await client.query(
+        `SELECT engine_id, banned, banned_reason FROM engines WHERE engine_id=$1`,
+        [session.engine_id],
+      );
+      if (!engineRes.rowCount) return { error: 'EngineNotFound' };
+      const engine = engineRes.rows[0];
+
       return {
+        engine,
         userId: session.user_id,
         engineId: session.engine_id,
         role: session.role,
+        discordUserId: session.discord_user_id,
+        displayName: session.display_name,
       };
     });
   }
@@ -57,6 +68,19 @@ export class CompanionController {
     return this.db.withClient(async (client: any) => {
       const session = await this.auth.validateToken(client, token);
       if (!session) return { error: 'Unauthorized' };
+
+      const engineRes = await client.query(
+        `SELECT engine_id, name, banned, banned_reason, banned_at FROM engines WHERE engine_id=$1`,
+        [session.engine_id],
+      );
+      if (!engineRes.rowCount) return { error: 'EngineNotFound' };
+      const engine = engineRes.rows[0];
+
+      if (engine.banned && !isBotOwner(session)) {
+        // Appeal-only mode: return minimal state so the app can route to the appeal form.
+        return { engine };
+      }
+
       return this.dashboard.getWorldState(client, session.engine_id);
     });
   }
@@ -73,6 +97,13 @@ export class CompanionController {
     return this.db.withClient(async (client: any) => {
       const session = await this.auth.validateToken(client, token);
       if (!session) return { error: 'Unauthorized' };
+
+      const engineRes = await client.query(
+        `SELECT banned FROM engines WHERE engine_id=$1`,
+        [session.engine_id],
+      );
+      if (!engineRes.rowCount) return { error: 'EngineNotFound' };
+      enforceEngineAccess(engineRes.rows[0], session, 'normal');
 
       const rows = await this.characters.listCharacters(client, {
         engineId: session.engine_id,
@@ -97,6 +128,13 @@ export class CompanionController {
       const session = await this.auth.validateToken(client, token);
       if (!session) return { error: 'Unauthorized' };
 
+      const engineRes = await client.query(
+        `SELECT banned FROM engines WHERE engine_id=$1`,
+        [session.engine_id],
+      );
+      if (!engineRes.rowCount) return { error: 'EngineNotFound' };
+      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+
       const character = await this.characters.getCharacter(client, {
         engineId: session.engine_id,
         userId: session.user_id,
@@ -104,13 +142,12 @@ export class CompanionController {
         characterId: id,
       });
 
-      if (!character) return { error: 'Not found' };
       return { character };
     });
   }
 
   // ─────────────────────────────────────────────
-  // Step 9: Coteries (read-only)
+  // Step 10: Coteries (read-only)
   // ─────────────────────────────────────────────
 
   @Get('coteries')
@@ -122,7 +159,19 @@ export class CompanionController {
       const session = await this.auth.validateToken(client, token);
       if (!session) return { error: 'Unauthorized' };
 
-      const rows = await this.coteries.listCoteries(client, session.engine_id);
+      const engineRes = await client.query(
+        `SELECT banned FROM engines WHERE engine_id=$1`,
+        [session.engine_id],
+      );
+      if (!engineRes.rowCount) return { error: 'EngineNotFound' };
+      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+
+      const rows = await this.coteries.listCoteries(client, {
+        engineId: session.engine_id,
+        userId: session.user_id,
+        role: session.role,
+      });
+
       return { coteries: rows };
     });
   }
@@ -140,25 +189,33 @@ export class CompanionController {
       const session = await this.auth.validateToken(client, token);
       if (!session) return { error: 'Unauthorized' };
 
+      const engineRes = await client.query(
+        `SELECT banned FROM engines WHERE engine_id=$1`,
+        [session.engine_id],
+      );
+      if (!engineRes.rowCount) return { error: 'EngineNotFound' };
+      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+
       const coterie = await this.coteries.getCoterie(client, {
         engineId: session.engine_id,
+        userId: session.user_id,
+        role: session.role,
         coterieId: id,
       });
 
-      if (!coterie) return { error: 'Not found' };
       return { coterie };
     });
   }
 
   // ─────────────────────────────────────────────
-  // Step 10: ST/Admin controls (write)
+  // Step 11: ST/Admin tools
   // ─────────────────────────────────────────────
 
   @Post('st/map')
-  async stSetMap(
+  async setMap(
     @Req() req: Request,
     @Headers('authorization') authHeader: string,
-    @Body() body: { url: string },
+    @Body() body: { myMapsUrl: string },
   ) {
     const token = this.getToken(req, authHeader);
     if (!token) return { error: 'Unauthorized' };
@@ -166,18 +223,25 @@ export class CompanionController {
     return this.db.withClient(async (client: any) => {
       const session = await this.auth.validateToken(client, token);
       if (!session) return { error: 'Unauthorized' };
-      if (!this.isStOrAdmin(session.role)) return { error: 'Forbidden' };
 
-      await this.st.setMapUrl(client, { engineId: session.engine_id, url: body.url });
-      return this.dashboard.getWorldState(client, session.engine_id);
+      const engineRes = await client.query(
+        `SELECT banned FROM engines WHERE engine_id=$1`,
+        [session.engine_id],
+      );
+      if (!engineRes.rowCount) return { error: 'EngineNotFound' };
+      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+
+      if (!this.isStOrAdmin(session.role)) return { error: 'Forbidden' };
+      await this.st.setMap(client, session.engine_id, body.myMapsUrl);
+      return { ok: true };
     });
   }
 
   @Post('st/clock/create')
-  async stCreateClock(
+  async createClock(
     @Req() req: Request,
     @Headers('authorization') authHeader: string,
-    @Body() body: { title: string; segments: number; nightly?: boolean; description?: string },
+    @Body() body: any,
   ) {
     const token = this.getToken(req, authHeader);
     if (!token) return { error: 'Unauthorized' };
@@ -185,26 +249,27 @@ export class CompanionController {
     return this.db.withClient(async (client: any) => {
       const session = await this.auth.validateToken(client, token);
       if (!session) return { error: 'Unauthorized' };
+
+      const engineRes = await client.query(
+        `SELECT banned FROM engines WHERE engine_id=$1`,
+        [session.engine_id],
+      );
+      if (!engineRes.rowCount) return { error: 'EngineNotFound' };
+      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+
       if (!this.isStOrAdmin(session.role)) return { error: 'Forbidden' };
 
-      await this.st.createClock(client, {
-        engineId: session.engine_id,
-        title: body.title,
-        segments: body.segments,
-        nightly: !!body.nightly,
-        description: body.description,
-        createdByUserId: session.user_id,
-      });
-
-      return this.dashboard.getWorldState(client, session.engine_id);
+      const clock = await this.st.createClock(client, session.engine_id, body);
+      this.realtime.emitToEngine(session.engine_id, 'clock_created', { clock });
+      return { clock };
     });
   }
 
   @Post('st/clock/tick')
-  async stTickClock(
+  async tickClock(
     @Req() req: Request,
     @Headers('authorization') authHeader: string,
-    @Body() body: { clockIdPrefix: string; amount: number; reason: string },
+    @Body() body: { clockId: string; delta?: number },
   ) {
     const token = this.getToken(req, authHeader);
     if (!token) return { error: 'Unauthorized' };
@@ -212,25 +277,27 @@ export class CompanionController {
     return this.db.withClient(async (client: any) => {
       const session = await this.auth.validateToken(client, token);
       if (!session) return { error: 'Unauthorized' };
+
+      const engineRes = await client.query(
+        `SELECT banned FROM engines WHERE engine_id=$1`,
+        [session.engine_id],
+      );
+      if (!engineRes.rowCount) return { error: 'EngineNotFound' };
+      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+
       if (!this.isStOrAdmin(session.role)) return { error: 'Forbidden' };
 
-      await this.st.tickClock(client, {
-        engineId: session.engine_id,
-        clockIdPrefix: body.clockIdPrefix,
-        amount: body.amount,
-        reason: body.reason,
-        tickedByUserId: session.user_id,
-      });
-
-      return this.dashboard.getWorldState(client, session.engine_id);
+      const out = await this.st.tickClock(client, session.engine_id, body.clockId, body.delta ?? 1);
+      this.realtime.emitToEngine(session.engine_id, 'clock_ticked', out);
+      return out;
     });
   }
 
   @Post('st/arc/create')
-  async stCreateArc(
+  async createArc(
     @Req() req: Request,
     @Headers('authorization') authHeader: string,
-    @Body() body: { title: string; synopsis?: string },
+    @Body() body: any,
   ) {
     const token = this.getToken(req, authHeader);
     if (!token) return { error: 'Unauthorized' };
@@ -238,24 +305,27 @@ export class CompanionController {
     return this.db.withClient(async (client: any) => {
       const session = await this.auth.validateToken(client, token);
       if (!session) return { error: 'Unauthorized' };
+
+      const engineRes = await client.query(
+        `SELECT banned FROM engines WHERE engine_id=$1`,
+        [session.engine_id],
+      );
+      if (!engineRes.rowCount) return { error: 'EngineNotFound' };
+      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+
       if (!this.isStOrAdmin(session.role)) return { error: 'Forbidden' };
 
-      await this.st.createArc(client, {
-        engineId: session.engine_id,
-        title: body.title,
-        synopsis: body.synopsis,
-        createdByUserId: session.user_id,
-      });
-
-      return this.dashboard.getWorldState(client, session.engine_id);
+      const arc = await this.st.createArc(client, session.engine_id, body);
+      this.realtime.emitToEngine(session.engine_id, 'arc_created', { arc });
+      return { arc };
     });
   }
 
   @Post('st/arc/status')
-  async stSetArcStatus(
+  async setArcStatus(
     @Req() req: Request,
     @Headers('authorization') authHeader: string,
-    @Body() body: { arcIdPrefix: string; status: 'planned' | 'active' | 'completed' | 'cancelled'; outcome?: string },
+    @Body() body: { arcId: string; status: string },
   ) {
     const token = this.getToken(req, authHeader);
     if (!token) return { error: 'Unauthorized' };
@@ -263,27 +333,38 @@ export class CompanionController {
     return this.db.withClient(async (client: any) => {
       const session = await this.auth.validateToken(client, token);
       if (!session) return { error: 'Unauthorized' };
+
+      const engineRes = await client.query(
+        `SELECT banned FROM engines WHERE engine_id=$1`,
+        [session.engine_id],
+      );
+      if (!engineRes.rowCount) return { error: 'EngineNotFound' };
+      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+
       if (!this.isStOrAdmin(session.role)) return { error: 'Forbidden' };
 
-      await this.st.setArcStatus(client, {
-        engineId: session.engine_id,
-        arcIdPrefix: body.arcIdPrefix,
-        status: body.status,
-        outcome: body.outcome,
-      });
-
-      return this.dashboard.getWorldState(client, session.engine_id);
+      const arc = await this.st.setArcStatus(client, session.engine_id, body.arcId, body.status);
+      this.realtime.emitToEngine(session.engine_id, 'arc_updated', { arc });
+      return { arc };
     });
   }
 
   @Get('st/intents')
-  async stListIntents(@Req() req: Request, @Headers('authorization') authHeader: string) {
+  async listIntents(@Req() req: Request, @Headers('authorization') authHeader?: string) {
     const token = this.getToken(req, authHeader);
     if (!token) return { error: 'Unauthorized' };
 
     return this.db.withClient(async (client: any) => {
       const session = await this.auth.validateToken(client, token);
       if (!session) return { error: 'Unauthorized' };
+
+      const engineRes = await client.query(
+        `SELECT banned FROM engines WHERE engine_id=$1`,
+        [session.engine_id],
+      );
+      if (!engineRes.rowCount) return { error: 'EngineNotFound' };
+      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+
       if (!this.isStOrAdmin(session.role)) return { error: 'Forbidden' };
 
       const intents = await this.st.listIntents(client, session.engine_id);
@@ -292,10 +373,11 @@ export class CompanionController {
   }
 
   @Post('st/intents/:id/approve')
-  async stApproveIntent(
+  async approveIntent(
     @Req() req: Request,
     @Headers('authorization') authHeader: string,
     @Param('id') id: string,
+    @Body() body: any,
   ) {
     const token = this.getToken(req, authHeader);
     if (!token) return { error: 'Unauthorized' };
@@ -303,18 +385,28 @@ export class CompanionController {
     return this.db.withClient(async (client: any) => {
       const session = await this.auth.validateToken(client, token);
       if (!session) return { error: 'Unauthorized' };
+
+      const engineRes = await client.query(
+        `SELECT banned FROM engines WHERE engine_id=$1`,
+        [session.engine_id],
+      );
+      if (!engineRes.rowCount) return { error: 'EngineNotFound' };
+      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+
       if (!this.isStOrAdmin(session.role)) return { error: 'Forbidden' };
 
-      const ok = await this.st.setIntentStatus(client, { engineId: session.engine_id, intentId: id, status: 'approved' });
-      return { ok };
+      const out = await this.st.approveIntent(client, session.engine_id, id, body);
+      this.realtime.emitToEngine(session.engine_id, 'intent_updated', out);
+      return out;
     });
   }
 
   @Post('st/intents/:id/reject')
-  async stRejectIntent(
+  async rejectIntent(
     @Req() req: Request,
     @Headers('authorization') authHeader: string,
     @Param('id') id: string,
+    @Body() body: any,
   ) {
     const token = this.getToken(req, authHeader);
     if (!token) return { error: 'Unauthorized' };
@@ -322,22 +414,31 @@ export class CompanionController {
     return this.db.withClient(async (client: any) => {
       const session = await this.auth.validateToken(client, token);
       if (!session) return { error: 'Unauthorized' };
+
+      const engineRes = await client.query(
+        `SELECT banned FROM engines WHERE engine_id=$1`,
+        [session.engine_id],
+      );
+      if (!engineRes.rowCount) return { error: 'EngineNotFound' };
+      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+
       if (!this.isStOrAdmin(session.role)) return { error: 'Forbidden' };
 
-      const ok = await this.st.setIntentStatus(client, { engineId: session.engine_id, intentId: id, status: 'rejected' });
-      return { ok };
+      const out = await this.st.rejectIntent(client, session.engine_id, id, body);
+      this.realtime.emitToEngine(session.engine_id, 'intent_updated', out);
+      return out;
     });
   }
 
   // ─────────────────────────────────────────────
-  // Step 11: Safety (Stoplight)
+  // Safety (companion endpoints)
   // ─────────────────────────────────────────────
 
   @Post('safety/submit')
   async submitSafety(
     @Req() req: Request,
     @Headers('authorization') authHeader: string,
-    @Body() body: { level: 'red' | 'yellow' | 'green' },
+    @Body() body: { type: 'red' | 'yellow' | 'green'; context?: any },
   ) {
     const token = this.getToken(req, authHeader);
     if (!token) return { error: 'Unauthorized' };
@@ -346,30 +447,37 @@ export class CompanionController {
       const session = await this.auth.validateToken(client, token);
       if (!session) return { error: 'Unauthorized' };
 
-      await this.safety.submit(client, {
-        engineId: session.engine_id,
-        userId: session.user_id,
-        level: body.level,
-        source: 'companion',
-      });
+      const engineRes = await client.query(
+        `SELECT banned FROM engines WHERE engine_id=$1`,
+        [session.engine_id],
+      );
+      if (!engineRes.rowCount) return { error: 'EngineNotFound' };
+      enforceEngineAccess(engineRes.rows[0], session, 'normal');
 
-      await this.safety.escalationCheck(client, session.engine_id);
-      return { ok: true };
+      const out = await this.safety.submit(client, session.engine_id, session.user_id, body);
+      this.realtime.emitToEngine(session.engine_id, 'safety_event', out);
+      return out;
     });
   }
 
   @Get('safety/active')
-  async listActiveSafety(@Req() req: Request, @Headers('authorization') authHeader: string) {
+  async activeSafety(@Req() req: Request, @Headers('authorization') authHeader?: string) {
     const token = this.getToken(req, authHeader);
     if (!token) return { error: 'Unauthorized' };
 
     return this.db.withClient(async (client: any) => {
       const session = await this.auth.validateToken(client, token);
       if (!session) return { error: 'Unauthorized' };
-      if (!this.isStOrAdmin(session.role)) return { error: 'Forbidden' };
 
-      const events = await this.safety.listActive(client, session.engine_id);
-      return { events };
+      const engineRes = await client.query(
+        `SELECT banned FROM engines WHERE engine_id=$1`,
+        [session.engine_id],
+      );
+      if (!engineRes.rowCount) return { error: 'EngineNotFound' };
+      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+
+      const active = await this.safety.active(client, session.engine_id);
+      return { active };
     });
   }
 
@@ -385,15 +493,19 @@ export class CompanionController {
     return this.db.withClient(async (client: any) => {
       const session = await this.auth.validateToken(client, token);
       if (!session) return { error: 'Unauthorized' };
+
+      const engineRes = await client.query(
+        `SELECT banned FROM engines WHERE engine_id=$1`,
+        [session.engine_id],
+      );
+      if (!engineRes.rowCount) return { error: 'EngineNotFound' };
+      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+
       if (!this.isStOrAdmin(session.role)) return { error: 'Forbidden' };
 
-      await this.safety.resolve(client, {
-        engineId: session.engine_id,
-        eventId: id,
-        resolvedBy: session.user_id,
-      });
-
-      return { ok: true };
+      const out = await this.safety.resolve(client, session.engine_id, id);
+      this.realtime.emitToEngine(session.engine_id, 'safety_event_resolved', out);
+      return out;
     });
   }
 }
