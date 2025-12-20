@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { MapsService } from '../world/maps.service';
 import { ClocksService } from '../chronicle/clocks.service';
-import { ArcService } from '../chronicle/arc.service';
+import { ArcsService } from '../chronicle/arcs.service';
 
 @Injectable()
 export class StAdminService {
