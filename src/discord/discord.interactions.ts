@@ -1,182 +1,109 @@
-import { Injectable, OnModuleInit } from '@nestjs/common';
-import { Client, Interaction } from 'discord.js';
+import { Injectable, Logger } from '@nestjs/common';
+import { Interaction } from 'discord.js';
+
 import { DatabaseService } from '../database/database.service';
-import { DiceService, V5RollResult } from '../dice/dice.service';
-
-type LastRoll = { base: V5RollResult };
-
-const RESONANCES = ['Choleric', 'Melancholic', 'Phlegmatic', 'Sanguine'];
-
-const PREDATOR_COMPLICATIONS: Record<string, string[]> = {
-  alleycat: [
-    'Victim injured and may seek help',
-    'Witnesses nearby noticed violence',
-    'You leave forensic evidence',
-  ],
-  siren: [
-    'Victim becomes obsessed with you',
-    'Rumors spread about your encounters',
-    'A jealous rival takes notice',
-  ],
-  sandman: [
-    'Victim wakes briefly and panics',
-    'Security cameras record movement',
-  ],
-  farmer: [
-    'Animals die mysteriously',
-    'Local ecological imbalance noticed',
-  ],
-  bloodleech: [
-    'Target is another Kindred',
-    'Political consequences follow',
-  ],
-};
+import { RollsHandler } from './rolls.handler';
+import { enforceEngineAccess } from '../engine/engine.guard';
 
 @Injectable()
-export class DiscordInteractions implements OnModuleInit {
-  private lastRollByUser = new Map<string, LastRoll>();
+export class DiscordInteractions {
+  private readonly logger = new Logger(DiscordInteractions.name);
 
   constructor(
-    private readonly client: Client,
     private readonly db: DatabaseService,
-    private readonly dice: DiceService,
+    private readonly rolls: RollsHandler,
   ) {}
 
-  onModuleInit() {
-    this.client.on('interactionCreate', i => this.handle(i));
-  }
-
-  private clamp(n: number, min: number, max: number) {
-    return Math.max(min, Math.min(max, n));
-  }
-
-  private pick<T>(arr: T[]): T {
-    return arr[Math.floor(Math.random() * arr.length)];
-  }
-
   async handle(interaction: Interaction) {
+    // Only care about slash commands for now
     if (!interaction.isChatInputCommand()) return;
-    if (interaction.commandName !== 'roll') return;
 
-    const discordUserId = interaction.user.id;
-    const feed = interaction.options.getBoolean('feed') ?? false;
-    const rouse = interaction.options.getBoolean('rouse') ?? false;
+    await this.db.withClient(async (client) => {
+      // Resolve session by discord user
+      const s = await client.query(
+        `
+        SELECT *
+        FROM sessions
+        WHERE discord_user_id=$1
+        ORDER BY created_at DESC
+        LIMIT 1
+        `,
+        [interaction.user.id],
+      );
 
-    await interaction.deferReply({ ephemeral: true });
-
-    try {
-      const out = await this.db.withClient(async client => {
-        const r = await client.query(
-          `
-          SELECT c.character_id, c.name, c.sheet, c.sheet->>'hunger' AS hunger,
-                 c.sheet->>'predatorType' AS predator
-          FROM users u
-          JOIN characters c ON c.owner_user_id = u.user_id
-          WHERE u.discord_user_id = $1 AND c.is_active = true
-          LIMIT 1
-          `,
-          [discordUserId],
-        );
-
-        if (!r.rowCount) return { error: 'NO_ACTIVE_CHARACTER' };
-
-        const row = r.rows[0];
-        let hunger = Number(row.hunger ?? 0) || 0;
-        const predator = String(row.predator ?? '').toLowerCase();
-
-        // ---- ROUSE ----
-        if (rouse) {
-          const die = 1 + Math.floor(Math.random() * 10);
-          const success = die >= 6;
-          if (!success) hunger = this.clamp(hunger + 1, 0, 5);
-
-          await client.query(
-            `UPDATE characters
-             SET sheet = jsonb_set(sheet, '{hunger}', to_jsonb($1::int), true)
-             WHERE character_id=$2`,
-            [hunger, row.character_id],
-          );
-
-          return { type: 'rouse', name: row.name, die, success, hunger };
-        }
-
-        // ---- FEEDING ----
-        if (feed) {
-          const die = 1 + Math.floor(Math.random() * 10);
-          let delta = die === 10 ? 3 : die >= 6 ? 2 : 1;
-          hunger = this.clamp(hunger - delta, 0, 5);
-
-          const resonance = this.pick(RESONANCES);
-          const intensity =
-            die === 10 ? 'Acute' : die >= 6 ? 'Intense' : 'Fleeting';
-
-          let complication: string | null = null;
-          let masqueradeRisk = false;
-
-          if (die < 6) {
-            const list = PREDATOR_COMPLICATIONS[predator] ?? [];
-            complication = list.length ? this.pick(list) : 'Unwanted attention';
-            masqueradeRisk = hunger >= 4 || predator === 'alleycat';
-          }
-
-          await client.query(
-            `UPDATE characters
-             SET sheet = jsonb_set(sheet, '{hunger}', to_jsonb($1::int), true)
-             WHERE character_id=$2`,
-            [hunger, row.character_id],
-          );
-
-          return {
-            type: 'feed',
-            name: row.name,
-            die,
-            delta,
-            hunger,
-            resonance,
-            intensity,
-            complication,
-            masqueradeRisk,
-          };
-        }
-
-        return { error: 'UNSUPPORTED' };
-      });
-
-      if ((out as any).error === 'NO_ACTIVE_CHARACTER') {
-        await interaction.editReply('❌ No active character.');
+      if (!s.rowCount) {
+        try {
+          await interaction.reply({
+            content: 'You are not logged in. Please sign in via the companion app.',
+            ephemeral: true,
+          });
+        } catch {}
         return;
       }
 
-      const r: any = out;
-      const lines: string[] = [];
+      const session = s.rows[0];
 
-      if (r.type === 'rouse') {
-        lines.push(`🩸 **Rouse Check**`);
-        lines.push(`Roll: ${r.die}`);
-        lines.push(r.success ? '✅ Success' : '❌ Failure (Hunger +1)');
-        lines.push(`**Hunger:** ${r.hunger}`);
+      // Resolve engine + ban status
+      const engineRes = await client.query(
+        `
+        SELECT engine_id, banned
+        FROM engines
+        WHERE engine_id=$1
+        `,
+        [session.engine_id],
+      );
+
+      if (!engineRes.rowCount) {
+        try {
+          await interaction.reply({
+            content: 'Engine not found for your session.',
+            ephemeral: true,
+          });
+        } catch {}
+        return;
       }
 
-      if (r.type === 'feed') {
-        lines.push(`🍷 **Feeding**`);
-        lines.push(`Roll: ${r.die}`);
-        lines.push(`Hunger Reduced: ${r.delta}`);
-        lines.push(`**Hunger:** ${r.hunger}`);
-        lines.push('');
-        lines.push(`**Resonance:** ${r.resonance} (${r.intensity})`);
-        if (r.complication) {
-          lines.push('');
-          lines.push(`⚠️ **Complication:** ${r.complication}`);
-        }
-        if (r.masqueradeRisk) {
-          lines.push(`🚨 **Masquerade Risk**`);
-        }
+      const engine = engineRes.rows[0];
+
+      // 🚫 Enforce ban / appeal-only mode
+      try {
+        enforceEngineAccess(engine, session, 'normal');
+      } catch {
+        try {
+          await interaction.reply({
+            content:
+              'This server has been banned. Only the appeal form is available.',
+            ephemeral: true,
+          });
+        } catch {}
+        return;
       }
 
-      await interaction.editReply(lines.join('\n'));
-    } catch (e) {
-      console.error(e);
-      await interaction.editReply('❌ Feeding failed due to server error.');
-    }
-  }
-}
+      // Dispatch by command name
+      try {
+        switch (interaction.commandName) {
+          case 'roll':
+            await this.rolls.handle(interaction);
+            return;
+
+          default:
+            await interaction.reply({
+              content: 'Unknown command.',
+              ephemeral: true,
+            });
+            return;
+        }
+      } catch (err) {
+        this.logger.error(
+          `Error handling interaction ${interaction.commandName}`,
+          err as any,
+        );
+
+        try {
+          if (!interaction.replied) {
+            await interaction.reply({
+              content: 'An error occurred while processing the command.',
+              ephemeral: true,
+            });
+          }
+        } catch {}
