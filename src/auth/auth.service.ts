@@ -1,73 +1,68 @@
 import { Injectable } from '@nestjs/common';
-import { uuid } from '../common/utils/uuid';
+import { v4 as uuid } from 'uuid';
 
 @Injectable()
-export class CompanionAuthService {
+export class AuthService {
+  /**
+   * Validate a session token and return session context
+   */
+  async validateToken(client: any, token: string) {
+    const res = await client.query(
+      `
+      SELECT
+        s.session_id,
+        s.user_id,
+        s.engine_id,
+        s.role,
+        u.discord_user_id
+      FROM sessions s
+      JOIN users u ON u.user_id = s.user_id
+      WHERE s.token = $1
+        AND s.expires_at > now()
+      `,
+      [token],
+    );
+
+    if (!res.rowCount) return null;
+    return res.rows[0];
+  }
+
+  /**
+   * Create a new session token
+   */
   async createSession(
     client: any,
     input: {
       userId: string;
       engineId: string;
-      role: 'player' | 'st' | 'admin';
+      role: 'owner' | 'admin' | 'st' | 'player';
+      ttlHours?: number;
     },
   ) {
-    // Revoke all previous active sessions for this user+engine
+    const sessionId = uuid();
+    const token = uuid();
+    const ttl = input.ttlHours ?? 24;
+
     await client.query(
       `
-      UPDATE companion_sessions
-      SET revoked = true,
-          revoked_at = now()
-      WHERE user_id = $1
-        AND engine_id = $2
-        AND revoked = false
+      INSERT INTO sessions
+        (session_id, token, user_id, engine_id, role, expires_at)
+      VALUES ($1,$2,$3,$4,$5, now() + ($6 || ' hours')::interval)
       `,
-      [input.userId, input.engineId],
+      [sessionId, token, input.userId, input.engineId, input.role, ttl],
     );
 
-    const token = uuid();
-    const csrfToken = uuid();
-
-    const res = await client.query(
-      `
-      INSERT INTO companion_sessions
-        (session_id, token, csrf_token, user_id, engine_id, role, created_at)
-      VALUES ($1,$2,$3,$4,$5,$6,now())
-      RETURNING token, csrf_token, created_at
-      `,
-      [uuid(), token, csrfToken, input.userId, input.engineId, input.role],
-    );
-
-    return {
-      token,
-      csrfToken,
-      createdAt: res.rows[0].created_at,
-    };
+    return { token };
   }
 
-  async validateToken(client: any, token: string) {
-    const res = await client.query(
-      `
-      SELECT *
-      FROM companion_sessions
-      WHERE token = $1
-        AND revoked = false
-      LIMIT 1
-      `,
-      [token],
-    );
-
-    return res.rowCount ? res.rows[0] : null;
-  }
-
+  /**
+   * Revoke a session
+   */
   async revokeSession(client: any, token: string) {
     await client.query(
-      `
-      UPDATE companion_sessions
-      SET revoked = true,
-          revoked_at = now()
-      WHERE token = $1
-      `,
+      `DELETE FROM sessions WHERE token = $1`,
       [token],
     );
+    return { ok: true };
   }
 }
