@@ -4,6 +4,7 @@ import { DatabaseService } from '../database/database.service';
 import { CompanionAuthService } from '../companion/auth.service';
 import { CharactersService } from './characters.service';
 import { RealtimeService } from '../realtime/realtime.service';
+import { enforceEngineAccess } from '../engine/engine.guard';
 
 @Controller('companion/characters')
 export class CharactersController {
@@ -27,6 +28,13 @@ export class CharactersController {
       const session = await this.auth.validateToken(client, token);
       if (!session) return { error: 'Unauthorized' };
 
+      const engineRes = await client.query(
+        `SELECT banned FROM engines WHERE engine_id=$1`,
+        [session.engine_id],
+      );
+      if (!engineRes.rowCount) return { error: 'EngineNotFound' };
+      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+
       const characters = await this.characters.listCharacters(client, {
         engineId: session.engine_id,
         userId: session.user_id,
@@ -49,6 +57,13 @@ export class CharactersController {
     return this.db.withClient(async (client) => {
       const session = await this.auth.validateToken(client, token);
       if (!session) return { error: 'Unauthorized' };
+
+      const engineRes = await client.query(
+        `SELECT banned FROM engines WHERE engine_id=$1`,
+        [session.engine_id],
+      );
+      if (!engineRes.rowCount) return { error: 'EngineNotFound' };
+      enforceEngineAccess(engineRes.rows[0], session, 'normal');
 
       const character = await this.characters.getCharacter(client, {
         engineId: session.engine_id,
@@ -74,9 +89,17 @@ export class CharactersController {
       const session = await this.auth.validateToken(client, token);
       if (!session) return { error: 'Unauthorized' };
 
+      const engineRes = await client.query(
+        `SELECT banned FROM engines WHERE engine_id=$1`,
+        [session.engine_id],
+      );
+      if (!engineRes.rowCount) return { error: 'EngineNotFound' };
+      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+
       await this.characters.setActiveCharacter(client, {
         engineId: session.engine_id,
         userId: session.user_id,
+        role: session.role,
         characterId: id,
       });
 
@@ -104,7 +127,14 @@ export class CharactersController {
       const session = await this.auth.validateToken(client, token);
       if (!session) return { error: 'Unauthorized' };
 
-      await this.characters.updateCharacterSheet(client, {
+      const engineRes = await client.query(
+        `SELECT banned FROM engines WHERE engine_id=$1`,
+        [session.engine_id],
+      );
+      if (!engineRes.rowCount) return { error: 'EngineNotFound' };
+      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+
+      await this.characters.updateSheet(client, {
         engineId: session.engine_id,
         userId: session.user_id,
         role: session.role,
