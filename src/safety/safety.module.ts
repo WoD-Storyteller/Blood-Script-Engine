@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
-import { SafetyService } from './safety.service';
-import { TenetsService } from './tenets.service';
+import { DatabaseModule } from '../database/database.module';
+import { DiscordModule } from '../discord/discord.module';
+import { SafetyThresholdService } from './safety-threshold.service';
 
 @Module({
-  providers: [SafetyService, TenetsService],
-  exports: [SafetyService],
+  imports: [DatabaseModule, DiscordModule],
+  providers: [SafetyThresholdService],
+  exports: [SafetyThresholdService],
 })
 export class SafetyModule {}
