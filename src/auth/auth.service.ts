@@ -1,91 +1,77 @@
 import { Injectable } from '@nestjs/common';
 import { v4 as uuid } from 'uuid';
 import querystring from 'querystring';
+import fetch from 'node-fetch';
 
 @Injectable()
 export class AuthService {
-  /**
-   * Build Discord OAuth URL for companion login
-   */
   getDiscordAuthUrl(): string {
-    const clientId = process.env.DISCORD_CLIENT_ID;
+    const clientId = process.env.DISCORD_CLIENT_ID!;
     const redirectUri = `${process.env.APP_BASE_URL}/auth/discord/callback`;
-
-    if (!clientId || !redirectUri) {
-      throw new Error('Discord OAuth env vars not set');
-    }
 
     const params = querystring.stringify({
       client_id: clientId,
       redirect_uri: redirectUri,
       response_type: 'code',
-      scope: 'identify guilds',
-      prompt: 'consent',
+      scope: 'identify',
     });
 
     return `https://discord.com/oauth2/authorize?${params}`;
   }
 
-  /**
-   * Validate a session token and return session context
-   */
+  async handleDiscordCallback(
+    client: any,
+    code: string,
+  ): Promise<{ token: string }> {
+    const tokenRes = await fetch('https://discord.com/api/oauth2/token', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: querystring.stringify({
+        client_id: process.env.DISCORD_CLIENT_ID,
+        client_secret: process.env.DISCORD_CLIENT_SECRET,
+        grant_type: 'authorization_code',
+        code,
+        redirect_uri: `${process.env.APP_BASE_URL}/auth/discord/callback`,
+      }),
+    });
+
+    const tokenJson: any = await tokenRes.json();
+
+    const userRes = await fetch('https://discord.com/api/users/@me', {
+      headers: { Authorization: `Bearer ${tokenJson.access_token}` },
+    });
+
+    const discordUser: any = await userRes.json();
+
+    const user = await client.query(
+      `
+      INSERT INTO users (user_id, discord_user_id, display_name)
+      VALUES ($1,$2,$3)
+      ON CONFLICT (discord_user_id)
+      DO UPDATE SET display_name=EXCLUDED.display_name
+      RETURNING user_id
+      `,
+      [uuid(), discordUser.id, discordUser.username],
+    );
+
+    const sessionToken = uuid();
+
+    await client.query(
+      `
+      INSERT INTO sessions (session_id, token, user_id, expires_at)
+      VALUES ($1,$2,$3, now() + interval '24 hours')
+      `,
+      [uuid(), sessionToken, user.rows[0].user_id],
+    );
+
+    return { token: sessionToken };
+  }
+
   async validateToken(client: any, token: string) {
     const res = await client.query(
-      `
-      SELECT
-        s.session_id,
-        s.user_id,
-        s.engine_id,
-        s.role,
-        u.discord_user_id
-      FROM sessions s
-      JOIN users u ON u.user_id = s.user_id
-      WHERE s.token = $1
-        AND s.expires_at > now()
-      `,
+      `SELECT * FROM sessions WHERE token=$1 AND expires_at > now()`,
       [token],
     );
-
-    if (!res.rowCount) return null;
-    return res.rows[0];
-  }
-
-  /**
-   * Create a new session token
-   */
-  async createSession(
-    client: any,
-    input: {
-      userId: string;
-      engineId: string;
-      role: 'owner' | 'admin' | 'st' | 'player';
-      ttlHours?: number;
-    },
-  ) {
-    const sessionId = uuid();
-    const token = uuid();
-    const ttl = input.ttlHours ?? 24;
-
-    await client.query(
-      `
-      INSERT INTO sessions
-        (session_id, token, user_id, engine_id, role, expires_at)
-      VALUES ($1,$2,$3,$4,$5, now() + ($6 || ' hours')::interval)
-      `,
-      [sessionId, token, input.userId, input.engineId, input.role, ttl],
-    );
-
-    return { token };
-  }
-
-  /**
-   * Revoke a session
-   */
-  async revokeSession(client: any, token: string) {
-    await client.query(
-      `DELETE FROM sessions WHERE token = $1`,
-      [token],
-    );
-    return { ok: true };
+    return res.rowCount ? res.rows[0] : null;
   }
 }
