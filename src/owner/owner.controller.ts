@@ -16,7 +16,7 @@ export class OwnerController {
   }
 
   // =========================
-  // List engines + safety stats
+  // List engines + safety + strikes
   // =========================
   @Get('engines')
   async listEngines(@Req() req: Request, @Headers('authorization') auth: string) {
@@ -34,23 +34,28 @@ export class OwnerController {
           e.name,
           e.banned,
           e.banned_reason,
-          e.banned_at,
 
-          -- RED
-          COUNT(se.event_id) FILTER (WHERE se.type = 'red') AS red_total,
-          COUNT(se.event_id) FILTER (WHERE se.type = 'red' AND se.resolved = true) AS red_resolved,
-          COUNT(se.event_id) FILTER (WHERE se.type = 'red' AND se.resolved = false) AS red_unresolved,
+          -- Safety
+          COUNT(se.event_id) FILTER (WHERE se.type='red') AS red_total,
+          COUNT(se.event_id) FILTER (WHERE se.type='red' AND se.resolved=true) AS red_resolved,
+          COUNT(se.event_id) FILTER (WHERE se.type='red' AND se.resolved=false) AS red_unresolved,
 
-          -- YELLOW
-          COUNT(se.event_id) FILTER (WHERE se.type = 'yellow') AS yellow_total,
-          COUNT(se.event_id) FILTER (WHERE se.type = 'yellow' AND se.resolved = true) AS yellow_resolved,
-          COUNT(se.event_id) FILTER (WHERE se.type = 'yellow' AND se.resolved = false) AS yellow_unresolved,
+          COUNT(se.event_id) FILTER (WHERE se.type='yellow') AS yellow_total,
+          COUNT(se.event_id) FILTER (WHERE se.type='yellow' AND se.resolved=true) AS yellow_resolved,
+          COUNT(se.event_id) FILTER (WHERE se.type='yellow' AND se.resolved=false) AS yellow_unresolved,
 
-          -- GREEN
-          COUNT(se.event_id) FILTER (WHERE se.type = 'green') AS green_total
+          COUNT(se.event_id) FILTER (WHERE se.type='green') AS green_total,
+
+          -- Strikes
+          COUNT(es.strike_id) AS strike_count,
+
+          -- Auto highlight flags
+          BOOL_OR(se.type='red' AND se.resolved=false) AS has_unresolved_red,
+          BOOL_OR(se.type='yellow' AND se.resolved=false) AS has_unresolved_yellow
 
         FROM engines e
         LEFT JOIN safety_events se ON se.engine_id = e.engine_id
+        LEFT JOIN engine_strikes es ON es.engine_id = e.engine_id
         GROUP BY e.engine_id
         ORDER BY e.created_at DESC
         `,
@@ -61,44 +66,10 @@ export class OwnerController {
   }
 
   // =========================
-  // Inspect single engine
+  // Issue strike (AUTO BAN AT 3)
   // =========================
-  @Post('engine')
-  async getEngine(
-    @Req() req: Request,
-    @Headers('authorization') auth: string,
-    @Body() body: { engineId: string },
-  ) {
-    const token = this.token(req, auth);
-    if (!token) return { error: 'Unauthorized' };
-
-    return this.db.withClient(async (client) => {
-      const session = await this.auth.validateToken(client, token);
-      if (!session || !isBotOwner(session)) return { error: 'Forbidden' };
-
-      const r = await client.query(
-        `
-        SELECT
-          e.*,
-          COUNT(c.character_id) AS character_count
-        FROM engines e
-        LEFT JOIN characters c ON c.engine_id = e.engine_id
-        WHERE e.engine_id=$1
-        GROUP BY e.engine_id
-        `,
-        [body.engineId],
-      );
-
-      if (!r.rowCount) return { error: 'NotFound' };
-      return { engine: r.rows[0] };
-    });
-  }
-
-  // =========================
-  // Ban engine
-  // =========================
-  @Post('ban-engine')
-  async banEngine(
+  @Post('issue-strike')
+  async issueStrike(
     @Req() req: Request,
     @Headers('authorization') auth: string,
     @Body() body: { engineId: string; reason?: string },
@@ -110,19 +81,44 @@ export class OwnerController {
       const session = await this.auth.validateToken(client, token);
       if (!session || !isBotOwner(session)) return { error: 'Forbidden' };
 
+      // Insert strike
       await client.query(
         `
-        UPDATE engines
-        SET banned=true,
-            banned_reason=$2,
-            banned_at=now(),
-            banned_by=$3
-        WHERE engine_id=$1
+        INSERT INTO engine_strikes (engine_id, issued_by, reason)
+        VALUES ($1,$2,$3)
         `,
-        [body.engineId, body.reason ?? 'Policy violation', session.user_id],
+        [body.engineId, session.user_id, body.reason ?? 'Safety violation'],
       );
 
-      return { ok: true };
+      // Count strikes
+      const countRes = await client.query(
+        `SELECT COUNT(*)::int AS c FROM engine_strikes WHERE engine_id=$1`,
+        [body.engineId],
+      );
+
+      const strikeCount = countRes.rows[0].c;
+
+      // Auto-ban at 3 strikes
+      if (strikeCount >= 3) {
+        await client.query(
+          `
+          UPDATE engines
+          SET banned=true,
+              banned_reason='Automatically banned after 3 strikes',
+              banned_at=now(),
+              banned_by=$2
+          WHERE engine_id=$1
+            AND banned=false
+          `,
+          [body.engineId, session.user_id],
+        );
+      }
+
+      return {
+        ok: true,
+        strikes: strikeCount,
+        autoBanned: strikeCount >= 3,
+      };
     });
   }
 
