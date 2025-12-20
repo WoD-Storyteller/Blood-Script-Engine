@@ -1,5 +1,6 @@
 import { Message } from 'discord.js';
 import { DatabaseService } from '../../database/database.service';
+import { enforceEngineAccess } from '../../engine/engine.guard';
 
 const SAFETY_EMOJIS = ['🔴', '🟡', '🟢'];
 
@@ -10,36 +11,43 @@ export async function handleDM(
   const emoji = message.content.trim();
   if (!SAFETY_EMOJIS.includes(emoji)) return;
 
-  // Identify most recent active scene for this user
-  const res = await db.query(
+  // Map discord user to latest session → engine
+  const s = await db.query(
     `
-    SELECT sp.scene_id, sp.engine_id
-    FROM scene_participants sp
-    JOIN users u ON u.user_id = sp.participant_id
-    WHERE u.discord_user_id = $1
-    ORDER BY sp.joined_at DESC
+    SELECT engine_id
+    FROM sessions
+    WHERE discord_user_id=$1
+    ORDER BY created_at DESC
     LIMIT 1
     `,
     [message.author.id],
   );
 
-  if (!res.rowCount) return;
+  if (!s.rowCount) return;
 
-  const { scene_id, engine_id } = res.rows[0];
+  const engineId = s.rows[0].engine_id;
 
+  const engineRes = await db.query(
+    `SELECT engine_id, banned FROM engines WHERE engine_id=$1`,
+    [engineId],
+  );
+  if (!engineRes.rowCount) return;
+
+  enforceEngineAccess(engineRes.rows[0], { discord_user_id: message.author.id }, 'normal');
+
+  const signalType =
+    emoji === '🔴'
+      ? 'red'
+      : emoji === '🟡'
+      ? 'yellow'
+      : 'green';
+
+  // Scene lookup is currently not reliable in this repo state; store scene_id as NULL.
   await db.query(
     `
     INSERT INTO safety_signals (signal_id, engine_id, scene_id, signal_type)
-    VALUES (gen_random_uuid(), $1, $2, $3)
+    VALUES (gen_random_uuid(), $1, NULL, $2)
     `,
-    [
-      engine_id,
-      scene_id,
-      emoji === '🔴'
-        ? 'red'
-        : emoji === '🟡'
-        ? 'yellow'
-        : 'green',
-    ],
+    [engineId, signalType],
   );
 }
