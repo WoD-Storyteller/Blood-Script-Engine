@@ -1,43 +1,48 @@
 import { Controller, Post, Get, Body, Req, Headers } from '@nestjs/common';
 import type { Request } from 'express';
+
 import { DatabaseService } from '../database/database.service';
 import { CompanionAuthService } from '../companion/auth.service';
 import { enforceEngineAccess } from './engine.guard';
 import { isBotOwner } from '../owner/owner.guard';
+import { OwnerDmService } from '../discord/owner-dm.service';
 
 @Controller('engine/appeals')
 export class AppealsController {
   constructor(
     private readonly db: DatabaseService,
     private readonly auth: CompanionAuthService,
+    private readonly ownerDm: OwnerDmService,
   ) {}
 
   private token(req: Request, auth?: string) {
     return req.cookies?.bse_token ?? auth?.replace('Bearer ', '');
   }
 
-  // =========================
-  // Submit appeal (engine)
-  // =========================
+  // ==================================================
+  // Submit appeal (engine, appeal-only access)
+  // ==================================================
   @Post()
   async submit(
     @Req() req: Request,
-    @Headers('authorization') auth: string,
+    @Headers('authorization') authHeader: string,
     @Body() body: { message: string },
   ) {
-    const token = this.token(req, auth);
+    const token = this.token(req, authHeader);
     if (!token) return { error: 'Unauthorized' };
 
     return this.db.withClient(async (client) => {
       const session = await this.auth.validateToken(client, token);
       if (!session) return { error: 'Unauthorized' };
 
-      const e = await client.query(
+      const engineRes = await client.query(
         `SELECT banned FROM engines WHERE engine_id=$1`,
         [session.engine_id],
       );
 
-      enforceEngineAccess(e.rows[0], session, 'appeal');
+      if (!engineRes.rowCount) return { error: 'EngineNotFound' };
+
+      enforceEngineAccess(engineRes.rows[0], session, 'appeal');
 
       await client.query(
         `
@@ -47,19 +52,27 @@ export class AppealsController {
         [session.engine_id, session.user_id, body.message],
       );
 
+      // Owner DM notification
+      await this.ownerDm.send(
+        `📨 NEW ENGINE APPEAL\n\n` +
+          `Engine: ${session.engine_id}\n` +
+          `Submitted by: ${session.display_name}\n\n` +
+          body.message,
+      );
+
       return { ok: true };
     });
   }
 
-  // =========================
-  // Owner: list appeals
-  // =========================
+  // ==================================================
+  // Owner: list all appeals
+  // ==================================================
   @Get()
   async list(
     @Req() req: Request,
-    @Headers('authorization') auth: string,
+    @Headers('authorization') authHeader: string,
   ) {
-    const token = this.token(req, auth);
+    const token = this.token(req, authHeader);
     if (!token) return { error: 'Unauthorized' };
 
     return this.db.withClient(async (client) => {
@@ -87,13 +100,13 @@ export class AppealsController {
     });
   }
 
-  // =========================
-  // Owner: resolve appeal
-  // =========================
+  // ==================================================
+  // Owner: resolve appeal (+ optional unban)
+  // ==================================================
   @Post('resolve')
   async resolve(
     @Req() req: Request,
-    @Headers('authorization') auth: string,
+    @Headers('authorization') authHeader: string,
     @Body()
     body: {
       appealId: string;
@@ -102,14 +115,13 @@ export class AppealsController {
       unban?: boolean;
     },
   ) {
-    const token = this.token(req, auth);
+    const token = this.token(req, authHeader);
     if (!token) return { error: 'Unauthorized' };
 
     return this.db.withClient(async (client) => {
       const session = await this.auth.validateToken(client, token);
       if (!session || !isBotOwner(session)) return { error: 'Forbidden' };
 
-      // Resolve appeal
       await client.query(
         `
         UPDATE engine_appeals
@@ -128,7 +140,6 @@ export class AppealsController {
         ],
       );
 
-      // Optional unban
       if (body.unban) {
         await client.query(
           `
