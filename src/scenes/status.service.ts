@@ -1,47 +1,37 @@
 import { Injectable } from '@nestjs/common';
-import { v4 as uuid } from 'uuid';
-import { TenetCheckResult } from '../safety/tenets.types';
 
 @Injectable()
 export class StatusService {
-  /**
-   * Record a tenet violation attempt
-   */
-  async recordTenetViolation(
+  async getStatus(
     client: any,
     input: {
       engineId: string;
-      userId: string;
-      sceneId: string;
-      tenetCheck: TenetCheckResult;
+      characterId: string;
     },
   ) {
-    if (input.tenetCheck.allowed) {
-      return { ok: true };
-    }
-
-    const id = uuid();
-
-    await client.query(
+    const row = await client.query(
       `
-      INSERT INTO tenet_violation_attempts
-        (attempt_id, engine_id, user_id, scene_id, tenet_id, category)
-      VALUES ($1,$2,$3,$4,$5,$6)
+      SELECT hunger, health, willpower, conditions
+      FROM characters
+      WHERE engine_id = $1 AND character_id = $2
       `,
-      [
-        id,
-        input.engineId,
-        input.userId,
-        input.sceneId,
-        input.tenetCheck.tenetId,
-        input.tenetCheck.category,
-      ],
+      [input.engineId, input.characterId],
     );
 
+    if (!row.rowCount) {
+      return {
+        hunger: 0,
+        health: 0,
+        willpower: 0,
+        conditions: [],
+      };
+    }
+
     return {
-      attemptId: id,
-      category: input.tenetCheck.category,
-      tenetTitle: input.tenetCheck.tenetTitle,
+      hunger: row.rows[0].hunger ?? 0,
+      health: row.rows[0].health ?? 0,
+      willpower: row.rows[0].willpower ?? 0,
+      conditions: row.rows[0].conditions ?? [],
     };
   }
 }

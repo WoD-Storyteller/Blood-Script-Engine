@@ -1,37 +1,50 @@
 import { Injectable } from '@nestjs/common';
-import { v4 as uuid } from 'uuid';
 
 @Injectable()
 export class FactionsService {
-  async listFactions(client: any, engineId: string) {
-    const res = await client.query(
-      `
-      SELECT *
-      FROM factions
-      WHERE engine_id = $1
-      ORDER BY name
-      `,
-      [engineId],
-    );
-    return res.rows;
-  }
-
-  async createFaction(
+  async setInfluence(
     client: any,
-    engineId: string,
-    name: string,
-    description?: string,
+    input: {
+      engineId: string;
+      faction: string;
+      score: number;
+    },
   ) {
-    const factionId = uuid();
     await client.query(
       `
-      INSERT INTO factions
-        (faction_id, engine_id, name, description)
-      VALUES ($1,$2,$3,$4)
+      INSERT INTO faction_influence (engine_id, faction, score)
+      VALUES ($1,$2,$3)
+      ON CONFLICT (engine_id, faction)
+      DO UPDATE SET score = EXCLUDED.score
       `,
-      [factionId, engineId, name, description ?? null],
+      [input.engineId, input.faction, input.score],
     );
 
-    return { factionId };
+    return { message: `Influence for **${input.faction}** set to ${input.score}.` };
+  }
+
+  async getInfluence(
+    client: any,
+    input: {
+      engineId: string;
+    },
+  ) {
+    const res = await client.query(
+      `
+      SELECT faction, score
+      FROM faction_influence
+      WHERE engine_id = $1
+      ORDER BY score DESC
+      `,
+      [input.engineId],
+    );
+
+    if (!res.rowCount) return { message: 'No faction influence recorded.' };
+
+    return {
+      message: res.rows
+        .map((f: any) => `• **${f.faction}**: ${f.score}`)
+        .join('\n'),
+    };
   }
 }
