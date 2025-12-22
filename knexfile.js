@@ -9,7 +9,7 @@ module.exports = {
   connection: process.env.DATABASE_URL,
   migrations: {
     directory: './db/migrations',
-    extension: 'sql',
-    loadExtensions: ['.sql'],
+    extension: 'js',
+    loadExtensions: ['.js'],
   },
 };
