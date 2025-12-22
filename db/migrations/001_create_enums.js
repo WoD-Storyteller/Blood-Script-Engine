@@ -1,78 +1,84 @@
 exports.up = async function (knex) {
   await knex.raw(`
-    -- Engine lifecycle
-    CREATE TYPE engine_status AS ENUM (
-      'active',
-      'paused',
-      'archived'
-    );
+    DO $$
+    BEGIN
+      -- Engine lifecycle
+      CREATE TYPE engine_status AS ENUM ('active', 'paused', 'archived');
+    EXCEPTION WHEN duplicate_object THEN
+      NULL;
+    END $$;
 
-    -- Scene lifecycle
-    CREATE TYPE scene_state AS ENUM (
-      'active',
-      'archived'
-    );
+    DO $$
+    BEGIN
+      -- Scene lifecycle
+      CREATE TYPE scene_state AS ENUM ('active', 'archived');
+    EXCEPTION WHEN duplicate_object THEN
+      NULL;
+    END $$;
 
-    -- Boons
-    CREATE TYPE boon_status AS ENUM (
-      'active',
-      'called_in',
-      'settled',
-      'void'
-    );
+    DO $$
+    BEGIN
+      -- Boons
+      CREATE TYPE boon_status AS ENUM ('active', 'called_in', 'settled', 'void');
+    EXCEPTION WHEN duplicate_object THEN
+      NULL;
+    END $$;
 
-    -- Canon / lore status
-    CREATE TYPE canon_status AS ENUM (
-      'canonical',
-      'provisional',
-      'apocryphal'
-    );
+    DO $$
+    BEGIN
+      -- Canon / lore
+      CREATE TYPE canon_status AS ENUM ('canonical', 'provisional', 'apocryphal');
+    EXCEPTION WHEN duplicate_object THEN
+      NULL;
+    END $$;
 
-    -- Safety system
-    CREATE TYPE safety_card_type AS ENUM (
-      'green',
-      'yellow',
-      'red'
-    );
+    DO $$
+    BEGIN
+      -- Safety cards
+      CREATE TYPE safety_card_type AS ENUM ('green', 'yellow', 'red');
+    EXCEPTION WHEN duplicate_object THEN
+      NULL;
+    END $$;
 
-    CREATE TYPE safety_card_status AS ENUM (
-      'active',
-      'resolved'
-    );
+    DO $$
+    BEGIN
+      CREATE TYPE safety_card_status AS ENUM ('active', 'resolved');
+    EXCEPTION WHEN duplicate_object THEN
+      NULL;
+    END $$;
 
-    -- Engine governance
-    CREATE TYPE engine_role AS ENUM (
-      'owner',
-      'st',
-      'moderator',
-      'player'
-    );
+    DO $$
+    BEGIN
+      -- Engine roles
+      CREATE TYPE engine_role AS ENUM ('owner', 'st', 'moderator', 'player');
+    EXCEPTION WHEN duplicate_object THEN
+      NULL;
+    END $$;
 
-    CREATE TYPE engine_ban_status AS ENUM (
-      'active',
-      'appealed',
-      'revoked'
-    );
+    DO $$
+    BEGIN
+      -- Bans
+      CREATE TYPE engine_ban_status AS ENUM ('active', 'appealed', 'revoked');
+    EXCEPTION WHEN duplicate_object THEN
+      NULL;
+    END $$;
 
-    CREATE TYPE engine_strike_reason AS ENUM (
-      'safety_violation',
-      'harassment',
-      'tenet_violation',
-      'admin_action'
-    );
+    DO $$
+    BEGIN
+      -- Strikes
+      CREATE TYPE engine_strike_reason AS ENUM (
+        'safety_violation',
+        'harassment',
+        'tenet_violation',
+        'admin_action'
+      );
+    EXCEPTION WHEN duplicate_object THEN
+      NULL;
+    END $$;
   `);
 };
 
-exports.down = async function (knex) {
-  await knex.raw(`
-    DROP TYPE IF EXISTS engine_strike_reason;
-    DROP TYPE IF EXISTS engine_ban_status;
-    DROP TYPE IF EXISTS engine_role;
-    DROP TYPE IF EXISTS safety_card_status;
-    DROP TYPE IF EXISTS safety_card_type;
-    DROP TYPE IF EXISTS canon_status;
-    DROP TYPE IF EXISTS boon_status;
-    DROP TYPE IF EXISTS scene_state;
-    DROP TYPE IF EXISTS engine_status;
-  `);
+exports.down = async function () {
+  // Intentionally empty.
+  // Enum drops are unsafe in production and should never be automatic.
 };
