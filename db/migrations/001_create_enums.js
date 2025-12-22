@@ -75,6 +75,18 @@ exports.up = async function (knex) {
     EXCEPTION WHEN duplicate_object THEN
       NULL;
     END $$;
+
+    DO $$
+BEGIN
+  CREATE TYPE role_source AS ENUM (
+    'assigned',
+    'inherited',
+    'system'
+  );
+EXCEPTION WHEN duplicate_object THEN
+  NULL;
+END $$;
+
   `);
 };
 
