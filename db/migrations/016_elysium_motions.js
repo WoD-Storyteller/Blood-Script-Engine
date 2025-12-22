@@ -1,0 +1,7 @@
+exports.up = async function (knex) {
+  await knex.raw("BEGIN;\n\nCREATE TABLE motions (\n  motion_id UUID PRIMARY KEY,\n  engine_id UUID NOT NULL,\n  created_by_user_id UUID NOT NULL,\n  title TEXT NOT NULL,\n  details TEXT,\n  status TEXT NOT NULL DEFAULT 'open' CHECK (status IN ('open','closed','void')),\n  created_at TIMESTAMPTZ NOT NULL DEFAULT now(),\n  closes_at TIMESTAMPTZ,\n  closed_at TIMESTAMPTZ,\n  outcome TEXT CHECK (outcome IN ('passed','failed','tied','no_quorum','unknown')),\n  FOREIGN KEY (engine_id) REFERENCES engines(engine_id) ON DELETE CASCADE,\n  FOREIGN KEY (created_by_user_id) REFERENCES users(user_id) ON DELETE CASCADE\n);\n\nCREATE INDEX motions_engine_status_idx ON motions(engine_id, status);\n\nCREATE TABLE motion_votes (\n  vote_id UUID PRIMARY KEY,\n  engine_id UUID NOT NULL,\n  motion_id UUID NOT NULL,\n  user_id UUID NOT NULL,\n  vote TEXT NOT NULL CHECK (vote IN ('yes','no','abstain')),\n  cast_at TIMESTAMPTZ NOT NULL DEFAULT now(),\n  UNIQUE (engine_id, motion_id, user_id),\n  FOREIGN KEY (engine_id) REFERENCES engines(engine_id) ON DELETE CASCADE,\n  FOREIGN KEY (motion_id) REFERENCES motions(motion_id) ON DELETE CASCADE,\n  FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE\n);\n\nCREATE INDEX motion_votes_engine_motion_idx ON motion_votes(engine_id, motion_id);\n\nCOMMIT;");
+};
+
+exports.down = async function () {
+  // no automatic rollback
+};

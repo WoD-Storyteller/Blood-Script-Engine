@@ -1,0 +1,112 @@
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var BoonEnforcementService_1;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.BoonEnforcementService = void 0;
+const common_1 = require("@nestjs/common");
+const uuid_1 = require("../common/utils/uuid");
+let BoonEnforcementService = BoonEnforcementService_1 = class BoonEnforcementService {
+    constructor() {
+        this.logger = new common_1.Logger(BoonEnforcementService_1.name);
+    }
+    async enforce(client, input) {
+        try {
+            const boon = await client.query(`
+        SELECT boon_id, status, title
+        FROM boons
+        WHERE engine_id = $1 AND CAST(boon_id AS TEXT) LIKE $2
+        LIMIT 1
+        `, [input.engineId, `${input.boonIdPrefix}%`]);
+            if (!boon.rowCount)
+                return { message: `No boon found matching \`${input.boonIdPrefix}\`.` };
+            const boonId = boon.rows[0].boon_id;
+            await client.query(`
+        UPDATE boons
+        SET status = 'called_in', updated_at = now()
+        WHERE engine_id = $1 AND boon_id = $2
+        `, [input.engineId, boonId]);
+            const dueAt = input.dueInMinutes && input.dueInMinutes > 0
+                ? new Date(Date.now() + input.dueInMinutes * 60_000).toISOString()
+                : null;
+            await client.query(`
+        INSERT INTO boon_enforcements
+          (enforcement_id, engine_id, boon_id, created_by_user_id, status, due_at, notes)
+        VALUES ($1,$2,$3,$4,'active',$5,$6)
+        `, [(0, uuid_1.uuid)(), input.engineId, boonId, input.createdByUserId, dueAt, input.notes ?? null]);
+            return {
+                message: dueAt
+                    ? `Boon enforced and called in. Deadline set. (\`${String(boonId).slice(0, 8)}\`)`
+                    : `Boon enforced and called in. (\`${String(boonId).slice(0, 8)}\`)`,
+            };
+        }
+        catch (e) {
+            this.logger.debug(`enforce fallback: ${e.message}`);
+            return { message: `I can’t enforce boons right now.` };
+        }
+    }
+    async listOverdue(client, input) {
+        try {
+            const res = await client.query(`
+        SELECT e.boon_id, e.due_at, b.title, b.from_user_id, b.to_user_id
+        FROM boon_enforcements e
+        JOIN boons b ON b.boon_id = e.boon_id
+        WHERE e.engine_id = $1
+          AND e.status = 'active'
+          AND e.due_at IS NOT NULL
+          AND e.due_at <= now()
+        ORDER BY e.due_at ASC
+        LIMIT 20
+        `, [input.engineId]);
+            if (!res.rowCount)
+                return { message: 'No overdue enforced boons.' };
+            const lines = [];
+            for (const r of res.rows) {
+                const debtor = await this.discordIdForUser(client, r.from_user_id);
+                const creditor = await this.discordIdForUser(client, r.to_user_id);
+                lines.push(`• \`${String(r.boon_id).slice(0, 8)}\` *${r.title}* — debtor <@${debtor}> → creditor <@${creditor}>`);
+            }
+            return { message: `**Overdue Enforced Boons**\n${lines.join('\n')}` };
+        }
+        catch (e) {
+            this.logger.debug(`listOverdue fallback: ${e.message}`);
+            return { message: `I can’t check overdue boons right now.` };
+        }
+    }
+    async resolve(client, input) {
+        try {
+            const boon = await client.query(`
+        SELECT boon_id
+        FROM boons
+        WHERE engine_id = $1 AND CAST(boon_id AS TEXT) LIKE $2
+        LIMIT 1
+        `, [input.engineId, `${input.boonIdPrefix}%`]);
+            if (!boon.rowCount)
+                return { message: `No boon found matching \`${input.boonIdPrefix}\`.` };
+            const boonId = boon.rows[0].boon_id;
+            await client.query(`
+        UPDATE boon_enforcements
+        SET status = $3, updated_at = now()
+        WHERE engine_id = $1 AND boon_id = $2 AND status = 'active'
+        `, [input.engineId, boonId, input.resolution]);
+            return { message: `Enforcement updated: \`${String(boonId).slice(0, 8)}\` → **${input.resolution}**.` };
+        }
+        catch (e) {
+            this.logger.debug(`resolve fallback: ${e.message}`);
+            return { message: `I can’t update boon enforcement right now.` };
+        }
+    }
+    async discordIdForUser(client, userId) {
+        const res = await client.query(`SELECT discord_user_id FROM users WHERE user_id = $1 LIMIT 1`, [userId]);
+        return res.rowCount ? res.rows[0].discord_user_id : 'unknown';
+    }
+};
+exports.BoonEnforcementService = BoonEnforcementService;
+exports.BoonEnforcementService = BoonEnforcementService = BoonEnforcementService_1 = __decorate([
+    (0, common_1.Injectable)()
+], BoonEnforcementService);
+//# sourceMappingURL=boon-enforcement.service.js.map

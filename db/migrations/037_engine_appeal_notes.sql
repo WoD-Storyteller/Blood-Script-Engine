@@ -1,7 +1,0 @@
-BEGIN;
-
-ALTER TABLE engine_appeals
-ADD COLUMN IF NOT EXISTS resolution_reason TEXT,
-ADD COLUMN IF NOT EXISTS owner_notes TEXT;
-
-COMMIT;

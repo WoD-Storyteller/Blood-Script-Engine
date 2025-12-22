@@ -1,0 +1,192 @@
+
+> blood-script-engine@0.1.0 build
+> nest build
+
+[96msrc/auth/auth.controller.ts[0m:[93m16[0m:[93m44[0m - [91merror[0m[90m TS2339: [0mProperty 'handleDiscordCallback' does not exist on type 'AuthService'.
+
+[7m16[0m     const session = await this.authService.handleDiscordCallback(req.query);
+[7m  [0m [91m                                           ~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/auth/discord-oauth.controller.ts[0m:[93m119[0m:[93m17[0m - [91merror[0m[90m TS2304: [0mCannot find name 'Req'.
+
+[7m119[0m   async logout(@Req() req: any, @Res() res: Response) {
+[7m   [0m [91m                ~~~[0m
+[96msrc/auth/discord-oauth.controller.ts[0m:[93m124[0m:[93m28[0m - [91merror[0m[90m TS2339: [0mProperty 'revokeSession' does not exist on type 'CompanionAuthService'.
+
+[7m124[0m         this.companionAuth.revokeSession(client, token),
+[7m   [0m [91m                           ~~~~~~~~~~~~~[0m
+[96msrc/characters/characters.controller.ts[0m:[93m137[0m:[93m29[0m - [91merror[0m[90m TS2339: [0mProperty 'updateSheet' does not exist on type 'CharactersService'.
+
+[7m137[0m       await this.characters.updateSheet(client, {
+[7m   [0m [91m                            ~~~~~~~~~~~[0m
+[96msrc/companion/companion.controller.ts[0m:[93m169[0m:[93m61[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ engineId: any; userId: any; role: any; }' is not assignable to parameter of type 'string'.
+
+[7m169[0m       const rows = await this.coteries.listCoteries(client, {
+[7m   [0m [91m                                                            ~[0m
+[7m170[0m         engineId: session.engine_id,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m172[0m         role: session.role,
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m173[0m       });
+[7m   [0m [91m~~~~~~~[0m
+[96msrc/companion/companion.controller.ts[0m:[93m201[0m:[93m9[0m - [91merror[0m[90m TS2353: [0mObject literal may only specify known properties, and 'userId' does not exist in type '{ engineId: string; coterieId: string; }'.
+
+[7m201[0m         userId: session.user_id,
+[7m   [0m [91m        ~~~~~~[0m
+[96msrc/companion/companion.controller.ts[0m:[93m235[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'setMap' does not exist on type 'StAdminService'.
+
+[7m235[0m       await this.st.setMap(client, session.engine_id, body.myMapsUrl);
+[7m   [0m [91m                    ~~~~~~[0m
+[96msrc/companion/companion.controller.ts[0m:[93m262[0m:[93m74[0m - [91merror[0m[90m TS2554: [0mExpected 2 arguments, but got 3.
+
+[7m262[0m       const clock = await this.st.createClock(client, session.engine_id, body);
+[7m   [0m [91m                                                                         ~~~~[0m
+[96msrc/companion/companion.controller.ts[0m:[93m290[0m:[93m70[0m - [91merror[0m[90m TS2554: [0mExpected 2 arguments, but got 4.
+
+[7m290[0m       const out = await this.st.tickClock(client, session.engine_id, body.clockId, body.delta ?? 1);
+[7m   [0m [91m                                                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/companion/companion.controller.ts[0m:[93m318[0m:[93m70[0m - [91merror[0m[90m TS2554: [0mExpected 2 arguments, but got 3.
+
+[7m318[0m       const arc = await this.st.createArc(client, session.engine_id, body);
+[7m   [0m [91m                                                                     ~~~~[0m
+[96msrc/companion/companion.controller.ts[0m:[93m346[0m:[93m73[0m - [91merror[0m[90m TS2554: [0mExpected 2 arguments, but got 4.
+
+[7m346[0m       const arc = await this.st.setArcStatus(client, session.engine_id, body.arcId, body.status);
+[7m   [0m [91m                                                                        ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/companion/companion.controller.ts[0m:[93m398[0m:[93m33[0m - [91merror[0m[90m TS2339: [0mProperty 'approveIntent' does not exist on type 'StAdminService'.
+
+[7m398[0m       const out = await this.st.approveIntent(client, session.engine_id, id, body);
+[7m   [0m [91m                                ~~~~~~~~~~~~~[0m
+[96msrc/companion/companion.controller.ts[0m:[93m427[0m:[93m33[0m - [91merror[0m[90m TS2339: [0mProperty 'rejectIntent' does not exist on type 'StAdminService'.
+
+[7m427[0m       const out = await this.st.rejectIntent(client, session.engine_id, id, body);
+[7m   [0m [91m                                ~~~~~~~~~~~~[0m
+[96msrc/companion/companion.controller.ts[0m:[93m457[0m:[93m37[0m - [91merror[0m[90m TS2339: [0mProperty 'submit' does not exist on type 'SafetyEventsService'.
+
+[7m457[0m       const out = await this.safety.submit(client, session.engine_id, session.user_id, body);
+[7m   [0m [91m                                    ~~~~~~[0m
+[96msrc/companion/companion.controller.ts[0m:[93m479[0m:[93m40[0m - [91merror[0m[90m TS2339: [0mProperty 'active' does not exist on type 'SafetyEventsService'.
+
+[7m479[0m       const active = await this.safety.active(client, session.engine_id);
+[7m   [0m [91m                                       ~~~~~~[0m
+[96msrc/companion/companion.controller.ts[0m:[93m506[0m:[93m37[0m - [91merror[0m[90m TS2339: [0mProperty 'resolve' does not exist on type 'SafetyEventsService'.
+
+[7m506[0m       const out = await this.safety.resolve(client, session.engine_id, id);
+[7m   [0m [91m                                    ~~~~~~~[0m
+[96msrc/companion/st-admin.service.ts[0m:[93m13[0m:[93m28[0m - [91merror[0m[90m TS2552: [0mCannot find name 'ArcService'. Did you mean 'ArcsService'?
+
+[7m13[0m     private readonly arcs: ArcService,
+[7m  [0m [91m                           ~~~~~~~~~~[0m
+[96msrc/database/engine-query.ts[0m:[93m18[0m:[93m26[0m - [91merror[0m[90m TS2558: [0mExpected 0 type arguments, but got 1.
+
+[7m18[0m     return this.db.query<T>(engineScopedQuery, params);
+[7m  [0m [91m                         ~[0m
+[96msrc/discord/discord.interactions.ts[0m:[93m109[0m:[93m19[0m - [91merror[0m[90m TS1005: [0m'}' expected.
+
+[7m109[0m         } catch {}
+[7m   [0m [91m                  [0m
+
+  [96msrc/discord/discord.interactions.ts[0m:[93m96[0m:[93m21[0m
+    [7m96[0m       } catch (err) {
+    [7m  [0m [96m                    ~[0m
+    The parser expected to find a '}' to match the '{' token here.
+[96msrc/engine/moderators.controller.ts[0m:[93m65[0m:[93m35[0m - [91merror[0m[90m TS2345: [0mArgument of type '{ engineId: any; userId: string; }' is not assignable to parameter of type '{ engineId: string; userId: string; addedBy: string; }'.
+  Property 'addedBy' is missing in type '{ engineId: any; userId: string; }' but required in type '{ engineId: string; userId: string; addedBy: string; }'.
+
+[7m65[0m       await this.mods.add(client, {
+[7m  [0m [91m                                  ~[0m
+[7m66[0m         engineId: session.engine_id,
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m67[0m         userId: body.userId,
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m68[0m       });
+[7m  [0m [91m~~~~~~~[0m
+
+  [96msrc/engine/moderators.service.ts[0m:[93m30[0m:[93m5[0m
+    [7m30[0m     addedBy: string;
+    [7m  [0m [96m    ~~~~~~~[0m
+    'addedBy' is declared here.
+[96msrc/politics/confict.service.ts[0m:[93m18[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'findByName' does not exist on type 'CoteriesAdapter'.
+
+[7m18[0m       const atk = await this.coteries.findByName(client, input.engineId, input.attacker);
+[7m  [0m [91m                                      ~~~~~~~~~~[0m
+[96msrc/politics/confict.service.ts[0m:[93m19[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'findByName' does not exist on type 'CoteriesAdapter'.
+
+[7m19[0m       const def = await this.coteries.findByName(client, input.engineId, input.defender);
+[7m  [0m [91m                                      ~~~~~~~~~~[0m
+[96msrc/politics/confict.service.ts[0m:[93m66[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'findByName' does not exist on type 'CoteriesAdapter'.
+
+[7m66[0m       const cot = await this.coteries.findByName(client, input.engineId, input.coterieName);
+[7m  [0m [91m                                      ~~~~~~~~~~[0m
+[96msrc/politics/holdings.service.ts[0m:[93m20[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'findByName' does not exist on type 'CoteriesAdapter'.
+
+[7m20[0m       const cot = await this.coteries.findByName(client, input.engineId, input.coterieName);
+[7m  [0m [91m                                      ~~~~~~~~~~[0m
+[96msrc/politics/holdings.service.ts[0m:[93m41[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'findByName' does not exist on type 'CoteriesAdapter'.
+
+[7m41[0m       const cot = await this.coteries.findByName(client, input.engineId, input.coterieName);
+[7m  [0m [91m                                      ~~~~~~~~~~[0m
+[96msrc/politics/tax.service.ts[0m:[93m22[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'findByName' does not exist on type 'CoteriesAdapter'.
+
+[7m22[0m       const cot = await this.coteries.findByName(client, input.engineId, input.coterieName);
+[7m  [0m [91m                                      ~~~~~~~~~~[0m
+[96msrc/politics/tax.service.ts[0m:[93m122[0m:[93m53[0m - [91merror[0m[90m TS2339: [0mProperty 'getRecipientUserId' does not exist on type 'CoteriesAdapter'.
+
+[7m122[0m         const recipientUserId = await this.coteries.getRecipientUserId(client, input.engineId, r.taxed_to_coterie_id);
+[7m   [0m [91m                                                    ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/scenes/resolution.pipeline.ts[0m:[93m57[0m:[93m74[0m - [91merror[0m[90m TS2339: [0mProperty 'tenetId' does not exist on type 'TenetCheckResult'.
+  Property 'tenetId' does not exist on type '{ allowed: true; }'.
+
+[7m57[0m         [uuid(), input.engineId, input.userId, input.sceneId, tenetCheck.tenetId, tenetCheck.category],
+[7m  [0m [91m                                                                         ~~~~~~~[0m
+[96msrc/scenes/resolution.pipeline.ts[0m:[93m57[0m:[93m94[0m - [91merror[0m[90m TS2339: [0mProperty 'category' does not exist on type 'TenetCheckResult'.
+  Property 'category' does not exist on type '{ allowed: true; }'.
+
+[7m57[0m         [uuid(), input.engineId, input.userId, input.sceneId, tenetCheck.tenetId, tenetCheck.category],
+[7m  [0m [91m                                                                                             ~~~~~~~~[0m
+[96msrc/scenes/resolution.pipeline.ts[0m:[93m63[0m:[93m30[0m - [91merror[0m[90m TS2339: [0mProperty 'category' does not exist on type 'TenetCheckResult'.
+  Property 'category' does not exist on type '{ allowed: true; }'.
+
+[7m63[0m         category: tenetCheck.category,
+[7m  [0m [91m                             ~~~~~~~~[0m
+[96msrc/scenes/resolution.pipeline.ts[0m:[93m64[0m:[93m32[0m - [91merror[0m[90m TS2339: [0mProperty 'tenetTitle' does not exist on type 'TenetCheckResult'.
+  Property 'tenetTitle' does not exist on type '{ allowed: true; }'.
+
+[7m64[0m         tenetTitle: tenetCheck.tenetTitle,
+[7m  [0m [91m                               ~~~~~~~~~~[0m
+[96msrc/scenes/st-core.service.ts[0m:[93m109[0m:[93m27[0m - [91merror[0m[90m TS2339: [0mProperty 'markUserOnline' does not exist on type 'PresenceService'.
+
+[7m109[0m       await this.presence.markUserOnline(client, dto.engineId, userId);
+[7m   [0m [91m                          ~~~~~~~~~~~~~~[0m
+[96msrc/scenes/status.service.ts[0m:[93m36[0m:[93m26[0m - [91merror[0m[90m TS2339: [0mProperty 'tenetId' does not exist on type 'TenetCheckResult'.
+  Property 'tenetId' does not exist on type '{ allowed: true; }'.
+
+[7m36[0m         input.tenetCheck.tenetId,
+[7m  [0m [91m                         ~~~~~~~[0m
+[96msrc/scenes/status.service.ts[0m:[93m37[0m:[93m26[0m - [91merror[0m[90m TS2339: [0mProperty 'category' does not exist on type 'TenetCheckResult'.
+  Property 'category' does not exist on type '{ allowed: true; }'.
+
+[7m37[0m         input.tenetCheck.category,
+[7m  [0m [91m                         ~~~~~~~~[0m
+[96msrc/scenes/status.service.ts[0m:[93m43[0m:[93m34[0m - [91merror[0m[90m TS2339: [0mProperty 'category' does not exist on type 'TenetCheckResult'.
+  Property 'category' does not exist on type '{ allowed: true; }'.
+
+[7m43[0m       category: input.tenetCheck.category,
+[7m  [0m [91m                                 ~~~~~~~~[0m
+[96msrc/scenes/status.service.ts[0m:[93m44[0m:[93m36[0m - [91merror[0m[90m TS2339: [0mProperty 'tenetTitle' does not exist on type 'TenetCheckResult'.
+  Property 'tenetTitle' does not exist on type '{ allowed: true; }'.
+
+[7m44[0m       tenetTitle: input.tenetCheck.tenetTitle,
+[7m  [0m [91m                                   ~~~~~~~~~~[0m
+[96msrc/xp/xp.controller.ts[0m:[93m80[0m:[93m39[0m - [91merror[0m[90m TS2554: [0mExpected 3 arguments, but got 2.
+
+[7m80[0m       const available = await this.xp.availableXp(client, {
+[7m  [0m [91m                                      ~~~~~~~~~~~[0m
+
+  [96msrc/xp/xp.service.ts[0m:[93m44[0m:[93m52[0m
+    [7m44[0m   async availableXp(client: any, engineId: string, characterId: string) {
+    [7m  [0m [96m                                                   ~~~~~~~~~~~~~~~~~~~[0m
+    An argument for 'characterId' was not provided.
+
+Found 37 error(s).
+

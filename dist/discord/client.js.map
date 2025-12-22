@@ -1,0 +1,1 @@
+{"version":3,"file":"client.js","sourceRoot":"","sources":["../../src/discord/client.ts"],"names":[],"mappings":";;AAEA,kDAUC;AAZD,2CAAiE;AAEjE,SAAgB,mBAAmB;IACjC,OAAO,IAAI,mBAAM,CAAC;QAChB,OAAO,EAAE;YACP,8BAAiB,CAAC,MAAM;YACxB,8BAAiB,CAAC,aAAa;YAC/B,8BAAiB,CAAC,cAAc;YAChC,8BAAiB,CAAC,cAAc;SACjC;QACD,QAAQ,EAAE,CAAC,qBAAQ,CAAC,OAAO,CAAC;KAC7B,CAAC,CAAC;AACL,CAAC"}

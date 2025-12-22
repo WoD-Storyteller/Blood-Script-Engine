@@ -1,0 +1,1 @@
+{"version":3,"file":"engine.guard.js","sourceRoot":"","sources":["../../src/engine/engine.guard.ts"],"names":[],"mappings":";;AAEA,kDAYC;AAdD,sDAAkD;AAElD,SAAgB,mBAAmB,CACjC,MAA4B,EAC5B,OAAqC,EACrC,KAA0B;IAE1B,IAAI,CAAC,MAAM,CAAC,MAAM;QAAE,OAAO;IAE3B,IAAI,IAAA,wBAAU,EAAC,OAAO,CAAC;QAAE,OAAO;IAEhC,IAAI,KAAK,KAAK,QAAQ;QAAE,OAAO;IAE/B,MAAM,IAAI,KAAK,CAAC,eAAe,CAAC,CAAC;AACnC,CAAC"}
