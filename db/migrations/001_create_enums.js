@@ -1,7 +1,78 @@
 exports.up = async function (knex) {
-  await knex.raw("CREATE TYPE engine_status AS ENUM (\n  'active', 'probation', 'disabled', 'maintenance'\n);\n\nCREATE TYPE engine_role AS ENUM (\n  'player', 'st', 'admin'\n);\n\nCREATE TYPE role_source AS ENUM (\n  'automatic', 'assigned'\n);\n\nCREATE TYPE safety_signal_type AS ENUM (\n  'red', 'yellow', 'green'\n);\n\nCREATE TYPE scene_state AS ENUM (\n  'active', 'paused', 'escalating', 'resolved', 'archived'\n);\n\nCREATE TYPE canon_status AS ENUM (\n  'seed', 'provisional', 'observed', 'canonized', 'retired'\n);\n\nCREATE TYPE coterie_visibility AS ENUM (\n  'public', 'private', 'secret'\n);\n\nCREATE TYPE coterie_status AS ENUM (\n  'active', 'archived', 'dissolved'\n);\n\nCREATE TYPE boon_type AS ENUM (\n  'trivial', 'minor', 'major', 'life', 'blood'\n);\n\nCREATE TYPE boon_status AS ENUM (\n  'owed', 'called', 'resolved', 'broken'\n);\n\nCREATE TYPE quest_status AS ENUM (\n  'dormant', 'active', 'escalating', 'resolved', 'failed'\n);\n\nCREATE TYPE tenet_type AS ENUM (\n  'absolute', 'advisory'\n);\n\nCREATE TYPE strike_category AS ENUM (\n  'safety', 'abuse', 'governance'\n);\n");
+  await knex.raw(`
+    -- Engine lifecycle
+    CREATE TYPE engine_status AS ENUM (
+      'active',
+      'paused',
+      'archived'
+    );
+
+    -- Scene lifecycle
+    CREATE TYPE scene_state AS ENUM (
+      'active',
+      'archived'
+    );
+
+    -- Boons
+    CREATE TYPE boon_status AS ENUM (
+      'active',
+      'called_in',
+      'settled',
+      'void'
+    );
+
+    -- Canon / lore status
+    CREATE TYPE canon_status AS ENUM (
+      'canonical',
+      'provisional',
+      'apocryphal'
+    );
+
+    -- Safety system
+    CREATE TYPE safety_card_type AS ENUM (
+      'green',
+      'yellow',
+      'red'
+    );
+
+    CREATE TYPE safety_card_status AS ENUM (
+      'active',
+      'resolved'
+    );
+
+    -- Engine governance
+    CREATE TYPE engine_role AS ENUM (
+      'owner',
+      'st',
+      'moderator',
+      'player'
+    );
+
+    CREATE TYPE engine_ban_status AS ENUM (
+      'active',
+      'appealed',
+      'revoked'
+    );
+
+    CREATE TYPE engine_strike_reason AS ENUM (
+      'safety_violation',
+      'harassment',
+      'tenet_violation',
+      'admin_action'
+    );
+  `);
 };
 
-exports.down = async function () {
-  // no automatic rollback
+exports.down = async function (knex) {
+  await knex.raw(`
+    DROP TYPE IF EXISTS engine_strike_reason;
+    DROP TYPE IF EXISTS engine_ban_status;
+    DROP TYPE IF EXISTS engine_role;
+    DROP TYPE IF EXISTS safety_card_status;
+    DROP TYPE IF EXISTS safety_card_type;
+    DROP TYPE IF EXISTS canon_status;
+    DROP TYPE IF EXISTS boon_status;
+    DROP TYPE IF EXISTS scene_state;
+    DROP TYPE IF EXISTS engine_status;
+  `);
 };

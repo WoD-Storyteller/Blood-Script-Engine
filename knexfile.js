@@ -11,10 +11,7 @@ module.exports = {
   migrations: {
     directory: './db/migrations',
     extension: 'js',
-<<<<<<< HEAD
     loadExtensions: ['.js'],
-=======
->>>>>>> 61fe280 (Fix knex config and apply migrations infrastructure)
   },
 
   pool: {
