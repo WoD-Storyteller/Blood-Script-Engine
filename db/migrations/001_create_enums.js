@@ -34,6 +34,21 @@ exports.up = async function (knex) {
 
     DO $$
     BEGIN
+      -- Coteries
+      CREATE TYPE coterie_visibility AS ENUM ('public', 'private', 'secret');
+    EXCEPTION WHEN duplicate_object THEN
+      NULL;
+    END $$;
+
+    DO $$
+    BEGIN
+      CREATE TYPE coterie_status AS ENUM ('active', 'archived', 'dissolved');
+    EXCEPTION WHEN duplicate_object THEN
+      NULL;
+    END $$;
+
+    DO $$
+    BEGIN
       -- Safety cards
       CREATE TYPE safety_card_type AS ENUM ('green', 'yellow', 'red');
     EXCEPTION WHEN duplicate_object THEN
