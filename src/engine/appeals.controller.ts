@@ -3,7 +3,7 @@ import type { Request } from 'express';
 
 import { DatabaseService } from '../database/database.service';
 import { CompanionAuthService } from '../companion/auth.service';
-import { enforceEngineAccess } from './engine.guard';
+import { EngineAccessRoute, enforceEngineAccess } from './engine.guard';
 import { isBotOwner } from '../owner/owner.guard';
 import { OwnerDmService } from '../discord/owner-dm.service';
 
@@ -42,7 +42,7 @@ export class AppealsController {
 
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
 
-      enforceEngineAccess(engineRes.rows[0], session, 'appeal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.APPEAL);
 
       await client.query(
         `

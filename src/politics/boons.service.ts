@@ -1,6 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { uuid } from '../common/utils/uuid';
 
+enum BoonLedgerMode {
+  OWED_TO_ME = 'owed_to_me',
+  I_OWE = 'i_owe',
+}
+
+enum BoonStatus {
+  ACTIVE = 'active',
+  CALLED_IN = 'called_in',
+  SETTLED = 'settled',
+  VOID = 'void',
+}
+
 @Injectable()
 export class BoonsService {
   async giveBoon(
@@ -18,7 +30,7 @@ export class BoonsService {
       `
       INSERT INTO boons
         (boon_id, engine_id, from_user_id, to_user_id, level, title, details, status)
-      VALUES ($1,$2,$3,$4,$5,$6,$7,'active')
+      VALUES ($1,$2,$3,$4,$5,$6,$7,$8)
       `,
       [
         uuid(),
@@ -28,6 +40,7 @@ export class BoonsService {
         input.level,
         input.title,
         input.details ?? null,
+        BoonStatus.ACTIVE,
       ],
     );
 
@@ -39,11 +52,11 @@ export class BoonsService {
     input: {
       engineId: string;
       userId: string;
-      mode: 'owed_to_me' | 'i_owe';
+      mode: BoonLedgerMode;
     },
   ) {
     const where =
-      input.mode === 'owed_to_me'
+      input.mode === BoonLedgerMode.OWED_TO_ME
         ? 'to_user_id = $2'
         : 'from_user_id = $2';
 
@@ -74,7 +87,7 @@ export class BoonsService {
     input: {
       engineId: string;
       boonIdPrefix: string;
-      status: 'called_in' | 'settled' | 'void';
+      status: BoonStatus;
     },
   ) {
     const res = await client.query(

@@ -6,7 +6,9 @@ import { CompanionAuthService } from '../companion/auth.service';
 import { XpService } from './xp.service';
 import { RealtimeService } from '../realtime/realtime.service';
 import { DiscordDmService } from '../discord/discord.dm.service';
-import { enforceEngineAccess } from '../engine/engine.guard';
+import { EngineAccessRoute, enforceEngineAccess } from '../engine/engine.guard';
+import { EngineRole } from '../common/enums/engine-role.enum';
+import { XpKind } from './xp.enums';
 
 function asInt(v: any, fallback = 0) {
   const n = Number(v);
@@ -29,7 +31,7 @@ export class XpController {
 
   private isStAdmin(session: any) {
     const r = String(session?.role ?? '').toLowerCase();
-    return r === 'st' || r === 'admin';
+    return r === EngineRole.ST || r === EngineRole.ADMIN;
   }
 
   private async enforceNotBanned(client: any, session: any) {
@@ -38,7 +40,7 @@ export class XpController {
       [session.engine_id],
     );
     if (!engineRes.rowCount) throw new Error('EngineNotFound');
-    enforceEngineAccess(engineRes.rows[0], session, 'normal');
+    enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
     return engineRes.rows[0] as { banned: boolean; name?: string };
   }
 
@@ -100,7 +102,7 @@ export class XpController {
       amount: number;
       reason?: string;
       meta: {
-        kind: 'skill' | 'attribute' | 'discipline' | 'blood_potency';
+        kind: XpKind;
         key: string;
         from: number;
         to: number;

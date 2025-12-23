@@ -1,4 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
+import { EngineRole } from '../common/enums/engine-role.enum';
 
 @Injectable()
 export class CharactersService {
@@ -11,7 +12,7 @@ export class CharactersService {
    */
   async listCharacters(client: any, input: { engineId: string; userId: string; role: string }) {
     try {
-      if (input.role === 'st' || input.role === 'admin') {
+      if (input.role === EngineRole.ST || input.role === EngineRole.ADMIN) {
         const res = await client.query(
           `
           SELECT character_id, name, clan, concept, status, user_id
@@ -45,7 +46,7 @@ export class CharactersService {
 
   async getCharacter(client: any, input: { engineId: string; userId: string; role: string; characterId: string }) {
     try {
-      if (input.role === 'st' || input.role === 'admin') {
+      if (input.role === EngineRole.ST || input.role === EngineRole.ADMIN) {
         const res = await client.query(
           `
           SELECT *

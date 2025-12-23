@@ -4,7 +4,7 @@ import { DatabaseService } from '../database/database.service';
 import { CompanionAuthService } from '../companion/auth.service';
 import { CharactersService } from './characters.service';
 import { RealtimeService } from '../realtime/realtime.service';
-import { enforceEngineAccess } from '../engine/engine.guard';
+import { EngineAccessRoute, enforceEngineAccess } from '../engine/engine.guard';
 
 @Controller('companion/characters')
 export class CharactersController {
@@ -33,7 +33,7 @@ export class CharactersController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       const characters = await this.characters.listCharacters(client, {
         engineId: session.engine_id,
@@ -63,7 +63,7 @@ export class CharactersController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       const character = await this.characters.getCharacter(client, {
         engineId: session.engine_id,
@@ -94,7 +94,7 @@ export class CharactersController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       await this.characters.setActiveCharacter(client, {
         engineId: session.engine_id,
@@ -132,7 +132,7 @@ export class CharactersController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       await this.characters.updateSheet(client, {
         engineId: session.engine_id,

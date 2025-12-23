@@ -1,6 +1,13 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { uuid } from '../common/utils/uuid';
 
+enum ArcStatus {
+  PLANNED = 'planned',
+  ACTIVE = 'active',
+  COMPLETED = 'completed',
+  CANCELLED = 'cancelled',
+}
+
 @Injectable()
 export class ArcsService {
   private readonly logger = new Logger(ArcsService.name);
@@ -54,7 +61,7 @@ export class ArcsService {
   async setStatus(client: any, input: {
     engineId: string;
     arcIdPrefix: string;
-    status: 'planned' | 'active' | 'completed' | 'cancelled';
+    status: ArcStatus;
     outcome?: string;
   }): Promise<{ message: string }> {
     try {
@@ -72,8 +79,11 @@ export class ArcsService {
 
       const arcId = arc.rows[0].arc_id;
 
-      const startedAt = input.status === 'active' ? 'now()' : 'started_at';
-      const endedAt = (input.status === 'completed' || input.status === 'cancelled') ? 'now()' : 'ended_at';
+      const startedAt = input.status === ArcStatus.ACTIVE ? 'now()' : 'started_at';
+      const endedAt =
+        input.status === ArcStatus.COMPLETED || input.status === ArcStatus.CANCELLED
+          ? 'now()'
+          : 'ended_at';
 
       await client.query(
         `

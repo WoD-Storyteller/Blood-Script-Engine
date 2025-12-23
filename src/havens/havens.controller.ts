@@ -4,7 +4,8 @@ import type { Request } from 'express';
 import { DatabaseService } from '../database/database.service';
 import { CompanionAuthService } from '../companion/auth.service';
 import { HavensService } from './havens.service';
-import { enforceEngineAccess } from '../engine/engine.guard';
+import { EngineRole } from '../common/enums/engine-role.enum';
+import { EngineAccessRoute, enforceEngineAccess } from '../engine/engine.guard';
 
 @Controller('companion/havens')
 export class HavensController {
@@ -32,7 +33,7 @@ export class HavensController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       const rows = await this.havens.listHavens(client, session.engine_id);
       return { havens: rows };
@@ -62,9 +63,9 @@ export class HavensController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
-      if (session.role === 'player') return { error: 'Forbidden' };
+      if (session.role === EngineRole.PLAYER) return { error: 'Forbidden' };
 
       const out = await this.havens.createHaven(
         client,
@@ -97,9 +98,9 @@ export class HavensController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
-      if (session.role === 'player') return { error: 'Forbidden' };
+      if (session.role === EngineRole.PLAYER) return { error: 'Forbidden' };
 
       await this.havens.assignToCharacter(
         client,

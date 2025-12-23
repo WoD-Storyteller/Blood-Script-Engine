@@ -1,7 +1,7 @@
 import { Message } from 'discord.js';
 import { ScenesService } from '../../scenes/scenes.service';
 import { DatabaseService } from '../../database/database.service';
-import { enforceEngineAccess } from '../../engine/engine.guard';
+import { EngineAccessRoute, enforceEngineAccess } from '../../engine/engine.guard';
 
 export async function handleMessage(
   message: Message,
@@ -19,7 +19,7 @@ export async function handleMessage(
   const engine = engineRes.rows[0];
 
   // Enforce ban (owner override handled by enforceEngineAccess via discord_user_id)
-  enforceEngineAccess(engine, { discord_user_id: message.author.id }, 'normal');
+  enforceEngineAccess(engine, { discord_user_id: message.author.id }, EngineAccessRoute.NORMAL);
 
   // NOTE: Your ScenesService is currently a stub in this repo.
   // We keep this handler safe + non-breaking.

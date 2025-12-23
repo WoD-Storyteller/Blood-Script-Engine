@@ -1,6 +1,20 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { uuid } from '../common/utils/uuid';
 
+enum ClockScope {
+  ENGINE = 'engine',
+  DOMAIN = 'domain',
+  COTERIE = 'coterie',
+  SCENE = 'scene',
+}
+
+enum ClockStatus {
+  ACTIVE = 'active',
+  COMPLETED = 'completed',
+  PAUSED = 'paused',
+  CANCELLED = 'cancelled',
+}
+
 @Injectable()
 export class ClocksService {
   private readonly logger = new Logger(ClocksService.name);
@@ -10,7 +24,7 @@ export class ClocksService {
     title: string;
     segments: number;
     description?: string;
-    scope?: 'engine' | 'domain' | 'coterie' | 'scene';
+    scope?: ClockScope;
     scopeKey?: string;
     nightly?: boolean;
     createdByUserId?: string;
@@ -22,7 +36,7 @@ export class ClocksService {
         `
         INSERT INTO story_clocks
           (clock_id, engine_id, title, description, segments, progress, status, scope, scope_key, nightly, created_by_user_id)
-        VALUES ($1,$2,$3,$4,$5,0,'active',$6,$7,$8,$9)
+        VALUES ($1,$2,$3,$4,$5,0,'${ClockStatus.ACTIVE}',$6,$7,$8,$9)
         `,
         [
           id,
@@ -30,7 +44,7 @@ export class ClocksService {
           input.title,
           input.description ?? null,
           seg,
-          input.scope ?? 'engine',
+          input.scope ?? ClockScope.ENGINE,
           input.scopeKey ?? null,
           !!input.nightly,
           input.createdByUserId ?? null,
@@ -149,7 +163,7 @@ export class ClocksService {
       if (!found.rowCount) return { message: `No clock found matching \`${input.clockIdPrefix}\`.` };
 
       const c = found.rows[0];
-      if (c.status !== 'active') return { message: `That clock is not active.` };
+      if (c.status !== ClockStatus.ACTIVE) return { message: `That clock is not active.` };
 
       const amt = Math.trunc(input.amount);
       if (amt === 0) return { message: `Tick amount must not be zero.` };
@@ -184,7 +198,7 @@ export class ClocksService {
         await client.query(
           `
           UPDATE story_clocks
-          SET status = 'completed',
+          SET status = '${ClockStatus.COMPLETED}',
               completed_at = now(),
               updated_at = now(),
               progress = $3
@@ -283,7 +297,7 @@ export class ClocksService {
         `
         SELECT clock_id, title
         FROM story_clocks
-        WHERE engine_id = $1 AND status = 'active' AND nightly = true
+        WHERE engine_id = $1 AND status = '${ClockStatus.ACTIVE}' AND nightly = true
         ORDER BY updated_at ASC
         LIMIT 50
         `,

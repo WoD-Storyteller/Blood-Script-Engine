@@ -4,7 +4,9 @@ import type { Request } from 'express';
 import { DatabaseService } from '../database/database.service';
 import { CompanionAuthService } from '../companion/auth.service';
 import { OccultService } from './occult.service';
-import { enforceEngineAccess } from '../engine/engine.guard';
+import { OccultDiscipline } from './occult.enums';
+import { EngineRole } from '../common/enums/engine-role.enum';
+import { EngineAccessRoute, enforceEngineAccess } from '../engine/engine.guard';
 
 @Controller('companion/occult')
 export class OccultController {
@@ -32,7 +34,7 @@ export class OccultController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       const rows = await this.occult.listRituals(client, session.engine_id);
       return { rituals: rows };
@@ -46,7 +48,7 @@ export class OccultController {
     @Body()
     body: {
       name: string;
-      discipline: 'blood_sorcery' | 'oblivion';
+      discipline: OccultDiscipline;
       level: number;
       description?: string;
     },
@@ -63,9 +65,9 @@ export class OccultController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
-      if (session.role === 'player') return { error: 'Forbidden' };
+      if (session.role === EngineRole.PLAYER) return { error: 'Forbidden' };
 
       const out = await this.occult.createRitual(
         client,
@@ -94,7 +96,7 @@ export class OccultController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       const rows = await this.occult.listAlchemy(client, session.engine_id);
       return { alchemy: rows };
@@ -115,7 +117,7 @@ export class OccultController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       const rows = await this.occult.listLore(client, session.engine_id);
       return { lore: rows };

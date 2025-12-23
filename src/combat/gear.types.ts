@@ -1,4 +1,7 @@
-export type DamageType = 'superficial' | 'aggravated';
+export enum DamageType {
+  SUPERFICIAL = 'superficial',
+  AGGRAVATED = 'aggravated',
+}
 
 export interface WeaponProfile {
   name: string;

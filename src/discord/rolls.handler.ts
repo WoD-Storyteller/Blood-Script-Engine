@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Interaction } from 'discord.js';
 import { DatabaseService } from '../database/database.service';
-import { enforceEngineAccess } from '../engine/engine.guard';
+import { EngineAccessRoute, enforceEngineAccess } from '../engine/engine.guard';
 import { DiceService } from '../dice/dice.service';
 
 function d10() {
@@ -41,7 +41,7 @@ export class RollsHandler {
         return;
       }
 
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       const poolOpt = interaction.options.getInteger('pool');
       const attribute = interaction.options.getString('attribute');

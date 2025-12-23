@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { v4 as uuid } from 'uuid';
+import { OccultDiscipline } from './occult.enums';
 
 @Injectable()
 export class OccultService {
@@ -20,7 +21,7 @@ export class OccultService {
     client: any,
     engineId: string,
     name: string,
-    discipline: 'blood_sorcery' | 'oblivion',
+    discipline: OccultDiscipline,
     level: number,
     description?: string,
   ) {

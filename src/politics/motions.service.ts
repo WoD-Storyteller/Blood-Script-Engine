@@ -1,7 +1,25 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { uuid } from '../common/utils/uuid';
 
-type VoteChoice = 'yes' | 'no' | 'abstain';
+enum VoteChoice {
+  YES = 'yes',
+  NO = 'no',
+  ABSTAIN = 'abstain',
+}
+
+enum MotionStatus {
+  OPEN = 'open',
+  CLOSED = 'closed',
+  VOID = 'void',
+}
+
+enum MotionOutcome {
+  PASSED = 'passed',
+  FAILED = 'failed',
+  TIED = 'tied',
+  NO_QUORUM = 'no_quorum',
+  UNKNOWN = 'unknown',
+}
 
 @Injectable()
 export class MotionsService {
@@ -27,7 +45,7 @@ export class MotionsService {
         INSERT INTO motions
           (motion_id, engine_id, created_by_user_id, title, details, status, closes_at, outcome)
         VALUES
-          ($1,$2,$3,$4,$5,'open',$6,'unknown')
+          ($1,$2,$3,$4,$5,'${MotionStatus.OPEN}',$6,'${MotionOutcome.UNKNOWN}')
         `,
         [id, input.engineId, input.createdByUserId, input.title, input.details ?? null, closesAt],
       );
@@ -62,7 +80,7 @@ export class MotionsService {
         [input.engineId, motion.motion_id],
       );
 
-      if (!fresh.rowCount || fresh.rows[0].status !== 'open') {
+      if (!fresh.rowCount || fresh.rows[0].status !== MotionStatus.OPEN) {
         const tally = await this.tally(client, input.engineId, motion.motion_id);
         return { message: `That motion is closed. Tally: ${this.formatTally(tally)}.` };
       }
@@ -131,7 +149,7 @@ export class MotionsService {
       await client.query(
         `
         UPDATE motions
-        SET status = 'closed',
+        SET status = '${MotionStatus.CLOSED}',
             closed_at = now(),
             outcome = $3
         WHERE engine_id = $1 AND motion_id = $2
@@ -186,10 +204,10 @@ export class MotionsService {
 
   private computeOutcome(t: { yes: number; no: number; abstain: number }) {
     const quorum = t.yes + t.no + t.abstain;
-    if (quorum === 0) return 'no_quorum';
-    if (t.yes > t.no) return 'passed';
-    if (t.no > t.yes) return 'failed';
-    return 'tied';
+    if (quorum === 0) return MotionOutcome.NO_QUORUM;
+    if (t.yes > t.no) return MotionOutcome.PASSED;
+    if (t.no > t.yes) return MotionOutcome.FAILED;
+    return MotionOutcome.TIED;
   }
 
   private async autoCloseIfExpired(client: any, engineId: string, motionId: string) {

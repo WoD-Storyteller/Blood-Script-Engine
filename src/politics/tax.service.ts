@@ -2,7 +2,13 @@ import { Injectable, Logger } from '@nestjs/common';
 import { uuid } from '../common/utils/uuid';
 import { CoteriesAdapter } from './coteries.adapter';
 
-type BoonLevel = 'trivial' | 'minor' | 'major' | 'blood' | 'life';
+enum BoonLevel {
+  TRIVIAL = 'trivial',
+  MINOR = 'minor',
+  MAJOR = 'major',
+  BLOOD = 'blood',
+  LIFE = 'life',
+}
 
 @Injectable()
 export class TaxService {
@@ -159,11 +165,11 @@ export class TaxService {
 
   private levelForAmount(amount: number): BoonLevel {
     const a = Math.max(0, Math.trunc(amount));
-    if (a <= 1) return 'trivial';
-    if (a <= 3) return 'minor';
-    if (a <= 6) return 'major';
-    if (a <= 10) return 'blood';
-    return 'life';
+    if (a <= 1) return BoonLevel.TRIVIAL;
+    if (a <= 3) return BoonLevel.MINOR;
+    if (a <= 6) return BoonLevel.MAJOR;
+    if (a <= 10) return BoonLevel.BLOOD;
+    return BoonLevel.LIFE;
   }
 
   private async tryCoterieName(client: any, engineId: string, coterieId: string): Promise<string | null> {

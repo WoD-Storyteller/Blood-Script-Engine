@@ -4,7 +4,8 @@ import type { Request } from 'express';
 import { DatabaseService } from '../database/database.service';
 import { CompanionAuthService } from '../companion/auth.service';
 import { SafetyThresholdService } from './safety-threshold.service';
-import { enforceEngineAccess } from '../engine/engine.guard';
+import { EngineAccessRoute, enforceEngineAccess } from '../engine/engine.guard';
+import { SafetyLevel } from './safety.enums';
 
 @Controller('safety')
 export class SafetyController {
@@ -22,7 +23,7 @@ export class SafetyController {
   async create(
     @Req() req: Request,
     @Headers('authorization') authHeader: string,
-    @Body() body: { type: 'red' | 'yellow' | 'green' },
+    @Body() body: { type: SafetyLevel },
   ) {
     const token = this.token(req, authHeader);
     if (!token) return { error: 'Unauthorized' };
@@ -36,7 +37,7 @@ export class SafetyController {
         [session.engine_id],
       );
 
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       await client.query(
         `
@@ -70,7 +71,7 @@ export class SafetyController {
         [session.engine_id],
       );
 
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       await client.query(
         `

@@ -1,6 +1,6 @@
 import { Message } from 'discord.js';
 import { DatabaseService } from '../../database/database.service';
-import { enforceEngineAccess } from '../../engine/engine.guard';
+import { EngineAccessRoute, enforceEngineAccess } from '../../engine/engine.guard';
 
 const SAFETY_EMOJIS = ['🔴', '🟡', '🟢'];
 
@@ -33,7 +33,7 @@ export async function handleDM(
   );
   if (!engineRes.rowCount) return;
 
-  enforceEngineAccess(engineRes.rows[0], { discord_user_id: message.author.id }, 'normal');
+  enforceEngineAccess(engineRes.rows[0], { discord_user_id: message.author.id }, EngineAccessRoute.NORMAL);
 
   const signalType =
     emoji === '🔴'
