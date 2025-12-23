@@ -1,4 +1,7 @@
-require('dotenv').config();
+require('dotenv').config({
+  path: process.env.NODE_ENV === 'production'
+    ? '.env.production'
+    : '.env.development';
 
 if (!process.env.DATABASE_URL) {
   throw new Error('DATABASE_URL is not set');
