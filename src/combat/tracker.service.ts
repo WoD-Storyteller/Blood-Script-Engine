@@ -1,5 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { uuid } from '../common/utils/uuid';
+import { DamageType } from './gear.types';
 
 @Injectable()
 export class TrackerService {
@@ -87,7 +88,7 @@ export class TrackerService {
     attackerCharacterId?: string;
     defenderCharacterId?: string;
     damage: number;
-    damageType?: 'superficial' | 'aggravated';
+    damageType?: DamageType;
     summary: string;
   }) {
     try {
@@ -104,7 +105,7 @@ export class TrackerService {
           input.attackerCharacterId ?? null,
           input.defenderCharacterId ?? null,
           input.damage,
-          input.damageType ?? 'superficial',
+          input.damageType ?? DamageType.SUPERFICIAL,
           input.summary,
         ],
       );

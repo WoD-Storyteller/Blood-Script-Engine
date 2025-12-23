@@ -3,7 +3,7 @@ import { Interaction } from 'discord.js';
 
 import { DatabaseService } from '../database/database.service';
 import { RollsHandler } from './rolls.handler';
-import { enforceEngineAccess } from '../engine/engine.guard';
+import { EngineAccessRoute, enforceEngineAccess } from '../engine/engine.guard';
 
 @Injectable()
 export class DiscordInteractions {
@@ -67,7 +67,7 @@ export class DiscordInteractions {
 
       // 🚫 Enforce ban / appeal-only mode
       try {
-        enforceEngineAccess(engine, session, 'normal');
+        enforceEngineAccess(engine, session, EngineAccessRoute.NORMAL);
       } catch {
         try {
           await interaction.reply({

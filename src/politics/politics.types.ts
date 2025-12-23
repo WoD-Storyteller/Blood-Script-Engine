@@ -1,4 +1,9 @@
-export type BoonType = 'trivial' | 'minor' | 'major' | 'life';
+export enum BoonType {
+  TRIVIAL = 'trivial',
+  MINOR = 'minor',
+  MAJOR = 'major',
+  LIFE = 'life',
+}
 
 export interface Boon {
   boonId: string;

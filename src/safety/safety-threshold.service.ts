@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { DatabaseService } from '../database/database.service';
 import { OwnerDmService } from '../discord/owner-dm.service';
+import { SafetyLevel } from './safety.enums';
 
 @Injectable()
 export class SafetyThresholdService {
@@ -16,13 +17,13 @@ export class SafetyThresholdService {
   ) {}
 
   async check(engineId: string) {
-    await this.checkType(engineId, 'yellow', this.yellowThreshold);
-    await this.checkType(engineId, 'red', this.redThreshold);
+    await this.checkType(engineId, SafetyLevel.YELLOW, this.yellowThreshold);
+    await this.checkType(engineId, SafetyLevel.RED, this.redThreshold);
   }
 
   private async checkType(
     engineId: string,
-    type: 'yellow' | 'red',
+    type: SafetyLevel,
     threshold: number,
   ) {
     if (threshold <= 0) return;
@@ -62,7 +63,7 @@ export class SafetyThresholdService {
         );
 
         await this.ownerDm.send(
-          `${type === 'red' ? '🔴' : '🟡'} SAFETY THRESHOLD HIT\n\n` +
+          `${type === SafetyLevel.RED ? '🔴' : '🟡'} SAFETY THRESHOLD HIT\n\n` +
             `Engine: ${engineId}\n` +
             `Unresolved ${type.toUpperCase()} cards: ${count}\n` +
             `Threshold: ${threshold}\n\n` +

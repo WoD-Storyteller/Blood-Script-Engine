@@ -1,6 +1,13 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { uuid } from '../common/utils/uuid';
 
+enum BoonEnforcementStatus {
+  ACTIVE = 'active',
+  RESOLVED = 'resolved',
+  CANCELLED = 'cancelled',
+  ESCALATED = 'escalated',
+}
+
 @Injectable()
 export class BoonEnforcementService {
   private readonly logger = new Logger(BoonEnforcementService.name);
@@ -47,9 +54,17 @@ export class BoonEnforcementService {
         `
         INSERT INTO boon_enforcements
           (enforcement_id, engine_id, boon_id, created_by_user_id, status, due_at, notes)
-        VALUES ($1,$2,$3,$4,'active',$5,$6)
+        VALUES ($1,$2,$3,$4,$5,$6,$7)
         `,
-        [uuid(), input.engineId, boonId, input.createdByUserId, dueAt, input.notes ?? null],
+        [
+          uuid(),
+          input.engineId,
+          boonId,
+          input.createdByUserId,
+          BoonEnforcementStatus.ACTIVE,
+          dueAt,
+          input.notes ?? null,
+        ],
       );
 
       return {
@@ -71,7 +86,7 @@ export class BoonEnforcementService {
         FROM boon_enforcements e
         JOIN boons b ON b.boon_id = e.boon_id
         WHERE e.engine_id = $1
-          AND e.status = 'active'
+          AND e.status = '${BoonEnforcementStatus.ACTIVE}'
           AND e.due_at IS NOT NULL
           AND e.due_at <= now()
         ORDER BY e.due_at ASC
@@ -101,7 +116,7 @@ export class BoonEnforcementService {
   async resolve(client: any, input: {
     engineId: string;
     boonIdPrefix: string;
-    resolution: 'resolved' | 'cancelled' | 'escalated';
+    resolution: BoonEnforcementStatus;
   }): Promise<{ message: string }> {
     try {
       const boon = await client.query(
@@ -122,9 +137,9 @@ export class BoonEnforcementService {
         `
         UPDATE boon_enforcements
         SET status = $3, updated_at = now()
-        WHERE engine_id = $1 AND boon_id = $2 AND status = 'active'
+        WHERE engine_id = $1 AND boon_id = $2 AND status = $4
         `,
-        [input.engineId, boonId, input.resolution],
+        [input.engineId, boonId, input.resolution, BoonEnforcementStatus.ACTIVE],
       );
 
       return { message: `Enforcement updated: \`${String(boonId).slice(0, 8)}\` → **${input.resolution}**.` };

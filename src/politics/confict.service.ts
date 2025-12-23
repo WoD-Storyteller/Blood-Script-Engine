@@ -2,6 +2,19 @@ import { Injectable, Logger } from '@nestjs/common';
 import { uuid } from '../common/utils/uuid';
 import { CoteriesAdapter } from './coteries.adapter';
 
+enum ConflictActionKind {
+  ATTACK = 'attack',
+  DEFEND = 'defend',
+  SABOTAGE = 'sabotage',
+  WITHDRAW = 'withdraw',
+}
+
+enum ConflictStatus {
+  ACTIVE = 'active',
+  PAUSED = 'paused',
+  RESOLVED = 'resolved',
+}
+
 @Injectable()
 export class ConflictService {
   private readonly logger = new Logger(ConflictService.name);
@@ -44,7 +57,7 @@ export class ConflictService {
     conflictIdPrefix: string;
     engineId: string;
     coterieName: string;
-    kind: 'attack' | 'defend' | 'sabotage' | 'withdraw';
+    kind: ConflictActionKind;
     description: string;
   }): Promise<{ message: string }> {
     try {
@@ -53,7 +66,7 @@ export class ConflictService {
         SELECT conflict_id
         FROM coterie_conflicts
         WHERE engine_id = $1 AND CAST(conflict_id AS TEXT) LIKE $2
-          AND status = 'active'
+          AND status = '${ConflictStatus.ACTIVE}'
         LIMIT 1
         `,
         [input.engineId, `${input.conflictIdPrefix}%`],

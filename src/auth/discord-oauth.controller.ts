@@ -3,6 +3,7 @@ import type { Response } from 'express';
 import { DatabaseService } from '../database/database.service';
 import { CompanionAuthService } from '../companion/auth.service';
 import { uuid } from '../common/utils/uuid';
+import { EngineRole } from '../common/enums/engine-role.enum';
 
 type DiscordTokenResponse = {
   access_token: string;
@@ -199,7 +200,7 @@ export class DiscordOauthController {
     client: any,
     engineId: string,
     discordUserId: string,
-  ): Promise<'player' | 'st' | 'admin'> {
+  ): Promise<EngineRole> {
     // Default: player. Best-effort: engine.discord_owner_id → ST.
     try {
       const r = await client.query(
@@ -207,11 +208,11 @@ export class DiscordOauthController {
         [engineId],
       );
       const owner = r.rowCount ? r.rows[0].discord_owner_id : null;
-      if (owner && String(owner) === String(discordUserId)) return 'st';
+      if (owner && String(owner) === String(discordUserId)) return EngineRole.ST;
     } catch {
       // ignore if column doesn't exist yet
     }
-    return 'player';
+    return EngineRole.PLAYER;
   }
 
   private async consumeOauthState(state: string): Promise<string | null> {

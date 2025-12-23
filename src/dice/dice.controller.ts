@@ -3,7 +3,7 @@ import type { Request } from 'express';
 import { DatabaseService } from '../database/database.service';
 import { CompanionAuthService } from '../companion/auth.service';
 import { DiceService } from './dice.service';
-import { enforceEngineAccess } from '../engine/engine.guard';
+import { EngineAccessRoute, enforceEngineAccess } from '../engine/engine.guard';
 
 @Controller('companion/dice')
 export class DiceController {
@@ -41,7 +41,7 @@ export class DiceController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       let hunger = body.hunger ?? 0;
 

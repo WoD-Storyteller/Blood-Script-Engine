@@ -8,7 +8,9 @@ import { CoteriesService } from './coteries.service';
 import { StAdminService } from './st-admin.service';
 import { SafetyEventsService } from './safety-events.service';
 import { RealtimeService } from '../realtime/realtime.service';
-import { enforceEngineAccess } from '../engine/engine.guard';
+import { EngineRole } from '../common/enums/engine-role.enum';
+import { EngineAccessRoute, enforceEngineAccess } from '../engine/engine.guard';
+import { SafetyLevel } from '../safety/safety.enums';
 import { isBotOwner } from '../owner/owner.guard';
 
 @Controller('companion')
@@ -30,7 +32,7 @@ export class CompanionController {
 
   private isStOrAdmin(role: any) {
     const r = String(role).toLowerCase();
-    return r === 'st' || r === 'admin';
+    return r === EngineRole.ST || r === EngineRole.ADMIN;
   }
 
   @Get('me')
@@ -103,7 +105,7 @@ export class CompanionController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       const rows = await this.characters.listCharacters(client, {
         engineId: session.engine_id,
@@ -133,7 +135,7 @@ export class CompanionController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       const character = await this.characters.getCharacter(client, {
         engineId: session.engine_id,
@@ -164,7 +166,7 @@ export class CompanionController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       const rows = await this.coteries.listCoteries(client, {
         engineId: session.engine_id,
@@ -194,7 +196,7 @@ export class CompanionController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       const coterie = await this.coteries.getCoterie(client, {
         engineId: session.engine_id,
@@ -229,7 +231,7 @@ export class CompanionController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       if (!this.isStOrAdmin(session.role)) return { error: 'Forbidden' };
       await this.st.setMap(client, session.engine_id, body.myMapsUrl);
@@ -255,7 +257,7 @@ export class CompanionController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       if (!this.isStOrAdmin(session.role)) return { error: 'Forbidden' };
 
@@ -283,7 +285,7 @@ export class CompanionController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       if (!this.isStOrAdmin(session.role)) return { error: 'Forbidden' };
 
@@ -311,7 +313,7 @@ export class CompanionController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       if (!this.isStOrAdmin(session.role)) return { error: 'Forbidden' };
 
@@ -339,7 +341,7 @@ export class CompanionController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       if (!this.isStOrAdmin(session.role)) return { error: 'Forbidden' };
 
@@ -363,7 +365,7 @@ export class CompanionController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       if (!this.isStOrAdmin(session.role)) return { error: 'Forbidden' };
 
@@ -391,7 +393,7 @@ export class CompanionController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       if (!this.isStOrAdmin(session.role)) return { error: 'Forbidden' };
 
@@ -420,7 +422,7 @@ export class CompanionController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       if (!this.isStOrAdmin(session.role)) return { error: 'Forbidden' };
 
@@ -438,7 +440,7 @@ export class CompanionController {
   async submitSafety(
     @Req() req: Request,
     @Headers('authorization') authHeader: string,
-    @Body() body: { type: 'red' | 'yellow' | 'green'; context?: any },
+    @Body() body: { type: SafetyLevel; context?: any },
   ) {
     const token = this.getToken(req, authHeader);
     if (!token) return { error: 'Unauthorized' };
@@ -452,7 +454,7 @@ export class CompanionController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       const out = await this.safety.submit(client, session.engine_id, session.user_id, body);
       this.realtime.emitToEngine(session.engine_id, 'safety_event', out);
@@ -474,7 +476,7 @@ export class CompanionController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       const active = await this.safety.active(client, session.engine_id);
       return { active };
@@ -499,7 +501,7 @@ export class CompanionController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       if (!this.isStOrAdmin(session.role)) return { error: 'Forbidden' };
 

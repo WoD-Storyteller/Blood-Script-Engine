@@ -1,7 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { uuid } from '../common/utils/uuid';
-
-export type SafetyLevel = 'red' | 'yellow' | 'green';
+import { SafetyEventSource, SafetyLevel } from './safety.enums';
 
 @Injectable()
 export class SafetyEventsService {
@@ -13,7 +12,7 @@ export class SafetyEventsService {
       engineId: string;
       userId: string;
       level: SafetyLevel;
-      source: 'discord' | 'companion';
+      source: SafetyEventSource;
     },
   ) {
     await client.query(

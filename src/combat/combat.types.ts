@@ -1,13 +1,18 @@
-export type CombatRange = 'close' | 'near' | 'far';
+export enum CombatRange {
+  CLOSE = 'close',
+  NEAR = 'near',
+  FAR = 'far',
+}
 
-export type CombatActionType =
-  | 'attack'
-  | 'defend'
-  | 'dodge'
-  | 'grapple'
-  | 'shoot'
-  | 'flee'
-  | 'special';
+export enum CombatActionType {
+  ATTACK = 'attack',
+  DEFEND = 'defend',
+  DODGE = 'dodge',
+  GRAPPLE = 'grapple',
+  SHOOT = 'shoot',
+  FLEE = 'flee',
+  SPECIAL = 'special',
+}
 
 export interface CombatAction {
   actorUserId: string;

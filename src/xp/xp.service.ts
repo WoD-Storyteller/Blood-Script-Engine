@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { v4 as uuid } from 'uuid';
+import { XpKind } from './xp.enums';
 
 type SpendMeta = {
-  kind: 'skill' | 'attribute' | 'discipline' | 'blood_potency';
+  kind: XpKind;
   key: string;        // e.g. "Athletics", "Strength", "Dominate"
   from: number;       // current dots
   to: number;         // from + 1
@@ -28,13 +29,13 @@ export class XpService {
   cost(input: { kind: SpendMeta['kind']; current: number }): number {
     const cur = Math.max(0, asInt(input.current, 0));
     switch (input.kind) {
-      case 'attribute':
+      case XpKind.ATTRIBUTE:
         return (cur + 1) * 5;
-      case 'skill':
+      case XpKind.SKILL:
         return (cur + 1) * 3;
-      case 'discipline':
+      case XpKind.DISCIPLINE:
         return (cur + 1) * 5;
-      case 'blood_potency':
+      case XpKind.BLOOD_POTENCY:
         return (cur + 1) * 10;
       default:
         throw new Error('Unknown XP kind');
@@ -202,27 +203,27 @@ export class XpService {
     const sheet = sheetIn && typeof sheetIn === 'object' ? { ...sheetIn } : {};
     const key = normalizeKey(meta.key);
 
-    if (meta.kind === 'blood_potency') {
+    if (meta.kind === XpKind.BLOOD_POTENCY) {
       sheet.bloodPotency = meta.to;
       sheet.blood_potency = sheet.blood_potency ?? meta.to; // harmless compatibility
       return sheet;
     }
 
-    if (meta.kind === 'attribute') {
+    if (meta.kind === XpKind.ATTRIBUTE) {
       const attrs = ensureObj(sheet.attributes);
       attrs[key] = meta.to;
       sheet.attributes = attrs;
       return sheet;
     }
 
-    if (meta.kind === 'skill') {
+    if (meta.kind === XpKind.SKILL) {
       const skills = ensureObj(sheet.skills);
       skills[key] = meta.to;
       sheet.skills = skills;
       return sheet;
     }
 
-    if (meta.kind === 'discipline') {
+    if (meta.kind === XpKind.DISCIPLINE) {
       const discs = ensureObj(sheet.disciplines);
       // allow either number map or object map; we store number map by default
       if (typeof discs[key] === 'object' && discs[key] !== null) {

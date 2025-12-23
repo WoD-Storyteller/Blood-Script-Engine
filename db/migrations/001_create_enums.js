@@ -42,6 +42,14 @@ exports.up = async function (knex) {
 
     DO $$
     BEGIN
+      -- Safety signals
+      CREATE TYPE safety_signal_type AS ENUM ('red', 'yellow', 'green');
+    EXCEPTION WHEN duplicate_object THEN
+      NULL;
+    END $$;
+
+    DO $$
+    BEGIN
       CREATE TYPE safety_card_status AS ENUM ('active', 'resolved');
     EXCEPTION WHEN duplicate_object THEN
       NULL;
@@ -86,6 +94,13 @@ BEGIN
 EXCEPTION WHEN duplicate_object THEN
   NULL;
 END $$;
+
+    DO $$
+    BEGIN
+      CREATE TYPE tenet_type AS ENUM ('absolute', 'advisory');
+    EXCEPTION WHEN duplicate_object THEN
+      NULL;
+    END $$;
 
   `);
 };

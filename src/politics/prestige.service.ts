@@ -1,7 +1,11 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { uuid } from '../common/utils/uuid';
 
-type Authority = 'st' | 'harpy' | 'system';
+enum Authority {
+  ST = 'st',
+  HARPY = 'harpy',
+  SYSTEM = 'system',
+}
 
 @Injectable()
 export class PrestigeService {
@@ -73,7 +77,7 @@ export class PrestigeService {
         changedByUserId: input.changedByUserId,
         delta,
         reason: input.reason,
-        authority: 'st',
+        authority: Authority.ST,
       });
 
       return { message: `Status set. New Status: **${input.newScore}** (${delta >= 0 ? '+' : ''}${delta}).` };
@@ -101,7 +105,7 @@ export class PrestigeService {
       let delta = Math.trunc(input.delta);
 
       // Harpy guardrails: limit magnitude per action
-      if (input.authority === 'harpy') {
+      if (input.authority === Authority.HARPY) {
         const limit = Math.max(1, Math.min(3, input.harpyLimitPerAction ?? 2));
         if (delta > limit) delta = limit;
         if (delta < -limit) delta = -limit;

@@ -3,7 +3,8 @@ import type { Request } from 'express';
 import { DatabaseService } from '../database/database.service';
 import { CompanionAuthService } from '../companion/auth.service';
 import { ModeratorsService } from './moderators.service';
-import { enforceEngineAccess } from './engine.guard';
+import { EngineRole } from '../common/enums/engine-role.enum';
+import { EngineAccessRoute, enforceEngineAccess } from './engine.guard';
 
 @Controller('engine/moderators')
 export class ModeratorsController {
@@ -31,9 +32,9 @@ export class ModeratorsController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
-      if (session.role !== 'st') return { error: 'Forbidden' };
+      if (session.role !== EngineRole.ST) return { error: 'Forbidden' };
 
       const moderators = await this.mods.list(client, session.engine_id);
       return { moderators };
@@ -58,9 +59,9 @@ export class ModeratorsController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
-      if (session.role !== 'st') return { error: 'Forbidden' };
+      if (session.role !== EngineRole.ST) return { error: 'Forbidden' };
 
       await this.mods.add(client, {
         engineId: session.engine_id,
@@ -89,9 +90,9 @@ export class ModeratorsController {
         [session.engine_id],
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
-      enforceEngineAccess(engineRes.rows[0], session, 'normal');
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
-      if (session.role !== 'st') return { error: 'Forbidden' };
+      if (session.role !== EngineRole.ST) return { error: 'Forbidden' };
 
       await this.mods.remove(client, {
         engineId: session.engine_id,
