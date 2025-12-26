@@ -13,7 +13,11 @@ export class AuthController {
 
   @Get('discord/callback')
   async discordCallback(@Req() req: Request, @Res() res: Response) {
-    const session = await this.authService.handleDiscordCallback(req.query);
+    const { code, state } = req.query;
+    const session = await this.authService.handleDiscordCallback(
+      code as string,
+      state as string | undefined,
+    );
     return res.json(session);
   }
 }

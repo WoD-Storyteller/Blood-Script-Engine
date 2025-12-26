@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { WeaponProfile, ArmorProfile } from './gear.types';
+import { DamageType, WeaponProfile, ArmorProfile } from './gear.types';
 
 @Injectable()
 export class GearService {
@@ -7,22 +7,22 @@ export class GearService {
     const t = text.toLowerCase();
 
     if (/firearm|gun|pistol|rifle|shotgun/i.test(t)) {
-      return { name: 'Firearm', bonusDamage: 2, damageType: 'superficial' };
+      return { name: 'Firearm', bonusDamage: 2, damageType: DamageType.SUPERFICIAL };
     }
 
     if (/knife|blade|dagger|stab/i.test(t)) {
-      return { name: 'Blade', bonusDamage: 1, damageType: 'superficial' };
+      return { name: 'Blade', bonusDamage: 1, damageType: DamageType.SUPERFICIAL };
     }
 
     if (/claws?|fangs?|bite/i.test(t)) {
-      return { name: 'Feral attack', bonusDamage: 1, damageType: 'aggravated' };
+      return { name: 'Feral attack', bonusDamage: 1, damageType: DamageType.AGGRAVATED };
     }
 
     if (/fire|flames?|burn/i.test(t)) {
-      return { name: 'Fire', bonusDamage: 2, damageType: 'aggravated' };
+      return { name: 'Fire', bonusDamage: 2, damageType: DamageType.AGGRAVATED };
     }
 
-    return { name: 'Unarmed', bonusDamage: 0, damageType: 'superficial' };
+    return { name: 'Unarmed', bonusDamage: 0, damageType: DamageType.SUPERFICIAL };
   }
 
   getArmorForCharacter(_characterId: string): ArmorProfile | null {

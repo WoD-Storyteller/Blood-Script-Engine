@@ -1,4 +1,4 @@
-import { Controller, Get, Query, Res } from '@nestjs/common';
+import { Controller, Get, Query, Req, Res } from '@nestjs/common';
 import type { Response } from 'express';
 import { DatabaseService } from '../database/database.service';
 import { CompanionAuthService } from '../companion/auth.service';
@@ -116,7 +116,7 @@ export class DiscordOauthController {
     return res.redirect(redirect.toString());
   }
 
- @Get('logout')
+  @Get('logout')
   async logout(@Req() req: any, @Res() res: Response) {
     const token = req.cookies?.bse_token;
 
