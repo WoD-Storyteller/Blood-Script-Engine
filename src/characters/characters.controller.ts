@@ -38,7 +38,6 @@ export class CharactersController {
       const characters = await this.characters.listCharacters(client, {
         engineId: session.engine_id,
         userId: session.user_id,
-        role: session.role,
       });
 
       return { characters };
@@ -66,9 +65,6 @@ export class CharactersController {
       enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       const character = await this.characters.getCharacter(client, {
-        engineId: session.engine_id,
-        userId: session.user_id,
-        role: session.role,
         characterId: id,
       });
 
@@ -98,8 +94,8 @@ export class CharactersController {
 
       await this.characters.setActiveCharacter(client, {
         engineId: session.engine_id,
+        channelId: 'companion',
         userId: session.user_id,
-        role: session.role,
         characterId: id,
       });
 
@@ -135,9 +131,6 @@ export class CharactersController {
       enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       await this.characters.updateSheet(client, {
-        engineId: session.engine_id,
-        userId: session.user_id,
-        role: session.role,
         characterId: id,
         sheet: body,
       });

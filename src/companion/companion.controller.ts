@@ -168,11 +168,7 @@ export class CompanionController {
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
       enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
-      const rows = await this.coteries.listCoteries(client, {
-        engineId: session.engine_id,
-        userId: session.user_id,
-        role: session.role,
-      });
+      const rows = await this.coteries.listCoteries(client, session.engine_id);
 
       return { coteries: rows };
     });
@@ -200,8 +196,6 @@ export class CompanionController {
 
       const coterie = await this.coteries.getCoterie(client, {
         engineId: session.engine_id,
-        userId: session.user_id,
-        role: session.role,
         coterieId: id,
       });
 
@@ -397,7 +391,7 @@ export class CompanionController {
 
       if (!this.isStOrAdmin(session.role)) return { error: 'Forbidden' };
 
-      const out = await this.st.approveIntent(client, session.engine_id, id, body);
+      const out = await this.st.approveIntent(client, session.engine_id, id);
       this.realtime.emitToEngine(session.engine_id, 'intent_updated', out);
       return out;
     });
@@ -426,7 +420,7 @@ export class CompanionController {
 
       if (!this.isStOrAdmin(session.role)) return { error: 'Forbidden' };
 
-      const out = await this.st.rejectIntent(client, session.engine_id, id, body);
+      const out = await this.st.rejectIntent(client, session.engine_id, id, body?.reason);
       this.realtime.emitToEngine(session.engine_id, 'intent_updated', out);
       return out;
     });
