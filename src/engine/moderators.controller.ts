@@ -1,27 +1,30 @@
-import { Controller, Post, Body, Req } from '@nestjs/common';
-import { DatabaseService } from '../database/database.service';
-import { withTransaction } from '../database/transactions';
-import { ModeratorsService } from './moderators.service';
+import {
+  Controller,
+  Post,
+  Delete,
+  Get,
+  Body,
+  Req,
+  Headers,
+} from '@nestjs/common';
+import type { Request } from 'express';
 
-@Controller('engine/moderators')
+import { DatabaseService } from '../database/database.service';
+import { CompanionAuthService } from '../companion/auth.service';
+import { ModeratorsService } from './moderators.service';
+import {
+  EngineAccessRoute,
+  enforceEngineAccess,
+} from './engine.guard';
+import { EngineRole } from '../common/enums/engine-role.enum';
+
+@Controller('companion/engine/moderators')
 export class ModeratorsController {
   constructor(
     private readonly db: DatabaseService,
+    private readonly auth: CompanionAuthService,
     private readonly mods: ModeratorsService,
   ) {}
 
-  @Post('add')
-  async add(@Req() req: any, @Body() body: { userId: string }) {
-    const session = req.session;
-
-    return withTransaction(this.db, async (client) => {
-      await this.mods.add(client, {
-        engineId: session.engine_id,
-        userId: body.userId,
-        addedBy: session.user_id,
-      });
-
-      return { ok: true };
-    });
-  }
-}
+  private token(req: Request, auth?: string) {
+    return req.cookies?.bse
