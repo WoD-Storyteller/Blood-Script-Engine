@@ -1,17 +1,18 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { uuid } from '../common/utils/uuid';
+
+export type SafetyLevel = 'green' | 'yellow' | 'red';
 
 @Injectable()
 export class SafetyEventsService {
-  private readonly logger = new Logger(SafetyEventsService.name);
-
   async submit(
     client: any,
     engineId: string,
     userId: string,
     body: {
+      type: SafetyLevel;
       sceneId?: string;
-      signalType: 'green' | 'yellow' | 'red';
+      context?: any;
     },
   ) {
     const id = uuid();
@@ -22,7 +23,7 @@ export class SafetyEventsService {
         (signal_id, engine_id, scene_id, signal_type)
       VALUES ($1,$2,$3,$4)
       `,
-      [id, engineId, body.sceneId ?? null, body.signalType],
+      [id, engineId, body.sceneId ?? null, body.type],
     );
 
     await client.query(
@@ -36,10 +37,10 @@ export class SafetyEventsService {
         last_signal_at = now(),
         unresolved_since = COALESCE(scene_safety_state.unresolved_since, now())
       `,
-      [engineId, body.sceneId ?? id, body.signalType],
+      [engineId, body.sceneId ?? id, body.type],
     );
 
-    return { id, status: body.signalType };
+    return { id, level: body.type };
   }
 
   async active(client: any, engineId: string) {
@@ -52,7 +53,6 @@ export class SafetyEventsService {
       `,
       [engineId],
     );
-
     return res.rows;
   }
 
@@ -66,7 +66,6 @@ export class SafetyEventsService {
       `,
       [engineId, sceneId],
     );
-
     return { sceneId, resolved: true };
   }
 }
