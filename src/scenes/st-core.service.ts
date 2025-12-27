@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+
 import { ClocksService } from '../chronicle/clocks.service';
 import { ArcsService } from '../chronicle/arcs.service';
 
@@ -12,44 +13,32 @@ export class StCoreService {
   createClock(client: any, engineId: string, input: any) {
     return this.clocks.create(client, {
       engineId,
-      clockIdPrefix: input.clockIdPrefix,
-      amount: input.amount,
-      reason: input.reason,
+      name: input.name,
+      segments: input.segments,
+      notes: input.notes,
+      createdByUserId: input.createdByUserId,
     });
   }
 
   tickClock(
     client: any,
     engineId: string,
-    clockId: string,
+    clockIdPrefix: string,
     delta = 1,
   ) {
-    return this.clocks.tick(client, {
+    return this.clocks.tickClock(client, {
       engineId,
-      clockIdPrefix: clockId,
+      clockIdPrefix,
       amount: delta,
     });
   }
 
   createArc(client: any, engineId: string, input: any) {
-    return this.arcs.create(client, {
+    return this.arcs.createArc(client, {
       engineId,
-      ...input,
-    });
-  }
-
-  setArcStatus(
-    client: any,
-    engineId: string,
-    arcId: string,
-    status: any,
-    outcome?: string,
-  ) {
-    return this.arcs.setStatus(client, {
-      engineId,
-      arcIdPrefix: arcId,
-      status,
-      outcome,
+      title: input.title,
+      synopsis: input.synopsis,
+      createdByUserId: input.createdByUserId,
     });
   }
 }
