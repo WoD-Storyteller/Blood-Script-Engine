@@ -10,32 +10,46 @@ export class StCoreService {
   ) {}
 
   createClock(client: any, engineId: string, input: any) {
-    return this.clocks.createClock(client, {
+    return this.clocks.create(client, {
       engineId,
-      ...input,
+      clockIdPrefix: input.clockIdPrefix,
+      amount: input.amount,
+      reason: input.reason,
     });
   }
 
-  tickClock(client: any, engineId: string, clockId: string, delta = 1) {
-    return this.clocks.tickClock(client, {
+  tickClock(
+    client: any,
+    engineId: string,
+    clockId: string,
+    delta = 1,
+  ) {
+    return this.clocks.tick(client, {
       engineId,
-      clockId,
-      delta,
+      clockIdPrefix: clockId,
+      amount: delta,
     });
   }
 
   createArc(client: any, engineId: string, input: any) {
-    return this.arcs.createArc(client, {
+    return this.arcs.create(client, {
       engineId,
       ...input,
     });
   }
 
-  setArcStatus(client: any, engineId: string, arcIdPrefix: string, status: any) {
+  setArcStatus(
+    client: any,
+    engineId: string,
+    arcId: string,
+    status: any,
+    outcome?: string,
+  ) {
     return this.arcs.setStatus(client, {
       engineId,
-      arcIdPrefix,
+      arcIdPrefix: arcId,
       status,
+      outcome,
     });
   }
 }
