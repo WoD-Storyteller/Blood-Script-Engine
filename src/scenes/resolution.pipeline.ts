@@ -1,55 +1,63 @@
 import { Injectable } from '@nestjs/common';
+import { uuid } from '../common/utils/uuid';
+import { DiceService } from '../rules/dice.service';
+import { HungerService } from '../rules/hunger.service';
+import { CombatService } from '../combat/combat.service';
 import { CombatActionType } from '../combat/combat.types';
 import { TenetsService } from '../safety/tenets.service';
 
 @Injectable()
 export class ResolutionPipeline {
   constructor(
+    private readonly dice: DiceService,
+    private readonly hunger: HungerService,
+    private readonly combat: CombatService,
     private readonly tenets: TenetsService,
   ) {}
 
-  async run(client: any, input: {
-    engineId: string;
-    sceneId: string;
-    channelId: string;
-    userId: string;
-    discordUserId: string;
-    content: string;
-    mentionedDiscordUserIds: string[];
-  }) {
-    // Tenet check
-    const result = await this.tenets.checkContent(
-      client,
-      input.engineId,
-      input.content,
-      input.userId,
-      input.sceneId,
-    );
+  async run(
+    client: any,
+    input: {
+      engineId: string;
+      sceneId: string;
+      userId: string;
+      content: string;
+    },
+  ) {
+    const tenetCheck = await this.tenets.checkTenets(client, {
+      engineId: input.engineId,
+      content: input.content,
+    });
 
-    if (!result.allowed) {
+    if (!tenetCheck.allowed) {
+      await client.query(
+        `
+        INSERT INTO tenet_violation_attempts
+          (attempt_id, engine_id, user_id, scene_id, tenet_id, category)
+        VALUES ($1,$2,$3,$4,$5,$6)
+        `,
+        [
+          uuid(),
+          input.engineId,
+          input.userId,
+          input.sceneId,
+          tenetCheck.tenetId,
+          tenetCheck.category,
+        ],
+      );
+
       return {
         ok: false,
-        sceneId: input.sceneId,
-        publicMessage: `⚠️ **Tenet violation**: ${result.tenetTitle}`,
+        publicMessage: 'That action violates a chronicle tenet.',
       };
     }
 
-    // Placeholder combat action example
-    if (/^!attack\b/i.test(input.content)) {
-      return {
-        ok: true,
-        sceneId: input.sceneId,
-        combatAction: {
-          type: CombatActionType.Attack,
-          actorUserId: input.userId,
-        },
-      };
-    }
+    const { roll, outcome } = this.dice.roll({ total: 6, hunger: 1 });
+    const hungerEffect = this.hunger.getConsequence(outcome);
 
-    // Default passthrough
     return {
       ok: true,
-      sceneId: input.sceneId,
+      narration: `Resolved with ${roll.successes} successes.${hungerEffect ? ' ' + hungerEffect : ''}`,
     };
   }
 }
