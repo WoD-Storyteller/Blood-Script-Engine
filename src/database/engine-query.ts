@@ -1,20 +1,11 @@
+import { Injectable } from '@nestjs/common';
 import { DatabaseService } from './database.service';
 
+@Injectable()
 export class EngineQuery {
-  constructor(
-    private readonly db: DatabaseService,
-    private readonly engineId: string,
-  ) {}
+  constructor(private readonly db: DatabaseService) {}
 
-  async query<T = any>(
-    text: string,
-    params: any[] = [],
-  ) {
-    // Enforce engine_id as first param
-    const engineScopedQuery = `
-      ${text}
-    `;
-
-    return this.db.query<T>(engineScopedQuery, params);
+  async query(engineScopedQuery: string, params: any[] = []) {
+    return this.db.query(engineScopedQuery, params);
   }
 }
