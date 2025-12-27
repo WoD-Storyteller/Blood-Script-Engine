@@ -46,7 +46,6 @@ export class XpController {
 
   // --------------------------------------------------
   // GET /companion/xp/available?characterId=...
-  // Returns available XP for a character (defaults to active character).
   // --------------------------------------------------
   @Get('available')
   async available(
@@ -79,10 +78,11 @@ export class XpController {
         cid = r.rows[0].character_id;
       }
 
-      const available = await this.xp.availableXp(client, {
-        engineId: session.engine_id,
-        characterId: cid!,
-      });
+      const available = await this.xp.availableXp(
+        client,
+        session.engine_id,
+        cid!,
+      );
 
       return { characterId: cid, available };
     });
@@ -90,7 +90,6 @@ export class XpController {
 
   // --------------------------------------------------
   // POST /companion/xp/spend-request
-  // Player requests an XP spend for ST approval.
   // --------------------------------------------------
   @Post('spend-request')
   async spendRequest(
@@ -139,7 +138,6 @@ export class XpController {
         characterId = r.rows[0].character_id;
       }
 
-      // Ensure player owns the character
       const owns = await client.query(
         `
         SELECT 1
@@ -175,7 +173,6 @@ export class XpController {
 
   // --------------------------------------------------
   // POST /companion/xp/earn
-  // ST/Admin awards XP to a character.
   // --------------------------------------------------
   @Post('earn')
   async earn(
@@ -203,7 +200,6 @@ export class XpController {
       if (!amount) return { error: 'InvalidAmount' };
       if (!body.characterId) return { error: 'MissingCharacterId' };
 
-      // Find character owner for ledger attribution
       const c = await client.query(
         `
         SELECT owner_user_id
@@ -236,8 +232,6 @@ export class XpController {
 
   // --------------------------------------------------
   // POST /companion/xp/approve
-  // ST/Admin approves and applies an XP spend request.
-  // Sends a DM to the player (best-effort).
   // --------------------------------------------------
   @Post('approve')
   async approve(
@@ -263,14 +257,12 @@ export class XpController {
         engineId: session.engine_id,
       });
 
-      // Emit realtime
       this.realtime.emitToEngine(session.engine_id, 'xp_spend_approved', {
         xpId: body.xpId,
         out,
         at: new Date().toISOString(),
       });
 
-      // Best-effort DM (only when applied now)
       if (out?.ok && out?.alreadyApplied === false) {
         const info = await client.query(
           `
@@ -307,24 +299,5 @@ export class XpController {
               engineName: engine?.name,
             });
 
-            // mark notified (best effort; schema may or may not include these fields yet)
             try {
-              await client.query(
-                `
-                UPDATE xp_ledger
-                SET discord_notified=true, discord_notified_at=now()
-                WHERE xp_id=$1
-                `,
-                [body.xpId],
-              );
-            } catch {
-              // ignore if columns not present
-            }
-          }
-        }
-      }
-
-      return out;
-    });
-  }
-}
+              await client.query
