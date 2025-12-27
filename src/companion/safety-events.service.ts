@@ -1,20 +1,54 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
+import { uuid } from '../common/utils/uuid';
 
 @Injectable()
 export class SafetyEventsService {
-  async listSafetyEvents(client: any, engineId: string) {
+  private readonly logger = new Logger(SafetyEventsService.name);
+
+  async submit(
+    client: any,
+    engineId: string,
+    userId: string,
+    body: {
+      sceneId?: string;
+      signalType: 'green' | 'yellow' | 'red';
+    },
+  ) {
+    const id = uuid();
+
+    await client.query(
+      `
+      INSERT INTO safety_signals
+        (signal_id, engine_id, scene_id, signal_type)
+      VALUES ($1,$2,$3,$4)
+      `,
+      [id, engineId, body.sceneId ?? null, body.signalType],
+    );
+
+    await client.query(
+      `
+      INSERT INTO scene_safety_state
+        (engine_id, scene_id, status, last_signal_at, unresolved_since)
+      VALUES ($1,$2,$3,now(),now())
+      ON CONFLICT (scene_id)
+      DO UPDATE SET
+        status = EXCLUDED.status,
+        last_signal_at = now(),
+        unresolved_since = COALESCE(scene_safety_state.unresolved_since, now())
+      `,
+      [engineId, body.sceneId ?? id, body.signalType],
+    );
+
+    return { id, status: body.signalType };
+  }
+
+  async active(client: any, engineId: string) {
     const res = await client.query(
       `
-      SELECT
-        event_id,
-        type,
-        category,
-        resolved,
-        created_at
-      FROM safety_events
-      WHERE engine_id = $1
-      ORDER BY created_at DESC
-      LIMIT 100
+      SELECT scene_id, status, unresolved_since
+      FROM scene_safety_state
+      WHERE engine_id = $1 AND status != 'green'
+      ORDER BY unresolved_since ASC
       `,
       [engineId],
     );
@@ -22,25 +56,17 @@ export class SafetyEventsService {
     return res.rows;
   }
 
-  async resolveEvent(
-    client: any,
-    engineId: string,
-    eventId: string,
-    resolvedByUserId: string,
-    notes?: string,
-  ) {
+  async resolve(client: any, engineId: string, sceneId: string) {
     await client.query(
       `
-      UPDATE safety_events
-      SET resolved = true,
-          resolved_by_user_id = $4,
-          resolution_notes = $5,
-          resolved_at = now()
-      WHERE engine_id = $1 AND event_id = $2
+      UPDATE scene_safety_state
+      SET status = 'green',
+          unresolved_since = NULL
+      WHERE engine_id = $1 AND scene_id = $2
       `,
-      [engineId, eventId, resolvedByUserId, notes ?? null],
+      [engineId, sceneId],
     );
 
-    return { ok: true };
+    return { sceneId, resolved: true };
   }
 }
