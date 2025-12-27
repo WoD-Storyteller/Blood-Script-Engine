@@ -285,9 +285,22 @@ export class XpController {
           const row = info.rows[0];
           const meta = row.meta ?? out?.appliedTo ?? null;
 
-          const upgrade =
+const upgrade =
             meta && meta.kind && meta.key
- try {
+              ? `${String(meta.kind).toUpperCase()}: ${String(meta.key)} (${meta.from}→${meta.to})`
+              : 'Upgrade applied';
+
+          if (row.discord_user_id) {
+            await this.dm.sendXpAppliedDm({
+              discordUserId: row.discord_user_id,
+              characterName: row.character_name ?? 'Your character',
+              upgrade,
+              cost: Number(row.amount ?? 0),
+              engineName: engine?.name,
+            });
+
+            // Best-effort notification mark
+            try {
               await client.query(
                 `
                 UPDATE xp_ledger
@@ -298,5 +311,14 @@ export class XpController {
                 [body.xpId],
               );
             } catch {
-              // ignore missing columns
+              // columns may not exist yet — ignore
             }
+          }
+        }
+      }
+
+      return out;
+    });
+  }
+}
+          
