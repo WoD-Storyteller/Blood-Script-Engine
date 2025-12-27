@@ -3,6 +3,9 @@ import { uuid } from '../common/utils/uuid';
 
 @Injectable()
 export class ClocksService {
+  // --------------------------------------------------
+  // CREATE
+  // --------------------------------------------------
   async create(
     client: any,
     input: {
@@ -13,7 +16,7 @@ export class ClocksService {
       createdByUserId?: string;
     },
   ) {
-    const id = uuid();
+    const clockId = uuid();
 
     await client.query(
       `
@@ -22,7 +25,7 @@ export class ClocksService {
       VALUES ($1,$2,$3,$4,0,$5,$6)
       `,
       [
-        id,
+        clockId,
         input.engineId,
         input.name,
         input.segments,
@@ -31,9 +34,28 @@ export class ClocksService {
       ],
     );
 
-    return { clockId: id };
+    return { clockId };
   }
 
+  // --------------------------------------------------
+  // LEGACY: tickClock (USED BY AI + ADMIN)
+  // --------------------------------------------------
+  async tickClock(
+    client: any,
+    input: {
+      engineId: string;
+      clockIdPrefix: string;
+      amount: number;
+      reason?: string;
+      tickedByUserId?: string;
+    },
+  ) {
+    return this.tick(client, input);
+  }
+
+  // --------------------------------------------------
+  // CORE TICK
+  // --------------------------------------------------
   async tick(
     client: any,
     input: {
@@ -44,25 +66,21 @@ export class ClocksService {
       tickedByUserId?: string;
     },
   ) {
-    const clock = await client.query(
+    const r = await client.query(
       `
       SELECT clock_id, progress, segments
       FROM clocks
-      WHERE engine_id=$1 AND CAST(clock_id AS TEXT) LIKE $2
+      WHERE engine_id=$1
+        AND CAST(clock_id AS TEXT) LIKE $2
       LIMIT 1
       `,
       [input.engineId, `${input.clockIdPrefix}%`],
     );
 
-    if (!clock.rowCount) {
-      return { error: 'ClockNotFound' };
-    }
+    if (!r.rowCount) return { error: 'ClockNotFound' };
 
-    const c = clock.rows[0];
-    const newProgress = Math.min(
-      c.segments,
-      c.progress + Math.max(1, input.amount),
-    );
+    const c = r.rows[0];
+    const next = Math.min(c.segments, c.progress + Math.max(1, input.amount));
 
     await client.query(
       `
@@ -70,13 +88,56 @@ export class ClocksService {
       SET progress=$3, updated_at=now()
       WHERE engine_id=$1 AND clock_id=$2
       `,
-      [input.engineId, c.clock_id, newProgress],
+      [input.engineId, c.clock_id, next],
     );
 
     return {
       clockId: c.clock_id,
-      progress: newProgress,
-      completed: newProgress >= c.segments,
+      progress: next,
+      completed: next >= c.segments,
     };
+  }
+
+  // --------------------------------------------------
+  // NIGHTLY TICK (Chronicle)
+  // --------------------------------------------------
+  async tickNightlyClocks(client: any, input: { engineId: string }) {
+    const clocks = await client.query(
+      `
+      SELECT clock_id
+      FROM clocks
+      WHERE engine_id=$1 AND progress < segments
+      `,
+      [input.engineId],
+    );
+
+    for (const c of clocks.rows) {
+      await this.tick(client, {
+        engineId: input.engineId,
+        clockIdPrefix: c.clock_id,
+        amount: 1,
+      });
+    }
+
+    return { ticked: clocks.rowCount };
+  }
+
+  // --------------------------------------------------
+  // LINKS FOR COMPLETED CLOCKS
+  // --------------------------------------------------
+  async listClockLinksForCompleted(
+    client: any,
+    input: { engineId: string; clockId: string },
+  ) {
+    const res = await client.query(
+      `
+      SELECT *
+      FROM clock_links
+      WHERE engine_id=$1 AND source_clock_id=$2
+      `,
+      [input.engineId, input.clockId],
+    );
+
+    return res.rows;
   }
 }
