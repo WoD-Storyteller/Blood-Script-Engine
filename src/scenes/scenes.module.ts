@@ -29,6 +29,9 @@ import { RecoveryService } from './recovery.service';
     StatusService,
     RecoveryService,
   ],
-  exports: [ScenesService],
+  exports: [
+    ScenesService,
+    StCoreService, // 🔑 REQUIRED
+  ],
 })
 export class ScenesModule {}
