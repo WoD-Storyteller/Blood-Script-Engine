@@ -12,25 +12,41 @@ export class ChronicleService {
   ) {}
 
   /**
-   * Runs during NightCycle (H5). This does not post messages; it only updates state.
-   * You can optionally surface completions in Discord later (H9/H10 UI layer).
+   * Runs during NightCycle (H5).
+   * Updates state only; UI surfacing happens elsewhere.
    */
-  async nightly(client: any, engineId: string): Promise<{ completedClocks: string[]; arcNotices: string[] }> {
+  async nightly(
+    client: any,
+    engineId: string,
+  ): Promise<{ completedClocks: string[]; arcNotices: string[] }> {
     const completedClocks: string[] = [];
     const arcNotices: string[] = [];
 
     try {
       const ticked = await this.clocks.tickNightlyClocks(client, { engineId });
-      for (const c of ticked.completed) {
-        completedClocks.push(`${c.title} (${String(c.clockId).slice(0, 8)})`);
 
-        const links = await this.clocks.listClockLinksForCompleted(client, { engineId, clockId: c.clockId });
+      const completed = Array.isArray((ticked as any)?.completed)
+        ? (ticked as any).completed
+        : [];
+
+      for (const c of completed) {
+        completedClocks.push(
+          `${c.title} (${String(c.clockId).slice(0, 8)})`,
+        );
+
+        const links = await this.clocks.listClockLinksForCompleted(client, {
+          engineId,
+          clockId: c.clockId,
+        });
+
         for (const l of links) {
-          arcNotices.push(`Clock completion affected arc **${l.arcTitle}** (onComplete: ${l.onComplete}).`);
+          arcNotices.push(
+            `Clock completion affected arc **${l.arcTitle}** (onComplete: ${l.onComplete}).`,
+          );
         }
       }
     } catch (e: any) {
-      this.logger.debug(`nightly fallback: ${e.message}`);
+      this.logger.debug(`nightly fallback: ${e?.message ?? e}`);
     }
 
     return { completedClocks, arcNotices };
