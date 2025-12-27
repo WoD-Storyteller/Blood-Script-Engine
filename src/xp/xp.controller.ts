@@ -287,17 +287,16 @@ export class XpController {
 
           const upgrade =
             meta && meta.kind && meta.key
-              ? `${String(meta.kind).toUpperCase()}: ${String(meta.key)} (${meta.from}→${meta.to})`
-              : 'Upgrade applied';
-
-          if (row.discord_user_id) {
-            await this.dm.sendXpAppliedDm({
-              discordUserId: row.discord_user_id,
-              characterName: row.character_name ?? 'Your character',
-              upgrade,
-              cost: Number(row.amount ?? 0),
-              engineName: engine?.name,
-            });
-
-            try {
-              await client.query
+ try {
+              await client.query(
+                `
+                UPDATE xp_ledger
+                SET discord_notified=true,
+                    discord_notified_at=now()
+                WHERE xp_id=$1
+                `,
+                [body.xpId],
+              );
+            } catch {
+              // ignore missing columns
+            }
