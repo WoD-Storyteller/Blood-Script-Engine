@@ -21,6 +21,37 @@ async function bootstrap() {
     bufferLogs: true,
   });
 
+/**
+   * CORS CONFIGURATION
+   * --------------------------------------------------
+   * Required for:
+   * - Companion App (VM2, browser-based)
+   * - Future website integration
+   *
+   * Auth model:
+   * - Authorization: Bearer <token>
+   * - NO cookies
+   * - NO credentials
+   */
+  app.enableCors({
+    origin: [
+      // Companion App (private VM)
+      'http://10.10.0.4',
+
+      // Local development
+      'http://localhost:5173',
+      'http://localhost:3000',
+
+      // Future domains
+      'https://app.bloodscriptengine.tech',
+      'https://bloodscriptengine.tech',
+    ],
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Authorization', 'Content-Type'],
+    credentials: false,
+  });
+
+
   // Global validation (safe defaults)
   app.useGlobalPipes(
     new ValidationPipe({
