@@ -8,8 +8,8 @@ import { Logger, ValidationPipe } from '@nestjs/common';
 async function bootstrap() {
   const logger = new Logger('Bootstrap');
 
+  // 🔐 Load secrets FIRST
   try {
-    // 🔐 Load secrets from Google Secret Manager FIRST
     await loadSecrets();
     logger.log('Secrets loaded successfully');
   } catch (err) {
@@ -21,38 +21,27 @@ async function bootstrap() {
     bufferLogs: true,
   });
 
-/**
+  /**
    * CORS CONFIGURATION
    * --------------------------------------------------
-   * Required for:
-   * - Companion App (VM2, browser-based)
-   * - Future website integration
-   *
-   * Auth model:
+   * Browser-based access ONLY
+   * Auth:
    * - Authorization: Bearer <token>
-   * - NO cookies
-   * - NO credentials
+   * - No cookies
    */
   app.enableCors({
     origin: [
-      // Companion App (private VM)
-      'http://10.10.0.4',
-
-      // Local development
-      'http://localhost:5173',
-      'http://localhost:3000',
-
-      // Future domains
       'https://app.bloodscriptengine.tech',
       'https://bloodscriptengine.tech',
+      'http://localhost:5173',
+      'http://localhost:3000',
     ],
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Authorization', 'Content-Type'],
     credentials: false,
   });
 
-
-  // Global validation (safe defaults)
+  // Global validation
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
@@ -61,18 +50,8 @@ async function bootstrap() {
     }),
   );
 
-  // Enable CORS for companion app
-  const companionUrl = process.env.COMPANION_APP_URL;
-  if (companionUrl) {
-    app.enableCors({
-      origin: companionUrl,
-      credentials: true,
-    });
-    logger.log(`CORS enabled for ${companionUrl}`);
-  }
-
   const port = Number(process.env.PORT) || 3000;
-  await app.listen(port);
+  await app.listen(port, '0.0.0.0');
 
   logger.log(`Blood Script Engine running on port ${port}`);
 }
