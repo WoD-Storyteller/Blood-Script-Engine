@@ -19,12 +19,14 @@ import { SessionMiddleware } from './common/middleware/session.middleware';
 import { DiceModule } from './dice/dice.module';
 import { XpModule } from './xp/xp.module';
 import { RealtimeModule } from './realtime/realtime.module';
+import { CompanionModule } from './companion/companion.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     DatabaseModule,
     RealtimeModule,
+    CompanionModule,
     AuthModule,
     EngineModule,
     SafetyModule,
