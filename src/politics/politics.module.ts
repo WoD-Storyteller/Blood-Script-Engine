@@ -7,7 +7,7 @@ import { OfficesService } from './offices.service';
 import { MotionsService } from './motions.service';
 import { PrestigeService } from './prestige.service';
 import { NightCycleService } from './night-cycle.service';
-
+import { TaxService } from './tax.service'; 
 import { ChronicleModule } from '../chronicle/chronicle.module';
 import { ThreatsModule } from '../threats/threats.module';
 import { AiModule } from '../ai/ai.module';
