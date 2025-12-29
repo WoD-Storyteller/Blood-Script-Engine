@@ -1,13 +1,20 @@
 import { Module } from '@nestjs/common';
-
-import { CoteriesController } from './coteries.controller';
-import { CoteriesService } from './coteries.service';
 import { DatabaseModule } from '../database/database.module';
 
+import { CoteriesService } from './coteries.service';
+import { CoteriesAdapter } from './coteries.adapter';
+
 @Module({
-  imports: [DatabaseModule],
-  controllers: [CoteriesController],
-  providers: [CoteriesService],
-  exports: [CoteriesService],
+  imports: [
+    DatabaseModule,
+  ],
+  providers: [
+    CoteriesService,
+    CoteriesAdapter, // 🔑 PROVIDE
+  ],
+  exports: [
+    CoteriesService,
+    CoteriesAdapter, // 🔑 EXPORT
+  ],
 })
 export class CoteriesModule {}
