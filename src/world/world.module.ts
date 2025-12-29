@@ -1,8 +1,16 @@
 import { Module } from '@nestjs/common';
+import { DatabaseModule } from '../database/database.module';
 import { MapsService } from './maps.service';
 
 @Module({
-  providers: [MapsService],
-  exports: [MapsService],
+  imports: [
+    DatabaseModule,
+  ],
+  providers: [
+    MapsService,
+  ],
+  exports: [
+    MapsService, // 🔑 REQUIRED for DashboardModule
+  ],
 })
 export class WorldModule {}
