@@ -25,6 +25,7 @@ import { AiModule } from '../ai/ai.module';
     OfficesService,
     MotionsService,
     PrestigeService,
+    TaxService,
     NightCycleService,
   ],
   exports: [
