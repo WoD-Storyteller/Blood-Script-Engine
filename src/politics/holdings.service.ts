@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { uuid } from '../common/utils/uuid';
-import { CoteriesAdapter } from './coteries.adapter';
+import { CoteriesAdapter } from '../coteries/coteries.adapter';
 
 @Injectable()
 export class HoldingsService {
