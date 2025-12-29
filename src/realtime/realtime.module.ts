@@ -7,8 +7,14 @@ import { RealtimeGateway } from './realtime.gateway';
 import { RealtimeService } from './realtime.service';
 
 @Module({
-  imports: [DatabaseModule, CompanionModule, DashboardModule],
-  providers: [RealtimeGateway, RealtimeService],
+  imports: [
+DatabaseModule, 
+CompanionModule, 
+DashboardModule
+],
+  providers: [
+RealtimeGateway, 
+RealtimeService],
   exports: [RealtimeService],
 })
 export class RealtimeModule {}
