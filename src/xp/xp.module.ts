@@ -3,6 +3,7 @@ import { DatabaseModule } from '../database/database.module';
 import { CompanionModule } from '../companion/companion.module';
 import { CharactersModule } from '../characters/characters.module';
 import { RealtimeModule } from '../realtime/realtime.module';
+import { DiscordModule } from '../discord/discord.module';
 import { XpService } from './xp.service';
 import { XpController } from './xp.controller';
 
@@ -12,6 +13,7 @@ import { XpController } from './xp.controller';
     CompanionModule,
     CharactersModule,
     RealtimeModule,
+    DiscordModule,
   ],
   providers: [XpService],
   controllers: [XpController],
