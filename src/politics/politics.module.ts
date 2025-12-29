@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { DatabaseModule } from '../database/database.module';
 import { CoteriesModule } from '../coteries/coteries.module';
-
+import { BoonEnforcementService } from './boon-enforcement.service';
 import { BoonsService } from './boons.service';
 import { FactionsService } from './factions.service';
 import { DomainsService } from './domains.service';
@@ -30,6 +30,7 @@ import { AiModule } from '../ai/ai.module';
     MotionsService,
     PrestigeService,
     TaxService,
+    BoonEnforcementService,
     NightCycleService,
   ],
   exports: [
@@ -39,6 +40,7 @@ import { AiModule } from '../ai/ai.module';
     OfficesService,
     MotionsService,
     PrestigeService,
+    BoonEnforcementService,
     NightCycleService,
   ],
 })
