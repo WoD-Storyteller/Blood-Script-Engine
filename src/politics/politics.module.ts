@@ -1,4 +1,6 @@
 import { Module } from '@nestjs/common';
+import { DatabaseModule } from '../database/database.module';
+import { CoteriesModule } from '../coteries/coteries.module';
 
 import { BoonsService } from './boons.service';
 import { FactionsService } from './factions.service';
@@ -14,6 +16,8 @@ import { AiModule } from '../ai/ai.module';
 
 @Module({
   imports: [
+    DatabaseModule,
+    CoteriesModule,
     ChronicleModule,
     ThreatsModule,
     AiModule,
