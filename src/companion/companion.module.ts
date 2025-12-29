@@ -1,8 +1,10 @@
 import { Module } from '@nestjs/common';
+import { DatabaseModule } '../database/database.module';
 import { CompanionAuthService } from './auth.service';
 
 @Module({
   providers: [
+    DatabaseModule,
     CompanionAuthService,
   ],
   exports: [
