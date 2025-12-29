@@ -20,6 +20,9 @@ import { ChronicleModule } from '../chronicle/chronicle.module';
     StAdminService,
     SafetyEventsService,
   ],
+ exports: [
+    CompanionAuthService, // ✅ REQUIRED
+  ],
   controllers: [CompanionController],
 })
 export class CompanionModule {}
