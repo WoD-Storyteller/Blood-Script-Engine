@@ -22,23 +22,41 @@ async function bootstrap() {
   });
 
   /**
-   * CORS CONFIGURATION
+   * ✅ CORS CONFIG — FIXED
    * --------------------------------------------------
-   * Browser-based access ONLY
-   * Auth:
-   * - Authorization: Bearer <token>
-   * - No cookies
+   * Supports:
+   * - Companion App (cookies)
+   * - Bearer tokens
+   * - NGINX proxy
+   * - IP-based dev
    */
   app.enableCors({
-    origin: [
-      'https://app.bloodscriptengine.tech',
-      'https://bloodscriptengine.tech',
-      'http://localhost:5173',
-      'http://localhost:3000',
-    ],
+    origin: (origin, callback) => {
+      const allowedOrigins = [
+        'https://app.bloodscriptengine.tech',
+        'https://bloodscriptengine.tech',
+        'http://localhost',
+        'http://localhost:5173',
+        'http://10.10.0.5:5173',
+        'http://10.10.0.2',
+      ];
+
+      // Allow server-to-server & curl
+      if (!origin) {
+        return callback(null, true);
+      }
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      logger.warn(`CORS blocked origin: ${origin}`);
+      callback(new Error('CORS not allowed'));
+    },
+
+    credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Authorization', 'Content-Type'],
-    credentials: false,
   });
 
   // Global validation
@@ -49,6 +67,9 @@ async function bootstrap() {
       transform: true,
     }),
   );
+
+  // IMPORTANT: this must match nginx proxy
+  app.setGlobalPrefix('api');
 
   const port = Number(process.env.PORT) || 3000;
   await app.listen(port, '0.0.0.0');
