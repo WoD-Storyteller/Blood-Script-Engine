@@ -1,4 +1,6 @@
 import { Injectable } from '@nestjs/common';
+import { CompulsionsService } from '../hunger/compulsions.service';
+import { ResonanceService } from '../resonance/resonance.service';
 
 export type V5RollResult = {
   pool: number;
@@ -9,11 +11,25 @@ export type V5RollResult = {
   critical: boolean;
   messyCritical: boolean;
   bestialFailure: boolean;
+  resonance: {
+    resonance: string;
+    dyscrasia: boolean;
+  };
 };
 
 @Injectable()
 export class DiceService {
-  rollV5(pool: number, hunger: number): V5RollResult {
+  constructor(
+    private readonly compulsions: CompulsionsService,
+    private readonly resonance: ResonanceService,
+  ) {}
+
+  rollV5(
+    pool: number,
+    hunger: number,
+    engineId?: string,
+    characterId?: string,
+  ): V5RollResult {
     const normalDice = Math.max(0, pool - hunger);
     const hungerDice = Math.max(0, hunger);
 
@@ -35,6 +51,16 @@ export class DiceService {
     const messyCritical = critical && hungerTens > 0;
     const bestialFailure = successes === 0 && hungerOnes > 0;
 
+    if (engineId && characterId) {
+      if (messyCritical) {
+        this.compulsions.triggerMessyCritical(engineId, characterId);
+      }
+
+      if (bestialFailure) {
+        this.compulsions.triggerBestialFailure(engineId, characterId);
+      }
+    }
+
     return {
       pool,
       hunger,
@@ -44,11 +70,14 @@ export class DiceService {
       critical,
       messyCritical,
       bestialFailure,
+      resonance: this.resonance.roll(hunger),
     };
   }
 
   private roll(n: number): number[] {
-    return Array.from({ length: n }, () => 1 + Math.floor(Math.random() * 10));
+    return Array.from({ length: n }, () =>
+      Math.floor(Math.random() * 10) + 1,
+    );
   }
 
   private countSuccesses(rolls: number[]): number {
