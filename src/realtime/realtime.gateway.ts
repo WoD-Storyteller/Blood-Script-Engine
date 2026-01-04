@@ -3,82 +3,57 @@ import {
   WebSocketServer,
   OnGatewayInit,
   OnGatewayConnection,
+  OnGatewayDisconnect,
 } from '@nestjs/websockets';
 import type { Server, Socket } from 'socket.io';
-import { DatabaseService } from '../database/database.service';
+
 import { CompanionAuthService } from '../companion/auth.service';
-import { DashboardService } from '../companion/dashboard.service';
+import { DatabaseService } from '../database/database.service';
 import { RealtimeService } from './realtime.service';
 
-function parseCookie(header?: string): Record<string, string> {
-  const out: Record<string, string> = {};
-  if (!header) return out;
-  const parts = header.split(';');
-  for (const p of parts) {
-    const i = p.indexOf('=');
-    if (i === -1) continue;
-    const k = p.slice(0, i).trim();
-    const v = p.slice(i + 1).trim();
-    if (k) out[k] = decodeURIComponent(v);
-  }
-  return out;
-}
-
 @WebSocketGateway({
-  namespace: '/realtime',
   cors: {
-    origin: process.env.COMPANION_APP_URL || 'http://localhost:5173',
+    origin: true,
     credentials: true,
   },
 })
-export class RealtimeGateway implements OnGatewayInit, OnGatewayConnection {
-  @WebSocketServer() server!: Server;
+export class RealtimeGateway
+  implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect
+{
+  @WebSocketServer()
+  server!: Server;
 
   constructor(
     private readonly db: DatabaseService,
     private readonly auth: CompanionAuthService,
-    private readonly dashboard: DashboardService,
     private readonly realtime: RealtimeService,
   ) {}
 
-  afterInit() {
-    this.realtime.setServer(this.server);
+  afterInit(server: Server) {
+    this.realtime.setServer(server);
   }
 
   async handleConnection(socket: Socket) {
-    const cookieHeader = socket.handshake.headers?.cookie as string | undefined;
-    const cookies = parseCookie(cookieHeader);
-    const token = cookies['bse_token'];
+    const token =
+      socket.handshake.auth?.token ??
+      socket.handshake.headers?.authorization?.replace('Bearer ', '');
 
     if (!token) {
-      socket.emit('error', { error: 'Unauthorized' });
-      socket.disconnect(true);
+      socket.disconnect();
       return;
     }
 
-    const session = await this.db.withClient(async (client: any) => {
-      return this.auth.validateToken(client, token);
-    });
+    await this.db.withClient(async (client) => {
+      const session = await this.auth.validateToken(client, token);
+      if (!session) {
+        socket.disconnect();
+        return;
+      }
 
-    if (!session) {
-      socket.emit('error', { error: 'Unauthorized' });
-      socket.disconnect(true);
-      return;
-    }
-
-    const engineId = session.engine_id as string;
-    socket.join(this.realtime.engineRoom(engineId));
-
-    // Send initial world state for convenience
-    const world = await this.db.withClient(async (client: any) => {
-      return this.dashboard.getWorldState(client, engineId);
-    });
-
-    socket.emit('world', {
-      engineId,
-      world,
-      at: new Date().toISOString(),
-      initial: true,
+      socket.join(`engine:${session.engine_id}`);
+      socket.data.session = session;
     });
   }
+
+  handleDisconnect(_socket: Socket) {}
 }
