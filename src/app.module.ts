@@ -1,5 +1,6 @@
 import { Module, MiddlewareConsumer } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+
 import { DatabaseModule } from './database/database.module';
 import { AuthModule } from './auth/auth.module';
 import { EngineModule } from './engine/engine.module';
@@ -15,11 +16,13 @@ import { DiscordModule } from './discord/discord.module';
 import { AiModule } from './ai/ai.module';
 import { OwnerModule } from './owner/owner.module';
 import { JobsModule } from './jobs/jobs.module';
-import { SessionMiddleware } from './common/middleware/session.middleware';
 import { DiceModule } from './dice/dice.module';
 import { XpModule } from './xp/xp.module';
 import { RealtimeModule } from './realtime/realtime.module';
 import { CompanionModule } from './companion/companion.module';
+
+import { SessionMiddleware } from './common/middleware/session.middleware';
+import { CompulsionsModule } from './hunger/compulsions.module';
 
 @Module({
   imports: [
@@ -43,6 +46,7 @@ import { CompanionModule } from './companion/companion.module';
     JobsModule,
     DiceModule,
     XpModule,
+    CompulsionsModule,
   ],
 })
 export class AppModule {
