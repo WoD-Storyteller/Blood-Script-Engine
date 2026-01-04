@@ -20,9 +20,8 @@ import { DiceModule } from './dice/dice.module';
 import { XpModule } from './xp/xp.module';
 import { RealtimeModule } from './realtime/realtime.module';
 import { CompanionModule } from './companion/companion.module';
-
+import { StModule } from './st/st.module';
 import { SessionMiddleware } from './common/middleware/session.middleware';
-import { CompulsionsModule } from './hunger/compulsions.module';
 
 @Module({
   imports: [
@@ -46,7 +45,7 @@ import { CompulsionsModule } from './hunger/compulsions.module';
     JobsModule,
     DiceModule,
     XpModule,
-    CompulsionsModule,
+    StModule,
   ],
 })
 export class AppModule {
