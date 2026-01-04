@@ -14,6 +14,8 @@ import { EngineAccessRoute, enforceEngineAccess } from '../engine/engine.guard';
 import { RealtimeService } from '../realtime/realtime.service';
 import { ResonanceService } from '../resonance/resonance.service';
 import { CompulsionsService } from '../hunger/compulsions.service';
+import { HumanityService } from '../humanity/humanity.service';
+import { FrenzyService } from '../hunger/frenzy.service';
 
 @Controller('companion/dice')
 export class DiceController {
@@ -24,6 +26,8 @@ export class DiceController {
     private readonly realtime: RealtimeService,
     private readonly resonance: ResonanceService,
     private readonly compulsions: CompulsionsService,
+    private readonly humanity: HumanityService,
+    private readonly frenzy: FrenzyService,
   ) {}
 
   private token(req: Request, auth?: string) {
@@ -57,9 +61,6 @@ export class DiceController {
 
       enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
-      // --------------------------------------------------
-      // Resolve Hunger & Active Character
-      // --------------------------------------------------
       let hunger = body.hunger ?? 0;
       let characterId: string | null = null;
 
@@ -67,63 +68,31 @@ export class DiceController {
         const r = await client.query(
           `
           SELECT
-            c.character_id,
-            (c.sheet->>'hunger')::int AS hunger
-          FROM characters c
-          WHERE c.engine_id=$1
-            AND c.owner_user_id=$2
-            AND c.is_active=true
+            character_id,
+            (sheet->>'hunger')::int AS hunger
+          FROM characters
+          WHERE engine_id=$1
+            AND owner_user_id=$2
+            AND is_active=true
           LIMIT 1
           `,
           [session.engine_id, session.user_id],
         );
 
         if (r.rowCount) {
-          hunger = Number(r.rows[0].hunger ?? 0);
+          hunger = r.rows[0].hunger ?? 0;
           characterId = r.rows[0].character_id;
         }
       }
 
-      // --------------------------------------------------
-      // Roll Dice
-      // --------------------------------------------------
       const result = this.dice.rollV5(
         Math.max(0, body.pool),
         Math.max(0, hunger),
       );
 
-      // --------------------------------------------------
-      // Realtime: Always broadcast roll
-      // --------------------------------------------------
-      this.realtime.emitToEngine(session.engine_id, 'dice_roll', {
-        label: body.label ?? 'Roll',
-        result,
-        characterId,
-        userId: session.user_id,
-      });
-
-      // --------------------------------------------------
-      // Resonance & Dyscrasia (Messy Critical hook)
-      // --------------------------------------------------
-      if (result.messyCritical && characterId) {
-        await this.resonance.applyMessyCritical(
-          client,
-          session.engine_id,
-          characterId,
-        );
-
-        this.realtime.emitToEngine(
-          session.engine_id,
-          'messy_critical',
-          {
-            characterId,
-          },
-        );
-      }
-
-      // --------------------------------------------------
-      // Compulsions (Bestial Failure hook)
-      // --------------------------------------------------
+      // -----------------------------
+      // BESTIAL FAILURE
+      // -----------------------------
       if (result.bestialFailure && characterId) {
         const compulsion =
           await this.compulsions.triggerFromFailure(
@@ -132,13 +101,52 @@ export class DiceController {
             characterId,
           );
 
-        this.realtime.emitToEngine(
+        await this.humanity.recordStain(
+          client,
+          session.engine_id,
+          characterId,
+          'Bestial Failure',
+        );
+
+        await this.realtime.emitToEngine(
           session.engine_id,
           'bestial_failure',
-          {
-            characterId,
-            compulsion,
-          },
+          { characterId, compulsion },
+        );
+      }
+
+      // -----------------------------
+      // MESSY CRITICAL
+      // -----------------------------
+      if (result.messyCritical && characterId) {
+        await this.resonance.applyMessyCritical(
+          client,
+          session.engine_id,
+          characterId,
+        );
+
+        await this.realtime.emitToEngine(
+          session.engine_id,
+          'messy_critical',
+          { characterId },
+        );
+      }
+
+      // -----------------------------
+      // HUNGER FRENZY THRESHOLD
+      // -----------------------------
+      if (hunger >= 5 && characterId) {
+        await this.frenzy.triggerFrenzy(
+          client,
+          session.engine_id,
+          characterId,
+          'hunger',
+        );
+
+        await this.realtime.emitToEngine(
+          session.engine_id,
+          'frenzy',
+          { characterId, type: 'hunger' },
         );
       }
 
