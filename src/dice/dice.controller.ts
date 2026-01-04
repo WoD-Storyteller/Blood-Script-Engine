@@ -59,9 +59,13 @@ export class DiceController {
       if (body.useActiveCharacterHunger) {
         const r = await client.query(
           `
-          SELECT character_id, (sheet->>'hunger')::int AS hunger
-          FROM characters
-          WHERE engine_id=$1 AND owner_user_id=$2 AND is_active=true
+          SELECT
+            c.character_id,
+            (c.sheet->>'hunger')::int AS hunger
+          FROM characters c
+          WHERE c.engine_id=$1
+            AND c.owner_user_id=$2
+            AND c.is_active=true
           LIMIT 1
           `,
           [session.engine_id, session.user_id],
@@ -78,22 +82,54 @@ export class DiceController {
         Math.max(0, hunger),
       );
 
-      this.realtime.emitDiceResult(session.engine_id, {
-        label: body.label ?? 'Roll',
-        result,
-        characterId,
-        userId: session.user_id,
-      });
+      // --------------------------------------------------
+      // AUTO EFFECTS (WRAPPED, NOT REPLACED)
+      // --------------------------------------------------
 
-      if (result.messyCritical || result.bestialFailure) {
-        this.realtime.emitHungerEvent(session.engine_id, {
-          characterId,
-          type: result.messyCritical
-            ? 'MESSY_CRITICAL'
-            : 'BESTIAL_FAILURE',
-          hunger,
-        });
+      if (characterId) {
+        if (result.messyCritical || result.bestialFailure) {
+          await client.query(
+            `
+            UPDATE characters
+            SET sheet = jsonb_set(
+              sheet,
+              '{last_hunger_event}',
+              to_jsonb($2::text),
+              true
+            )
+            WHERE character_id=$1
+            `,
+            [
+              characterId,
+              result.messyCritical
+                ? 'messy_critical'
+                : 'bestial_failure',
+            ],
+          );
+
+          this.realtime.emitToEngine(
+            session.engine_id,
+            'hunger_event',
+            {
+              characterId,
+              type: result.messyCritical
+                ? 'messy_critical'
+                : 'bestial_failure',
+              roll: result,
+            },
+          );
+        }
       }
+
+      this.realtime.emitToEngine(
+        session.engine_id,
+        'dice_roll',
+        {
+          userId: session.user_id,
+          label: body.label ?? 'Roll',
+          result,
+        },
+      );
 
       return {
         label: body.label ?? 'Roll',
