@@ -1,52 +1,92 @@
 import { Injectable } from '@nestjs/common';
-import { PoolClient } from 'pg';
 
-const CLAN_COMPULSIONS: Record<string, string[]> = {
-  brujah: ['Rebellion', 'Wrath'],
-  ventrue: ['Arrogance'],
-  toreador: ['Aesthetic Fixation'],
-  malkavian: ['Derangement'],
-  nosferatu: ['Cryptophilia'],
-  tremere: ['Perfectionism'],
-  gangrel: ['Feral Impulses'],
-  lasombra: ['Ruthlessness'],
+export type CompulsionResult = {
+  clan: string;
+  compulsion: string;
+  description: string;
 };
 
 @Injectable()
 export class CompulsionsService {
-  async triggerFromFailure(
-    client: PoolClient,
-    engineId: string,
-    characterId: string,
-  ) {
-    const r = await client.query(
-      `
-      SELECT sheet->>'clan' AS clan
-      FROM characters
-      WHERE engine_id=$1 AND character_id=$2
-      `,
-      [engineId, characterId],
-    );
+  private readonly clanCompulsions: Record<string, CompulsionResult[]> = {
+    brujah: [
+      {
+        clan: 'Brujah',
+        compulsion: 'Rebellion',
+        description:
+          'The Brujah must rebel against authority or perceived injustice.',
+      },
+    ],
+    gangrel: [
+      {
+        clan: 'Gangrel',
+        compulsion: 'Bestial Features',
+        description:
+          'The Beast surfaces physically, marking the vampire.',
+      },
+    ],
+    malkavian: [
+      {
+        clan: 'Malkavian',
+        compulsion: 'Madness',
+        description:
+          'Derangement surges to the forefront of the mind.',
+      },
+    ],
+    nosferatu: [
+      {
+        clan: 'Nosferatu',
+        compulsion: 'Cryptophilia',
+        description:
+          'The Nosferatu hoards secrets or retreats into isolation.',
+      },
+    ],
+    toreador: [
+      {
+        clan: 'Toreador',
+        compulsion: 'Aesthetic Fixation',
+        description:
+          'The Toreador becomes obsessed with beauty or art.',
+      },
+    ],
+    tremere: [
+      {
+        clan: 'Tremere',
+        compulsion: 'Perfectionism',
+        description:
+          'Failure is unacceptable; flaws must be corrected.',
+      },
+    ],
+    ventrue: [
+      {
+        clan: 'Ventrue',
+        compulsion: 'Arrogance',
+        description:
+          'The Ventrue asserts dominance and entitlement.',
+      },
+    ],
+    caitiff: [
+      {
+        clan: 'Caitiff',
+        compulsion: 'Survival',
+        description:
+          'Instinctive self-preservation overrides social bonds.',
+      },
+    ],
+    thinblood: [
+      {
+        clan: 'Thin-Blood',
+        compulsion: 'Desperation',
+        description:
+          'Panic and uncertainty drive reckless decisions.',
+      },
+    ],
+  };
 
-    const clan = (r.rows[0]?.clan || '').toLowerCase();
-    const options = CLAN_COMPULSIONS[clan] ?? ['Hunger'];
+  resolveCompulsion(clan: string): CompulsionResult {
+    const key = clan?.toLowerCase() ?? 'caitiff';
+    const list = this.clanCompulsions[key] ?? this.clanCompulsions.caitiff;
 
-    const compulsion =
-      options[Math.floor(Math.random() * options.length)];
-
-    await client.query(
-      `
-      UPDATE characters
-      SET sheet = jsonb_set(
-        sheet,
-        '{active_compulsion}',
-        to_jsonb($3::text)
-      )
-      WHERE engine_id=$1 AND character_id=$2
-      `,
-      [engineId, characterId, compulsion],
-    );
-
-    return compulsion;
+    return list[Math.floor(Math.random() * list.length)];
   }
 }
