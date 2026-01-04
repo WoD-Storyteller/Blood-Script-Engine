@@ -1,23 +1,19 @@
-
 import { Module } from '@nestjs/common';
 import { DatabaseModule } from '../database/database.module';
 import { CompanionModule } from '../companion/companion.module';
-import { CharactersModule } from '../characters/characters.module';
-import { CompulsionsModule } from '../hunger/compulsions.module';
-import { ResonanceModule } from '../resonance/resonance.module';
-import { DiceService } from './dice.service';
+import { RealtimeModule } from '../realtime/realtime.module';
+
 import { DiceController } from './dice.controller';
+import { DiceService } from './dice.service';
 
 @Module({
   imports: [
     DatabaseModule,
     CompanionModule,
-    CharactersModule,
-    CompulsionsModule,
-    ResonanceModule,
+    RealtimeModule,
   ],
-  providers: [DiceService],
   controllers: [DiceController],
+  providers: [DiceService],
   exports: [DiceService],
 })
 export class DiceModule {}
