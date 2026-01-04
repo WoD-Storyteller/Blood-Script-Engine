@@ -12,10 +12,6 @@ import { CompanionAuthService } from '../companion/auth.service';
 import { DiceService } from './dice.service';
 import { EngineAccessRoute, enforceEngineAccess } from '../engine/engine.guard';
 import { RealtimeService } from '../realtime/realtime.service';
-import { ResonanceService } from '../resonance/resonance.service';
-import { CompulsionsService } from '../hunger/compulsions.service';
-import { HumanityService } from '../humanity/humanity.service';
-import { FrenzyService } from '../hunger/frenzy.service';
 
 @Controller('companion/dice')
 export class DiceController {
@@ -24,10 +20,6 @@ export class DiceController {
     private readonly auth: CompanionAuthService,
     private readonly dice: DiceService,
     private readonly realtime: RealtimeService,
-    private readonly resonance: ResonanceService,
-    private readonly compulsions: CompulsionsService,
-    private readonly humanity: HumanityService,
-    private readonly frenzy: FrenzyService,
   ) {}
 
   private token(req: Request, auth?: string) {
@@ -59,95 +51,70 @@ export class DiceController {
       );
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
 
-      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
+      enforceEngineAccess(
+        engineRes.rows[0],
+        session,
+        EngineAccessRoute.NORMAL,
+      );
 
+      // --------------------------------------------------
+      // Resolve Hunger
+      // --------------------------------------------------
       let hunger = body.hunger ?? 0;
-      let characterId: string | null = null;
 
       if (body.useActiveCharacterHunger) {
         const r = await client.query(
           `
-          SELECT
-            character_id,
-            (sheet->>'hunger')::int AS hunger
-          FROM characters
-          WHERE engine_id=$1
-            AND owner_user_id=$2
-            AND is_active=true
+          SELECT (c.sheet->>'hunger')::int AS hunger
+          FROM characters c
+          WHERE c.engine_id=$1
+            AND c.owner_user_id=$2
+            AND c.is_active=true
           LIMIT 1
           `,
           [session.engine_id, session.user_id],
         );
 
-        if (r.rowCount) {
-          hunger = r.rows[0].hunger ?? 0;
-          characterId = r.rows[0].character_id;
-        }
+        hunger = r.rowCount ? Number(r.rows[0].hunger ?? 0) : 0;
       }
 
+      // --------------------------------------------------
+      // Roll Dice
+      // --------------------------------------------------
       const result = this.dice.rollV5(
         Math.max(0, body.pool),
         Math.max(0, hunger),
       );
 
-      // -----------------------------
-      // BESTIAL FAILURE
-      // -----------------------------
-      if (result.bestialFailure && characterId) {
-        const compulsion =
-          await this.compulsions.triggerFromFailure(
-            client,
-            session.engine_id,
-            characterId,
-          );
+      // --------------------------------------------------
+      // Realtime Effects
+      // --------------------------------------------------
+      const engineId = session.engine_id;
 
-        await this.humanity.recordStain(
-          client,
-          session.engine_id,
-          characterId,
-          'Bestial Failure',
-        );
-
-        await this.realtime.emitToEngine(
-          session.engine_id,
-          'bestial_failure',
-          { characterId, compulsion },
-        );
+      if (result.messyCritical) {
+        this.realtime.emitToEngine(engineId, 'messy_critical', {
+          userId: session.user_id,
+          pool: body.pool,
+          hunger,
+        });
       }
 
-      // -----------------------------
-      // MESSY CRITICAL
-      // -----------------------------
-      if (result.messyCritical && characterId) {
-        await this.resonance.applyMessyCritical(
-          client,
-          session.engine_id,
-          characterId,
-        );
-
-        await this.realtime.emitToEngine(
-          session.engine_id,
-          'messy_critical',
-          { characterId },
-        );
+      if (result.bestialFailure) {
+        this.realtime.emitToEngine(engineId, 'bestial_failure', {
+          userId: session.user_id,
+          pool: body.pool,
+          hunger,
+        });
       }
 
-      // -----------------------------
-      // HUNGER FRENZY THRESHOLD
-      // -----------------------------
-      if (hunger >= 5 && characterId) {
-        await this.frenzy.triggerFrenzy(
-          client,
-          session.engine_id,
-          characterId,
-          'hunger',
-        );
-
-        await this.realtime.emitToEngine(
-          session.engine_id,
-          'frenzy',
-          { characterId, type: 'hunger' },
-        );
+      if (
+        (result.messyCritical || result.bestialFailure) &&
+        hunger >= 5
+      ) {
+        this.realtime.emitToEngine(engineId, 'frenzy_triggered', {
+          userId: session.user_id,
+          reason: 'hunger_overflow',
+        });
       }
 
       return {
