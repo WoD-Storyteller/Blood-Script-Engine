@@ -1,30 +1,39 @@
 import { Injectable } from '@nestjs/common';
-import { DiceService } from '../dice/dice.service';
-
-export type ResonanceResult = {
-  type: 'none' | 'fleeting' | 'intense';
-  dyscrasia: boolean;
-};
+import { PoolClient } from 'pg';
 
 @Injectable()
 export class ResonanceService {
-  constructor(private readonly dice: DiceService) {}
+  async applyMessyCritical(
+    client: PoolClient,
+    engineId: string,
+    characterId: string,
+  ) {
+    /**
+     * V5 Rule:
+     * Messy Critical can intensify Resonance
+     * or create Dyscrasia at ST discretion.
+     *
+     * Engine-side we:
+     * - Increment resonance_intensity
+     * - Flag dyscrasia_candidate
+     */
 
-  rollResonance(hunger: number): ResonanceResult {
-    const roll = this.dice.rollV5(1, hunger);
-
-    if (roll.bestialFailure) {
-      return { type: 'none', dyscrasia: false };
-    }
-
-    if (roll.messyCritical) {
-      return { type: 'intense', dyscrasia: true };
-    }
-
-    if (roll.successes > 0) {
-      return { type: 'fleeting', dyscrasia: false };
-    }
-
-    return { type: 'none', dyscrasia: false };
+    await client.query(
+      `
+      UPDATE characters
+      SET sheet = jsonb_set(
+        sheet,
+        '{resonance}',
+        COALESCE(sheet->'resonance', '{}'::jsonb) ||
+        jsonb_build_object(
+          'intensity',
+          LEAST(3, COALESCE((sheet->'resonance'->>'intensity')::int, 0) + 1),
+          'dyscrasia_candidate', true
+        )
+      )
+      WHERE engine_id=$1 AND character_id=$2
+      `,
+      [engineId, characterId],
+    );
   }
 }
