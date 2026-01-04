@@ -4,7 +4,6 @@ import {
   Body,
   Req,
   Headers,
-  Inject,
 } from '@nestjs/common';
 import type { Request } from 'express';
 
@@ -59,7 +58,7 @@ export class DiceController {
       enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
 
       // --------------------------------------------------
-      // Resolve Hunger
+      // Resolve Hunger & Active Character
       // --------------------------------------------------
       let hunger = body.hunger ?? 0;
       let characterId: string | null = null;
@@ -81,4 +80,72 @@ export class DiceController {
 
         if (r.rowCount) {
           hunger = Number(r.rows[0].hunger ?? 0);
-          characterId = r.rows[0].character
+          characterId = r.rows[0].character_id;
+        }
+      }
+
+      // --------------------------------------------------
+      // Roll Dice
+      // --------------------------------------------------
+      const result = this.dice.rollV5(
+        Math.max(0, body.pool),
+        Math.max(0, hunger),
+      );
+
+      // --------------------------------------------------
+      // Realtime: Always broadcast roll
+      // --------------------------------------------------
+      this.realtime.emitToEngine(session.engine_id, 'dice_roll', {
+        label: body.label ?? 'Roll',
+        result,
+        characterId,
+        userId: session.user_id,
+      });
+
+      // --------------------------------------------------
+      // Resonance & Dyscrasia (Messy Critical hook)
+      // --------------------------------------------------
+      if (result.messyCritical && characterId) {
+        await this.resonance.applyMessyCritical(
+          client,
+          session.engine_id,
+          characterId,
+        );
+
+        this.realtime.emitToEngine(
+          session.engine_id,
+          'messy_critical',
+          {
+            characterId,
+          },
+        );
+      }
+
+      // --------------------------------------------------
+      // Compulsions (Bestial Failure hook)
+      // --------------------------------------------------
+      if (result.bestialFailure && characterId) {
+        const compulsion =
+          await this.compulsions.triggerFromFailure(
+            client,
+            session.engine_id,
+            characterId,
+          );
+
+        this.realtime.emitToEngine(
+          session.engine_id,
+          'bestial_failure',
+          {
+            characterId,
+            compulsion,
+          },
+        );
+      }
+
+      return {
+        label: body.label ?? 'Roll',
+        result,
+      };
+    });
+  }
+}
