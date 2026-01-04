@@ -1,43 +1,52 @@
 import { Injectable } from '@nestjs/common';
-import { DatabaseService } from '../database/database.service';
-import { RealtimeService } from '../realtime/realtime.service';
+import { PoolClient } from 'pg';
+
+const CLAN_COMPULSIONS: Record<string, string[]> = {
+  brujah: ['Rebellion', 'Wrath'],
+  ventrue: ['Arrogance'],
+  toreador: ['Aesthetic Fixation'],
+  malkavian: ['Derangement'],
+  nosferatu: ['Cryptophilia'],
+  tremere: ['Perfectionism'],
+  gangrel: ['Feral Impulses'],
+  lasombra: ['Ruthlessness'],
+};
 
 @Injectable()
 export class CompulsionsService {
-  constructor(
-    private readonly db: DatabaseService,
-    private readonly realtime: RealtimeService,
-  ) {}
+  async triggerFromFailure(
+    client: PoolClient,
+    engineId: string,
+    characterId: string,
+  ) {
+    const r = await client.query(
+      `
+      SELECT sheet->>'clan' AS clan
+      FROM characters
+      WHERE engine_id=$1 AND character_id=$2
+      `,
+      [engineId, characterId],
+    );
 
-  async triggerBestialFailure(characterId?: string) {
-    if (!characterId) return;
+    const clan = (r.rows[0]?.clan || '').toLowerCase();
+    const options = CLAN_COMPULSIONS[clan] ?? ['Hunger'];
 
-    await this.db.insert('compulsions', {
-      character_id: characterId,
-      type: 'bestial_failure',
-      resolved: false,
-      created_at: new Date(),
-    });
+    const compulsion =
+      options[Math.floor(Math.random() * options.length)];
 
-    this.realtime.emit('frenzy_triggered', {
-      characterId,
-      severity: 'high',
-    });
-  }
+    await client.query(
+      `
+      UPDATE characters
+      SET sheet = jsonb_set(
+        sheet,
+        '{active_compulsion}',
+        to_jsonb($3::text)
+      )
+      WHERE engine_id=$1 AND character_id=$2
+      `,
+      [engineId, characterId, compulsion],
+    );
 
-  async triggerMessyCritical(characterId?: string) {
-    if (!characterId) return;
-
-    await this.db.insert('compulsions', {
-      character_id: characterId,
-      type: 'messy_critical',
-      resolved: false,
-      created_at: new Date(),
-    });
-
-    this.realtime.emit('compulsion_triggered', {
-      characterId,
-      severity: 'medium',
-    });
+    return compulsion;
   }
 }
