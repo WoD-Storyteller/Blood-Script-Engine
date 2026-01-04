@@ -9,7 +9,6 @@ export type V5RollResult = {
   critical: boolean;
   messyCritical: boolean;
   bestialFailure: boolean;
-  margin: number;
 };
 
 @Injectable()
@@ -45,7 +44,6 @@ export class DiceService {
       critical,
       messyCritical,
       bestialFailure,
-      margin: successes,
     };
   }
 
