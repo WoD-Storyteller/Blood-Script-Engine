@@ -12,6 +12,7 @@ import { CompanionAuthService } from '../companion/auth.service';
 import { DiceService } from './dice.service';
 import { EngineAccessRoute, enforceEngineAccess } from '../engine/engine.guard';
 import { RealtimeService } from '../realtime/realtime.service';
+import { CompulsionsService } from '../hunger/compulsions.service';
 
 @Controller('companion/dice')
 export class DiceController {
@@ -20,6 +21,7 @@ export class DiceController {
     private readonly auth: CompanionAuthService,
     private readonly dice: DiceService,
     private readonly realtime: RealtimeService,
+    private readonly compulsions: CompulsionsService,
   ) {}
 
   private token(req: Request, auth?: string) {
@@ -57,15 +59,18 @@ export class DiceController {
         EngineAccessRoute.NORMAL,
       );
 
-      // --------------------------------------------------
-      // Resolve Hunger
-      // --------------------------------------------------
+      // ----------------------------------------
+      // Resolve Hunger & Character
+      // ----------------------------------------
       let hunger = body.hunger ?? 0;
+      let clan: string | null = null;
 
       if (body.useActiveCharacterHunger) {
         const r = await client.query(
           `
-          SELECT (c.sheet->>'hunger')::int AS hunger
+          SELECT
+            (c.sheet->>'hunger')::int AS hunger,
+            c.sheet->>'clan' AS clan
           FROM characters c
           WHERE c.engine_id=$1
             AND c.owner_user_id=$2
@@ -75,45 +80,38 @@ export class DiceController {
           [session.engine_id, session.user_id],
         );
 
-        hunger = r.rowCount ? Number(r.rows[0].hunger ?? 0) : 0;
+        if (r.rowCount) {
+          hunger = Number(r.rows[0].hunger ?? 0);
+          clan = r.rows[0].clan ?? 'caitiff';
+        }
       }
 
-      // --------------------------------------------------
+      // ----------------------------------------
       // Roll Dice
-      // --------------------------------------------------
+      // ----------------------------------------
       const result = this.dice.rollV5(
         Math.max(0, body.pool),
         Math.max(0, hunger),
       );
 
-      // --------------------------------------------------
-      // Realtime Effects
-      // --------------------------------------------------
       const engineId = session.engine_id;
 
-      if (result.messyCritical) {
-        this.realtime.emitToEngine(engineId, 'messy_critical', {
-          userId: session.user_id,
-          pool: body.pool,
-          hunger,
-        });
-      }
+      // ----------------------------------------
+      // Auto-Trigger Compulsions
+      // ----------------------------------------
+      if (result.messyCritical || result.bestialFailure) {
+        const compulsion = this.compulsions.resolveCompulsion(
+          clan ?? 'caitiff',
+        );
 
-      if (result.bestialFailure) {
-        this.realtime.emitToEngine(engineId, 'bestial_failure', {
+        this.realtime.emitToEngine(engineId, 'compulsion_triggered', {
           userId: session.user_id,
-          pool: body.pool,
-          hunger,
-        });
-      }
-
-      if (
-        (result.messyCritical || result.bestialFailure) &&
-        hunger >= 5
-      ) {
-        this.realtime.emitToEngine(engineId, 'frenzy_triggered', {
-          userId: session.user_id,
-          reason: 'hunger_overflow',
+          clan: compulsion.clan,
+          compulsion: compulsion.compulsion,
+          description: compulsion.description,
+          trigger: result.messyCritical
+            ? 'messy_critical'
+            : 'bestial_failure',
         });
       }
 
