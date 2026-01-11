@@ -2,6 +2,8 @@ import { Module, MiddlewareConsumer } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
 import { DatabaseModule } from './database/database.module';
+import { RealtimeModule } from './realtime/realtime.module';
+import { CompanionModule } from './companion/companion.module';
 import { AuthModule } from './auth/auth.module';
 import { EngineModule } from './engine/engine.module';
 import { SafetyModule } from './safety/safety.module';
@@ -18,9 +20,8 @@ import { OwnerModule } from './owner/owner.module';
 import { JobsModule } from './jobs/jobs.module';
 import { DiceModule } from './dice/dice.module';
 import { XpModule } from './xp/xp.module';
-import { RealtimeModule } from './realtime/realtime.module';
-import { CompanionModule } from './companion/companion.module';
-import { StModule } from './st/st.module';
+import { HumanityModule } from './humanity/humanity.module';
+
 import { SessionMiddleware } from './common/middleware/session.middleware';
 
 @Module({
@@ -45,7 +46,7 @@ import { SessionMiddleware } from './common/middleware/session.middleware';
     JobsModule,
     DiceModule,
     XpModule,
-    StModule,
+    HumanityModule,
   ],
 })
 export class AppModule {
