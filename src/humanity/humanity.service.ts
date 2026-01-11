@@ -1,83 +1,74 @@
-
 import { Injectable } from '@nestjs/common';
-import { PoolClient } from 'pg';
+import { DiceService } from '../dice/dice.service';
+import { RealtimeService } from '../realtime/realtime.service';
+import { v4 as uuid } from 'uuid';
 
 @Injectable()
 export class HumanityService {
-  async recordStain(
-    client: PoolClient,
-    engineId: string,
-    characterId: string,
-    reason: string,
-  ) {
-    await client.query(
-      `
-      UPDATE characters
-      SET sheet = jsonb_set(
-        sheet,
-        '{stains}',
-        to_jsonb(
-          COALESCE((sheet->>'stains')::int, 0) + 1
-        )
-      )
-      WHERE engine_id=$1 AND character_id=$2
-      `,
-      [engineId, characterId],
-    );
+  constructor(
+    private readonly dice: DiceService,
+    private readonly realtime: RealtimeService,
+  ) {}
 
-    await client.query(
-      `
-      INSERT INTO humanity_events
-      (engine_id, character_id, reason)
-      VALUES ($1, $2, $3)
-      `,
-      [engineId, characterId, reason],
-    );
+  applyStains(
+    sheet: any,
+    engineId: string,
+    reason: string,
+    stains: number,
+  ) {
+    sheet.humanity = sheet.humanity ?? 7;
+    sheet.stains = (sheet.stains ?? 0) + stains;
+    sheet.degenerationLog = sheet.degenerationLog ?? [];
+
+    sheet.degenerationLog.push({
+      id: uuid(),
+      timestamp: new Date().toISOString(),
+      reason,
+      stains,
+      remorseRolled: false,
+    });
+
+    this.realtime.emitToEngine(engineId, 'stains_added', {
+      reason,
+      stains,
+      total: sheet.stains,
+    });
+
+    return sheet;
   }
 
-  async resolveRemorse(
-    client: PoolClient,
-    engineId: string,
-    characterId: string,
-    successes: number,
-  ) {
-    const r = await client.query(
-      `
-      SELECT
-        (sheet->>'stains')::int AS stains,
-        (sheet->>'humanity')::int AS humanity
-      FROM characters
-      WHERE engine_id=$1 AND character_id=$2
-      `,
-      [engineId, characterId],
-    );
+  resolveRemorse(sheet: any, engineId: string) {
+    const stains = sheet.stains ?? 0;
+    if (stains <= 0) return sheet;
 
-    if (!r.rowCount) return;
+    const humanity = sheet.humanity ?? 7;
+    const pool = Math.max(1, humanity - stains);
 
-    const { stains, humanity } = r.rows[0];
+    const roll = this.dice.rollV5(pool, 0);
+    const success = roll.successes > 0;
 
-    if (successes < stains) {
-      await client.query(
-        `
-        UPDATE characters
-        SET sheet = jsonb_set(
-          sheet,
-          '{humanity}',
-          to_jsonb(GREATEST(0, $3 - 1))
-        )
-        WHERE engine_id=$1 AND character_id=$2
-        `,
-        [engineId, characterId, humanity],
-      );
+    const event = sheet.degenerationLog?.at(-1);
+    if (event) {
+      event.remorseRolled = true;
+      event.success = success;
     }
 
-    await client.query(
-      `
-      UPDATE characters
-      SET sheet = jsonb_set(sheet, '{stains}', '0')
-      WHERE engine_id=$1 AND character_id=$2
-      `,
-      [engineId, characterId],
-    );
+    if (!success) {
+      sheet.humanity = Math.max(0, humanity - 1);
+      if (event) event.humanityLost = 1;
+
+      this.realtime.emitToEngine(engineId, 'humanity_lost', {
+        humanity: sheet.humanity,
+      });
+    }
+
+    sheet.stains = 0;
+
+    this.realtime.emitToEngine(engineId, 'remorse_resolved', {
+      success,
+      humanity: sheet.humanity,
+    });
+
+    return sheet;
   }
 }
