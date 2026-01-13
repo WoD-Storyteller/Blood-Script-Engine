@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { PoolClient } from 'pg';
 
+const RESONANCE_TYPES = ['choleric', 'sanguine', 'melancholic', 'phlegmatic'];
+
 @Injectable()
 export class ResonanceService {
   async applyMessyCritical(
@@ -9,11 +11,10 @@ export class ResonanceService {
     characterId: string,
   ) {
     /**
-     * V5 Rule (Engine Interpretation):
-     * - Messy Critical intensifies Resonance
-     * - At max intensity (3), Dyscrasia forms automatically
+     * Messy Critical:
+     * - Intensify Resonance
+     * - Auto-create Dyscrasia at max intensity
      */
-
     await client.query(
       `
       UPDATE characters
@@ -60,9 +61,30 @@ export class ResonanceService {
           END
         FROM updated
       )
-      WHERE engine_id = $1 AND character_id = $2
+      WHERE engine_id=$1 AND character_id=$2
       `,
       [engineId, characterId],
     );
   }
-}
+
+  async applyBestialFailure(
+    client: PoolClient,
+    engineId: string,
+    characterId: string,
+  ) {
+    /**
+     * Bestial Failure:
+     * - Mutates Resonance type unpredictably
+     * - Does NOT increase intensity
+     */
+    const newType =
+      RESONANCE_TYPES[Math.floor(Math.random() * RESONANCE_TYPES.length)];
+
+    await client.query(
+      `
+      UPDATE characters
+      SET sheet = jsonb_set(
+        sheet,
+        '{resonance}',
+        jsonb_build_object(
+          'type
