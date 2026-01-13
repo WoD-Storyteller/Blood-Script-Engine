@@ -1,11 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { PoolClient } from 'pg';
+import { SIEventsService } from './si-events.service';
+import { MasqueradeEventsService } from './masquerade-events.service';
+import { MasqueradeLockdownService } from './masquerade-lockdown.service';
 
 @Injectable()
 export class ChroniclePressureService {
-  /**
-   * Escalates Second Inquisition heat based on blood abuse.
-   */
+  constructor(
+    private readonly siEvents: SIEventsService,
+    private readonly masqueradeEvents: MasqueradeEventsService,
+    private readonly lockdown: MasqueradeLockdownService,
+  ) {}
+
   async escalateSIHeat(
     client: PoolClient,
     engineId: string,
@@ -26,11 +32,10 @@ export class ChroniclePressureService {
       `,
       [engineId, amount],
     );
+
+    await this.siEvents.evaluate(client, engineId);
   }
 
-  /**
-   * Escalates Masquerade pressure chronicle-wide.
-   */
   async escalateMasquerade(
     client: PoolClient,
     engineId: string,
@@ -51,26 +56,18 @@ export class ChroniclePressureService {
       `,
       [engineId, amount],
     );
-  }
 
-  /**
-   * Snapshot for ST dashboards.
-   */
-  async getPressureState(client: PoolClient, engineId: string) {
-    const result = await client.query(
-      `
-      SELECT
-        state->>'si_heat' AS si_heat,
-        state->>'masquerade_pressure' AS masquerade_pressure
-      FROM chronicles
-      WHERE engine_id = $1
-      `,
-      [engineId],
-    );
+    await this.masqueradeEvents.evaluate(client, engineId);
 
-    return result.rows[0] ?? {
-      si_heat: 0,
-      masquerade_pressure: 0,
-    };
+    const state = (
+      await client.query(
+        `SELECT state FROM chronicles WHERE engine_id = $1`,
+        [engineId],
+      )
+    ).rows[0]?.state ?? {};
+
+    if (state.masquerade_events_fired?.includes('city_lockdown')) {
+      await this.lockdown.applyLockdown(client, engineId);
+    }
   }
 }
