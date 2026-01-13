@@ -9,29 +9,58 @@ export class ResonanceService {
     characterId: string,
   ) {
     /**
-     * V5 Rule:
-     * Messy Critical can intensify Resonance
-     * or create Dyscrasia at ST discretion.
-     *
-     * Engine-side we:
-     * - Increment resonance_intensity
-     * - Flag dyscrasia_candidate
+     * V5 Rule (Engine Interpretation):
+     * - Messy Critical intensifies Resonance
+     * - At max intensity (3), Dyscrasia forms automatically
      */
 
     await client.query(
       `
       UPDATE characters
-      SET sheet = jsonb_set(
-        sheet,
-        '{resonance}',
-        COALESCE(sheet->'resonance', '{}'::jsonb) ||
-        jsonb_build_object(
-          'intensity',
-          LEAST(3, COALESCE((sheet->'resonance'->>'intensity')::int, 0) + 1),
-          'dyscrasia_candidate', true
+      SET sheet = (
+        WITH current AS (
+          SELECT sheet
+          FROM characters
+          WHERE engine_id = $1 AND character_id = $2
+        ),
+        updated AS (
+          SELECT
+            jsonb_set(
+              sheet,
+              '{resonance}',
+              jsonb_set(
+                COALESCE(sheet->'resonance', '{}'::jsonb),
+                '{intensity}',
+                to_jsonb(
+                  LEAST(
+                    3,
+                    COALESCE((sheet->'resonance'->>'intensity')::int, 0) + 1
+                  )
+                ),
+                true
+              ),
+              true
+            ) AS sheet
+          FROM current
         )
+        SELECT
+          CASE
+            WHEN (updated.sheet->'resonance'->>'intensity')::int >= 3
+            THEN
+              jsonb_set(
+                updated.sheet,
+                '{dyscrasia}',
+                jsonb_build_object(
+                  'type',
+                  updated.sheet->'resonance'->>'type'
+                ),
+                true
+              )
+            ELSE updated.sheet
+          END
+        FROM updated
       )
-      WHERE engine_id=$1 AND character_id=$2
+      WHERE engine_id = $1 AND character_id = $2
       `,
       [engineId, characterId],
     );
