@@ -5,6 +5,8 @@ import { ResonanceService } from '../resonance/resonance.service';
 import { DyscrasiaEffects } from '../resonance/dyscrasia.effects';
 import { ResonanceEffects } from '../resonance/resonance.effects';
 import { DiceService } from '../dice/dice.service';
+import { ChroniclePressureService } from '../chronicle/chronicle-pressure.service';
+import { BLOOD_TO_PRESSURE } from '../chronicle/chronicle-pressure.map';
 
 @Injectable()
 export class ResolutionPipeline {
@@ -14,6 +16,7 @@ export class ResolutionPipeline {
     private readonly dyscrasia: DyscrasiaEffects,
     private readonly resonanceEffects: ResonanceEffects,
     private readonly dice: DiceService,
+    private readonly pressure: ChroniclePressureService,
   ) {}
 
   async resolve(client: any, engineId: string, input: any) {
@@ -31,25 +34,6 @@ export class ResolutionPipeline {
       };
     }
 
-    /**
-     * DY SCRASIA CLEANSING ACTION
-     */
-    if (input.type === 'CLEANSE_DYSCRASIA') {
-      await this.resonance.cleanseDyscrasia(
-        client,
-        engineId,
-        input.actorId,
-      );
-
-      return {
-        resolved: true,
-        outcome: 'dyscrasia_cleansed',
-      };
-    }
-
-    /**
-     * BUILD DISCIPLINE POOL
-     */
     let pool = input.pool ?? 0;
 
     if (input.discipline && input.characterSheet) {
@@ -66,22 +50,28 @@ export class ResolutionPipeline {
       });
     }
 
-    /**
-     * ROLL (PURE)
-     */
     const rollResult = this.dice.rollV5(
       pool,
       input.hunger ?? 0,
     );
 
-    /**
-     * BLOOD STATE ESCALATION
-     */
     if (rollResult.messyCritical === true) {
       await this.resonance.applyMessyCritical(
         client,
         engineId,
         input.actorId,
+      );
+
+      await this.pressure.escalateSIHeat(
+        client,
+        engineId,
+        BLOOD_TO_PRESSURE.messyCritical.si,
+      );
+
+      await this.pressure.escalateMasquerade(
+        client,
+        engineId,
+        BLOOD_TO_PRESSURE.messyCritical.masquerade,
       );
     }
 
@@ -91,11 +81,14 @@ export class ResolutionPipeline {
         engineId,
         input.actorId,
       );
+
+      await this.pressure.escalateMasquerade(
+        client,
+        engineId,
+        BLOOD_TO_PRESSURE.bestialFailure.masquerade,
+      );
     }
 
-    /**
-     * RESONANCE DECAY
-     */
     if (
       rollResult.messyCritical !== true &&
       rollResult.bestialFailure !== true
