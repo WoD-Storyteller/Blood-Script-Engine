@@ -1,7 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { PoolClient } from 'pg';
 
-const RESONANCE_TYPES = ['choleric', 'sanguine', 'melancholic', 'phlegmatic'];
+const RESONANCE_TYPES = [
+  'choleric',
+  'sanguine',
+  'melancholic',
+  'phlegmatic',
+];
 
 @Injectable()
 export class ResonanceService {
@@ -10,11 +15,6 @@ export class ResonanceService {
     engineId: string,
     characterId: string,
   ) {
-    /**
-     * Messy Critical:
-     * - Intensify Resonance
-     * - Auto-create Dyscrasia at max intensity
-     */
     await client.query(
       `
       UPDATE characters
@@ -24,7 +24,7 @@ export class ResonanceService {
           FROM characters
           WHERE engine_id = $1 AND character_id = $2
         ),
-        updated AS (
+        intensified AS (
           SELECT
             jsonb_set(
               sheet,
@@ -46,22 +46,21 @@ export class ResonanceService {
         )
         SELECT
           CASE
-            WHEN (updated.sheet->'resonance'->>'intensity')::int >= 3
-            THEN
-              jsonb_set(
-                updated.sheet,
-                '{dyscrasia}',
-                jsonb_build_object(
-                  'type',
-                  updated.sheet->'resonance'->>'type'
-                ),
-                true
-              )
-            ELSE updated.sheet
+            WHEN (intensified.sheet->'resonance'->>'intensity')::int >= 3
+            THEN jsonb_set(
+              intensified.sheet,
+              '{dyscrasia}',
+              jsonb_build_object(
+                'type',
+                intensified.sheet->'resonance'->>'type'
+              ),
+              true
+            )
+            ELSE intensified.sheet
           END
-        FROM updated
+        FROM intensified
       )
-      WHERE engine_id=$1 AND character_id=$2
+      WHERE engine_id = $1 AND character_id = $2
       `,
       [engineId, characterId],
     );
@@ -72,11 +71,6 @@ export class ResonanceService {
     engineId: string,
     characterId: string,
   ) {
-    /**
-     * Bestial Failure:
-     * - Mutates Resonance type unpredictably
-     * - Does NOT increase intensity
-     */
     const newType =
       RESONANCE_TYPES[Math.floor(Math.random() * RESONANCE_TYPES.length)];
 
@@ -87,4 +81,45 @@ export class ResonanceService {
         sheet,
         '{resonance}',
         jsonb_build_object(
-          'type
+          'type', $3,
+          'intensity', COALESCE((sheet->'resonance'->>'intensity')::int, 0)
+        ),
+        true
+      )
+      WHERE engine_id = $1 AND character_id = $2
+      `,
+      [engineId, characterId, newType],
+    );
+  }
+
+  async decayResonance(
+    client: PoolClient,
+    engineId: string,
+    characterId: string,
+  ) {
+    await client.query(
+      `
+      UPDATE characters
+      SET sheet = jsonb_set(
+        sheet,
+        '{resonance}',
+        CASE
+          WHEN COALESCE((sheet->'resonance'->>'intensity')::int, 0) <= 1
+          THEN '{}'::jsonb
+          ELSE jsonb_set(
+            sheet->'resonance',
+            '{intensity}',
+            to_jsonb(
+              COALESCE((sheet->'resonance'->>'intensity')::int, 0) - 1
+            ),
+            true
+          )
+        END,
+        true
+      )
+      WHERE engine_id = $1 AND character_id = $2
+      `,
+      [engineId, characterId],
+    );
+  }
+}
