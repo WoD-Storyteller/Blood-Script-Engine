@@ -25,17 +25,16 @@ export class ResolutionPipeline {
       };
     }
 
-    /**
-     * 🔌 AUTOMATIC DYSCRASIA WIRING
-     *
-     * If the action input includes a V5 roll result
-     * and it is a messy critical, we escalate resonance.
-     *
-     * This keeps DiceService pure and makes the
-     * pipeline the sole side-effect boundary.
-     */
     if (input.rollResult?.messyCritical === true) {
       await this.resonance.applyMessyCritical(
+        client,
+        engineId,
+        input.actorId,
+      );
+    }
+
+    if (input.rollResult?.bestialFailure === true) {
+      await this.resonance.applyBestialFailure(
         client,
         engineId,
         input.actorId,
