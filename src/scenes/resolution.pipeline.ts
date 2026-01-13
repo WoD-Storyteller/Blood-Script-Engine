@@ -25,6 +25,9 @@ export class ResolutionPipeline {
       };
     }
 
+    /**
+     * BLOOD STATE ESCALATION
+     */
     if (input.rollResult?.messyCritical === true) {
       await this.resonance.applyMessyCritical(
         client,
@@ -35,6 +38,28 @@ export class ResolutionPipeline {
 
     if (input.rollResult?.bestialFailure === true) {
       await this.resonance.applyBestialFailure(
+        client,
+        engineId,
+        input.actorId,
+      );
+    }
+
+    /**
+     * RESONANCE DECAY
+     *
+     * If no blood-triggering outcome occurred,
+     * resonance decays naturally at the end of
+     * a resolved action.
+     *
+     * This models scene flow without requiring
+     * explicit scene-end hooks.
+     */
+    if (
+      input.rollResult &&
+      input.rollResult.messyCritical !== true &&
+      input.rollResult.bestialFailure !== true
+    ) {
+      await this.resonance.decayResonance(
         client,
         engineId,
         input.actorId,
