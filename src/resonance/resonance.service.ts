@@ -122,4 +122,27 @@ export class ResonanceService {
       [engineId, characterId],
     );
   }
+
+  /**
+   * DY SCRASIA CLEANSING
+   *
+   * Story-triggered, explicit removal.
+   * Clears Dyscrasia and resets Resonance.
+   */
+  async cleanseDyscrasia(
+    client: PoolClient,
+    engineId: string,
+    characterId: string,
+  ) {
+    await client.query(
+      `
+      UPDATE characters
+      SET sheet = sheet
+        - 'dyscrasia'
+        || jsonb_build_object('resonance', '{}'::jsonb)
+      WHERE engine_id = $1 AND character_id = $2
+      `,
+      [engineId, characterId],
+    );
+  }
 }
