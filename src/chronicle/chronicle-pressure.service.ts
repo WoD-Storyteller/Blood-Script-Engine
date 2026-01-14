@@ -3,6 +3,8 @@ import { PoolClient } from 'pg';
 import { SIEventsService } from './si-events.service';
 import { MasqueradeEventsService } from './masquerade-events.service';
 import { MasqueradeLockdownService } from './masquerade-lockdown.service';
+import { MasqueradeDecayService } from './masquerade-decay.service';
+import { MasqueradeCoverupService } from './masquerade-coverup.service';
 
 @Injectable()
 export class ChroniclePressureService {
@@ -10,6 +12,8 @@ export class ChroniclePressureService {
     private readonly siEvents: SIEventsService,
     private readonly masqueradeEvents: MasqueradeEventsService,
     private readonly lockdown: MasqueradeLockdownService,
+    private readonly decay: MasqueradeDecayService,
+    private readonly coverups: MasqueradeCoverupService,
   ) {}
 
   async escalateSIHeat(
@@ -69,5 +73,26 @@ export class ChroniclePressureService {
     if (state.masquerade_events_fired?.includes('city_lockdown')) {
       await this.lockdown.applyLockdown(client, engineId);
     }
+  }
+
+  /**
+   * Passive masquerade decay hook.
+   */
+  async decayMasquerade(
+    client: PoolClient,
+    engineId: string,
+  ) {
+    await this.decay.decay(client, engineId);
+  }
+
+  /**
+   * Explicit cover-up action.
+   */
+  async applyMasqueradeCoverup(
+    client: PoolClient,
+    engineId: string,
+    level: 'minor' | 'major' | 'extreme',
+  ) {
+    await this.coverups.applyCoverup(client, engineId, level);
   }
 }
