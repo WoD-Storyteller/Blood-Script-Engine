@@ -7,6 +7,7 @@ import { MasqueradeDecayService } from './masquerade-decay.service';
 import { MasqueradeCoverupService } from './masquerade-coverup.service';
 import { SITargetedRaidService } from './si-targeted-raid.service';
 import { SITargetedEventsService } from './si-targeted-events.service';
+import { ChronicleClockHooksService } from './chronicle-clock-hooks.service';
 
 @Injectable()
 export class ChroniclePressureService {
@@ -18,6 +19,7 @@ export class ChroniclePressureService {
     private readonly coverups: MasqueradeCoverupService,
     private readonly targetedRaids: SITargetedRaidService,
     private readonly targetedEvents: SITargetedEventsService,
+    private readonly clocks: ChronicleClockHooksService,
   ) {}
 
   async escalateSIHeat(
@@ -42,6 +44,58 @@ export class ChroniclePressureService {
     );
 
     await this.siEvents.evaluate(client, engineId);
+    await this.clocks.onSIHeat(client, engineId, amount);
+  }
+
+  async escalateMasquerade(
+    client: PoolClient,
+    engineId: string,
+    amount: number,
+  ) {
+    await client.query(
+      `
+      UPDATE chronicles
+      SET state = jsonb_set(
+        COALESCE(state, '{}'::jsonb),
+        '{masquerade_pressure}',
+        to_jsonb(
+          COALESCE((state->>'masquerade_pressure')::int, 0) + $2
+        ),
+        true
+      )
+      WHERE engine_id = $1
+      `,
+      [engineId, amount],
+    );
+
+    await this.masqueradeEvents.evaluate(client, engineId);
+    await this.clocks.onMasquerade(client, engineId, amount);
+
+    const state = (
+      await client.query(
+        `SELECT state FROM chronicles WHERE engine_id = $1`,
+        [engineId],
+      )
+    ).rows[0]?.state ?? {};
+
+    if (state.masquerade_events_fired?.includes('city_lockdown')) {
+      await this.lockdown.applyLockdown(client, engineId);
+    }
+  }
+
+  async decayMasquerade(
+    client: PoolClient,
+    engineId: string,
+  ) {
+    await this.decay.decay(client, engineId);
+  }
+
+  async applyMasqueradeCoverup(
+    client: PoolClient,
+    engineId: string,
+    level: 'minor' | 'major' | 'extreme',
+  ) {
+    await this.coverups.applyCoverup(client, engineId, level);
   }
 
   async triggerTargetedRaid(
@@ -77,55 +131,5 @@ export class ChroniclePressureService {
     }
 
     return { raid: true, target };
-  }
-
-  async escalateMasquerade(
-    client: PoolClient,
-    engineId: string,
-    amount: number,
-  ) {
-    await client.query(
-      `
-      UPDATE chronicles
-      SET state = jsonb_set(
-        COALESCE(state, '{}'::jsonb),
-        '{masquerade_pressure}',
-        to_jsonb(
-          COALESCE((state->>'masquerade_pressure')::int, 0) + $2
-        ),
-        true
-      )
-      WHERE engine_id = $1
-      `,
-      [engineId, amount],
-    );
-
-    await this.masqueradeEvents.evaluate(client, engineId);
-
-    const state = (
-      await client.query(
-        `SELECT state FROM chronicles WHERE engine_id = $1`,
-        [engineId],
-      )
-    ).rows[0]?.state ?? {};
-
-    if (state.masquerade_events_fired?.includes('city_lockdown')) {
-      await this.lockdown.applyLockdown(client, engineId);
-    }
-  }
-
-  async decayMasquerade(
-    client: PoolClient,
-    engineId: string,
-  ) {
-    await this.decay.decay(client, engineId);
-  }
-
-  async applyMasqueradeCoverup(
-    client: PoolClient,
-    engineId: string,
-    level: 'minor' | 'major' | 'extreme',
-  ) {
-    await this.coverups.applyCoverup(client, engineId, level);
   }
 }
