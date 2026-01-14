@@ -1,13 +1,30 @@
 import { Module } from '@nestjs/common';
-import { ArcsService } from './arcs.service';
-import { ClocksService } from './clocks.service';
-import { ChronicleService } from './chronicle.service';
 import { ChroniclePressureService } from './chronicle-pressure.service';
 import { SIEventsService } from './si-events.service';
 import { SIRaidService } from './si-raid.service';
+import { MasqueradeEventsService } from './masquerade-events.service';
+import { MasqueradeLockdownService } from './masquerade-lockdown.service';
+import { MasqueradeDecayService } from './masquerade-decay.service';
+import { MasqueradeCoverupService } from './masquerade-coverup.service';
 
 @Module({
-  providers: [ArcsService, ClocksService, ChronicleService, ChroniclePressureService, SIEventsService, SIRaidService],
-  exports: [ArcsService, ClocksService, ChronicleService, ChroniclePressureService, SIEventsService, SIRaidService],
+  providers: [
+    ChroniclePressureService,
+    SIEventsService,
+    SIRaidService,
+    MasqueradeEventsService,
+    MasqueradeLockdownService,
+    MasqueradeDecayService,
+    MasqueradeCoverupService,
+  ],
+  exports: [
+    ChroniclePressureService,
+    SIEventsService,
+    SIRaidService,
+    MasqueradeEventsService,
+    MasqueradeLockdownService,
+    MasqueradeDecayService,
+    MasqueradeCoverupService,
+  ],
 })
 export class ChronicleModule {}
