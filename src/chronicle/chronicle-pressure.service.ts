@@ -5,6 +5,8 @@ import { MasqueradeEventsService } from './masquerade-events.service';
 import { MasqueradeLockdownService } from './masquerade-lockdown.service';
 import { MasqueradeDecayService } from './masquerade-decay.service';
 import { MasqueradeCoverupService } from './masquerade-coverup.service';
+import { SITargetedRaidService } from './si-targeted-raid.service';
+import { SITargetedEventsService } from './si-targeted-events.service';
 
 @Injectable()
 export class ChroniclePressureService {
@@ -14,6 +16,8 @@ export class ChroniclePressureService {
     private readonly lockdown: MasqueradeLockdownService,
     private readonly decay: MasqueradeDecayService,
     private readonly coverups: MasqueradeCoverupService,
+    private readonly targetedRaids: SITargetedRaidService,
+    private readonly targetedEvents: SITargetedEventsService,
   ) {}
 
   async escalateSIHeat(
@@ -38,6 +42,41 @@ export class ChroniclePressureService {
     );
 
     await this.siEvents.evaluate(client, engineId);
+  }
+
+  async triggerTargetedRaid(
+    client: PoolClient,
+    engineId: string,
+    target: {
+      type: 'character' | 'haven';
+      id: string;
+    },
+  ) {
+    const decision = await this.targetedEvents.evaluate(
+      client,
+      engineId,
+      target,
+    );
+
+    if (!decision.raid) return { raid: false };
+
+    if (target.type === 'character') {
+      await this.targetedRaids.raidCharacter(
+        client,
+        engineId,
+        target.id,
+      );
+    }
+
+    if (target.type === 'haven') {
+      await this.targetedRaids.raidHaven(
+        client,
+        engineId,
+        target.id,
+      );
+    }
+
+    return { raid: true, target };
   }
 
   async escalateMasquerade(
@@ -75,9 +114,6 @@ export class ChroniclePressureService {
     }
   }
 
-  /**
-   * Passive masquerade decay hook.
-   */
   async decayMasquerade(
     client: PoolClient,
     engineId: string,
@@ -85,9 +121,6 @@ export class ChroniclePressureService {
     await this.decay.decay(client, engineId);
   }
 
-  /**
-   * Explicit cover-up action.
-   */
   async applyMasqueradeCoverup(
     client: PoolClient,
     engineId: string,
