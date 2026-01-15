@@ -44,7 +44,7 @@ export class ModeratorsController {
       enforceEngineAccess(
         { banned: false },
         session,
-        EngineAccessRoute.MODERATION,
+        EngineAccessRoute.MODERATION_ACTIONS,
       );
 
       return this.mods.list(client, session.engine_id);
@@ -67,7 +67,7 @@ export class ModeratorsController {
       enforceEngineAccess(
         { banned: false },
         session,
-        EngineAccessRoute.OWNER,
+        EngineAccessRoute.ENGINE_MANAGEMENT,
       );
 
       return this.mods.add(client, {
@@ -94,7 +94,7 @@ export class ModeratorsController {
       enforceEngineAccess(
         { banned: false },
         session,
-        EngineAccessRoute.OWNER,
+        EngineAccessRoute.ENGINE_MANAGEMENT,
       );
 
       return this.mods.remove(client, {

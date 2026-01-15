@@ -1,10 +1,11 @@
 import { Controller, Post, Body, Req } from '@nestjs/common';
 import type { Request } from 'express';
 
+import { EngineRole } from '../common/enums/engine-role.enum';
 import { DatabaseService } from '../database/database.service';
 import { CompanionAuthService } from '../companion/auth.service';
 import { HumanityService } from './humanity.service';
-import { EngineAccessRoute, enforceEngineAccess } from '../engine/engine.guard';
+import { enforceEngineAccess } from '../engine/engine.guard';
 
 @Controller('companion/humanity')
 export class HumanityController {
@@ -33,7 +34,7 @@ export class HumanityController {
       enforceEngineAccess(
         { banned: false },
         session,
-        EngineAccessRoute.STORYTELLER,
+        EngineRole.STORYTELLER,
       );
 
       const r = await client.query(

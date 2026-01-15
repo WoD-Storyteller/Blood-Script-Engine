@@ -4,12 +4,20 @@ import {
   Injectable,
   ForbiddenException,
 } from '@nestjs/common';
+import { EngineRole } from '../enums/engine-role.enum';
 
-export enum EngineAccessRoute {
-  NORMAL = 'normal',
-  MODERATION = 'moderation',
-  OWNER = 'owner',
-}
+/**
+ * EngineAccessRoute is NOT an authority or role enum.
+ * Routes/access groups only; avoid role-like members (e.g. OWNER, STORYTELLER).
+ */
+export const EngineAccessRoute = {
+  NORMAL: 'normal',
+  MODERATION_ACTIONS: 'moderation-actions',
+  ENGINE_MANAGEMENT: 'engine-management',
+} as const;
+
+export type EngineAccessRoute =
+  (typeof EngineAccessRoute)[keyof typeof EngineAccessRoute];
 
 @Injectable()
 export class EngineGuard implements CanActivate {
@@ -26,22 +34,24 @@ export class EngineGuard implements CanActivate {
 
 export function enforceEngineAccess(
   engine: { banned?: boolean },
-  session: any,
+  session: { role?: EngineRole },
   route: EngineAccessRoute,
 ) {
   if (engine?.banned) {
     throw new ForbiddenException('Engine is banned');
   }
 
-  const role = String(session?.role ?? '').toLowerCase();
+  const role = String(session?.role ?? '').toLowerCase() as EngineRole | '';
 
-  if (route === EngineAccessRoute.OWNER && role !== 'owner') {
+  if (route === EngineAccessRoute.ENGINE_MANAGEMENT && role !== EngineRole.OWNER) {
     throw new ForbiddenException('Owner access required');
   }
 
   if (
-    route === EngineAccessRoute.MODERATION &&
-    !['owner', 'st', 'moderator'].includes(role)
+    route === EngineAccessRoute.MODERATION_ACTIONS &&
+    ![EngineRole.OWNER, EngineRole.ST, EngineRole.MODERATOR].includes(
+      role as EngineRole,
+    )
   ) {
     throw new ForbiddenException('Moderator access required');
   }
