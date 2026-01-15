@@ -7,9 +7,10 @@ import {
 } from '@nestjs/common';
 import type { Request } from 'express';
 
+import { EngineRole } from '../common/enums/engine-role.enum';
 import { DatabaseService } from '../database/database.service';
 import { CompanionAuthService } from '../companion/auth.service';
-import { EngineAccessRoute, enforceEngineAccess } from '../engine/engine.guard';
+import { enforceEngineAccess } from '../engine/engine.guard';
 import { StService } from './st.service';
 
 @Controller('companion/st')
@@ -50,7 +51,7 @@ export class StController {
       enforceEngineAccess(
         engineRes.rows[0],
         session,
-        EngineAccessRoute.STORYTELLER,
+        EngineRole.STORYTELLER,
       );
 
       await this.st.forceCompulsion(
@@ -83,7 +84,7 @@ export class StController {
       enforceEngineAccess(
         { banned: false },
         session,
-        EngineAccessRoute.STORYTELLER,
+        EngineRole.STORYTELLER,
       );
 
       await this.st.adjustHunger(
@@ -116,7 +117,7 @@ export class StController {
       enforceEngineAccess(
         { banned: false },
         session,
-        EngineAccessRoute.STORYTELLER,
+        EngineRole.STORYTELLER,
       );
 
       await this.st.adjustHumanity(
@@ -148,7 +149,7 @@ export class StController {
     enforceEngineAccess(
       { banned: false },
       session,
-      EngineAccessRoute.STORYTELLER,
+      EngineRole.STORYTELLER,
     );
 
     await this.st.emitTestEvent(
