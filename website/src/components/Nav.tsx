@@ -20,8 +20,7 @@ export default function Nav() {
     <nav className="nav">
       <div className="nav-container container">
         <Link to="/" className="nav-logo">
-          <span className="logo-icon">🩸</span>
-          <span className="logo-text">Blood Script</span>
+          <img src="/assets/logo.png" alt="Blood Script Engine" className="logo-img" />
         </Link>
 
         <button
