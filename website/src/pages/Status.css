@@ -1,0 +1,200 @@
+.status-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.status-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+.status-card.operational {
+  border-color: #22c55e;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.status-label {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.status-updated {
+  margin-top: 8px;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.systems-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.system-item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.system-status {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.system-status.operational {
+  background: #22c55e;
+}
+
+.system-status.degraded {
+  background: #eab308;
+}
+
+.system-status.down {
+  background: #dc2626;
+}
+
+.system-name {
+  flex: 1;
+  font-weight: 500;
+}
+
+.system-state {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.version-info,
+.roadmap,
+.known-limitations {
+  margin-bottom: 48px;
+}
+
+.version-info h2,
+.roadmap h2,
+.known-limitations h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.version-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+}
+
+.version-item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.version-label {
+  display: block;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  margin-bottom: 4px;
+}
+
+.version-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.roadmap-intro {
+  color: var(--color-text-muted);
+  margin-bottom: 32px;
+}
+
+.roadmap-section {
+  margin-bottom: 32px;
+}
+
+.roadmap-section h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.roadmap-list {
+  list-style: none;
+  padding: 0;
+}
+
+.roadmap-list li {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.roadmap-list strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.roadmap-list p {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.known-limitations ul {
+  list-style: none;
+  padding: 0;
+}
+
+.known-limitations li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.known-limitations li::before {
+  content: '⚠️';
+}
+
+.known-limitations li:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 768px) {
+  .systems-grid {
+    grid-template-columns: 1fr;
+  }
+}

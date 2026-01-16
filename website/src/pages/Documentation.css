@@ -1,0 +1,193 @@
+.docs-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.docs-nav {
+  position: sticky;
+  top: calc(var(--nav-height) + 24px);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 8px;
+}
+
+.docs-nav button {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  transition: all 0.2s ease;
+}
+
+.docs-nav button:hover {
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+.docs-nav button.active {
+  color: var(--color-text);
+  background: var(--color-primary);
+}
+
+.docs-content {
+  min-height: 600px;
+}
+
+.doc-page h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--color-border);
+}
+
+.command-category {
+  margin-bottom: 48px;
+}
+
+.command-category h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--color-accent);
+}
+
+.command-category > p {
+  color: var(--color-text-muted);
+  margin-bottom: 20px;
+}
+
+.command-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.command {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.command code {
+  display: block;
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 0.9rem;
+  color: var(--color-accent);
+  margin-bottom: 8px;
+}
+
+.command p {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.concept,
+.mechanic,
+.safety-tool,
+.faq {
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.concept:last-child,
+.mechanic:last-child,
+.safety-tool:last-child,
+.faq:last-child {
+  border-bottom: none;
+}
+
+.concept h3,
+.mechanic h3,
+.safety-tool h3,
+.faq h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.concept p,
+.mechanic p,
+.safety-tool p,
+.faq p {
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.mechanic ul,
+.safety-tool ul {
+  padding-left: 24px;
+  color: var(--color-text-muted);
+}
+
+.mechanic li,
+.safety-tool li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.example-box {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.example-box code {
+  display: block;
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 0.9rem;
+  color: var(--color-accent);
+  margin-bottom: 8px;
+}
+
+.example-box p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.safety-overview {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+.safety-overview p {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+@media (max-width: 900px) {
+  .docs-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .docs-nav {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .docs-nav button {
+    flex: 1 1 auto;
+    min-width: 100px;
+    text-align: center;
+  }
+}
