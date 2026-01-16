@@ -10,7 +10,7 @@ Blood Script Engine is a backend API service that provides game management funct
 
 - **Runtime**: Node.js 20
 - **Framework**: NestJS
-- **Database**: PostgreSQL (Replit-managed)
+- **Database**: PostgreSQL (Supabase)
 - **Language**: TypeScript
 
 ## Project Structure
@@ -67,8 +67,16 @@ npm run db:status      # Check migration status
 
 ## Environment Variables
 
-Required:
-- `DATABASE_URL` - PostgreSQL connection string (auto-provided by Replit)
+Database (Supabase):
+- `DB_HOST` - Supabase PostgreSQL host
+- `DB_PORT` - Database port (default: 5432)
+- `DB_NAME` - Database name
+- `DB_USER` - Database username
+- `DB_PASSWORD` - Database password
+- `DB_SSL` - Enable SSL (set to 'true' for Supabase)
+
+Fallback (if DB_HOST not set):
+- `DATABASE_URL` - Full PostgreSQL connection string
 
 Optional (for full functionality):
 - `DISCORD_BOT_TOKEN` - Discord bot token for Discord integration
@@ -93,6 +101,9 @@ All routes are prefixed with `/api`:
 ## Recent Changes
 
 ### January 2026
+- **Supabase Database**: Switched from Replit PostgreSQL to Supabase with individual DB_* environment variables
+- **Demo Mode**: Added dashboard preview without authentication via "Preview Demo" button
+- **Removed Safety Ticket Button**: Safety cards now handled via Discord DM only, dashboard for ST/Owner oversight
 - **Discord OAuth Only**: Removed Engine UUID authentication - Discord is now the only login method
 - **Mobile-First Dashboard**: Updated NavTabs to use bottom navigation for mobile devices
 - **Role-Based Access**: Dashboard tabs show based on user role (Player/Storyteller/Owner)
