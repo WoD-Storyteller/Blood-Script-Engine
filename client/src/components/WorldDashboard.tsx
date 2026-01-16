@@ -10,7 +10,6 @@ import CharactersPage from './CharactersPage';
 import CoteriesPage from './CoteriesPage';
 import AdminPage from './AdminPage';
 import XpApprovalPanel from './XpApprovalPanel';
-import SafetyButton from './SafetyButton';
 import SafetyDashboard from './SafetyDashboard';
 
 type TabKey = 'world' | 'characters' | 'coteries' | 'admin';
@@ -115,8 +114,6 @@ export default function WorldDashboard({
           <SafetyDashboard />
         </>
       )}
-
-      <SafetyButton />
     </div>
   );
 }
