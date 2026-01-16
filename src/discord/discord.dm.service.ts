@@ -35,4 +35,15 @@ export class DiscordDmService {
       // Silent fail — DMs closed or user left
     }
   }
+
+  async sendDM(discordUserId: string, message: string): Promise<boolean> {
+    try {
+      const user = await this.client.users.fetch(discordUserId);
+      if (!user) return false;
+      await user.send(message);
+      return true;
+    } catch {
+      return false;
+    }
+  }
 }

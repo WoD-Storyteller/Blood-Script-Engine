@@ -6,12 +6,12 @@ import MapView from './MapView';
 import ArcList from './ArcList';
 import ClockList from './ClockList';
 import PressurePanel from './PressurePanel';
-import DiceRoller from './DiceRoller';
 import CharactersPage from './CharactersPage';
 import CoteriesPage from './CoteriesPage';
 import AdminPage from './AdminPage';
 import XpApprovalPanel from './XpApprovalPanel';
 import SafetyButton from './SafetyButton';
+import SafetyDashboard from './SafetyDashboard';
 
 type TabKey = 'world' | 'characters' | 'coteries' | 'admin';
 
@@ -93,7 +93,7 @@ export default function WorldDashboard({
   }
 
   return (
-    <div className="world-dashboard" style={{ padding: 24 }}>
+    <div className="world-dashboard" style={{ padding: '16px 16px 80px 16px' }}>
       <NavTabs tab={tab} onChange={setTab} showAdmin={showAdmin} />
 
       {tab === 'world' && (
@@ -102,7 +102,6 @@ export default function WorldDashboard({
           <ArcList arcs={worldState.arcs ?? []} />
           <ClockList clocks={worldState.clocks ?? []} />
           <PressurePanel pressure={worldState.pressure ?? []} />
-          <DiceRoller />
         </div>
       )}
 
@@ -113,6 +112,7 @@ export default function WorldDashboard({
         <>
           <AdminPage onWorldUpdate={setWorldState} />
           <XpApprovalPanel />
+          <SafetyDashboard />
         </>
       )}
 

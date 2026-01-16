@@ -13,8 +13,13 @@ import { ChronicleClockHooksService } from './chronicle-clocks-hooks.service';
 import { ClocksService } from './clocks.service';
 import { ArcsService } from './arcs.service';
 import { ChronicleService } from './chronicle.service';
+import { MapUploadController } from './map-upload.controller';
+import { ChronicleUploadController } from './chronicle-upload.controller';
+import { DatabaseModule } from '../database/database.module';
 
 @Module({
+  imports: [DatabaseModule],
+  controllers: [MapUploadController, ChronicleUploadController],
   providers: [
     ChroniclePressureService,
     SIEventsService,

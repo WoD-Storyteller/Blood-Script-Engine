@@ -92,8 +92,62 @@ All routes are prefixed with `/api`:
 
 ## Recent Changes
 
+### January 2026
+- **Discord OAuth Only**: Removed Engine UUID authentication - Discord is now the only login method
+- **Mobile-First Dashboard**: Updated NavTabs to use bottom navigation for mobile devices
+- **Role-Based Access**: Dashboard tabs show based on user role (Player/Storyteller/Owner)
+- **Safety System Oversight**: Added ST/Owner dashboard with `/stats`, `/pending`, `/respond` endpoints
+- **Map Upload**: Added map upload controller for Google Maps URLs and KML files
+- **Chronicle Import/Export**: Added JSON export/import with validation for characters, coteries, clocks, arcs, NPCs
+- **Removed Dice Rolling UI**: All dice rolls now handled via Discord bot only
+- **DiscordDmService**: Added sendDM method for safety response notifications
+
+### Initial Setup
 - Adapted for Replit environment
 - Modified secrets loading to use environment variables
 - Updated CORS to allow all origins for Replit proxy
 - Fixed Discord module to gracefully handle missing tokens
 - Fixed various module dependency injection issues
+
+## API Routes (Updated)
+
+All routes are prefixed with `/api`:
+
+### Authentication
+- `GET /api/auth/discord/login` - Initiate Discord OAuth
+- `GET /api/auth/discord/callback` - OAuth callback
+- `GET /api/auth/discord/me` - Get current user
+- `GET /api/auth/discord/logout` - Logout
+
+### Companion App
+- `GET /api/companion/me` - Session info
+- `GET /api/companion/characters` - List characters
+- `GET /api/companion/characters/:id` - Get character
+- `POST /api/companion/characters/:id/active` - Set active character
+- `POST /api/companion/characters/:id/update` - Update character
+
+### Safety System (ST/Owner only)
+- `GET /api/companion/safety/stats` - Safety event statistics
+- `GET /api/companion/safety/pending` - Pending events needing response
+- `POST /api/companion/safety/respond` - Respond to safety event (sends Discord DM)
+
+### Map Upload (ST/Owner only)
+- `GET /api/companion/maps` - Get current map
+- `POST /api/companion/maps` - Upload map (Google Maps URL or KML)
+- `DELETE /api/companion/maps` - Remove map
+
+### Chronicle (ST/Owner only)
+- `GET /api/companion/chronicle/export` - Export chronicle JSON
+- `POST /api/companion/chronicle/import` - Import chronicle JSON
+- `POST /api/companion/chronicle/validate` - Validate chronicle JSON structure
+
+### XP Management
+- `GET /api/companion/xp/available` - Available XP
+- `POST /api/companion/xp/spend-request` - Request XP spend
+- `POST /api/companion/xp/earn` - Earn XP
+- `POST /api/companion/xp/approve` - Approve XP request (ST/Owner)
+
+### Admin
+- `GET /api/owner/engines` - List engines (Owner only)
+- `POST /api/owner/issue-strike` - Issue strike (Owner only)
+- `POST /api/owner/unban-engine` - Unban engine (Owner only)

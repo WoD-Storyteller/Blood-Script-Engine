@@ -45,4 +45,24 @@ export class DiscordService {
 
     await this.client.login(process.env.DISCORD_BOT_TOKEN);
   }
+
+  async sendDM(discordUserId: string, message: string): Promise<boolean> {
+    if (!this.client) {
+      this.logger.warn('Discord client not initialized');
+      return false;
+    }
+
+    try {
+      const user = await this.client.users.fetch(discordUserId);
+      await user.send(message);
+      return true;
+    } catch (e) {
+      this.logger.warn(`Failed to send DM to ${discordUserId}: ${e}`);
+      return false;
+    }
+  }
+
+  isConnected(): boolean {
+    return !!this.client?.isReady();
+  }
 }

@@ -115,16 +115,6 @@ export const fetchCoterie = async (id: string) => {
 };
 
 /* ======================
-   Dice
-   ====================== */
-
-export const rollDice = (input: { pool: number; label: string }) =>
-  call('/companion/dice/roll', {
-    method: 'POST',
-    body: JSON.stringify(input),
-  });
-
-/* ======================
    Safety
    ====================== */
 

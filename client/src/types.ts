@@ -26,13 +26,21 @@ export interface WorldState {
   pressure: Pressure[];
   heat: number;
   mapUrl?: string | null;
+  engine?: {
+    banned?: boolean;
+    engine_id?: string;
+  };
 }
 
 export interface SessionInfo {
-  user_id: string;
-  engine_id: string;
+  authenticated: boolean;
+  userId?: string;
+  user_id?: string;
+  engine_id?: string;
+  engineId?: string;
   discord_user_id?: string;
-  role: 'player' | 'st' | 'admin';
+  discordUserId?: string;
+  role?: 'player' | 'st' | 'owner' | 'admin';
   csrfToken?: string | null;
 }
 
