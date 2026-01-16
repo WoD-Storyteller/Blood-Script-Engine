@@ -7,6 +7,8 @@ import { SafetyModule } from '../safety/safety.module';
 import { PoliticsModule } from '../politics/politics.module';
 import { ChronicleModule } from '../chronicle/chronicle.module';
 import { ThreatsModule } from '../threats/threats.module';
+import { ResonanceModule } from '../resonance/resonance.module';
+import { DiceModule } from '../dice/dice.module';
 
 import { PresenceService } from './presence.service';
 import { CharacterContextService } from './character-context.service';
@@ -19,6 +21,8 @@ import { RecoveryService } from './recovery.service';
     PoliticsModule,
     ChronicleModule,
     ThreatsModule,
+    ResonanceModule,
+    DiceModule,
   ],
   providers: [
     ScenesService,

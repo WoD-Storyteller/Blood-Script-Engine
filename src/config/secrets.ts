@@ -1,39 +1,37 @@
-import { SecretManagerServiceClient } from '@google-cloud/secret-manager';
+import { Logger } from '@nestjs/common';
 
-const client = new SecretManagerServiceClient();
-
-async function getSecret(name: string): Promise<string> {
-  const projectId =
-    process.env.GCP_PROJECT_ID ||
-    process.env.GOOGLE_CLOUD_PROJECT;
-
-  if (!projectId) {
-    throw new Error('GCP project ID not set');
-  }
-
-  const [version] = await client.accessSecretVersion({
-    name: `projects/${projectId}/secrets/${name}/versions/latest`,
-  });
-
-  const value = version.payload?.data?.toString();
-  if (!value) throw new Error(`Secret ${name} is empty`);
-
-  return value;
-}
+const logger = new Logger('Secrets');
 
 export async function loadSecrets() {
   const required = [
+    'DATABASE_URL',
+  ];
+
+  const optional = [
     'DISCORD_BOT_TOKEN',
     'DISCORD_CLIENT_SECRET',
     'SESSION_SECRET',
-    'DATABASE_URL',
     'GEMINI_API_KEY',
-    'BOT_OWNER_DISCORD_ID', // ✅ NEW
+    'BOT_OWNER_DISCORD_ID',
   ];
+
+  const missing: string[] = [];
 
   for (const key of required) {
     if (!process.env[key]) {
-      process.env[key] = await getSecret(key);
+      missing.push(key);
     }
   }
+
+  if (missing.length > 0) {
+    throw new Error(`Missing required environment variables: ${missing.join(', ')}`);
+  }
+
+  for (const key of optional) {
+    if (!process.env[key]) {
+      logger.warn(`Optional environment variable ${key} is not set`);
+    }
+  }
+
+  logger.log('Environment variables validated');
 }

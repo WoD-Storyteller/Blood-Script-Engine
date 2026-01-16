@@ -16,7 +16,7 @@ export class SessionMiddleware implements NestMiddleware {
       req.headers.authorization?.replace('Bearer ', '');
 
     if (!token) {
-      req.session = null;
+      (req as any).session = null;
       return next();
     }
 

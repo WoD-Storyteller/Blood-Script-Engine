@@ -7,7 +7,7 @@ import { MasqueradeDecayService } from './masquerade-decay.service';
 import { MasqueradeCoverupService } from './masquerade-coverup.service';
 import { SITargetedRaidService } from './si-targeted-raid.service';
 import { SITargetedEventsService } from './si-targeted-events.service';
-import { ChronicleClockHooksService } from './chronicle-clock-hooks.service';
+import { ChronicleClockHooksService } from './chronicle-clocks-hooks.service';
 
 @Injectable()
 export class ChroniclePressureService {

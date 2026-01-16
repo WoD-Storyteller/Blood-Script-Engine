@@ -1,5 +1,28 @@
 exports.up = async function (knex) {
-  await knex.raw("BEGIN;\n\nCREATE TABLE IF NOT EXISTS xp_ledger (\n  xp_id UUID PRIMARY KEY,\n  engine_id UUID NOT NULL,\n  character_id UUID NOT NULL,\n  user_id UUID NOT NULL,\n  type TEXT NOT NULL CHECK (type IN ('earn', 'spend')),\n  amount INTEGER NOT NULL CHECK (amount > 0),\n  reason TEXT,\n  approved BOOLEAN NOT NULL DEFAULT false,\n  approved_by UUID,\n  created_at TIMESTAMPTZ NOT NULL DEFAULT now()\n);\n\nCREATE INDEX IF NOT EXISTS xp_ledger_character_idx\n  ON xp_ledger(engine_id, character_id);\n\nCOMMIT;");
+  await knex.raw(`BEGIN;
+
+-- Add type column if it doesn't exist
+ALTER TABLE xp_ledger
+  ADD COLUMN IF NOT EXISTS type TEXT,
+  ADD COLUMN IF NOT EXISTS approved BOOLEAN NOT NULL DEFAULT false,
+  ADD COLUMN IF NOT EXISTS approved_by UUID,
+  ADD COLUMN IF NOT EXISTS user_id UUID;
+
+-- Update existing records if type is null
+UPDATE xp_ledger SET type = 'earn' WHERE type IS NULL;
+
+-- Add check constraint only if records are valid
+DO $$
+BEGIN
+  ALTER TABLE xp_ledger ADD CONSTRAINT xp_type_check CHECK (type IN ('earn', 'spend'));
+EXCEPTION WHEN duplicate_object THEN
+  NULL;
+END $$;
+
+CREATE INDEX IF NOT EXISTS xp_ledger_character_idx
+  ON xp_ledger(engine_id, character_id);
+
+COMMIT;`);
 };
 
 exports.down = async function () {

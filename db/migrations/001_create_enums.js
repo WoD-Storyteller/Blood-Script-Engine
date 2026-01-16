@@ -19,7 +19,7 @@ exports.up = async function (knex) {
     DO $$
     BEGIN
       -- Boons
-      CREATE TYPE boon_status AS ENUM ('active', 'called_in', 'settled', 'void');
+      CREATE TYPE boon_status AS ENUM ('owed', 'active', 'called_in', 'settled', 'void');
     EXCEPTION WHEN duplicate_object THEN
       NULL;
     END $$;

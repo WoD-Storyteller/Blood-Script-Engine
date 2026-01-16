@@ -10,17 +10,17 @@ export class StOverrideController {
 
   @Post('force-roll')
   forceRoll(@Body() result: V5RollResult) {
-    this.realtime.emit('forced_roll', result);
+    this.realtime.emitToEngine('global', 'forced_roll', result);
     return result;
   }
 
   @Post('trigger-frenzy')
   triggerFrenzy(@Body() body: { characterId: string }) {
-    this.realtime.emit('frenzy_triggered', {
+    this.realtime.emitToEngine('global', 'frenzy_triggered', {
       characterId: body.characterId,
       severity: 'forced',
     });
 
     return { ok: true };
   }
-       }
+}

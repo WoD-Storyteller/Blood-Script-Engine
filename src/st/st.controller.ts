@@ -143,7 +143,9 @@ export class StController {
     const token = this.token(req, authHeader);
     if (!token) return { error: 'Unauthorized' };
 
-    const session = await this.auth.validateTokenRaw(token);
+    const session = await this.db.withClient((client) =>
+      this.auth.validateToken(client, token),
+    );
     if (!session) return { error: 'Unauthorized' };
 
     enforceEngineAccess(

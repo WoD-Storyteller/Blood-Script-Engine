@@ -30,25 +30,10 @@ async function bootstrap() {
   app.use(cookieParser());
 
   /**
-   * ✅ CORS CONFIG (COOKIE-SAFE)
+   * ✅ CORS CONFIG - Allow all origins for Replit environment
    */
   app.enableCors({
-    origin: (origin, callback) => {
-      const allowedOrigins = [
-        'https://app.bloodscriptengine.tech',
-        'https://bloodscriptengine.tech',
-        'http://localhost',
-        'http://localhost:5173',
-        'http://10.10.0.5:5173',
-        'http://10.10.0.2',
-      ];
-
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.includes(origin)) return callback(null, true);
-
-      logger.warn(`CORS blocked origin: ${origin}`);
-      callback(new Error('CORS not allowed'));
-    },
+    origin: true,
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Authorization', 'Content-Type'],
@@ -64,7 +49,7 @@ async function bootstrap() {
     }),
   );
 
-  const port = Number(process.env.PORT) || 3000;
+  const port = Number(process.env.PORT) || 5000;
   await app.listen(port, '0.0.0.0');
 
   logger.log(`Blood Script Engine running on port ${port}`);

@@ -9,7 +9,10 @@ import { MasqueradeCoverupService } from './masquerade-coverup.service';
 import { SITargetedRaidService } from './si-targeted-raid.service';
 import { SITargetedEventsService } from './si-targeted-events.service';
 import { ChronicleClocksService } from './chronicle-clocks.service';
-import { ChronicleClockHooksService } from './chronicle-clock-hooks.service';
+import { ChronicleClockHooksService } from './chronicle-clocks-hooks.service';
+import { ClocksService } from './clocks.service';
+import { ArcsService } from './arcs.service';
+import { ChronicleService } from './chronicle.service';
 
 @Module({
   providers: [
@@ -24,10 +27,16 @@ import { ChronicleClockHooksService } from './chronicle-clock-hooks.service';
     SITargetedEventsService,
     ChronicleClocksService,
     ChronicleClockHooksService,
+    ClocksService,
+    ArcsService,
+    ChronicleService,
   ],
   exports: [
     ChroniclePressureService,
     ChronicleClocksService,
+    ClocksService,
+    ArcsService,
+    ChronicleService,
   ],
 })
 export class ChronicleModule {}
