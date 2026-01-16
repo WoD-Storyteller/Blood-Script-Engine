@@ -2,6 +2,8 @@ import { Controller, Get, Query, Req, Res } from '@nestjs/common';
 import type { Response } from 'express';
 import { DatabaseService } from '../database/database.service';
 import { CompanionAuthService } from '../companion/auth.service';
+import { RoleResolverService } from './role-resolver.service';
+import { JwtService } from './jwt.service';
 import { uuid } from '../common/utils/uuid';
 import { EngineRole } from '../common/enums/engine-role.enum';
 
@@ -20,11 +22,20 @@ type DiscordUser = {
   global_name?: string | null;
 };
 
+type DiscordGuild = {
+  id: string;
+  name: string;
+  owner: boolean;
+  permissions: string;
+};
+
 @Controller('auth/discord')
 export class DiscordOauthController {
   constructor(
     private readonly db: DatabaseService,
     private readonly companionAuth: CompanionAuthService,
+    private readonly roleResolver: RoleResolverService,
+    private readonly jwtService: JwtService,
   ) {}
 
   @Get('login')
@@ -55,7 +66,7 @@ export class DiscordOauthController {
       client_id: clientId,
       redirect_uri: redirectUri,
       response_type: 'code',
-      scope: 'identify',
+      scope: 'identify guilds',
       state,
       prompt: 'consent',
     });
@@ -82,38 +93,65 @@ export class DiscordOauthController {
     const engineId = await this.consumeOauthState(state);
     if (!engineId) return res.status(400).send('Invalid/expired OAuth state.');
 
-    const token = await this.exchangeCodeForToken({ code, clientId, clientSecret, redirectUri });
-    const discordUser = await this.fetchDiscordUser(token.access_token);
+    const discordToken = await this.exchangeCodeForToken({ code, clientId, clientSecret, redirectUri });
+    const discordUser = await this.fetchDiscordUser(discordToken.access_token);
+    const guilds = await this.fetchDiscordGuilds(discordToken.access_token);
 
-    const { companionToken, role } = await this.db.withClient(async (client: any) => {
-      const userId = await this.upsertUserByDiscordId(client, discordUser);
-      const resolvedRole = await this.resolveRole(client, engineId, discordUser.id);
+    const { jwtToken, role, userId } = await this.db.withClient(async (client: any) => {
+      const uId = await this.upsertUserByDiscordId(client, discordUser);
 
-      const session = await this.companionAuth.createSession(client, {
-        userId,
+      const resolvedRole = this.roleResolver.resolveRole({
+        discordUserId: discordUser.id,
+        guilds,
+        engineGuildId: null,
+        stRoleIds: [],
+      });
+
+      await this.companionAuth.createSession(client, {
+        userId: uId,
         engineId,
         role: resolvedRole,
       });
 
-      return { companionToken: session.token, role: resolvedRole };
+      const jwt = this.jwtService.sign({
+        sub: uId,
+        discordUserId: discordUser.id,
+        engineRole: resolvedRole,
+        engineId,
+      });
+
+      return { jwtToken: jwt, role: resolvedRole, userId: uId };
     });
 
-    // HttpOnly cookie: not readable by JS (prevents token exfil)
     const isProd = (process.env.NODE_ENV || '').toLowerCase() === 'production';
 
-    res.cookie('bse_token', companionToken, {
+    res.cookie('bse_token', jwtToken, {
       httpOnly: true,
-      secure: isProd, // true in production (https)
+      secure: isProd,
       sameSite: 'lax',
       path: '/',
-      maxAge: 1000 * 60 * 60 * 12, // 12h
+      maxAge: 1000 * 60 * 60 * 12,
     });
 
-    // Redirect back to app without token in URL
     const redirect = new URL(appUrl);
     redirect.searchParams.set('engineId', engineId);
     redirect.searchParams.set('role', role);
     return res.redirect(redirect.toString());
+  }
+
+  @Get('me')
+  me(@Req() req: any) {
+    const session = req.session;
+    if (!session) {
+      return { authenticated: false };
+    }
+    return {
+      authenticated: true,
+      userId: session.user_id,
+      discordUserId: session.discord_user_id,
+      role: session.role,
+      engineId: session.engine_id,
+    };
   }
 
   @Get('logout')
@@ -180,6 +218,20 @@ export class DiscordOauthController {
     return (await r.json()) as DiscordUser;
   }
 
+  private async fetchDiscordGuilds(accessToken: string): Promise<DiscordGuild[]> {
+    const r = await fetch('https://discord.com/api/users/@me/guilds', {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
+
+    if (!r.ok) {
+      const txt = await r.text().catch(() => '');
+      console.warn(`Discord guilds fetch failed: ${r.status} ${txt}`);
+      return [];
+    }
+
+    return (await r.json()) as DiscordGuild[];
+  }
+
   private async upsertUserByDiscordId(client: any, discordUser: DiscordUser): Promise<string> {
     const existing = await client.query(
       `SELECT user_id FROM users WHERE discord_user_id = $1 LIMIT 1`,
@@ -194,25 +246,6 @@ export class DiscordOauthController {
       [newId, discordUser.id, discordUser.global_name ?? discordUser.username],
     );
     return newId;
-  }
-
-  private async resolveRole(
-    client: any,
-    engineId: string,
-    discordUserId: string,
-  ): Promise<EngineRole> {
-    // Default: player. Best-effort: engine.discord_owner_id → ST.
-    try {
-      const r = await client.query(
-        `SELECT discord_owner_id FROM engines WHERE engine_id = $1 LIMIT 1`,
-        [engineId],
-      );
-      const owner = r.rowCount ? r.rows[0].discord_owner_id : null;
-      if (owner && String(owner) === String(discordUserId)) return EngineRole.ST;
-    } catch {
-      // ignore if column doesn't exist yet
-    }
-    return EngineRole.PLAYER;
   }
 
   private async consumeOauthState(state: string): Promise<string | null> {

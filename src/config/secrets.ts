@@ -5,14 +5,19 @@ const logger = new Logger('Secrets');
 export async function loadSecrets() {
   const required = [
     'DATABASE_URL',
+    'DISCORD_CLIENT_ID',
+    'DISCORD_CLIENT_SECRET',
+    'DISCORD_OWNER_ID',
+    'JWT_SECRET',
   ];
 
   const optional = [
     'DISCORD_BOT_TOKEN',
-    'DISCORD_CLIENT_SECRET',
     'SESSION_SECRET',
     'GEMINI_API_KEY',
     'BOT_OWNER_DISCORD_ID',
+    'DISCORD_OAUTH_REDIRECT_URI',
+    'COMPANION_APP_URL',
   ];
 
   const missing: string[] = [];

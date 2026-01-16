@@ -61,3 +61,9 @@ externalPort = 3001
 deploymentTarget = "autoscale"
 run = ["npm", "run", "start"]
 build = ["npm", "run", "build"]
+
+[userenv]
+
+[userenv.shared]
+DISCORD_OAUTH_REDIRECT_URI = "https://3033fa7d-7e28-4c0c-8610-55f9f19e3722-00-3gdp2i75epk0p.kirk.replit.dev/api/auth/discord/callback"
+COMPANION_APP_URL = "https://3033fa7d-7e28-4c0c-8610-55f9f19e3722-00-3gdp2i75epk0p.kirk.replit.dev"

@@ -1,14 +1,10 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
 import { Request, Response, NextFunction } from 'express';
-import { DatabaseService } from '../../database/database.service';
-import { CompanionAuthService } from '../../companion/auth.service';
+import { JwtService, JwtPayload } from '../../auth/jwt.service';
 
 @Injectable()
 export class SessionMiddleware implements NestMiddleware {
-  constructor(
-    private readonly db: DatabaseService,
-    private readonly auth: CompanionAuthService,
-  ) {}
+  constructor(private readonly jwtService: JwtService) {}
 
   async use(req: Request, _: Response, next: NextFunction) {
     const token =
@@ -20,11 +16,19 @@ export class SessionMiddleware implements NestMiddleware {
       return next();
     }
 
-    const session = await this.db.withClient((client) =>
-      this.auth.validateToken(client, token),
-    );
+    const payload = this.jwtService.verify(token);
 
-    (req as any).session = session ?? null;
+    if (payload) {
+      (req as any).session = {
+        user_id: payload.sub,
+        discord_user_id: payload.discordUserId,
+        role: payload.engineRole,
+        engine_id: payload.engineId,
+      };
+    } else {
+      (req as any).session = null;
+    }
+
     next();
   }
 }
