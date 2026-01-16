@@ -1,4 +1,8 @@
-export default function Login() {
+interface LoginProps {
+  onDemoMode?: () => void;
+}
+
+export default function Login({ onDemoMode }: LoginProps) {
   const loginWithDiscord = () => {
     window.location.href = '/api/auth/discord/login';
   };
@@ -69,6 +73,35 @@ export default function Login() {
           </svg>
           Continue with Discord
         </button>
+
+        {onDemoMode && (
+          <button 
+            onClick={onDemoMode}
+            style={{ 
+              width: '100%',
+              padding: '12px 24px',
+              marginTop: 12,
+              fontSize: 14,
+              fontWeight: 500,
+              background: 'transparent',
+              color: '#888',
+              border: '1px solid #444',
+              borderRadius: 8,
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.borderColor = '#666';
+              e.currentTarget.style.color = '#aaa';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.borderColor = '#444';
+              e.currentTarget.style.color = '#888';
+            }}
+          >
+            Preview Demo
+          </button>
+        )}
 
         <p style={{ 
           fontSize: 12, 
