@@ -4,18 +4,33 @@ An autonomous storyteller system for World of Darkness (VTM v5) built with NestJ
 
 ## Overview
 
-Blood Script Engine is a backend API service that provides game management functionality for Vampire: The Masquerade 5th Edition tabletop roleplaying. It includes Discord integration, character management, scene handling, and various game mechanics.
+Blood Script Engine is a Discord-first game engine for Vampire: The Masquerade 5th Edition. It consists of three parts:
+1. **Discord Bot** - Primary gameplay interface (dice rolls, character management, scenes)
+2. **Companion Dashboard** - Web-based oversight for Storytellers (client/ folder)
+3. **Public Website** - Documentation and onboarding site (website/ folder)
 
 ## Tech Stack
 
 - **Runtime**: Node.js 20
-- **Framework**: NestJS
+- **Backend**: NestJS
 - **Database**: PostgreSQL (Supabase)
+- **Website**: React + Vite
+- **Companion**: React + Vite
 - **Language**: TypeScript
 
 ## Project Structure
 
 ```
+website/             - PUBLIC WEBSITE (docs, onboarding, no login)
+├── src/
+│   ├── pages/       - Home, About, HowItWorks, GetStarted, HelpSafety, Docs, Status, Privacy, Terms
+│   └── components/  - Nav, Footer, Layout
+
+client/              - COMPANION DASHBOARD (requires Discord OAuth)
+├── src/
+│   ├── components/  - Dashboard UI components
+│   └── api.ts       - API client
+
 src/
 ├── ai/              - AI/autonomy services
 ├── auth/            - Authentication module
@@ -101,6 +116,10 @@ All routes are prefixed with `/api`:
 ## Recent Changes
 
 ### January 2026
+- **Public Website**: Added public-facing website (website/ folder) with documentation, onboarding, safety info
+  - Home, About, How It Works, Get Started, Help & Safety, Documentation, Status, Privacy, Terms
+  - Mobile-first design, no login required
+  - Runs on port 5000 as the primary public interface
 - **Supabase Database**: Switched from Replit PostgreSQL to Supabase with individual DB_* environment variables
 - **Demo Mode**: Added dashboard preview without authentication via "Preview Demo" button
 - **Removed Safety Ticket Button**: Safety cards now handled via Discord DM only, dashboard for ST/Owner oversight
