@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PoolClient } from 'pg';
+import { DyscrasiaService } from './dyscrasia.service';
 
 const RESONANCE_TYPES = [
   'choleric',
@@ -10,6 +11,8 @@ const RESONANCE_TYPES = [
 
 @Injectable()
 export class ResonanceService {
+  constructor(private readonly dyscrasiaService: DyscrasiaService) {}
+
   async applyMessyCritical(
     client: PoolClient,
     engineId: string,
@@ -18,51 +21,34 @@ export class ResonanceService {
     await client.query(
       `
       UPDATE characters
-      SET sheet = (
-        WITH current AS (
-          SELECT sheet
-          FROM characters
-          WHERE engine_id = $1 AND character_id = $2
-        ),
-        intensified AS (
-          SELECT
-            jsonb_set(
-              sheet,
-              '{resonance}',
-              jsonb_set(
-                COALESCE(sheet->'resonance', '{}'::jsonb),
-                '{intensity}',
-                to_jsonb(
-                  LEAST(
-                    3,
-                    COALESCE((sheet->'resonance'->>'intensity')::int, 0) + 1
-                  )
-                ),
-                true
-              ),
-              true
-            ) AS sheet
-          FROM current
-        )
-        SELECT
-          CASE
-            WHEN (intensified.sheet->'resonance'->>'intensity')::int >= 3
-            THEN jsonb_set(
-              intensified.sheet,
-              '{dyscrasia}',
-              jsonb_build_object(
-                'type',
-                intensified.sheet->'resonance'->>'type'
-              ),
-              true
+      SET sheet = jsonb_set(
+        sheet,
+        '{resonance}',
+        jsonb_set(
+          COALESCE(sheet->'resonance', '{}'::jsonb),
+          '{intensity}',
+          to_jsonb(
+            LEAST(
+              3,
+              COALESCE((sheet->'resonance'->>'intensity')::int, 0) + 1
             )
-            ELSE intensified.sheet
-          END
-        FROM intensified
+          ),
+          true
+        ),
+        true
       )
       WHERE engine_id = $1 AND character_id = $2
       `,
       [engineId, characterId],
+    );
+
+    await this.dyscrasiaService.applyFromResonance(
+      client,
+      engineId,
+      characterId,
+      {
+        source: 'messy_critical',
+      },
     );
   }
 
@@ -134,15 +120,13 @@ export class ResonanceService {
     engineId: string,
     characterId: string,
   ) {
-    await client.query(
-      `
-      UPDATE characters
-      SET sheet = sheet
-        - 'dyscrasia'
-        || jsonb_build_object('resonance', '{}'::jsonb)
-      WHERE engine_id = $1 AND character_id = $2
-      `,
-      [engineId, characterId],
+    await this.dyscrasiaService.cleanseDyscrasia(
+      client,
+      engineId,
+      characterId,
+      {
+        source: 'manual_cleanse',
+      },
     );
   }
 }
