@@ -3,6 +3,7 @@ import { Client, GatewayIntentBits, Partials } from 'discord.js';
 
 import { OwnerDmService } from './owner-dm.service';
 import { DiscordDmService } from './discord.dm.service';
+import { DiscordWebhookService } from './discord-webhook.service';
 
 const logger = new Logger('DiscordModule');
 
@@ -36,7 +37,8 @@ const logger = new Logger('DiscordModule');
     },
     OwnerDmService,
     DiscordDmService,
+    DiscordWebhookService,
   ],
-  exports: [Client, OwnerDmService, DiscordDmService],
+  exports: [Client, OwnerDmService, DiscordDmService, DiscordWebhookService],
 })
 export class DiscordModule {}

@@ -96,6 +96,12 @@ export const updateCharacterSheet = (
     body: JSON.stringify({ sheet }),
   });
 
+export const saveCharacterPortrait = (characterId: string, objectPath: string) =>
+  call<{ success: boolean; portraitUrl: string }>('/companion/portrait/save', {
+    method: 'POST',
+    body: JSON.stringify({ characterId, objectPath }),
+  });
+
 /* ======================
    Coteries
    ====================== */

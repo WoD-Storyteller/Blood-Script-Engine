@@ -4,6 +4,7 @@ import { CompanionModule } from '../companion/companion.module';
 import { RealtimeModule } from '../realtime/realtime.module';
 import { CharactersController } from './characters.controller';
 import { CharactersService } from './characters.service';
+import { PortraitUploadController } from '../companion/portrait-upload.controller';
 
 @Module({
   imports: [
@@ -11,7 +12,7 @@ import { CharactersService } from './characters.service';
     CompanionModule,
     RealtimeModule,
   ],
-  controllers: [CharactersController],
+  controllers: [CharactersController, PortraitUploadController],
   providers: [CharactersService],
   exports: [CharactersService],
 })

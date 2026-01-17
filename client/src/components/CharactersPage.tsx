@@ -213,7 +213,11 @@ export default function CharactersPage() {
         {/* ---------- VIEW MODE ---------- */}
         {sheet && !editSheet && page === 1 && (
           <>
-            <V5IdentityBlock sheet={sheet} />
+            <V5IdentityBlock 
+              sheet={sheet} 
+              characterId={selectedId || undefined}
+              onPortraitChange={() => refreshSheet(selectedId!)}
+            />
 
             <div className="grid grid-cols-3 gap-6 mt-6">
               <HungerMeter hunger={sheet.hunger ?? 0} />
