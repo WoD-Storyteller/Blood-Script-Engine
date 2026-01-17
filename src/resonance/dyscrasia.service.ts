@@ -1,6 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { PoolClient } from 'pg';
-import { uuid } from '../common/utils/uuid';
 import { DYSCRASIA_RULES } from './dyscrasia.rules';
 
 @Injectable()
@@ -67,17 +66,16 @@ export class DyscrasiaService {
         created_at
       )
       SELECT
-        $3,
+        gen_random_uuid(),
         $1,
-        $4,
-        $5 || resonance_type || $6,
+        $3,
+        $4 || resonance_type || $5,
         now()
       FROM updated
       `,
       [
         engineId,
         characterId,
-        uuid(),
         DYSCRASIA_RULES.auditActions.apply,
         'Dyscrasia applied (',
         `)${reasonSuffix}`,
@@ -130,10 +128,10 @@ export class DyscrasiaService {
         created_at
       )
       SELECT
-        $3,
+        gen_random_uuid(),
         $1,
+        $3,
         $4,
-        $5,
         now()
       FROM updated
       WHERE updated.had_dyscrasia = true
@@ -141,7 +139,6 @@ export class DyscrasiaService {
       [
         engineId,
         characterId,
-        uuid(),
         DYSCRASIA_RULES.auditActions.cleanse,
         reason,
       ],
