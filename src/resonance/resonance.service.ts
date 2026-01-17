@@ -41,15 +41,6 @@ export class ResonanceService {
       `,
       [engineId, characterId],
     );
-
-    await this.dyscrasiaService.applyFromResonance(
-      client,
-      engineId,
-      characterId,
-      {
-        source: 'messy_critical',
-      },
-    );
   }
 
   async applyBestialFailure(
