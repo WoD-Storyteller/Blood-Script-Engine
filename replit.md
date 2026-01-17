@@ -181,3 +181,43 @@ All routes are prefixed with `/api`:
 - `GET /api/owner/engines` - List engines (Owner only)
 - `POST /api/owner/issue-strike` - Issue strike (Owner only)
 - `POST /api/owner/unban-engine` - Unban engine (Owner only)
+
+### Portrait Upload
+- `POST /api/companion/portrait/request-url` - Get presigned upload URL
+- `POST /api/companion/portrait/save` - Save portrait to character
+- `GET /api/companion/portrait/:objectPath` - Serve portrait image
+
+## Production Deployment
+
+### Domain Structure
+```
+bloodscriptengine.tech           → Public website (static)
+app.bloodscriptengine.tech       → Companion dashboard + API
+app.bloodscriptengine.tech/api   → NestJS backend
+```
+
+### Deployment Files
+```
+deploy/
+├── nginx/                      - Nginx site configurations
+│   ├── bloodscriptengine.tech.conf
+│   └── app.bloodscriptengine.tech.conf
+├── systemd/                    - Systemd service files
+│   └── bloodscript-api.service
+├── scripts/                    - Deployment scripts
+│   ├── deploy.sh
+│   └── build-production.sh
+└── README.md                   - Full deployment guide
+```
+
+### Required Environment Variables (Production)
+```
+NODE_ENV=production
+DISCORD_CLIENT_ID=1438563946432036904
+DISCORD_CLIENT_SECRET=<secret>
+DISCORD_OAUTH_REDIRECT_URI=https://app.bloodscriptengine.tech/api/auth/discord/callback
+DISCORD_BOT_TOKEN=<token>
+COMPANION_APP_URL=https://app.bloodscriptengine.tech
+JWT_SECRET=<32+ char secret>
+DATABASE_URL=<supabase connection string>
+```
