@@ -1,4 +1,8 @@
 export default function Demo() {
+  const companionUrl = import.meta.env.DEV 
+    ? 'http://localhost:5173/?demo=true'
+    : '/companion/?demo=true';
+  
   return (
     <div style={{
       position: 'fixed',
@@ -9,13 +13,14 @@ export default function Demo() {
       background: '#0a0a0f',
     }}>
       <iframe
-        src="http://localhost:5173/?demo=true"
+        src={companionUrl}
         style={{
           width: '100%',
           height: '100%',
           border: 'none',
         }}
         title="Blood Script Companion Demo"
+        allow="clipboard-write"
       />
     </div>
   );
