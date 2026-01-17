@@ -237,3 +237,81 @@ export const stRejectIntent = (intentId: string) =>
     method: 'POST',
     body: JSON.stringify({ intentId }),
   });
+
+/* ======================
+   AI Settings
+   ====================== */
+
+export interface AiSettings {
+  ai_enabled: boolean;
+  ai_narration: boolean;
+  ai_npc_voicing: boolean;
+  ai_tone: string;
+}
+
+export const fetchAiSettings = () =>
+  call<AiSettings>('/companion/ai/settings');
+
+export const updateAiSettings = (settings: Partial<AiSettings>) =>
+  call<{ success: boolean; config: AiSettings }>('/companion/ai/settings', {
+    method: 'POST',
+    body: JSON.stringify(settings),
+  });
+
+/* ======================
+   NPC Management
+   ====================== */
+
+export interface NpcData {
+  npc_id: string;
+  name: string;
+  role?: string;
+  personality?: {
+    traits?: string[];
+    mannerisms?: string[];
+    voice?: string;
+    goals?: string[];
+  };
+  ambition?: string;
+  status?: number;
+  alive?: boolean;
+  portrait_url?: string;
+  webhook_url?: string;
+  created_at?: string;
+}
+
+export const fetchNpcs = async () =>
+  (await call<{ npcs: NpcData[] }>('/companion/npcs')).npcs;
+
+export const fetchNpc = async (id: string) =>
+  (await call<{ npc: NpcData }>(`/companion/npcs/${id}`)).npc;
+
+export const batchImportNpcs = (npcs: Partial<NpcData>[]) =>
+  call<{ success: boolean; imported: number; errors: number; details: any }>('/companion/npcs/batch-import', {
+    method: 'POST',
+    body: JSON.stringify({ npcs }),
+  });
+
+export const updateNpc = (npcId: string, data: Partial<NpcData>) =>
+  call<{ success: boolean }>(`/companion/npcs/${npcId}/update`, {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+
+export const requestNpcPortraitUrl = (npcId: string, file: { name: string; size: number; contentType: string }) =>
+  call<{ uploadURL: string; objectPath: string }>(`/companion/npcs/${npcId}/portrait/request-url`, {
+    method: 'POST',
+    body: JSON.stringify(file),
+  });
+
+export const saveNpcPortrait = (npcId: string, objectPath: string) =>
+  call<{ success: boolean; portraitUrl: string }>(`/companion/npcs/${npcId}/portrait/save`, {
+    method: 'POST',
+    body: JSON.stringify({ objectPath }),
+  });
+
+export const getNpcTemplate = () =>
+  call<{ template: any; schema: any }>('/companion/npcs/template', { method: 'POST' });
+
+export const getChronicleTemplate = () =>
+  call<{ template: any; schema: any }>('/companion/chronicle/template');

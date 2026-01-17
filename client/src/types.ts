@@ -2,33 +2,40 @@ export interface Arc {
   arc_id: string;
   title: string;
   status: string;
+  description?: string;
 }
 
 export interface Clock {
   clock_id: string;
   title: string;
-  progress: number;
+  progress?: number;
+  filled?: number;
   segments: number;
-  status: string;
-  nightly: boolean;
+  status?: string;
+  nightly?: boolean;
+  description?: string;
 }
 
 export interface Pressure {
-  source: string;
-  severity: number;
-  description: string;
-  created_at: string;
+  source?: string;
+  type?: string;
+  severity?: number;
+  level?: number;
+  description?: string;
+  label?: string;
+  created_at?: string;
 }
 
 export interface WorldState {
   arcs: Arc[];
   clocks: Clock[];
   pressure: Pressure[];
-  heat: number;
+  heat?: number;
   mapUrl?: string | null;
   engine?: {
     banned?: boolean;
     engine_id?: string;
+    name?: string;
   };
 }
 
@@ -36,6 +43,7 @@ export interface SessionInfo {
   authenticated: boolean;
   userId?: string;
   user_id?: string;
+  username?: string;
   engine_id?: string;
   engineId?: string;
   discord_user_id?: string;

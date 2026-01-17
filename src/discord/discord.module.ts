@@ -1,13 +1,17 @@
-import { Module, Logger } from '@nestjs/common';
+import { Module, Logger, forwardRef } from '@nestjs/common';
 import { Client, GatewayIntentBits, Partials } from 'discord.js';
 
 import { OwnerDmService } from './owner-dm.service';
 import { DiscordDmService } from './discord.dm.service';
 import { DiscordWebhookService } from './discord-webhook.service';
+import { NpcVoiceService } from './npc-voice.service';
+import { DatabaseModule } from '../database/database.module';
+import { AiModule } from '../ai/ai.module';
 
 const logger = new Logger('DiscordModule');
 
 @Module({
+  imports: [DatabaseModule, forwardRef(() => AiModule)],
   providers: [
     {
       provide: Client,
@@ -38,7 +42,8 @@ const logger = new Logger('DiscordModule');
     OwnerDmService,
     DiscordDmService,
     DiscordWebhookService,
+    NpcVoiceService,
   ],
-  exports: [Client, OwnerDmService, DiscordDmService, DiscordWebhookService],
+  exports: [Client, OwnerDmService, DiscordDmService, DiscordWebhookService, NpcVoiceService],
 })
 export class DiscordModule {}
