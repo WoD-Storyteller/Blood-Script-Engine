@@ -55,8 +55,10 @@ export class ResolutionPipeline {
       input.hunger ?? 0,
     );
 
+    let dyscrasiaStatus: { eligible: boolean; applied: boolean } | null = null;
+
     if (rollResult.messyCritical === true) {
-      await this.resonance.applyMessyCritical(
+      dyscrasiaStatus = await this.resonance.applyMessyCritical(
         client,
         engineId,
         input.actorId,
@@ -105,12 +107,14 @@ export class ResolutionPipeline {
         resolved: true,
         outcome: 'attack_resolved',
         rollResult,
+        dyscrasia: dyscrasiaStatus,
       };
     }
 
     return {
       resolved: true,
       rollResult,
+      dyscrasia: dyscrasiaStatus,
     };
   }
 }
