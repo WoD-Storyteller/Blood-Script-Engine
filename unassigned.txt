@@ -1,0 +1,53 @@
+CORE RULEBOOK
+
+
+                                    A Sourcebook for
+                                 Vampire: The Masquerade
+
+
+                                                                                                    D E D I C AT I O N S
+                               To you, the reader, player, and fan of Vampire: The Masquerade, we dedicate our passion, work, gratitude, and love;
+                               To our 20-something-year-old selves, who’d be pretty blown away at what we’d eventually end up with in our hands;
+                                  and In loving memory of Stewart Wieck, co-founder of White Wolf and co-creator of the World of Darkness.
+
+                                                                                                           DESIGN
+                                                                         developed by Kenneth Hite and Karim Muammar
+                                                                 system design – Karim Muammar, Kenneth Hite, and Karl Bergström
+                                                                         story & creative direction – Martin Ericsson
+                                                                                                    producer – Jason Carl
+                                 written by – Kenneth Hite, Martin Ericsson, Matthew Dawkins, Karim Muammar, and Juhana Pettersson
+                             additional writing by - Mark Rein•Hagen, Karl Bergström, Jason Andrew, Freja Gyldenstrøm and Jacqueline Bryk
+                                             editing – Freja Gyldenstrøm, Jennifer Smith-Pulsipher, and Karim Muammar
+
+                                                                                                                 A RT
+                            art direction – Mary Lee, Tomas Arfert, and Martin Ericsson | artistic consultant - Anders Davén
+                        book design and layout – Christian Granath, Tomas Härenstam, Tomas Arfert, Johan Nohr and Fria Ligan AB
+                     cover – Tomas Arfert | interior art and illustrations – Mary Lee, Mark Kelly, Sarah Horrocks, Tomas Arfert,
+        Anders Muammar, Mike Mignola, and the CCP Atlanta art team directed by Reynir Harðarson, consisting of Erling Ingi Sævarsson and many more.
+           Loresheets illustrated by John Van Fleet, Vince Locke, Michael Gaydos, Matthew Mitchell, Mike Huddleston, Drew Tucker, Emma Jonsson and
+              By Night Studios. | handwriting – Fiona Laura Stifter, Liselle Angelique Krog Awwal, Tomas Arfert, Martin Ericsson, Anders Davén
+                                clan symbols, clan fonts, and vampire: the masquerade logos – Chris Elliott, Tomas Arfert
+                                            | clan fashion design and photoshoots – Mary “TwistedLamb” Lee
+           photographers – Derek Hutchison (Gangrel, Malkavian, Tremere, Ventrue), Sequoia Emmanuelle (Toreador), John-Paul Bichard (Nosferatu),
+       Viktor Herak (Brujah, thin-bloods), Martin Ericsson (thin-bloods and additional city photography), E-a, Lyra Jackson Arfert, Julius Konttinen, James Vu
+
+                            WORLD OF DARKNESS                                                                                          Director, Strategic Partnerships: Erika Conway
+                            BRAND MANAGEMENT                                                                                                     Sales Manager: Kaitlin Ellis
+                              brand manager – Sean Greaney                                                                                       E-Commerce: Nick Medinger
+                            brand creative lead – Justin Achilli                                                                    Sales and Marketing Program Manager: Matt Holland
+                            brand art director – Tomas Arfert                                                                      Senior Producer of Board & Card Games: Dan Bojanowski
+                              brand editor – Karim Muammar                                                                          Associate Producer of Board & Card Games: Jimmy Le
+                    brand community developer – Martyna “Outstar” Zych                                                               Senior Producer of Roleplaying Games: Elisa Teague
+                          brand marketing manager – Jason Carl                                                                       Associate Producer of Roleplaying Games: Trivia Fox
+                                                                                                                                              Senior Game Designer: Matt Hyra
+                                  PARADOX LICENSING                                                                                Game Designers: Dan Blanchett, Chris Chung, & T.C. Petty III
+                                 business developer – Dhaunae De Vir                                                       Senior Creative Lead of Board & Card Games: Anita Osburn & Jeanne Torres
+                                                                                                                                          Video Production Associate: Katie Schmitt
+                           RENEGADE GAME STUDIOS                                                                                              Customer Service: Jenni Janikowski
+                                president & publisher: Scott Gaeta                                                                              Finance Clerk: Minnie Nelson
+                        Vice President Sales and Marketing: Sara Erickson                                                                       Event Manager: Chris Whitpan
+                                    Controller: Robyn Gaeta                                                                                   Creative Production: Noelle Lopez
+                             Director of Operations: Leisha Cummins                                                                          Creative Production: Todd Crapper
+                           Associate Project Manager: Katie Gjesdahl                                                                         Creative Production: Gordon Tucker
+
+                                                                                                          MODELS
