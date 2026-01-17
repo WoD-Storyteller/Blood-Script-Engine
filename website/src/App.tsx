@@ -10,10 +10,12 @@ import Status from './pages/Status';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import NotFound from './pages/NotFound';
+import Demo from './pages/Demo';
 
 export default function App() {
   return (
     <Routes>
+      <Route path="/demo" element={<Demo />} />
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />

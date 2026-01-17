@@ -46,6 +46,15 @@ export default function Nav() {
             </li>
           ))}
           <li>
+            <Link
+              to="/demo"
+              className="nav-link nav-demo"
+              onClick={() => setMenuOpen(false)}
+            >
+              Try Demo
+            </Link>
+          </li>
+          <li>
             <a
               href={DASHBOARD_URL}
               className="nav-link nav-dashboard"

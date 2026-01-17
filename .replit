@@ -22,6 +22,10 @@ args = "Backend API"
 task = "workflow.run"
 args = "Website"
 
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Companion"
+
 [[workflows.workflow]]
 name = "Backend API"
 author = "agent"
@@ -46,6 +50,18 @@ waitForPort = 5000
 [workflows.workflow.metadata]
 outputType = "webview"
 
+[[workflows.workflow]]
+name = "Companion"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd client && npm run dev"
+waitForPort = 5173
+
+[workflows.workflow.metadata]
+outputType = "console"
+
 [[ports]]
 localPort = 3000
 externalPort = 3000
@@ -57,6 +73,10 @@ externalPort = 80
 [[ports]]
 localPort = 5001
 externalPort = 3002
+
+[[ports]]
+localPort = 5173
+externalPort = 5173
 
 [deployment]
 deploymentTarget = "autoscale"

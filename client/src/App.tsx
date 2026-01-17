@@ -52,10 +52,17 @@ const DEMO_WORLD: WorldState = {
 export default function App() {
   const [session, setSession] = useState<SessionInfo | null>(null);
   const [world, setWorld] = useState<WorldState | null>(null);
-  const [demoMode, setDemoMode] = useState(false);
+  const [demoMode, setDemoMode] = useState(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('demo') === 'true';
+  });
 
   useEffect(() => {
-    if (demoMode) return;
+    if (demoMode) {
+      setSession(DEMO_SESSION);
+      setWorld(DEMO_WORLD);
+      return;
+    }
     
     (async () => {
       try {
