@@ -116,6 +116,11 @@ All routes are prefixed with `/api`:
 ## Recent Changes
 
 ### January 2026
+- **AI Settings**: Added per-chronicle AI toggles (ai_enabled, ai_narration, ai_npc_voicing, ai_tone) stored in engine config
+- **NPC Management**: Batch JSON import (up to 100 NPCs), portrait upload, webhook configuration for AI voicing
+- **NPC AI Voicing**: Tupperbox-style webhooks allow NPCs to speak as themselves in Discord via Gemini AI
+- **Chronicle Templates**: JSON templates for storylines, quests with objectives/rewards, NPCs, clocks, factions, locations
+- **ST Override Panel**: Now includes AI Settings tab with toggles for AI features and tone selector
 - **Public Website**: Added public-facing website (website/ folder) with documentation, onboarding, safety info
   - Home, About, How It Works, Get Started, Help & Safety, Documentation, Status, Privacy, Terms
   - Mobile-first design, no login required
