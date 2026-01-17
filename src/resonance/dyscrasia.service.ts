@@ -107,14 +107,20 @@ export class DyscrasiaService {
 
     const result = await client.query(
       `
-      WITH updated AS (
+      WITH current AS (
+        SELECT
+          sheet ? 'dyscrasia' AS had_dyscrasia
+        FROM characters
+        WHERE engine_id = $1 AND character_id = $2
+      ),
+      updated AS (
         UPDATE characters
         SET sheet = sheet
           - 'dyscrasia'
           || jsonb_build_object('resonance', '{}'::jsonb)
         WHERE engine_id = $1 AND character_id = $2
-          AND sheet ? 'dyscrasia'
-        RETURNING character_id
+        RETURNING character_id,
+          (SELECT had_dyscrasia FROM current) AS had_dyscrasia
       )
       INSERT INTO owner_audit_log (
         audit_id,
@@ -130,6 +136,7 @@ export class DyscrasiaService {
         $5,
         now()
       FROM updated
+      WHERE updated.had_dyscrasia = true
       `,
       [
         engineId,
