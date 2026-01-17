@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { TenetsService } from '../safety/tenets.service';
 import { CombatActionType } from '../combat/combat.types';
 import { ResonanceService } from '../resonance/resonance.service';
+import { DyscrasiaService } from '../resonance/dyscrasia.service';
 import { DyscrasiaEffects } from '../resonance/dyscrasia.effects';
 import { ResonanceEffects } from '../resonance/resonance.effects';
 import { DiceService } from '../dice/dice.service';
@@ -13,6 +14,7 @@ export class ResolutionPipeline {
   constructor(
     private readonly tenets: TenetsService,
     private readonly resonance: ResonanceService,
+    private readonly dyscrasiaService: DyscrasiaService,
     private readonly dyscrasia: DyscrasiaEffects,
     private readonly resonanceEffects: ResonanceEffects,
     private readonly dice: DiceService,
@@ -55,11 +57,22 @@ export class ResolutionPipeline {
       input.hunger ?? 0,
     );
 
+    let dyscrasiaEligible = false;
+
     if (rollResult.messyCritical === true) {
       await this.resonance.applyMessyCritical(
         client,
         engineId,
         input.actorId,
+      );
+
+      dyscrasiaEligible = await this.dyscrasiaService.applyFromResonance(
+        client,
+        engineId,
+        input.actorId,
+        {
+          source: 'messy_critical',
+        },
       );
 
       await this.pressure.escalateSIHeat(
@@ -105,12 +118,14 @@ export class ResolutionPipeline {
         resolved: true,
         outcome: 'attack_resolved',
         rollResult,
+        dyscrasiaEligible,
       };
     }
 
     return {
       resolved: true,
       rollResult,
+      dyscrasiaEligible,
     };
   }
 }
