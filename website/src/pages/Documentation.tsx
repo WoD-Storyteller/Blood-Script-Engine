@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './Documentation.css';
 
-type DocSection = 'commands' | 'concepts' | 'mechanics' | 'safety' | 'faq';
+type DocSection = 'commands' | 'concepts' | 'mechanics' | 'safety' | 'imports' | 'faq';
 
 export default function Documentation() {
   const [activeSection, setActiveSection] = useState<DocSection>('commands');
@@ -45,6 +45,12 @@ export default function Documentation() {
               Safety System
             </button>
             <button
+              className={activeSection === 'imports' ? 'active' : ''}
+              onClick={() => setActiveSection('imports')}
+            >
+              Data Import
+            </button>
+            <button
               className={activeSection === 'faq' ? 'active' : ''}
               onClick={() => setActiveSection('faq')}
             >
@@ -57,6 +63,7 @@ export default function Documentation() {
             {activeSection === 'concepts' && <ConceptsDoc />}
             {activeSection === 'mechanics' && <MechanicsDoc />}
             {activeSection === 'safety' && <SafetyDoc />}
+            {activeSection === 'imports' && <ImportsDoc />}
             {activeSection === 'faq' && <FAQDoc />}
           </div>
         </div>
@@ -310,6 +317,343 @@ function SafetyDoc() {
           chronicle. It is never shared externally. Anonymous submissions
           cannot be traced back to specific players.
         </p>
+      </div>
+    </div>
+  );
+}
+
+function ImportsDoc() {
+  const npcTemplate = `{
+  "npcs": [
+    {
+      "name": "Prince Marcus Ashford",
+      "clan": "Ventrue",
+      "generation": 8,
+      "role": "Prince of the City",
+      "location": "Elysium",
+      "description": "A calculating elder who has ruled for two centuries.",
+      "notes": "Hostile to Anarchs. Ally of the Tremere Primogen.",
+      "portraitUrl": null,
+      "webhookUrl": null
+    },
+    {
+      "name": "Rosa Chen",
+      "clan": "Tremere",
+      "generation": 9,
+      "role": "Primogen",
+      "location": "The Chantry",
+      "description": "Keeper of occult secrets and blood sorcery.",
+      "notes": "May provide ritual assistance for a price.",
+      "portraitUrl": null,
+      "webhookUrl": null
+    }
+  ]
+}`;
+
+  const chronicleTemplate = `{
+  "chronicle": {
+    "name": "Shadows of San Francisco",
+    "setting": "Modern nights, 2024",
+    "theme": "Political intrigue and survival"
+  },
+  "characters": [
+    {
+      "name": "Elena Voss",
+      "clan": "Toreador",
+      "generation": 11,
+      "sire": "Marcus the Sculptor",
+      "concept": "Art gallery curator embracing the night",
+      "attributes": {
+        "strength": 2, "dexterity": 3, "stamina": 2,
+        "charisma": 4, "manipulation": 3, "composure": 2,
+        "intelligence": 3, "wits": 2, "resolve": 2
+      },
+      "disciplines": {
+        "auspex": 2,
+        "presence": 3
+      },
+      "hunger": 2,
+      "humanity": 7,
+      "willpower": 4
+    }
+  ],
+  "coteries": [
+    {
+      "name": "The Midnight Society",
+      "territory": "Financial District",
+      "members": ["Elena Voss", "Marcus Steel"],
+      "haven": "Penthouse Suite, Raven Tower"
+    }
+  ],
+  "npcs": [
+    {
+      "name": "Prince Marcus Ashford",
+      "clan": "Ventrue",
+      "role": "Prince of the City",
+      "location": "Elysium",
+      "description": "A calculating elder who has ruled for two centuries."
+    }
+  ],
+  "clocks": [
+    {
+      "title": "SI Investigation",
+      "segments": 6,
+      "filled": 2,
+      "description": "Second Inquisition agents closing in on the Domain"
+    },
+    {
+      "title": "Blood Hunt Countdown",
+      "segments": 4,
+      "filled": 0,
+      "description": "Time before the Prince calls a Blood Hunt"
+    }
+  ],
+  "arcs": [
+    {
+      "title": "The Prince's Gambit",
+      "status": "active",
+      "description": "Political maneuvering at the highest levels of Kindred society"
+    }
+  ],
+  "factions": [
+    {
+      "name": "Camarilla",
+      "influence": "high",
+      "leader": "Prince Marcus Ashford",
+      "notes": "Controls the city officially"
+    },
+    {
+      "name": "Anarchs",
+      "influence": "medium",
+      "leader": "Red",
+      "notes": "Growing presence in the Tenderloin"
+    }
+  ],
+  "locations": [
+    {
+      "name": "Elysium - The Grand Opera House",
+      "type": "elysium",
+      "description": "Neutral ground where Kindred politics unfold",
+      "owner": "Prince Marcus Ashford"
+    },
+    {
+      "name": "The Warrens",
+      "type": "territory",
+      "description": "Nosferatu tunnels beneath the city",
+      "owner": "Clan Nosferatu"
+    }
+  ]
+}`;
+
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
+  };
+
+  return (
+    <div className="doc-page">
+      <h2>Data Import</h2>
+
+      <div className="import-section">
+        <h3>NPC Batch Import</h3>
+        <p>
+          Storytellers can import multiple NPCs at once using a JSON file. This is useful
+          for setting up a new chronicle or adding a group of related characters quickly.
+          The Companion dashboard supports importing up to 100 NPCs per batch.
+        </p>
+
+        <h4>How to Import NPCs</h4>
+        <ol className="steps-list">
+          <li>Open the Companion dashboard and navigate to the Storyteller tab</li>
+          <li>Click on "NPC Management"</li>
+          <li>Select "Batch Import" and paste your JSON or upload a file</li>
+          <li>Review the preview and confirm the import</li>
+        </ol>
+
+        <h4>NPC Fields</h4>
+        <table className="fields-table">
+          <thead>
+            <tr>
+              <th>Field</th>
+              <th>Required</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>name</td><td>Yes</td><td>NPC's name</td></tr>
+            <tr><td>clan</td><td>No</td><td>Vampire clan (Ventrue, Toreador, etc.)</td></tr>
+            <tr><td>generation</td><td>No</td><td>Vampire generation (1-16)</td></tr>
+            <tr><td>role</td><td>No</td><td>Political or social role (Prince, Primogen, etc.)</td></tr>
+            <tr><td>location</td><td>No</td><td>Where this NPC is typically found</td></tr>
+            <tr><td>description</td><td>No</td><td>Brief character description</td></tr>
+            <tr><td>notes</td><td>No</td><td>ST-only notes about the NPC</td></tr>
+            <tr><td>portraitUrl</td><td>No</td><td>URL to NPC portrait image</td></tr>
+            <tr><td>webhookUrl</td><td>No</td><td>Discord webhook for AI voicing</td></tr>
+          </tbody>
+        </table>
+
+        <h4>JSON Template</h4>
+        <div className="code-block">
+          <button className="copy-btn" onClick={() => copyToClipboard(npcTemplate)}>
+            Copy
+          </button>
+          <pre>{npcTemplate}</pre>
+        </div>
+      </div>
+
+      <div className="import-section">
+        <h3>Chronicle Import</h3>
+        <p>
+          Import a complete chronicle structure including characters, coteries, NPCs,
+          story arcs, clocks, factions, and locations. This is perfect for migrating
+          from another system or starting with a pre-built scenario.
+        </p>
+
+        <h4>How to Import a Chronicle</h4>
+        <ol className="steps-list">
+          <li>Open the Companion dashboard as an Owner or Storyteller</li>
+          <li>Navigate to "Chronicle Settings" in the Storyteller tab</li>
+          <li>Click "Import Chronicle" and paste your JSON or upload a file</li>
+          <li>The system will validate the structure before importing</li>
+          <li>Review the preview showing what will be created</li>
+          <li>Confirm to import all data into your chronicle</li>
+        </ol>
+
+        <h4>Chronicle Fields</h4>
+        <table className="fields-table">
+          <thead>
+            <tr>
+              <th>Field</th>
+              <th>Required</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>name</td><td>Yes</td><td>Chronicle name</td></tr>
+            <tr><td>setting</td><td>No</td><td>Time period and location</td></tr>
+            <tr><td>theme</td><td>No</td><td>Core themes of the chronicle</td></tr>
+          </tbody>
+        </table>
+
+        <h4>Character Fields</h4>
+        <table className="fields-table">
+          <thead>
+            <tr>
+              <th>Field</th>
+              <th>Required</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>name</td><td>Yes</td><td>Character name</td></tr>
+            <tr><td>clan</td><td>Yes</td><td>Vampire clan</td></tr>
+            <tr><td>generation</td><td>No</td><td>Vampire generation (1-16)</td></tr>
+            <tr><td>sire</td><td>No</td><td>Name of the sire who embraced them</td></tr>
+            <tr><td>concept</td><td>No</td><td>Character concept/background</td></tr>
+            <tr><td>attributes</td><td>No</td><td>Object with physical/social/mental stats (1-5)</td></tr>
+            <tr><td>disciplines</td><td>No</td><td>Object mapping discipline names to levels (1-5)</td></tr>
+            <tr><td>hunger</td><td>No</td><td>Current hunger level (0-5)</td></tr>
+            <tr><td>humanity</td><td>No</td><td>Humanity score (0-10)</td></tr>
+            <tr><td>willpower</td><td>No</td><td>Willpower score (0-10)</td></tr>
+          </tbody>
+        </table>
+
+        <h4>Coterie Fields</h4>
+        <table className="fields-table">
+          <thead>
+            <tr>
+              <th>Field</th>
+              <th>Required</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>name</td><td>Yes</td><td>Coterie name</td></tr>
+            <tr><td>territory</td><td>No</td><td>Area the coterie controls</td></tr>
+            <tr><td>members</td><td>No</td><td>Array of character names</td></tr>
+            <tr><td>haven</td><td>No</td><td>Primary haven location</td></tr>
+          </tbody>
+        </table>
+
+        <h4>Clock Fields</h4>
+        <table className="fields-table">
+          <thead>
+            <tr>
+              <th>Field</th>
+              <th>Required</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>title</td><td>Yes</td><td>Clock title</td></tr>
+            <tr><td>segments</td><td>Yes</td><td>Total segments (4, 6, or 8)</td></tr>
+            <tr><td>filled</td><td>No</td><td>Currently filled segments (default: 0)</td></tr>
+            <tr><td>description</td><td>No</td><td>What happens when clock fills</td></tr>
+          </tbody>
+        </table>
+
+        <h4>Arc Fields</h4>
+        <table className="fields-table">
+          <thead>
+            <tr>
+              <th>Field</th>
+              <th>Required</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>title</td><td>Yes</td><td>Story arc title</td></tr>
+            <tr><td>status</td><td>No</td><td>"active", "completed", or "pending"</td></tr>
+            <tr><td>description</td><td>No</td><td>Arc summary</td></tr>
+          </tbody>
+        </table>
+
+        <h4>Faction Fields</h4>
+        <table className="fields-table">
+          <thead>
+            <tr>
+              <th>Field</th>
+              <th>Required</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>name</td><td>Yes</td><td>Faction name</td></tr>
+            <tr><td>influence</td><td>No</td><td>"high", "medium", or "low"</td></tr>
+            <tr><td>leader</td><td>No</td><td>Faction leader name</td></tr>
+            <tr><td>notes</td><td>No</td><td>ST notes about the faction</td></tr>
+          </tbody>
+        </table>
+
+        <h4>Location Fields</h4>
+        <table className="fields-table">
+          <thead>
+            <tr>
+              <th>Field</th>
+              <th>Required</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>name</td><td>Yes</td><td>Location name</td></tr>
+            <tr><td>type</td><td>No</td><td>"elysium", "haven", "territory", "landmark"</td></tr>
+            <tr><td>description</td><td>No</td><td>Location description</td></tr>
+            <tr><td>owner</td><td>No</td><td>Who controls this location</td></tr>
+          </tbody>
+        </table>
+
+        <h4>JSON Template</h4>
+        <div className="code-block">
+          <button className="copy-btn" onClick={() => copyToClipboard(chronicleTemplate)}>
+            Copy
+          </button>
+          <pre>{chronicleTemplate}</pre>
+        </div>
+
+        <div className="warning-box">
+          <strong>Note:</strong> Importing a chronicle will add to your existing data,
+          not replace it. Duplicate names may cause conflicts. Always export your
+          current chronicle as a backup before importing new data.
+        </div>
       </div>
     </div>
   );
