@@ -30,10 +30,18 @@ async function bootstrap() {
   app.use(cookieParser());
 
   /**
-   * ✅ CORS CONFIG - Allow all origins for Replit environment
+   * ✅ CORS CONFIG
    */
+  const allowedOrigins = process.env.NODE_ENV === 'production'
+    ? [
+        'https://bloodscriptengine.tech',
+        'https://www.bloodscriptengine.tech',
+        'https://app.bloodscriptengine.tech',
+      ]
+    : true;
+
   app.enableCors({
-    origin: true,
+    origin: allowedOrigins,
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Authorization', 'Content-Type'],

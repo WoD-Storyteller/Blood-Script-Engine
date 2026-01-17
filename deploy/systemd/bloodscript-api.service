@@ -1,0 +1,38 @@
+[Unit]
+Description=Blood Script Engine API
+Documentation=https://github.com/bloodscriptengine
+After=network.target postgresql.service
+
+[Service]
+Type=simple
+User=bloodscript
+Group=bloodscript
+WorkingDirectory=/var/www/bloodscriptengine.tech
+
+# Environment
+Environment=NODE_ENV=production
+EnvironmentFile=/var/www/bloodscriptengine.tech/.env.production
+
+# Node.js application
+ExecStart=/usr/bin/node dist/main.js
+
+# Process management
+Restart=on-failure
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=bloodscript-api
+
+# Resource limits
+LimitNOFILE=65536
+MemoryMax=512M
+
+# Security hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/www/bloodscriptengine.tech/logs
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
