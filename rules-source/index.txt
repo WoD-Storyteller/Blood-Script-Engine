@@ -1,0 +1,7 @@
+character-creation/.txt
+clans/.txt
+concepts/.txt
+disciplines/.txt
+misc/unassigned.txt
+storyteller/.txt
+systems/.txt
