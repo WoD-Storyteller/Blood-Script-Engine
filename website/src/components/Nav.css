@@ -53,6 +53,17 @@
   background: var(--color-surface);
 }
 
+.nav-dashboard {
+  background: var(--color-primary);
+  color: #fff !important;
+  font-weight: 600;
+}
+
+.nav-dashboard:hover {
+  background: var(--color-primary-hover);
+  color: #fff !important;
+}
+
 .nav-toggle {
   display: none;
   background: none;

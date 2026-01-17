@@ -12,6 +12,8 @@ const navLinks = [
   { to: '/status', label: 'Status' },
 ];
 
+const DASHBOARD_URL = '/api/auth/discord/login';
+
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
@@ -43,6 +45,15 @@ export default function Nav() {
               </Link>
             </li>
           ))}
+          <li>
+            <a
+              href={DASHBOARD_URL}
+              className="nav-link nav-dashboard"
+              onClick={() => setMenuOpen(false)}
+            >
+              Dashboard
+            </a>
+          </li>
         </ul>
       </div>
     </nav>
