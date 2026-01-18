@@ -8,6 +8,7 @@ import { MasqueradeCoverupService } from './masquerade-coverup.service';
 import { SITargetedRaidService } from './si-targeted-raid.service';
 import { SITargetedEventsService } from './si-targeted-events.service';
 import { ChronicleClockHooksService } from './chronicle-clocks-hooks.service';
+import { BLOOD_POTENCY_PRESSURE_WARNINGS } from './chronicle-pressure.map';
 
 @Injectable()
 export class ChroniclePressureService {
@@ -131,5 +132,40 @@ export class ChroniclePressureService {
     }
 
     return { raid: true, target };
+  }
+
+  async updateBloodPotencyWarnings(
+    client: PoolClient,
+    engineId: string,
+    bloodPotency: number,
+  ) {
+    const normalized = Math.max(0, Math.floor(bloodPotency));
+    const warnings = BLOOD_POTENCY_PRESSURE_WARNINGS.filter(
+      (warning) => normalized >= warning.minBloodPotency,
+    ).map((warning) => ({
+      minBloodPotency: warning.minBloodPotency,
+      key: warning.key,
+      risks: warning.risks,
+    }));
+
+    const payload = {
+      bloodPotency: normalized,
+      active: warnings.length > 0,
+      warnings,
+    };
+
+    await client.query(
+      `
+      UPDATE chronicles
+      SET state = jsonb_set(
+        COALESCE(state, '{}'::jsonb),
+        '{pressure_warnings,blood_potency}',
+        to_jsonb($2::json),
+        true
+      )
+      WHERE engine_id = $1
+      `,
+      [engineId, JSON.stringify(payload)],
+    );
   }
 }
