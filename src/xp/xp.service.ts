@@ -203,6 +203,10 @@ export class XpService {
    * sheet.skills[name] = dots
    * sheet.disciplines[name] = dots
    * sheet.bloodPotency = dots
+   *
+   * Rule sources:
+   * - rules-source/attributes.json (attribute keys stored in sheet.attributes)
+   * - rules-source/skills.json (skill keys stored in sheet.skills)
    */
   private applyMetaToSheet(sheetIn: any, meta: SpendMeta) {
     const sheet = sheetIn && typeof sheetIn === 'object' ? { ...sheetIn } : {};
