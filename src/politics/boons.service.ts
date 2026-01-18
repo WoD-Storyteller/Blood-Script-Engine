@@ -15,6 +15,7 @@ enum BoonStatus {
 
 @Injectable()
 export class BoonsService {
+  // Rule source: rules-source/Copy of Camarilla core book.txt (Prestation/boons framework).
   async giveBoon(
     client: any,
     input: {

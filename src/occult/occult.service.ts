@@ -4,6 +4,12 @@ import { OccultDiscipline } from './occult.enums';
 
 @Injectable()
 export class OccultService {
+  /**
+   * Rule sources:
+   * - rules-source/v5_core_clean.txt (Blood Sorcery rituals).
+   * - rules-source/Copy of Cults of the Blood Gods.txt (expanded rituals).
+   * - rules-source/Copy of Anarch.txt (Thin-Blood Alchemy).
+   */
   async listRituals(client: any, engineId: string) {
     const res = await client.query(
       `

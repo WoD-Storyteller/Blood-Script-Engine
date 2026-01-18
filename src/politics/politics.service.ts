@@ -4,6 +4,7 @@ import { BoonType } from './politics.types';
 
 @Injectable()
 export class PoliticsService {
+  // Rule source: rules-source/Copy of Camarilla core book.txt (boons and political status).
   private readonly logger = new Logger(PoliticsService.name);
 
   async grantBoon(client: any, input: {

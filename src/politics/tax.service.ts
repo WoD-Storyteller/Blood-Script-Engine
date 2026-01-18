@@ -12,6 +12,7 @@ enum BoonLevel {
 
 @Injectable()
 export class TaxService {
+  // Rule source: rules-source/politics_homebrew.md (homebrew domain taxation).
   private readonly logger = new Logger(TaxService.name);
 
   constructor(private readonly coteries: CoteriesAdapter) {}

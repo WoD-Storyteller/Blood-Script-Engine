@@ -17,6 +17,7 @@ enum ConflictStatus {
 
 @Injectable()
 export class ConflictService {
+  // Rule source: rules-source/politics_homebrew.md (homebrew coterie conflicts).
   private readonly logger = new Logger(ConflictService.name);
 
   constructor(private readonly coteries: CoteriesAdapter) {}

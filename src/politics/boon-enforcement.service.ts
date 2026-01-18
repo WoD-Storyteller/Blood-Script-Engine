@@ -10,6 +10,7 @@ enum BoonEnforcementStatus {
 
 @Injectable()
 export class BoonEnforcementService {
+  // Rule source: rules-source/politics_homebrew.md (homebrew enforcement workflow).
   private readonly logger = new Logger(BoonEnforcementService.name);
 
   async enforce(client: any, input: {

@@ -4,6 +4,7 @@ import { CoteriesAdapter } from '../coteries/coteries.adapter';
 
 @Injectable()
 export class HoldingsService {
+  // Rule source: rules-source/politics_homebrew.md (homebrew coterie holdings).
   private readonly logger = new Logger(HoldingsService.name);
 
   constructor(private readonly coteries: CoteriesAdapter) {}

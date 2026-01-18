@@ -23,6 +23,7 @@ enum MotionOutcome {
 
 @Injectable()
 export class MotionsService {
+  // Rule source: rules-source/politics_homebrew.md (homebrew motions and voting).
   private readonly logger = new Logger(MotionsService.name);
 
   async propose(client: any, input: {
