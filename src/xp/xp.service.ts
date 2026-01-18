@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { v4 as uuid } from 'uuid';
 import { XpKind } from './xp.enums';
+import { BloodPotencyService } from '../blood-potency/blood-potency.service';
 
 type SpendMeta = {
   kind: XpKind;
@@ -25,6 +26,10 @@ function ensureObj(v: any) {
 
 @Injectable()
 export class XpService {
+  constructor(
+    private readonly bloodPotency: BloodPotencyService,
+  ) {}
+
   // V5 core XP costs (simplified, standard)
   cost(input: { kind: SpendMeta['kind']; current: number }): number {
     const cur = Math.max(0, asInt(input.current, 0));
@@ -204,9 +209,10 @@ export class XpService {
     const key = normalizeKey(meta.key);
 
     if (meta.kind === XpKind.BLOOD_POTENCY) {
-      sheet.bloodPotency = meta.to;
-      sheet.blood_potency = sheet.blood_potency ?? meta.to; // harmless compatibility
-      return sheet;
+      return this.bloodPotency.applyBloodPotencyChange(sheet, {
+        nextValue: meta.to,
+        reason: 'xp_spend',
+      });
     }
 
     if (meta.kind === XpKind.ATTRIBUTE) {

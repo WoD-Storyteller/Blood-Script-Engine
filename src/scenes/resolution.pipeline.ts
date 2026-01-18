@@ -5,6 +5,7 @@ import { ResonanceService } from '../resonance/resonance.service';
 import { DyscrasiaEffects } from '../resonance/dyscrasia.effects';
 import { ResonanceEffects } from '../resonance/resonance.effects';
 import { DiceService } from '../dice/dice.service';
+import { BloodPotencyService } from '../blood-potency/blood-potency.service';
 import { ChroniclePressureService } from '../chronicle/chronicle-pressure.service';
 import { BLOOD_TO_PRESSURE } from '../chronicle/chronicle-pressure.map';
 
@@ -17,6 +18,7 @@ export class ResolutionPipeline {
     private readonly resonanceEffects: ResonanceEffects,
     private readonly dice: DiceService,
     private readonly pressure: ChroniclePressureService,
+    private readonly bloodPotency: BloodPotencyService,
   ) {}
 
   async resolve(client: any, engineId: string, input: any) {
@@ -48,6 +50,11 @@ export class ResolutionPipeline {
           input.characterSheet?.resonance?.intensity ?? null,
         discipline: input.discipline,
       });
+
+      const bloodPotency = this.bloodPotency.getEffectiveBloodPotency(
+        input.characterSheet,
+      );
+      pool += this.bloodPotency.getDisciplineBonusDice(bloodPotency);
     }
 
     const rollResult = this.dice.rollV5(
