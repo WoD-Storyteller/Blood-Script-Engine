@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PoolClient } from 'pg';
 import { DyscrasiaService } from './dyscrasia.service';
+import { V5RollResult } from '../dice/dice.service';
 
 const RESONANCE_TYPES = [
   'choleric',
@@ -12,6 +13,43 @@ const RESONANCE_TYPES = [
 @Injectable()
 export class ResonanceService {
   constructor(private readonly dyscrasiaService: DyscrasiaService) {}
+
+  async handleRollOutcome(
+    client: PoolClient,
+    engineId: string,
+    characterId: string,
+    rollResult: V5RollResult,
+  ) {
+    let dyscrasiaApplied = false;
+
+    if (rollResult.messyCritical === true) {
+      await this.applyMessyCritical(client, engineId, characterId);
+
+      dyscrasiaApplied = await this.dyscrasiaService.applyFromResonance(
+        client,
+        engineId,
+        characterId,
+        {
+          source: 'messy_critical',
+        },
+      );
+    }
+
+    if (rollResult.bestialFailure === true) {
+      await this.applyBestialFailure(client, engineId, characterId);
+    }
+
+    if (
+      rollResult.messyCritical !== true &&
+      rollResult.bestialFailure !== true
+    ) {
+      await this.decayResonance(client, engineId, characterId);
+    }
+
+    return {
+      dyscrasiaApplied,
+    };
+  }
 
   async applyMessyCritical(
     client: PoolClient,

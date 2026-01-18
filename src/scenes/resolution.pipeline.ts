@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { TenetsService } from '../safety/tenets.service';
 import { CombatActionType } from '../combat/combat.types';
 import { ResonanceService } from '../resonance/resonance.service';
-import { DyscrasiaService } from '../resonance/dyscrasia.service';
 import { DyscrasiaEffects } from '../resonance/dyscrasia.effects';
 import { ResonanceEffects } from '../resonance/resonance.effects';
 import { DiceService } from '../dice/dice.service';
@@ -14,7 +13,6 @@ export class ResolutionPipeline {
   constructor(
     private readonly tenets: TenetsService,
     private readonly resonance: ResonanceService,
-    private readonly dyscrasiaService: DyscrasiaService,
     private readonly dyscrasia: DyscrasiaEffects,
     private readonly resonanceEffects: ResonanceEffects,
     private readonly dice: DiceService,
@@ -57,24 +55,14 @@ export class ResolutionPipeline {
       input.hunger ?? 0,
     );
 
-    let dyscrasiaEligible = false;
+    const { dyscrasiaApplied } = await this.resonance.handleRollOutcome(
+      client,
+      engineId,
+      input.actorId,
+      rollResult,
+    );
 
     if (rollResult.messyCritical === true) {
-      await this.resonance.applyMessyCritical(
-        client,
-        engineId,
-        input.actorId,
-      );
-
-      dyscrasiaEligible = await this.dyscrasiaService.applyFromResonance(
-        client,
-        engineId,
-        input.actorId,
-        {
-          source: 'messy_critical',
-        },
-      );
-
       await this.pressure.escalateSIHeat(
         client,
         engineId,
@@ -89,27 +77,10 @@ export class ResolutionPipeline {
     }
 
     if (rollResult.bestialFailure === true) {
-      await this.resonance.applyBestialFailure(
-        client,
-        engineId,
-        input.actorId,
-      );
-
       await this.pressure.escalateMasquerade(
         client,
         engineId,
         BLOOD_TO_PRESSURE.bestialFailure.masquerade,
-      );
-    }
-
-    if (
-      rollResult.messyCritical !== true &&
-      rollResult.bestialFailure !== true
-    ) {
-      await this.resonance.decayResonance(
-        client,
-        engineId,
-        input.actorId,
       );
     }
 
@@ -118,14 +89,14 @@ export class ResolutionPipeline {
         resolved: true,
         outcome: 'attack_resolved',
         rollResult,
-        dyscrasiaEligible,
+        dyscrasiaEligible: dyscrasiaApplied,
       };
     }
 
     return {
       resolved: true,
       rollResult,
-      dyscrasiaEligible,
+      dyscrasiaEligible: dyscrasiaApplied,
     };
   }
 }
