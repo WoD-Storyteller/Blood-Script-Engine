@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Arrogance",
+    "trigger": "Bestial Failure using Dominate or Presence",
+    "effect": "Suffer dice penalties until asserting superiority",
+    "resolution": "Successfully dominate or socially overpower another"
+  },
+  {
+    "name": "Cruelty",
+    "trigger": "Bestial Failure using Brawl or Intimidation",
+    "effect": "Must cause harm or suffer penalties",
+    "resolution": "Inflict damage or terrorize someone"
+  },
+  {
+    "name": "Paranoia",
+    "trigger": "Bestial Failure using Awareness or Investigation",
+    "effect": "Distrust others; penalties to cooperative actions",
+    "resolution": "Expose or confront a perceived threat"
+  },
+  {
+    "name": "Wantonness",
+    "trigger": "Bestial Failure using Performance or Persuasion",
+    "effect": "Seek immediate gratification; penalties to restraint",
+    "resolution": "Indulge a desire"
+  }
+]

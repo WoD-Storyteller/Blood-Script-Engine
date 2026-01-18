@@ -1,0 +1,18 @@
+{
+  "Choleric": {
+    "bonus": "Potence, Celerity",
+    "emotion": "Anger"
+  },
+  "Phlegmatic": {
+    "bonus": "Auspex, Dominate",
+    "emotion": "Calm"
+  },
+  "Melancholic": {
+    "bonus": "Obfuscate, Fortitude",
+    "emotion": "Fear"
+  },
+  "Sanguine": {
+    "bonus": "Presence, Blood Sorcery",
+    "emotion": "Joy"
+  }
+}

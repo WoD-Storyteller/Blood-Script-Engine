@@ -1,0 +1,20 @@
+[
+  {
+    "discipline": "Animalism",
+    "power": "Bond Famulus",
+    "level": 2,
+    "dice_pool": "Manipulation + Animal Ken",
+    "cost": "1 Rouse",
+    "duration": "Indefinite",
+    "resist": null
+  },
+  {
+    "discipline": "Auspex",
+    "power": "Heightened Senses",
+    "level": 1,
+    "dice_pool": null,
+    "cost": "Free",
+    "duration": "Scene",
+    "resist": null
+  }
+]

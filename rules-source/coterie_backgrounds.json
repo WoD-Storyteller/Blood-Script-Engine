@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Domain",
+    "dots": "1\u20135",
+    "effect": "Shared feeding ground"
+  },
+  {
+    "name": "Herd",
+    "dots": "1\u20135",
+    "effect": "Sustainable vessels"
+  },
+  {
+    "name": "Chasse",
+    "dots": "1\u20135",
+    "effect": "Hunting territory"
+  },
+  {
+    "name": "Portillion",
+    "dots": "1\u20135",
+    "effect": "Controlled access routes"
+  }
+]

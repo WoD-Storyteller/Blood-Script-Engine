@@ -1,0 +1,38 @@
+{
+  "0": {
+    "max_blood_surge": 1,
+    "rouse_reroll": false,
+    "discipline_bonus": 0,
+    "feeding_penalty": "Can feed on animals"
+  },
+  "1": {
+    "max_blood_surge": 2,
+    "rouse_reroll": false,
+    "discipline_bonus": 0,
+    "feeding_penalty": "Animals and bagged blood less nourishing"
+  },
+  "2": {
+    "max_blood_surge": 2,
+    "rouse_reroll": true,
+    "discipline_bonus": 1,
+    "feeding_penalty": "Animals no longer slake hunger"
+  },
+  "3": {
+    "max_blood_surge": 3,
+    "rouse_reroll": true,
+    "discipline_bonus": 1,
+    "feeding_penalty": "Bagged blood useless"
+  },
+  "4": {
+    "max_blood_surge": 3,
+    "rouse_reroll": true,
+    "discipline_bonus": 2,
+    "feeding_penalty": "Must feed from humans"
+  },
+  "5": {
+    "max_blood_surge": 4,
+    "rouse_reroll": true,
+    "discipline_bonus": 2,
+    "feeding_penalty": "Must feed from supernatural beings"
+  }
+}

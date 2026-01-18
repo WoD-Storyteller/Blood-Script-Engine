@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Allies",
+    "dots": "1\u20135",
+    "effect": "Reliable mortal support"
+  },
+  {
+    "name": "Contacts",
+    "dots": "1\u20135",
+    "effect": "Information sources"
+  },
+  {
+    "name": "Influence",
+    "dots": "1\u20135",
+    "effect": "Political or social pull"
+  },
+  {
+    "name": "Haven",
+    "dots": "1\u20135",
+    "effect": "Secure resting place"
+  },
+  {
+    "name": "Resources",
+    "dots": "1\u20135",
+    "effect": "Financial access"
+  },
+  {
+    "name": "Status",
+    "dots": "1\u20135",
+    "effect": "Standing in Kindred society"
+  }
+]
