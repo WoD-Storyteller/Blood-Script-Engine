@@ -1,0 +1,78 @@
+{
+  "clans": {
+    "V5 Core Rulebook": [
+      "Brujah",
+      "Gangrel",
+      "Malkavian",
+      "Nosferatu",
+      "Toreador",
+      "Tremere",
+      "Ventrue",
+      "Caitiff",
+      "Thin-Blooded"
+    ],
+    "Camarilla": [
+      "Ventrue (expanded)",
+      "Toreador (expanded)"
+    ],
+    "Anarch": [
+      "Brujah (Anarch focus)",
+      "Thin-Blooded (expanded)"
+    ],
+    "Sabbat": [
+      "Lasombra",
+      "Tzimisce"
+    ],
+    "Cults of the Blood Gods": [
+      "Hecata"
+    ]
+  },
+  "rules": {
+    "V5 Core Rulebook": [
+      "Character Creation",
+      "Disciplines",
+      "Hunger",
+      "Humanity",
+      "Combat",
+      "Blood Potency",
+      "Compulsions"
+    ],
+    "Anarch": [
+      "Thin-Blood Alchemy",
+      "Street Domains"
+    ],
+    "Camarilla": [
+      "Prestation",
+      "Status",
+      "Elysium"
+    ],
+    "Sabbat": [
+      "Ritae",
+      "Paths of Enlightenment"
+    ],
+    "Second Inquisition": [
+      "Hunter Mechanics",
+      "Antagonist Systems"
+    ]
+  },
+  "lore_sheets": {
+    "V5 Core Rulebook": [
+      "Core Loresheets"
+    ],
+    "Camarilla": [
+      "Camarilla Loresheets"
+    ],
+    "Anarch": [
+      "Anarch Loresheets"
+    ],
+    "Chicago by Night": [
+      "Chicago-specific Loresheets"
+    ],
+    "Fall of London": [
+      "London Loresheets"
+    ],
+    "Cults of the Blood Gods": [
+      "Faith & Cult Loresheets"
+    ]
+  }
+}
