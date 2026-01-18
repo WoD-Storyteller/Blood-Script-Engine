@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "book": "V5 Core Rulebook",
+    "source_file": "v5-core (auto-split)",
+    "chunks_file": "V5 Core Rulebook.chunks.json",
+    "chunk_count": 0
+  }
+]
