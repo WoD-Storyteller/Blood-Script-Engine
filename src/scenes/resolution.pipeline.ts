@@ -11,6 +11,13 @@ import { BLOOD_TO_PRESSURE } from '../chronicle/chronicle-pressure.map';
 
 @Injectable()
 export class ResolutionPipeline {
+  /**
+   * Rule sources:
+   * - rules-source/v5_core_clean.txt (dice pools, messy criticals, bestial failures).
+   * - rules-source/resonance.json (resonance/dyscrasia mappings).
+   * - rules-source/blood_potency.json (blood potency modifiers).
+   * - rules-source/v5_core_clean.txt and rules-source/blood_potency.json (chronicle pressure mapping).
+   */
   constructor(
     private readonly tenets: TenetsService,
     private readonly resonance: ResonanceService,

@@ -30,7 +30,10 @@ export class XpService {
     private readonly bloodPotency: BloodPotencyService,
   ) {}
 
-  // V5 core XP costs (simplified, standard)
+  /**
+   * V5 core XP costs (simplified, standard).
+   * Rule source: rules-source/v5_core_clean.txt (Experience costs).
+   */
   cost(input: { kind: SpendMeta['kind']; current: number }): number {
     const cur = Math.max(0, asInt(input.current, 0));
     switch (input.kind) {

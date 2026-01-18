@@ -3,6 +3,7 @@ import { uuid } from '../common/utils/uuid';
 
 @Injectable()
 export class DomainsService {
+  // Rule source: rules-source/Copy of Anarch.txt (Street Domains).
   async claimDomain(
     client: any,
     input: {

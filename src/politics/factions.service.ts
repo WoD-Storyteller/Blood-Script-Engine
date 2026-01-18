@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class FactionsService {
+  // Rule source: rules-source/politics_homebrew.md (homebrew faction influence).
   async setInfluence(
     client: any,
     input: {

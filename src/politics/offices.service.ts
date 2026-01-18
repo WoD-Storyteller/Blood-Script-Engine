@@ -13,6 +13,7 @@ const DEFAULT_OFFICES = [
 
 @Injectable()
 export class OfficesService {
+  // Rule source: rules-source/Copy of Camarilla core book.txt (court offices and titles).
   private readonly logger = new Logger(OfficesService.name);
 
   normalizeOffice(raw: string): string {

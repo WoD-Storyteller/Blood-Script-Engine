@@ -9,6 +9,7 @@ enum Authority {
 
 @Injectable()
 export class PrestigeService {
+  // Rule source: rules-source/Copy of Camarilla core book.txt (Status/Prestige guidance).
   private readonly logger = new Logger(PrestigeService.name);
 
   /**

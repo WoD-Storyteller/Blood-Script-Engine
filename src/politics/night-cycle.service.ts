@@ -8,6 +8,7 @@ import { AutonomyService } from '../ai/autonomy.service';
 
 @Injectable()
 export class NightCycleService {
+  // Rule source: rules-source/politics_homebrew.md (homebrew nightly cycle automation).
   private readonly logger = new Logger(NightCycleService.name);
 
   constructor(
