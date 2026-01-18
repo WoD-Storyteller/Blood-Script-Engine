@@ -20,10 +20,6 @@ export class DiceService {
     const rolls = this.roll(normalDice);
     const hungerRolls = this.roll(hungerDice);
 
-    const successes =
-      this.countSuccesses(rolls) +
-      this.countSuccesses(hungerRolls);
-
     const tens =
       rolls.filter((r) => r === 10).length +
       hungerRolls.filter((r) => r === 10).length;
@@ -31,7 +27,15 @@ export class DiceService {
     const hungerTens = hungerRolls.filter((r) => r === 10).length;
     const hungerOnes = hungerRolls.filter((r) => r === 1).length;
 
-    const critical = tens >= 2;
+    const baseSuccesses =
+      this.countSuccesses(rolls) +
+      this.countSuccesses(hungerRolls);
+    const criticalPairs = Math.floor(tens / 2);
+    // rules-source/v5_core_clean.txt "Dice Pool Results" and "USING THE VAMPIRE DICE: REGULAR DICE":
+    // each pair of 10s adds +2 successes beyond the two 10s (4 total for the pair).
+    const successes = baseSuccesses + criticalPairs * 2;
+
+    const critical = criticalPairs > 0;
     const messyCritical = critical && hungerTens > 0;
     const bestialFailure = successes === 0 && hungerOnes > 0;
 
@@ -53,7 +57,9 @@ export class DiceService {
 
   private countSuccesses(rolls: number[]): number {
     return rolls.reduce((sum, r) => {
-      if (r === 10) return sum + 2;
+      // rules-source/v5_core_clean.txt "Dice Pool Results": 10s are successes;
+      // critical bonus is applied separately for each pair of 10s.
+      if (r === 10) return sum + 1;
       if (r >= 6) return sum + 1;
       return sum;
     }, 0);
