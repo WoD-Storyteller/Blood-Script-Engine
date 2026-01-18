@@ -1,7 +1,12 @@
 import { Injectable } from '@nestjs/common';
+import { BloodPotencyService } from '../blood-potency/blood-potency.service';
 
 @Injectable()
 export class CharactersService {
+  constructor(
+    private readonly bloodPotency: BloodPotencyService,
+  ) {}
+
   async listCharacters(client: any, input: { engineId: string; userId: string }) {
     const res = await client.query(
       `
@@ -47,6 +52,38 @@ export class CharactersService {
     client: any,
     input: { characterId: string; sheet: any },
   ) {
+    const hasBloodPotencyUpdate =
+      Object.prototype.hasOwnProperty.call(input.sheet ?? {}, 'bloodPotency') ||
+      Object.prototype.hasOwnProperty.call(input.sheet ?? {}, 'blood_potency');
+
+    let mergedSheet = input.sheet ?? {};
+
+    if (hasBloodPotencyUpdate) {
+      const res = await client.query(
+        `SELECT sheet FROM characters WHERE character_id = $1`,
+        [input.characterId],
+      );
+      const currentSheet = res.rowCount ? res.rows[0].sheet ?? {} : {};
+      const evaluationSheet = {
+        ...currentSheet,
+        ...mergedSheet,
+        bloodPotency: currentSheet?.bloodPotency ?? currentSheet?.blood_potency ?? 0,
+        blood_potency: currentSheet?.blood_potency ?? currentSheet?.bloodPotency ?? 0,
+      };
+      const nextValue = mergedSheet?.bloodPotency ?? mergedSheet?.blood_potency ?? 0;
+      const updated = this.bloodPotency.applyBloodPotencyChange(evaluationSheet, {
+        nextValue,
+        reason: 'sheet_updated',
+      });
+      mergedSheet = {
+        ...currentSheet,
+        ...mergedSheet,
+        bloodPotency: updated.bloodPotency,
+        blood_potency: updated.blood_potency,
+        bloodPotencyLog: updated.bloodPotencyLog,
+      };
+    }
+
     await client.query(
       `
       UPDATE characters
@@ -54,7 +91,7 @@ export class CharactersService {
           updated_at = now()
       WHERE character_id = $1
       `,
-      [input.characterId, JSON.stringify(input.sheet)],
+      [input.characterId, JSON.stringify(mergedSheet)],
     );
 
     return { ok: true };

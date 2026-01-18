@@ -9,6 +9,7 @@ import { ChronicleModule } from '../chronicle/chronicle.module';
 import { ThreatsModule } from '../threats/threats.module';
 import { ResonanceModule } from '../resonance/resonance.module';
 import { DiceModule } from '../dice/dice.module';
+import { BloodPotencyModule } from '../blood-potency/blood-potency.module';
 
 import { PresenceService } from './presence.service';
 import { CharacterContextService } from './character-context.service';
@@ -23,6 +24,7 @@ import { RecoveryService } from './recovery.service';
     ThreatsModule,
     ResonanceModule,
     DiceModule,
+    BloodPotencyModule,
   ],
   providers: [
     ScenesService,
