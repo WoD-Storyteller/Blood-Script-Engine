@@ -15,10 +15,12 @@ export class DyscrasiaService {
       source?: string;
     },
   ) {
-    const reasonSuffix = context?.source
-      ? ` for character ${characterId} (source: ${context.source})`
-      : ` for character ${characterId}`;
+    const source = context?.source ?? 'unspecified';
+    const reasonSuffix = ` for character ${characterId} (source: ${source})`;
 
+    // V5 Core: acute Resonance incorporates a Dyscrasia. We only apply when
+    // resonance intensity reaches the acute threshold and a Resonance type exists.
+    // rules-source/v5_core_clean.txt
     const result = await client.query(
       `
       WITH updated AS (
@@ -54,7 +56,7 @@ export class DyscrasiaService {
       [
         engineId,
         characterId,
-        DYSCRASIA_RULES.intensityThreshold,
+        DYSCRASIA_RULES.acuteIntensity,
         uuid(),
         DYSCRASIA_RULES.auditActions.apply,
         'Dyscrasia applied (',
@@ -79,9 +81,8 @@ export class DyscrasiaService {
       source?: string;
     },
   ) {
-    const reason = context?.source
-      ? `Dyscrasia cleansed for character ${characterId} (source: ${context.source})`
-      : `Dyscrasia cleansed for character ${characterId}`;
+    const source = context?.source ?? 'unspecified';
+    const reason = `Dyscrasia cleansed for character ${characterId} (source: ${source})`;
 
     const result = await client.query(
       `
