@@ -1,0 +1,2164 @@
+                              LOVE
+                              BITES
+                                      A NEW YEAR’S STORY FOR
+
+
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                        LOVE BITES
+                                                                  AUTHOR: Rachel J. Wilkinson
+                                                                DEVELOPER: Juhana Pettersson
+                                                                   PRODUCER: Kevin Schluter
+                                                                ART DIRECTOR: Sarah Robinson
+                                                          COVER AND INTERIOR ARTIST: Raquel Cornejo
+                                                             GRAPHIC DESIGNER: Sarah Robinson
+                                                                 COPY EDITOR: Shawn Banerjee
+                                                                 PROOFREADER: Nathan Gerber
+                                                              CULTURAL CONSULTANT: Logan Boese
+
+                                                         WORLD OF DARKNESS BRAND MANAGEMENT
+                                                                VICE PRESIDENT: Sean Greaney
+                                                                   EDITOR: Karim Muammar
+                                                                  ART DIRECTOR: Tomas Arfert
+                                                              MARKETING MANAGER: Jason Carl
+                                                           PARTNERSHIPS MANAGER: Dhaunae De Vir
+                                                         COMMUNITY DEVELOPER: Martyna “Outstar” Zych
+                                                             LICENSING MANAGER: Nikola Filipov
+                                                             CAMPAIGN MANAGER: Viktor Bovallius
+                                                             COMMUNITY MANAGER: Debbie Lane
+
+                                                                         RENEGADE GAME STUDIOS
+               PRESIDENT & PUBLISHER: Scott Gaeta                     PRODUCER, RPGS: Kevin Schluter
+               VICE PRESIDENT SALES: Andrew Lupp                 ASSOCIATE PRODUCER, RPGS: Ben Heisler
+                   CONTROLLER: Robyn Gaeta               LEAD DEVELOPER, WORLD OF DARKNESS: Juhana Pettersson
+            DIRECTOR OF OPERATIONS: Leisha Cummins                 SENIOR GAME DESIGNER: Matt Hyra
+          ASSOCIATE PROJECT MANAGER: Katie Gjesdahl    GAME DESIGNERS: Dan Blanchett, Christopher Chung, & Sarah Rowan
+                 SALES ASSISTANT: Sophia Gambill               PLAYTEST COORDINATOR: Marcus E. Burchers
+                  E-COMMERCE: Nick Medinger                     DIRECTOR OF VISUAL DESIGN: Anita Osburn
+              MARKETING MANAGER: Jordan Gaeta                   CREATIVE DIRECTOR, GAMES: Jeanne Torres
+              MARKETING ASSISTANT: Anais Morgan                 CREATIVE DIRECTOR, RPGS: Sarah Robinson
+     SENIOR PRODUCER, BOARD & CARD GAMES: Dan Bojanowski   CREATIVE PRODUCTION: Noelle Lopez & Gordon Tucker
+     ASSOCIATE PRODUCER, BOARD & CARD GAMES: Kane Klenko      CUSTOMER SERVICE MANAGER: Jenni Janikowski
+          ASSOCIATE PRODUCER, HEROSCAPE: Lee Houff                 CUSTOMER SERVICE: Bethany Bauthues
+                                                                    FINANCE CLERK: Madeline Minervini
+
+                This work uses the supernatural for settings, characters and themes. All mystical and supernatural elements are fiction and intended for entertainment purposes only.
+                                                                   This book contains mature content. Reader discretion is advised.
+
+                                      Vampire: The Masquerade creators: Mark Rein•Hagen with Justin Achilli, Steven C. Brown, Tom Dowd, Andrew
+                                                    Greenberg, Chris McDonough, Lisa Stevens, Josh Timbrook, and Stewart Wieck.
+
+                                            Vampire: The Masquerade 5th Edition created by Martin Ericsson, Karim Muammar, and Kenneth Hite
+
+
+                                         © 2023 Paradox Interactive® AB. Vampire: The Masquerade® – are trademarks and/or registered
+                            trademarks of Paradox Interactive AB in Europe, the U.S., and other countries. ©2023 Renegade Game Studios. All Rights Reserved.
+                                                                Visit the World of Darkness online at www.worldofdarkness.com
+
+
+
+                                                                                                 2
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                   Table of Contents
+                    Introduction                                                      4
+                    Background                                                        4
+                    The Cleopatras                                                    4
+                    A Maréchal Coterie of Neonates                                    5
+                    What’s Really Going On                                            5
+
+                    Chapter One: Penthouse Party                                      7
+                    Yes, Like the Book                                                8
+
+                    Chapter Two: On the Road                                         10
+                    A Quick Stop                                                     10
+
+                    Chapter Three: Midnight in the Warrens                           13
+                    Masks                                                            13
+                    The Queen of Yima                                                14
+                    Watching the Clock                                               15
+                    William Cray                                                     15
+                    The Midnight Toast                                               17
+                    Gatsby’s Plan                                                    18
+                    Finding Gatsby                                                   18
+
+                    Chapter Four: Where is Gatsby?                                   18
+                    Bodie’s Body Shop                                                21
+
+                    Chapter Five: The Choice                                         22
+                    Auld Lang Syne                                                   22
+                    Welcome to the New Year                                          23
+                    Continuing the Story                                             23
+
+                    Appendix: The Players’ Coterie                                   25
+
+
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    VAMPIRE: THE MASQUERADE
+
+
+
+
+               INTRODUCTION
+                         On the last night of the year, the Prince summons you to her penthouse, where she entrusts
+                         you with escorting her grandchilde to a New Year’s Eve party in the Nosferatu warrens. Her
+                         only requirement is that you return him to her before dawn without a scratch on his precious
+                         head. What could possibly go wrong?
+
+
+
+
+                                                                                However, as the night progresses, the coterie realizes
+             CONTENT WARNING                                                  the Prince has used them as pawns in a calculated
+             Vampire: The Masquerade addresses the darkness                   snub intended to offend the Cleopatras. Amid rising
+             of the real world through horror stories. This story             political tensions, the night turns frantic when Gatsby
+             includes in-world references and expressions of the              mysteriously vanishes after he delivers the midnight
+             following: addiction, drug use, sex, violence, and death.        toast. The potential for political fallout escalates as the
+                                                                              coterie investigates his disappearance and searches for
+             JUMPING RIGHT IN                                                 their erstwhile charge.
+             If this story isn’t part of an established chronicle,              When the coterie finally locates Gatsby, they discover
+             and the players don’t have time to make their own                he had his own plan for the night: to defect to the
+             characters, we’ve provided a coterie of six ready-to-play        Anarchs without his grandsire knowing. Motivated
+             vampires. They’re a legacy Maréchal coterie working for          by the chance to be with the object of his romantic
+             the city’s Prince (see Vampire, p. 198). This group hasn’t       obsession, the thin-blood Miriam, he uses a redrawing of
+             been together forever, so there is as much to discover           territory lines as a basis to claim sanctuary. Gatsby leaves
+             about each other as there is about the story.                    the coterie with a choice: haul him back to the Prince
+                                                                              (even if it’s against his will), return to the penthouse
+
+             Background                                                       empty-handed, or find a third way to resolve the night.
+
+
+             Love Bites features the messy entanglements that
+             emerge when what passes for love among the Kindred
+                                                                              The Cleopatras
+             meets politics. On New Year’s Eve, the Prince entrusts           A Nosferatu cult, known as the Cleopatrans of Yima,
+             an up-and-coming Maréchal coterie with what seems                formed at the height of Caesar Augustus’ Rome.
+             like an easy task: escort her prodigal grandchilde,              Most Kindred believed they disappeared with the fall
+             Gatsby, to a Nosferatu party hosted by visiting                  of the Western Roman Empire. However, rumors
+             Cleopatras, ensure he has a memorable night, and safely          surfaced during the 20th century of the rare Nosferatu
+             return him to her penthouse before dawn.                         adorning themselves with jewelry, masks, and luxurious
+                To accomplish this, they must contend with Gatsby’s           garments. In the 21st century, the Cleopatrans have
+             antics, face the inconveniences of a celebrating city, and       flourished as a full-fledged revival cult. Perfumed and
+             get him to the warrens before midnight to honor the              prideful, Cleopatras (purposefully dropping the n)
+             Nosferatu with a New Year’s toast.                               accentuate and prettify their hideous features using
+
+
+
+
+                                                                          4
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                           LOVE BITES
+
+
+
+
+            makeup, baubles, and elaborate outfits as an ode to
+                                                                             PLAYING ANARCHS
+            the grandeur of royalty while making a mockery of the
+                                                                             Love Bites is written as a Camarilla story but can become
+            surface-level beauty worshipped by the modern world.
+                                                                             an Anarch Movement story with a few changes. It can
+               The Cleopatras embrace transformation, rejecting
+                                                                             occur in an Anarch city with the Camarilla demanding
+            conventional beauty to make themselves the objects
+                                                                             additional territory to keep the peace. And the coterie
+            of fascination. They act as walking testimonies                  can serve an Anarch leader instead of the Prince, with
+            to the enduring allure of the grotesque adorned                  Gatsby defecting to the Camarilla to be with the object of
+            with splendor. Their macabre elegance challenges                 his affections, Miriam. Miriam may want to take the brand
+            perceptions and adds a seductive edge to their                   in this version rather than already having it. Watch for
+            eccentricity. As figures of mystery and charm, they              hints like this throughout the story to help adjust scenes.
+            take center stage at their renowned masquerade balls,
+            attracting Kindred of all clans who dare to challenge
+                                                                             PLAYING NOSFERATU
+            the standards of aesthetic appeal.
+                                                                             Portraying a Nosferatu or having multiple Nosferatu
+               Their political goals are just as transgressive. With
+                                                                             at the table can add extra dimensions to this story.
+            an unshakeable belief in their right to rule, they accept
+                                                                             And it may be worth having a brief conversation about
+            leadership positions in both the Camarilla and Anarch            Cleopatras. You can ask questions like: How does
+            Movements. While a Cleopatra has yet to rise to the              your character feel about the Cleopatras, sect unity,
+            position of Prince or a prominent Anarch leader,                 and ruling a city? How do you prioritize your loyalties?
+            Nosferatu know it’s only a matter of time. Kindred               Which comes first, your city, your clan, or your coterie?
+            in positions of power — notably the Ventrue and                     Those answers might clarify a player’s character
+            Toreador — have also taken notice of the faction’s               perspective in a story where Nosferatu characters
+            ambitions and its ethos of clan solidarity, which makes          could become the rope in a political tug-of-war. Keep an
+            a snub from the city’s Prince all the more meaningful.           eye out for Sewer Rat insights that can help portray a
+               For more information on Cleopatrans, see Cults of             Nosferatu in this story.
+            the Blood Gods, p. 115.
+
+
+            A Maréchal Coterie of What’s Really Going On
+            Neonates                                                         The Prince’s assignment appears simple on the surface,
+                                                                             but the political maneuvers hidden underneath are not.
+            The characters provided for this story are a Maréchal            The city’s Nosferatu were instrumental in brokering
+            coterie serving the Prince. This is a prestige assignment.       a peace deal between the Camarilla and the Anarch
+            The coterie’s actions reflect on their patron and the            Movement. At the stroke of midnight, ushering in the
+            sires who jockeyed to secure their childer’s place in            new year, the Camarilla must relinquish a significant
+            it, making duty and reputation aspects that raise the            portion of the city’s medical district — an undeniably
+            stakes and increase the pressure.                                valuable piece of real estate — to the Anarchs. It goes
+               Two such sires are Emerick and Marcus Vandenberg.             without saying that this compromise has left the Prince
+            Their childer, Rhatha and Nonso, respectively, are new           far from pleased.
+            to the coterie and eager to impress. Ethan and Dania
+            are veteran members with some experience. And while
+            the Prince chose Catalina to lead as Captain, the coterie
+                                                                             A Transfer of Territory
+            made Montgomery the Master at Arms.                              A Prince can only rule through force of will for so long,
+               For more information on the Maréchal coterie type,            and in recent months, she has had to contend with
+            see Vampire Players Guide, p. 164.                               the growing power of the local Anarchs. To achieve a
+                                                                             lasting peace, she invited the most prominent of the
+                                                                             Anarch leaders to negotiate territory. He refused the
+
+
+
+                                                                         5
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+            invitation and threatened to force the issue through              unfolds, the territory changes hands from the Ivory
+            violence. Just as the Prince was about to respond                 Tower to the Anarch Movement at midnight.
+            in kind, the local, unusually well-organized clan
+            Nosferatu stepped in. Citing a major boon owed
+            to them by the Prince, they asked that Her Majesty
+                                                                              A Defection
+            cede most of the medical district to the Anarchs. As              Gatsby, the Prince’s grandchilde, is every bit a typical
+            a result, the Anarchs accepted and agreed to peace.               Toreador: a medley of entitlement, decadence, and
+            The change takes place at the stroke of midnight with             hedonism. His considerable wealth and influence
+            the expectation that the Prince will offer a toast to the         afford him a lifestyle of indulgence. Yet beneath his
+            Nosferatu to commemorate it.                                      bon vivant façade lies a profound romantic desire
+               While the Nosferatu believe they have succeeded                for Miriam, a branded thin-blood serving the Prince.
+            in brokering stability between the Prince and the                 Knowing his grandsire would never let him be with
+            Anarch Movement, the Prince thinks the Nosferatu                  Miriam, Gatsby has decided to use New Year’s Eve as
+            have doomed the Camarilla’s hold over the city. As a              their chance to abandon the Camarilla. With the deal
+            gesture of her displeasure, albeit a petty one, she will          already in place, the Anarchs offer Miriam and Gatsby
+            send her grandchilde to the Nosferatu New Year’s Eve              safe harbor if he can get to the medical district after
+            party in her stead. The act is a deliberate slight to those       midnight.
+            who forced her hand. But regardless of how the drama                 That is, if he can elude his Maréchal chaperons.
+
+
+
+
+                                                                          6
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                      LOVE BITES
+
+
+
+
+                                                          Chapter One:
+
+
+
+
+              PENTHOUSE
+                PARTY
+             A New Year’s Eve party hosted by the Prince is              p. 2, Rhatha’s sire, Emerick, is in attendance, along with
+             underway, with some of the city’s most influential          Nonso’s sire, Marcus Vandenberg. If you’re adapting
+             and powerful Kindred in attendance. Immense                 this story into an ongoing chronicle, you can also add
+                                                                         or leave absent Storyteller characters of your own. That
+             windows stretch from floor to ceiling, providing            said, unless a Nosferatu Storyteller character is part of
+             an uninterrupted view of the city, its skyline              the players’ Maréchal coterie, they should be noticeably
+             awash in various shades of bronze. Fine artworks            absent — or at least unseen — at the Cleopatras party in
+             grace the penthouse walls, echoing the Toreador             the warrens.
+             Prince’s discerning aesthetic appreciation.                    Characters can engage guests in conversation or
+                                                                         eavesdrop on tidbits of city politics as they watch over
+             Guests sit on leather sofas, the color of dark
+                                                                         the Prince. You can add rumors or revelations from
+             chocolate, quietly sharing their thoughts on the            ongoing chronicles along with the gossip listed.
+             local Camarilla’s agreement with the Anarch                  The Nosferatu have offered an open invitation to
+             Movement. Tantalizing blood dolls glide past                    any Kindred, regardless of sect, to join them at a
+             you, their offerings scenting the air with metallic             New Year’s Eve party in the city warrens.
+                                                                          A visiting group of Nosferatu, colloquially known as
+             sweetness, while the Prince charms a Primogen
+                                                                             “Cleopatras,” are the hosts of a party in the warrens.
+             near an endless wall of bookshelves. The rows of             Over the past few months, the Camarilla and
+             bindings behind her create a patchwork of well-                 local Anarchs have been in intense negotiations.
+             worn leather and gold leaf. With her in clear                   During these talks, a Brujah named William Cray
+             view, you scan the room, noting who is and isn’t                represented the Anarch Movements’ interests.
+             in attendance.                                                  According to rumor, William Cray is a former Ivory
+                                                                             Tower member and a sect war veteran.
+             It’s the evening of December 31st, and the most elite        The Red Row is a four-block strip of real estate in
+             Kindred in the city join the Prince to watch the                the medical district known for its extensive blood
+             ball drop. If the players are using the pre-generated           storage, laboratories, and transfusion services.
+             characters listed in the Appendix: Players’ Coterie,            Over the years, the Prince has poured money
+
+
+
+                                                                     7
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    VAMPIRE: THE MASQUERADE
+
+
+
+
+                                                                             Yes, Like the Book
+               and influence into the project to benefit the local
+               Camarilla. But the Nosferatu forced her to hand it
+               over to the Anarch Movement to keep the peace.
+              The growing population of thin-bloods in                      An abrasive, cackling laugh shatters the
+               correlation with the Anarchs’ expanding power                 conversational hum of sophistication. A lean man,
+               base has many Camarilla Kindred concerned. Some               with strength that’s more dancer than fighter,
+               suggest it’s time to adopt more draconian policies
+                                                                             sweeps into the party with a blood doll on each
+               regarding the Duskborn.
+                                                                             arm. He strides with unapologetic audacity toward
+                                                                             the Prince. Several guests cringe or avert their
+             PLAYING ANARCHS
+             While the Anarch Movement is generally more                     gaze, their embarrassment palpable, yet the Prince
+             welcoming of Duskborn than the Camarilla, the thin-             remains unruffled. With a tilt of her head, she
+             bloods can be an asset to any sect intent on growing            beckons you to join her.
+             their territory. It wouldn’t be unreasonable for the
+             Camarilla to launch a recruitment effort persuading thin-       “This is my grandchilde, Gatsby,” she says,
+             bloods to join the sect by making promises they don’t           introducing you to the younger Toreador. “I require
+             intend to fulfill. Or, perhaps, they might cater to the         that you be his guide for the evening. The Nosferatu
+             desires of the Duskborn long enough for them to serve
+                                                                             have organized a New Year’s Eve fête, where Gatsby
+             as frontline soldiers in their turf war with the Anarchs.
+             For example, the Camarilla might offer “signing bonuses”        will make a midnight toast honoring the clan for
+             to Duskborn who join the Ivory Tower with the promise           their contributions to the city’s peace. I need you to
+             of becoming a “real vampire.”                                   ensure his timely arrival and, more importantly,
+                                                                             that he returns here before dawn.” At this, Gatsby
+             SEWER RAT INSIGHT
+             The Cleopatras are a faction of Nosferatu that have
+                                                                             releases his two companions and dips into an
+             ambitious political aspirations. Choosing to host a New         exaggerated bow, his voice ringing with a confidence
+             Year’s Eve party in this city on this night speaks to           that borders on defiance. “I stand at your disposal,
+             their esteem for the local clan members who brokered            Your Majesty, forever your humble and obedient
+             the territory deal and the opportunities they see for
+                                                                             servant.”
+             the future. They are also notoriously prideful, and
+             any Nosferatu favoring the Prince’s soiree over theirs          The Prince, in return, offers an indifferent nod
+             without good reason could earn a healthy dose of side-          before proceeding with her instructions. “Through
+             eye from the clan.
+                                                                             that door is Clement, my aide. He will ensure you
+                                                                             are properly dressed and equipped for the evening.
+                                                                             You also have free use of my driver, who waits for
+                                                                             you downstairs.”
+
+
+
+
+                                                                         8
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                LOVE BITES
+
+
+
+
+                 GATSBY, SPOILED BON VIVANT (DIFFICULTY 3)
+                 Gatsby is a walking, talking, blood-sucking master of ceremonies. With a rolodex of contacts
+                 and seemingly limitless wealth, every night with him is a smorgasbord of hedonism. Yet,
+                 his true talent is in his capacity to make others feel seen and valued. Through his
+                 intense, captivating gaze, a tailored personal question, and the subtle reassurance
+                 of a placed hand, he deftly dismantles even the most formidable social defenses.
+                 Once he breaches someone’s reservations, Gatsby’s inherent Toreador charm
+                 unfurls, making the individual feel extraordinary.
+                 Clan: Toreador
+                 Attributes: Strength 2, Dexterity 3, Stamina 2; Charisma 4, Manipulation 3,
+                 Composure 3; Intelligence 2, Wits 3, Resolve 2
+                 Secondary Attributes: Health 5, Willpower 5
+                 Skills: Athletics 1, Brawl 1, Drive 1; Insight 2, Performance 3,
+                 Persuasion 4, Streetwise 2, Subterfuge 3; Awareness 2, Investigation
+                 2, Politics 3, Technology 2
+                 Disciplines: Auspex 3 (Heightened Senses, Premonition, Scry the
+                 Soul), Celerity 3 (Cat’s Grace, Fleetness, Traversal), Presence 3
+                 (Awe, Lingering Kiss, Entrancement)
+                 Humanity: 6
+                 Blood Potency: 2
+
+
+                 The tall and impeccably dressed ghoul, Clement, stands by
+                 patiently, surrounded by an extensive collection of the latest
+                 high-fashion clothing. Here lies an opportunity for the players’
+                 characters to indulge — or not indulge — their inner haute couture.
+                 Whether it be a precision-crafted tuxedo with intricate silver-
+                 threaded embroidery sprawled across the back, buttery soft leather
+                 pants with a tapered rock-n-roll fit, or cascading, floor-length gown
+                 in a rich shade of aubergine, there is no price too high. Conversely,
+                 if a character’s style is more street, Clement can provide an array of
+                 garments from bomber jackets to band t-shirts. The Prince spares no
+                 expense or inconvenience and includes a few handpicked items based
+                 on what she understands as the characters’ tastes.
+                    Alongside the lavish clothing collection is a spread of weaponry
+                 available for characters who prefer to be armed. The arsenal includes
+                 an array of knives, clubs, swords, pistols, and shotguns, though all
+                 strictly civilian grade. Clement issues a gentle reminder that the city
+                 is swarming with police tonight, and firearms could risk unwanted
+                 attention. From a storytelling perspective, this scene can show the
+                 benefits of working for the Prince, and you can highlight the access
+                 the characters have to luxury and weaponry.
+                    Gatsby selects a sharp white suit, a medium-sized pistol, and two
+                 new blood dolls to accompany him to the ground floor, where their
+                 car awaits.
+
+
+
+
+                                                                    9
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    VAMPIRE: THE MASQUERADE
+
+
+
+
+                                                            Chapter Two:
+
+
+
+
+                                      ON THE
+                                       ROAD
+             The coterie exits the building and piles into a sleek,             On a regular night, reaching the warrens would be a
+             upscale SUV to head to the Cleopatra party. The                    brisk twenty-minute drive. But tonight, the New Year’s
+             vehicle comfortably carries nine passengers and                    Eve festivities have the roads gridlocked. As the coterie
+             has leather seats, a tinted moonroof, and premium                  sits in traffic, Gatsby seizes the conversation. The self-
+             surround sound. Dressed in customary black, the                    styled master of icebreaking asks about everyone’s New
+             driver introduces herself as Miriam. A Difficulty 2 Wits           Year’s resolution. “Come on, don’t be shy. Fine, fine.
+             + Investigation roll clocks the crescent moon brand on             I’ll go first. In the New Year, I plan to follow my heart
+             her exposed wrist, marking her as a thin-blood.                    wherever it leads.” Like a lecherous wolf, he zeroes in
+                                                                                on one of the blood dolls. And in a blink, he snatches
+             MIRIAM, THIN-BLOOD DRIVER (DIFFICULTY 2)                           her into his lap as she squeals with delight. Miriam
+             As a transfusion nurse working late at a Red Row blood             glances at the Toreador’s antics in the rear-view mirror
+             bank, all Miriam needed was thirty minutes to rest her             before flicking her attention back to the road. “Who’s
+             eyes. But when a vampire discovered her asleep in her car,         next?” Gatsby asks before taking a sip off his blood doll.
+             she woke up with a bad case of the undeads. She knew               “Anyone care for a taste?”
+             something had happened to her when she returned to
+             work with a ravenous hunger that only blood would sate.
+             Clan: Thin-Blood
+             Attributes: Strength 2, Dexterity 3, Stamina 2;
+                                                                                A Quick Stop
+             Charisma 2, Manipulation 1, Composure 2; Intelligence 3,           Knowing Gatsby and Miriam plan to defect this
+             Wits 4, Resolve 2                                                  evening, the Anarchs are already in motion. Two of
+             Secondary Attributes: Health 5, Willpower 4                        their members shadow the SUV to tag the car with a
+             Skills: Athletics 1, Brawl 2, Craft (Graffiti Art) 4, Drive        GPS device, get the license plate number, or anything
+             2, Larceny 1; Streetwise 3, Subterfuge 1; Awareness 1,             else that helps them keep tabs on the pair. Gatsby and
+             Medicine 2, Occult 3, Technology 3                                 Miriam aim to stop the car without alerting the coterie.
+             Disciplines: Obfuscate 2 (Cloak of Shadows, Unseen Passage)        The following three scenes are optional avenues that
+             Humanity: 7                                                        bring the vehicle to a halt. You can use as many or
+             Blood Potency: 0                                                   few as you want in any order, or you can use them as
+             Merits: Day Drinker (Thin-Blood)                                   inspiration. For the two Anarchs, use the stats for the
+             Flaws: Mortal Frailty (Thin-Blood), Branded by the                 Revolutionaries found in Vampire, p. 374.
+             Camarilla (Thin-Blood)
+
+
+
+                                                                           10
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                     LOVE BITES
+
+
+
+
+                      GATSBY AND MIRIAM
+                      Both Gatsby and Miriam offer no hint of their affair. Miriam maintains her
+                      professionalism, while Gatsby seems interested in anyone but her. He even talks down to
+                      her when opportunities present themselves, treating her like the help. While not cruel
+                      or abusive, he does let his chauvinistic and elitist sides shine. Miriam grits her teeth and
+                      bears it knowing their freedom lies on the other side of the night.
+                         However, if a character wants to zero in on how Miriam feels, a simple test of Resolve
+                      + Insight with a Difficulty of 3 reveals that she’s annoyed but hopeful. And it’s the hope
+                      that might seem just a bit strange under the circumstances.
+
+
+                      For new players or experienced players portraying new characters, the car ride lets
+                      characters get to know each other and build rapport. Don’t shy away from using
+                      Gatsby as a foil for the other characters. Their reactions to his antics can be part of the
+                      fun. The coterie is also free to ask questions of Gatsby and Miriam. Miriam will answer
+                      questions as straightforward as possible unless they risk exposing their plan. If anyone
+                      asks why she’s a branded member of the Camarilla, she replies that the Camarilla found
+                      her first. A simple test of Wits + Insight with a Difficulty 2 reveals that while Miriam is
+                      being factually accurate, she’s anxious about talking about herself — or at least talking
+                      about herself while in front of a coterie loyal to the Prince.
+                         By contrast, Gatsby is unabashedly talkative. He converses fluently about the latest
+                      trends and bounces from one topic to another — the recent Hollywood scandal, fashion
+                      choices at the Met Gala, the newest tech gadget, and so on. If the players are using the
+                      pre-generated characters from the Appendix: Players’ Coterie, Gatsby has seen Catalina’s
+                      work, heard of Dania’s Adelina Fairfax series, and knows both Montgomery and Nonso
+                      by reputation. Ethan and Rhatha, on the other hand, he doesn’t know. If pressed on
+                      anything remotely close to a serious question, Gatsby deftly changes the subject.
+
+
+
+
+                                                                  11
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    VAMPIRE: THE MASQUERADE
+
+
+
+
+             Drunk Stop                                                          here.” Miriam does, and she stops outside a nail salon
+                                                                                 with a bright pink neon sign. “I need to grab some
+             The SUV slows unexpectedly, blocked by a police                     party favors for these beautiful women,” he says, noting
+             checkpoint. Police officers are a common sight around               the two blood dolls. Gatsby jumps out of the SUV and
+             the city tonight, setting up sobriety checks at strategic           heads down an alley next to the salon. He stops at the
+             locations. If the characters opt to stay in line, they’ll           door, knocks four times, and waits. A moment later,
+             encounter two officers each at Difficulty 2, followed by            the door creaks open, and Gatsby slips inside.
+             a brief vehicle inspection using their flashlights to glance        If the characters wait for Gatsby in the car, he returns
+             in the back. Miriam hasn’t been drinking, and the coterie           in five minutes with an 8-ball of cocaine for the
+             boasts enough social savvy to talk their way past the stop.         blood dolls. If the characters go with him, they find
+             However, any hostile behavior or visible firearm could              themselves in the storage room of the nail salon, face to
+             rapidly escalate the situation. In the meantime, the two            face with two dapperly dressed gentlemen. The drug
+             Anarchs attempt to attach a GPS device to the SUV. The              dealers wear matching velvet tuxedos and are on their
+             characters could spot this with a successful simple test of         way to a New Year’s Eve party but spare their old pal
+             Wits + Investigation with a Difficulty 3.                           Gatsby a few minutes to sell to him. He puts a stack of
+                Alternatively, the coterie has the option to avoid the           bills on the counter, grabs the drugs, and then departs.
+             drunk stop entirely. The move disrupts the Anarchs’                    Once again, during the deal, if the Anarchs haven’t
+             plan and tacks on an extra twenty minutes of travel time.           planted a GPS tracker on the SUV, they try again here.
+                                                                                 If Miriam is the only person in the SUV when this
+             A Crowd of Drunks                                                   happens, the Anarchs are automatically successful.
+                                                                                    Note: Although many Kindred, even some who
+             A crowd of drunken revelers spill into the street at a              consider themselves humane, treat blood dolls like
+             stop sign and encircles the vehicle. The Difficulty 1               they’re disposable, the Storyteller should avoid doing
+             partygoers, fueled by alcohol-induced mayhem, bang on               so. If you want to highlight Gatsby’s monstrous
+             the windows screaming “Happy New Year.” It seems like               privilege, you can show him unthinkingly feeding
+             a minor inconvenience until one of the guys sees Miriam             drugs to the dolls to make their blood more fun to
+             in the driver’s seat. He yells, “Hey! Hey! Roll down the            drink, possibly leading to an overdose when he’s
+             window! I want to wish you Happy New Year!” When                    already looking elsewhere.
+             she doesn’t and tries to ignore him, his eyes narrow. “Oh,
+
+                                                                                 Caught in the Act
+             I see. You’re one of those uppity bitches that needs to get
+             fucked.” Miriam’s grip tightens on the steering wheel.
+                Gatsby’s eyes flash with momentary anger, but                    If a player’s character spots the Anarchs during their
+             remembering the company he’s in, he laughs as he                    covert operation, the coterie can confront them. The
+             lowers the window. He waves the guy over. “Come here,               Anarchs want to avoid a fight and will flee the scene
+             friend. I have a secret to tell you.” The drunk stumbles            if given the chance. Gatsby may subtly assist in de-
+             over to Gatsby’s window as the Toreador waves him in                escalating tensions by reminding everyone about the
+             closer. But once within reach, Gatsby takes the guy by              recent peace agreement between the Camarilla and
+             the back of the neck and smashes his head into the car.             Anarchs. He further emphasizes that any indiscretions
+             The drunk’s friends gasp and besiege the vehicle. Miriam            committed by the Anarchs will be duly addressed
+             waits for someone in the coterie to tell her what to do.            through diplomatic measures, specifically, his grandsire.
+                During the chaos, the Anarchs find an opportune
+             moment to plant a GPS device on the SUV if they                     PLAYING ANARCHS
+             haven’t already. Once again, a successful simple test of            Camarilla vampires are unlikely to use networked
+             Wits + Investigation with a Difficult of 3 reveals them.            technology to track the SUV. Instead, they turn to
+                                                                                 bloodstones. The ritual is in Vampire, p. 276. You can also
+             Drug Deal Sideshow                                                  swap out the Anarchs for two neonate blood sorcerers.
+
+             Out of the blue, Gatsby points at a side street. “Turn
+
+
+                                                                            12
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                            LOVE BITES
+
+
+
+
+                                                     Chapter Three:
+
+
+                       MIDNIGHT
+                        IN THE
+                       WARRENS
+            Eventually, the SUV pulls up along an access road                  instead of taking coats, she gazes at each Kindred for a
+            parallel to a busy highway. Parking behind a string of             moment before handing each guest a unique, ornate
+            similarly stopped luxury vehicles, Gatsby exits and strolls        mask. These masks reflect the Predator type of each
+            along the sidewalk toward an overpass. Miriam agrees to            wearer, and while some masks share similarities, no two
+            wait for the next several hours until the coterie returns.         masks are exactly alike.
+               The noise from the overhead traffic helps keep their               If a character has a Predator type other than the ones
+            destination hidden — a service entrance into the city’s            listed, create an original artistic aesthetic by combining
+            underground. The group descends a metal staircase                  ideas from the chart or use the list as inspiration. So
+            lit by Christmas lights. The lights guide them along               long as the mask matches the strange and macabre
+            a sewer line toward a second, larger door where a                  nature of the others, it should fit right in.
+            Nosferatu stands guard. Seeing the high-profile guests’               Once the players’ characters adorn their masks, and
+            approach, he opens it without a word.                              Gatsby puts on his (a black leather mask with zippers
+                                                                               running diagonally like fingernails raked over his
+
+            Masks
+                                                                               face), the coterie passes through another set of heavily
+                                                                               patinaed doors to join the party.
+
+            Just inside, a ghoul attendant serving a Malkavian allied
+            to the Cleopatras operates a makeshift coatroom. But
+
+
+
+
+                                                                          13
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    VAMPIRE: THE MASQUERADE
+
+
+
+
+             The Queen of Yima                                                    DIDO, MODERN CLEOPATRA
+                                                                                  Dido, who proudly declares herself a “Queen of Yima,” is
+                                                                                  an enigmatic figure cloaked in whispers and half-truths.
+             The Nosferatu New Year’s Eve party is the antithesis
+                                                                                  Some rumors suggest she was a prostitute roaming
+             of the Prince’s penthouse, a phantasmagoric carnival                 the lamp-lit streets of Paris. Others claim she was a
+             nestled within the bowels of the city. Concealed                     dynamic empresaria who owned a string of nightclubs
+             behind the theatrics of their ghastly masks, you                     in New York City. Tonight, Dido is a restless soul flitting
+                                                                                  from city to city as the vision behind lavish, provocative
+             weave through gluts of bodies dancing to the beat
+                                                                                  parties. With an open invitation to all, she hopes to
+             of synth-pop tunes, vampires leading mesmerized or                   place the Nosferatu at the center of Kindred politics and
+             desperate victims into dark nooks, and a menagerie of                the Cleopatras at the center of the Nosferatu.
+             masks exchanging commentary on the edges. Strings                    Clan: Nosferatu
+             of lights and LED strips illuminate the chamber in                   Generation: 11th
+                                                                                  Blood Potency: 2
+             shades of neon red and blue and surround a colossal,                 Humanity: 5
+             cracked television with a live feed of Times Square                  General Difficulty: 4/3
+             and its countdown clock.                                             Standard Dice Pools: Physical 4, Social 6, Mental 6,
+                                                                                  Disciplines 7
+             Dido, your Cleopatra host for the evening, glides toward             Secondary Attributes: Health 7, Willpower 5
+             you. Dressed in glistening gold fabrics that ripple like             Exceptional Dice Pools: Stealth 8, Intimidation 7,
+             liquid and an elaborate headdress of dark, tarnished                 Politics 7
+             metal, she is like a gilt statue of a goddess. Gossamer-             Disciplines: Animalism 2 (Sense the Beast, Feral
+                                                                                  Whispers), Auspex 2 (Heightened Senses, Premonition),
+             thin metal chains spill from her arms like waterfalls,
+                                                                                  Obfuscate 4 (Cloak of Shadows, Unseen Passage,
+             connecting to corset piercings along her back and thighs.            Ghost in the Machine, Vanish), Potence 2 (Lethal Body,
+             Jeweled rings cover her fingers, and bangles on her wrists           Prowess)
+             shimmer. Her Nosferatu skin is translucent, making her
+             black, lifeless veins appear like cracks in a porcelain doll.        SEWER RAT INSIGHT
+             And you can imagine that when she feeds, her veins                   A Nosferatu in the coterie could find themselves in a
+                                                                                  sticky situation. Slighting an entire clan is dangerous, and
+             blush with a stark, bloody hue.
+                                                                                  the Nosferatu, known for having excellent memories,
+             Dido’s pallid pink eyes take you in, and an easy                     tend to hold a grudge. If efforts to placate Dido fall
+             smile crosses her face. “Where is the Prince?”                       short, a Nosferatu character can attempt a simple
+                                                                                  test with Intelligence + Politics against a Difficulty 2. If
+             The agreement was for the Prince to attend the New                   successful, take them aside and warn them that Dido
+             Year’s Eve party, but instead, she sent her grandchilde.             may not retaliate immediately, but she will assuredly
+             Dido recognizes the deliberate slight, which she                     take action against the Prince at some future point and
+             receives as such, but the Nosferatu is too savvy to show             the coterie shouldn’t rely on her support in the interim.
+             her hand. Once Gatsby explains he is there to give                      Dido might also draw the Nosferatu character into a
+             the Prince’s toast, Dido nods. But certain Discipline                one-on-one conversation, firing off probing questions
+             powers, such as Scry the Soul, or a successful Difficulty            about their feelings for the Prince or why they think she
+             3 Wits + Insight roll, reveal Dido’s controlled fury.                would choose to insult the Nosferatu.
+             The characters can work to diffuse her rising ire with
+             a successful Difficulty 3 social roll. For example,
+             Charisma + Persuasion could flatter her, while
+             Manipulation + Subterfuge could cleverly spin the
+             Prince’s action and pacify her anger.
+
+
+
+
+                                                                             14
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                                    LOVE BITES
+
+
+
+
+            Table 1: New Year’s Eve Mask Chart
+
+             Predator Type         Description
+                                   A jagged, rough-hewn mask made of scrap metal or broken glass, reflecting their survivalist lifestyle and
+             Alleycat
+                                   aggressive feeding preferences.
+
+                                   A glass or plastic mask approximating a goldfish bowl, as a thin layer of actual red-stained water swirls
+             Bagger
+                                   around the user’s head between the inner and outer layer, like the bags from which they drink.
+
+                                   A mask created from overlapping layers of dark, glossy resin with an intricate web of grooves, ridges, plates,
+             Blood Leech
+                                   and rust color teeth, symbolizing their penchant for preying on other Kindred.
+
+                                   Fitting like a balaclava, the mask is a patchwork of faux leather or dyed fabric sewn into a face resembling a
+             Cleaver
+                                   human to match the part they play with their families.
+
+                                   A World War 1 gas mask constructed from goggles and a breathing tube that wraps around the throat
+             Consensualist
+                                   showing their protective nature.
+
+                                   An ornate burlap and wooden mask depicting a horned animal, such as a pronghorn, oryx, or fabled beast
+             Farmer
+                                   representing a predator’s hunting style.
+
+                                   A traditional Venetian volto mask, complete with feathered plumes or makeshift ornaments made from
+             Osiris
+                                   rusted metal or tarnished silver, displaying a cult leader’s deific and demonic aspects.
+
+                                   A plague doctor mask manufactured from human bone, leather, and metal strips. Some are coated in an
+             Sandman
+                                   inky resin, while others have plastic tubing for “hair.” A mask that is both dreamlike and nightmarish.
+
+                                   A Venetian bauta mask with tricorn hat riddled with stains, splotches, cracks, and other imperfections that
+             Scene Queen
+                                   strip away the allure of status.
+
+                                   A black leather fetish mask with various metallic straps, studs, and zippers with a wig made from electrical
+             Siren
+                                   wire, reflecting their sexual predilections.
+
+
+
+
+            Watching the Clock
+                                                                                   Someone voices the theory that the Prince’s
+                                                                                    conspicuous absence is because she didn’t want to
+                                                                                    be in the same room as William Cray, the Anarch
+            If the coterie has time to spare before Gatsby gives his toast          leader who now has control over the Red Row.
+            and the ball drops, they can strategize among themselves                Those siding with the Prince feel the cost of peace
+            or mingle with the other partygoers. Like the Prince’s                  was unjustifiably high, though many others,
+            penthouse in Chapter One: Penthouse Party, you can                      including the Nosferatu, patently disagree.
+            add Storyteller characters of your own. If you do, it may              A pair of Nosferatu in a hushed conversation
+            be essential to note if the characters were present at the              discuss Gatsby’s pernicious drug habit and the
+            Prince’s party to determine where loyalties may lie. Other              number of blood dolls found dead because of it.
+            topics of conversation at the party include:                            They chatter, insinuating how the Prince is angry
+             Plot points or story hooks from your ongoing                          with Gatsby and sent her grandchilde to the party as
+                chronicle.                                                          a punishment.
+             Attempts to determine what the different masks
+
+                                                                                  William Cray
+                represent. A simple test of Intelligence + Awareness
+                or Intelligence + Craft with a Difficulty 4 pinpoints
+                the predatory nature of the masks, albeit with
+                twisted creative license.                                         Dido’s party doesn’t discriminate. Anarchs comprise
+             The Prince’s snub against the Nosferatu. Some                       a considerable portion of the attendees, with William
+                guests waive it off, while others worry over potential            Cray among them. If the coterie characters choose to
+                escalations. A few suggest the Prince was wise to                 talk to him, William attempts to keep his diplomatic
+                give her grandchilde bodyguards for the evening.                  front intact. However, he won’t mince his words when
+
+
+
+                                                                             15
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+            it comes to any known Brujah or Gangrel (such as
+                                                                            WILLIAM CRAY, ANARCH DIPLOMAT
+            Montgomery), accusing them of being ill-suited to the
+                                                                            During the late 1990s, William Cray was a loyal foot
+            Ivory Tower. The Anarch leader is smart enough not to
+                                                                            soldier who served on the front lines for the Camarilla.
+            get dragged into a fight, but his disdain for Camarilla
+                                                                            He fought numerous battles along the United States
+            Brujah and Gangrel could spark a healthy debate and             East Coast, ruthlessly destroying Sabbat on command.
+            palpable tension.                                               His steadfast belief that the elegant if ruthless Camarilla
+               To foreshadow the drama in Chapter Four: Where               was a better path than the openly monstrous Sabbat
+            is Gatsby?, William could launch a social barb at               helped justify gruesome deeds. But as he became aware
+            Gatsby, which the Toreador easily deflects. Success on a        of the hierarchical and authoritarian nature of the
+            simple Wits + Insight or Intelligence + Awareness test          sect, throwing their young into the fire of the Second
+            with a Difficulty 3 identifies enough familiarity that          Inquisition to save themselves, he left the Ivory Tower,
+            the character can assume they know each other from              along with the bulk of the Brujah. Tonight, he prefers
+            somewhere.                                                      words to warfare, using his political acumen to negotiate
+                                                                            treaties on behalf of the Movement.
+            PLAYING ANARCHS                                                 Clan: Brujah
+            As an Anarch Movement story, the idea of a Brujah               Generation: 10th
+            Prince, while unusual, remains feasible. However, if            Blood Potency: 2
+            a Brujah Prince is too radical or unconventional for            Humanity: 5
+            your story, an alternative is to change William Cray’s          General Difficulty: 4/3
+            clan to Toreador or Ventrue with some out-of-clan               Standard Dice Pools: Physical 7, Social 5, Mental 4,
+            Disciplines. He would remain a Sect War Veteran, with           Disciplines 6
+            his experience reinforcing his loyalty to the Camarilla         Secondary Attributes: Health 6, Willpower 6
+            and placing him on a trajectory to become a Prince.             Exceptional Dice Pools: Brawl 8, Melee 7, Leadership 7
+                                                                            Disciplines: Celerity 3 (Rapid Reflexes, Fleetness,
+                                                                            Blink), Fortitude 1 (Resilience), Potence 3 (Lethal Body,
+                                                                            Prowess, Uncanny Grip), Presence 4 (Daunt, Lingering
+                                                                            Kiss, Dread Gaze, Summon)
+
+
+
+                                                                       16
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                        LOVE BITES
+
+
+
+
+                       The Midnight Toast
+                       As midnight draws ever closer, the room’s attention shifts to the cracked television and Times
+                       Square. With a few scant minutes before the ball drops, Gatsby pulls off his mask, takes his
+                       place on a balcony, and addresses the crowd.
+
+                       “Assembled bloodsuckers!” Gatsby shouts, his face lit up with a cheeky grin. “On
+                       behalf of the Prince, I want to thank our gracious host, Dido of the Nosferatu. I gotta
+                       say, this party is next-level strange. And from a Diva like me, that’s really saying
+                       something. I know my grandsire was supposed to be here, but, you know…Princes
+                       gotta Prince and all that.”
+                       Gatsby chooses his next words with care — almost as if he wants to say something
+                       but pulls himself back from the brink. “You know, not everyone had a chance to
+                       choose this. For a lot of us, fate came at us hard and fast, sunk her fangs into us, and
+                       said, ‘Fucking deal with it.’ And when that happens, you can either roll with it or
+                       change it, which is hard, especially when you, heh, ‘live’ in a city with fifty different
+                       Kindred who have fifty different ideas on how you should occupy your nights. But
+                       no matter your bloodline, no matter your political ideology, we all make our havens
+                       here. We’ve chosen to be here in this city. So, once a year, we get to come together.
+                       We talk and laugh and mourn and party hard because it’s a new year. It’s a fresh
+                       start for all of us. And if this life has taught us anything, it’s that time is on our side!
+                       Happy New Year, you immortal bastards!”
+                       A roar of celebration engulfs the room, though soon drowned out by a new chorus of
+                       voices as the clocks approach the top of the hour. Gatsby pulls his mask back on, leaps
+                       over the balcony railing, and lands effortlessly on the dance floor below as revelers
+                       swarm him. With thirty seconds to spare, the party becomes a live countdown. Ten
+                       seconds pass, then another ten, a sense of anticipation building with each second.
+                       10. 9. 8. 7. 6. 5. 4. 3. 2. 1. HAPPY NEW YEAR!
+                       As the year officially ends and a new one begins, the jubilant shouts of the crowd drown
+                       out the music. Kindred press close to their partners, sealing the new year with a kiss
+                       or sinking their fangs into a mortal who may or may not be a blood doll as scorched
+                       confetti rains from rusted overhead pipes. For a fleeting moment, the chamber becomes a
+                       spectacle of swirling paper, dazzling light, and reverberating sound. But as that moment
+                       passes and the confetti storm calms, Gatsby is nowhere in sight.
+
+
+
+
+                                                                   17
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    VAMPIRE: THE MASQUERADE
+
+
+
+
+                                                    Chapter Four:
+
+
+                           WHERE IS
+                           GATSBY?
+                                                                           Finding Gatsby
+             The sudden disappearance of Gatsby prompts the
+             coterie’s next move. While you can’t predict every
+             possibility your players may come up with, this
+             chapter steers you through a few of the most probable         This section offers suggestions and guidance on likely
+             situations. But first, you need to know the plan.             courses of action, but as with any story, you may need
+                                                                           to adapt to player ingenuity. There are many ways for
+
+             Gatsby’s Plan
+                                                                           the coterie to track Gatsby and Miriam. These are only
+                                                                           a few ideas.
+
+             Immediately following the New Year’s countdown,
+             Gatsby slips out of the warrens through a hidden exit,
+                                                                           Investigating the Warrens
+             assisted by Pigeon, an Anarch Nosferatu (Difficulty           The characters have several individuals to talk to inside
+             2). Using his Celerity, Gatsby returns to the SUV to          the warrens, although most will have no information
+             reunite with Miriam. The two fight through New                on Gatsby’s whereabouts. However, a select few may
+             Year’s Eve traffic toward Bodie’s Body Shop, a garage         prove more insightful than the rest.
+             with ties to the Movement. Here, they rendezvous               Gatsby’s Blood Dolls: Unfortunately, Gatsby’s
+             with a handful of Anarchs, which include the two who             blood dolls are little help with their noses deep in a
+             placed the GPS device on the SUV in Chapter Two:                 pile of cocaine. They have no idea where he is and
+             On the Road. Finally, the group heads toward the Red             are in no condition to assist with the investigation.
+             Row footbridge that crosses the highway and marks the            Indeed, if you feel the coterie needs more problems,
+             boundary of Anarch territory.                                    one or both of the dolls might not be okay, suffering
+               The story’s climax on the footbridge hinges on                 from an overdose or excessive blood loss.
+             players’ choices and the level of drama you want to            Random Partygoers: After asking about Gatsby
+             infuse into the scene. Chapter Five: The Choice                  to some nearby revelers, one of them mentions last
+             sketches out some different options.                             seeing him in the company of Pigeon, an Anarch
+                                                                              Nosferatu.
+
+
+
+                                                                      18
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                         LOVE BITES
+
+
+
+
+             Party Anarchs: The coterie may overhear two                      William Cray: William Cray denies all knowledge
+              Anarchs discussing their thoughts on thin-bloods in               of Gatsby’s location. However, a simple test of
+              the Movement and specifically Miriam’s intentions.                Wits + Insight or Intelligence + Awareness at
+              If portraying the ready-to-play characters from                   Difficulty 3 reveals the leader knows more than
+              the appendix, you can add a skill test by using a                 he’s letting on. Getting that information out of
+              foreign language. Catalina knows Spanish, Dania                   the Anarch is challenging, but not impossible. A
+              knows sign language, and Montgomery is fluent in                  contested roll of Manipulation + Persuasion might
+              French. With a Difficulty 1 Wits + Awareness roll,                appeal to William’s vanity, while a Charisma +
+              the characters easily overhear the conversation, and              Intimidation roll could cow him into submission.
+              discover Miriam’s hidden motives.                                 Alternatively, the coterie can attempt to pay him for
+             Dido: The host disavows any knowledge of Gatsby’s                 the information. If he agrees to the bargain, or loses
+              whereabouts. She doesn’t take kindly to threats, and              the challenge, William Cray reveals that Miriam
+              her Nosferatu compatriots respond in kind to any                  is an Anarch spy and that she, and her paramour,
+              show of violence. If the coterie built a good rapport             Gatsby, have decided to leave the Camarilla and join
+              with Dido in Chapter Three: Midnight in the                       the Anarch Movement.
+              Warrens, she confers with some of her clan to learn              Pigeon: The coterie finds Pigeon partying in a
+              that Gatsby left the party with Miriam.                           dark offshoot of the warrens. Depending on how
+                                                                                thoroughly they interrogate the Nosferatu, they can
+            SEWER RAT INSIGHT                                                   learn about the hidden passage to the surface, which
+            The coterie may suspect the Nosferatu are responsible               they can find with a successful simple test of Wits
+            for abducting Gatsby. A Nosferatu player character                  + Awareness against Difficulty 2. If they use social
+            should have a sense of local Nosferatu motives, or                  skills to threaten or persuade Pigeon to help, he
+            at least can coax an honest response from Dido. For                 mentions Bodie’s Body Shop. But, if the coterie is
+            these Nosferatu, immediate retribution reads as sloppy,             too rough on the young Nosferatu, they earn the ire
+            unprofessional, and very much out of character. They                of his clanmates, and the nearby Anarchs.
+            aren’t the culprits, but they may have been paid to assist
+            or remain neutral.
+
+
+
+
+                                                                         19
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    VAMPIRE: THE MASQUERADE
+
+
+
+
+                                                                         Disciplines: Animalism 2 (Sense the Beast, Feral
+             PIGEON, HELPFUL NOSFERATU                                   Whispers), Obfuscate 2 (Cloak of Shadows, Unseen
+             Clan: Nosferatu                                             Passage), Potence 2 (Soaring Leap, Prowess)
+             Generation: 13th
+             Blood Potency: 1
+             General Difficulty: 3/3                                     Searching the Street
+             Standard Dice Pools: Physical 4, Social 4, Mental 5,        If the characters decide to exit the warrens to
+             Disciplines 5                                               investigate the SUV, they come across Gatsby’s mask
+             Secondary Dice Pools: Health 4, Willpower 4                 discarded by the roadside, but there’s no sign of
+             Exceptional Dice Pools: Larceny 6, Stealth 6,               Miriam or the vehicle. A successful Intelligence +
+             Streetwise 6                                                Investigation test at Difficulty 2 confirms that there are
+                                                                         no signs of violence. Subsequent successful Charisma
+                                                                         + Intimidation or Manipulation + Persuasion tests,
+                                                                         both with a Difficulty 2, compel witnesses and other
+                                                                         chauffeurs to confirm that Gatsby exited the warrens,
+                                                                         got in Miriam’s SUV, and the pair drove off.
+
+
+                                                                         Using Advantages
+                                                                         Leveraging character Backgrounds, particularly Allies
+                                                                         and Contacts, could be useful in tracking down the
+                                                                         SUV.
+                                                                          Ethan turns to Jenny Castillo to put out an all-
+                                                                            points bulletin for the missing SUV. After a tense
+                                                                            wait of twenty minutes, he receives a response.
+                                                                            Police spotted the SUV parked outside Bodie’s
+                                                                            Body Shop.
+                                                                          Nonso taps into his influence with car thieves
+                                                                            to hunt down the SUV. They encounter a few
+                                                                            obstacles like New Year’s Eve traffic, but, after a
+                                                                            thirty-minute search, they locate the SUV at Bodie’s
+                                                                            Body Shop.
+                                                                          Rhatha uses her clout in security to gain access to
+                                                                            local CCTV cameras. The footage shows Gatsby
+                                                                            and Miriam in the SUV, navigating under an
+                                                                            overpass heading to a different part of the city. A
+                                                                            network of street cameras and toll roads track the
+                                                                            vehicle to Bodie’s Body Shop.
+                                                                          Characters with Fame could use their fan base to
+                                                                            put out a broad, albeit risky, call for information
+                                                                            about Gatsby, Miriam, and the SUV.
+                                                                          Characters could send their loyal Retainers to
+                                                                            discreetly search for the SUV or ask around about
+                                                                            Gatsby and Miriam’s whereabouts.
+                                                                          A coterie might turn to their Mawla for help locating
+                                                                            the SUV using their vast resources and influence.
+
+
+
+
+                                                                    20
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                         LOVE BITES
+
+
+
+
+            Gifts of the Blood                                                Mesmerize (Dominate): By embedding a
+                                                                               command in the mind of a victim, a character could
+            The use of Discipline powers can aid the characters in             use Dominate to make a city official or police officer
+            their search. Auspex is particularly useful as it allows           their pawn, ordering them to conduct their own
+            the user to glean insights from the unseen.                        search for Gatsby or the SUV, or to provide ongoing
+             Feral Whispers (Animalism): Characters can use                   surveillance or information.
+               this power to interview birds and other local animals          Mask of a Thousand Faces (Obfuscate): The
+               to get an idea of who went where, or convince a rat or          character can make inquiries or infiltrate mortal
+               a dog to do a bit of tracking for them.                         establishments to learn information or gain access
+             Heightened Senses (Auspex): Characters can use                   to helpful technology.
+               this power to analyze their surroundings. It could
+
+                                                                             Bodie’s Body Shop
+               help them identify a faint smell or tire tracks that
+               might lead them to the SUV or Bodie’s Body Shop.
+             Premonition (Auspex): A successful Resolve +
+               Auspex provides a vision of Gatsby in the passenger           Tucked away in an unassuming corner of the city is a
+               seat of a moving SUV, staring in the rearview                 small garage with an open yard crammed full of old cars
+               mirror. As he gazes, the city in the mirror decays            awaiting restoration or cannibalization for parts. The
+               and crumbles like a sandcastle in the rain. The road
+                                                                             garage exterior, painted in once vibrant, but now faded
+               beneath the SUV transforms into a bloody pathway
+               that leads to a floating red door. Gatsby then grabs          and chipped colors, has the name “Bodie’s” written on a
+               his own face, pulling off a fleshy mask to reveal             sign in retro script. Large, grime-streak windows flank
+               another Gatsby face. And then he peels off four               the entrance where you can see light inside. Fluorescent
+               more, each identical to the last, dropping them to            tubes flicker above an assortment of toolboxes, hydraulic
+               the car floor where they pile up into a grotesque
+                                                                             lifts, and car parts. The scents of motor oil and
+               heap. Once he discards the last mask, he smiles
+               and exits the SUV to stride through the red door,             lubricants hang heavy in the air. And parked near the
+               accompanied by a human shaped shadow. This                    back is the SUV.
+               vision highlights Gatsby’s deliberate action and his          With the hood still warm to the touch, Miriam and
+               willing abandonment of the Camarilla.                         Gatsby have a brief head start toward the Red Row,
+             Spirit’s Touch (Auspex): A successful Intelligence             but the coterie is hot on their trail. Inside the garage
+               + Auspex roll allows the character to touch Gatsby’s          is Bodie, a sixty-year-old man with deep-set wrinkles
+               mask or the ground where Miriam parked the                    and oil-smeared overalls. His grease-stained hands have
+               SUV, seeing an image of Gatsby crossing a street,             spent countless hours under a hood. He grunts at the
+               getting in the car, and the two driving off. The              newcomers, “What can I do you for?”
+               character can sense a potent mixture of thrill and               Bodie is a simple antagonist at Difficulty 2. A
+               determination between them as they depart.                    successful Manipulation + Persuasion roll or Charisma
+             Cloud Memory (Dominate): The Kindred                           + Intimidation roll, forces Bodie to give up Miriam and
+               forces a subject to forget the recent past, which             Gatsby. He points in the direction of the Red Row.
+               can be useful after questioning someone about the
+               whereabouts of Gatsby, Miriam, or the SUV. This
+               way they don’t remember the encounter, or any
+               sensitive information revealed, helping to maintain
+               the secrecy of the coterie’s investigation.
+
+
+
+
+                                                                        21
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    VAMPIRE: THE MASQUERADE
+
+
+
+
+                                                         Chapter Five:
+
+
+              THE CHOICE
+             As the coterie races to intercept Miriam and Gatsby,                 their tracks. Miriam instinctively positions herself
+             you have two decisions to make. First, determine the                 between you and Gatsby. The Toreador exhales a
+             strength and number of the Anarchs escorting the                     heavy sigh. “Look, I’m not going back,” he says. “I
+             escaping couple. Miriam and Gatsby are capable, but
+             they’re far from hardened combatants. If the players are
+                                                                                  get it. You’re here to haul me back. But that’s not
+             itching for a fight, and you want to create a challenge,             happening. Miriam and I, we’re in love. And we
+             keep the Anarch revolutionary stats as listed, but lower             want to be somewhere where that’s okay. Where
+             the number of them present. If you want to have more                 we can feel appreciated. That’s not the Camarilla.
+             of a chaotic melee, lower the Anarch stats and inflate               I wish it was, but it isn’t. So, just go. Go back to
+             their numbers. The goal is to balance the strength of
+                                                                                  my grandsire and tell her that I would rather be
+             the opposition with that of the coterie.
+                Next, you need to decide where the confrontation takes            destroyed with the family I chose, than exist with
+             place. By the time the coterie catches up with Gatsby,               the family that chose me.”
+             Miriam, and the Anarchs, where are they precisely?                   Miriam chimes in, her voice steady. “I didn’t sign
+              A deserted alley within Camarilla territory. Placing
+                 them in a deserted alleyway puts them a stone’s
+                                                                                  up for this. I never asked to be someone’s driver
+                 throw from the Red Row but still within Camarilla                for eternity. Tell her we slipped away. Tell her you
+                 jurisdiction. This lends official authority to the               couldn’t find us. Tomorrow, she can do whatever she
+                 Maréchal coterie’s actions.                                      wants. Let her Blood Hunt us. Let her burn the city
+              A quiet side street in Anarch territory. This option               to find us. But tonight, just for tonight, I’m asking
+                 positions the climax in a side street in the Red Row,
+                                                                                  you to let us go.”
+                 squarely within the Anarch’s new territory, which
+                 turns the Maréchal coterie into trespassers, technically.
+              A footbridge in a grey zone. Over the highway                      PLAYING ANARCHS
+                 that separates Camarilla and Anarch territories is               Miriam and Gatsby’s motivations may change if they intend
+                 a footbridge. Gatsby, Miriam, and the Anarch can                 to join the Camarilla, but the sentiment stays the same.
+                 be halfway across it when the coterie catches them.              They want a chance to be together. And they believe that
+                 This levels the political playing field for all involved.        with the power of Gatsby’s grandsire, the Prince, Miriam
+                                                                                  can become a real vampire. As members of a powerful,
+
+
+             Auld Lang Syne
+                                                                                  Camarilla family, they have the chance to realize a future of
+                                                                                  their choosing instead of one chosen for them.
+
+
+             As Gatsby and Miriam come into view, you close                       After everyone has a chance to roleplay the drama of
+             the distance. Sensing trouble, they stop dead in                     the moment, the coterie must make a choice. The
+
+
+
+                                                                             22
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                       LOVE BITES
+
+
+
+
+            following are the most likely scenarios, but the players       Conversely, if the story ends with the lovers returned
+            might surprise you with a creative solution.                to the Prince, she orders Clement to escort Gatsby and
+             The coterie can decide to respect Gatsby and              Miriam into a back room, never to be seen again. Much
+                Miriam’s decision and choose to return to the           later, someone in the domain might wonder whatever
+                Prince’s penthouse without them. This means             happened to Gatsby and that thin-blood, what was her
+                facing the Prince’s wrath at their incompetence.        name? After the lovers have been taken away, the Prince
+             The coterie can attempt to persuade Miriam and            coldly notes the coterie’s efforts, and rewards them with
+                Gatsby to return to the penthouse. This could           boons, additional territory, or another valuable incentive.
+                involve a volley of social challenges. The characters
+
+                                                                        Continuing the Story
+                may also resort to Dominate or Presence, but these
+                solutions would only provide temporary results. If
+                the Anarchs detect the use of Disciplines, this could
+                provoke combat.                                         Gatsby and Miriam’s fate can conclude Love Bites or act
+             The coterie can engage Gatsby, Miriam, and the            as the opening of a continued chronicle.
+                Anarchs in combat, put them into torpor, and drag        Vengeance for Miriam: When the Prince harms
+                them to the Prince.                                         or kills Miriam, the coterie might decide to seek
+                                                                            vengeance or justice for her as a way to hold onto
+
+            Welcome to the
+                                                                            their mortal principles, possibly leading to a full-
+                                                                            blown rebellion against the Prince and her regime.
+                                                                         Rescue Mission for Gatsby: If Gatsby has been
+
+            New Year                                                        taken into a backroom and disappeared, the coterie
+                                                                            might set out on a mission to rescue him, which
+                                                                            could involve infiltrating the Prince’s stronghold,
+            Before dawn, the coterie returns to the penthouse
+                                                                            dealing with her allies, or even negotiating with her
+            with or without their charge. If they don’t have
+                                                                            enemies. Gatsby might have been destroyed, but
+            the two defectors, the Prince’s fury is palpable. She
+                                                                            it’s also possible the Prince left him for a stranger
+            demands the coterie find Gatsby and bring him back
+                                                                            fate, such as giving him as a gift to an ally in another
+            or face Lex Talionis for complicity in her grandchilde’s
+                                                                            domain or using his staked body to vent her
+            disappearance and possible destruction.
+                                                                            frustrations in private.
+
+
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    VAMPIRE: THE MASQUERADE
+
+
+
+
+              More Defections: The coterie might choose to                  navigate the streets as pariahs or find a new home in
+               investigate the deeper reasons behind Gatsby and              Anarch territory or with other Independent clans.
+               Miriam’s defection to the Anarchs. What caused               Unraveling Dido’s Motives: Dido has hidden
+               them to betray the Camarilla, and are there others            motivations the coterie could begin to unravel,
+               who might do the same?                                        which could lead to a new set of allies, enemies,
+              Loss of Status: If the coterie doesn’t return with            or a more complex political landscape to navigate.
+               Gatsby, the Prince could order a Blood Hunt to                Perhaps Dido seeks to unravel the rule of the
+               destroy the characters, forcing them to scramble              current Camarilla leadership by playing them
+               fast to survive. If the Prince wants to get one over          against the Anarchs, seeking to set up a new,
+               the characters’ sires, she may also use them to               Nosferatu-led Court instead.
+               humiliate them, demanding a new, more loyal                  A Nosferatu Underworld: The coterie could
+               Maréschal coterie to serve her. If that happens,              delve deeper into the political motivations of the
+               the players’ coterie’s standing in the domain is              Nosferatu in the city, uncovering secrets such as
+               definitely reduced. This could provide the chance             allegiances that go beyond the limits of sect and
+               at redemption for the coterie or provoke them into            domain that could affect the balance of power, or
+               working for a rival.                                          they can discover the city’s Nosferatu are part of a
+              Outcasts: The Prince could exile the coterie from             bigger Cleopatran plan to claim power beyond the
+               the city on pain of a Blood Hunt, forcing them to             traditional warrens of the clan.
+
+
+
+
+                                                                      24
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                            LOVE BITES
+
+
+
+
+                                                                 Appendix:
+
+
+
+
+                               THE
+                             PLAYERS’
+                             COTERIE
+            While you can play Love Bites with any group as a                     Status: Provided the sect leader and the coterie
+            stand-alone story or as part of a more extensive chroni-                 are of the same sect, undertaking the mission may
+            cle, many political stakes rely on the Maréchal coterie’s                reward them with standing and reputation.
+            relationships with their sectarian leader and sires. As               Territory: The sect leader may court the coterie
+            a prestige, legacy coterie — regardless of whether you                   with the promise of territory, increasing their
+            stick with the Camarilla story or flip it to an Anarch                   Domain Trait(s).
+            version — their actions reflect directly on those with                 If you’d rather jump right in with the ready-to-play
+            power and authority.                                                 vampires, the only three aspects that need to remain
+                                                                                 consistent with the sheets are their neonate generation,
+              If your table wants to create new characters or bring
+                                                                                 their position in the coterie, and their clan. You can
+            in characters from a different chronicle, and they
+                                                                                 change their names, genders, skills, attributes, and
+            don’t have a solid reason to invest in the story, consider
+                                                                                 backstory in whatever way makes them more fun to play.
+            adding additional incentives.
+                                                                                   Be aware that the prewritten characters presented
+             Boon: If the coterie owes the sect leader, a sire, or their
+                                                                                 here have somewhat better characteristics than would
+                Mawla a boon, this might obligate them to the task.
+                                                                                 characters created using the system in Vampire, to
+             Independence: The coterie may want more
+                                                                                 reflect their Maréchal status.
+                autonomy, and the sect leader uses the task to earn
+                more trust and leeway.
+
+
+
+
+                                                                            25
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    VAMPIRE: THE MASQUERADE
+
+
+
+
+                                  Catalina Luca
+                                  (Jaded Actor, Captain)
+                         Like so many young women with arresting beauty and raw talent, Catalina Luca chased
+                         the illusive dream of stardom in the neon-veined heart of Hollywood. But years as a
+                         background extra and a season regular on a canceled show forced her to reckon with her
+                         non-existent career. Driven to reinvent herself, she channeled her physical prowess into
+                         stunt work, finding a place in the industry where agility mattered more than connections.
+                           Catalina’s entrance to the Ivory Tower came after crossing paths with a Toreador
+                         producer on the set of an action flick. She persisted in thinking she was suffering from a
+                         hangover resulting from an on-set late night party up until she blearily opened the curtains
+                         in the morning and almost burned to a crisp. She immediately recognized the parallels
+                         between the Camarilla court’s pageantry and Hollywood’s narcissism and flourished
+                         among vanity-drunk fiends, flattery-addicted schemers, and back-stabbing friends.
+                         The role she plays now on behalf of the city’s Toreador Prince is her most significant
+                         performance to date.
+
+                         Motivation: Rising Star
+                         Catalina longs to find the fame that eluded her in Hollywood. She craves the intoxicating
+                         mix of fear and respect she sees in the eyes of others when they talk about powerful
+                         Kindred. As captain of the coterie, she hopes to prove her worth and earn the same.
+                           Clan: Toreador
+                           Embraced: 1995 (Born 1962)
+                           Ambition: Establish my reputation, regardless of the risk
+                           Desire: Keep the coterie safe
+                           Predator: Siren
+                           Convictions: Protect your connections
+                           Touchstones: Jasper Monroe, her first stunt double partner who got her a job in the industry
+                           Humanity: 7
+                           Generation: 12th
+                           Blood Potency: 1
+                           Attributes: Strength 3, Dexterity 4, Stamina 3; Charisma 3, Manipulation 2,
+                         Composure 2; Intelligence 2, Wits 2, Resolve 2
+                           Secondary Attributes: Health 7, Willpower 4
+                           Skills: Athletics 4 (Dangerous Stunts), Brawl 3, Drive 2, Firearms 2, Melee 3, Survival 1;
+                         Leadership 3, Performance 1 (Acting), Persuasion 2 (Seduction), Subterfuge 1
+                           Disciplines: Celerity 2 (Cat’s Grace, Fleetness), Fortitude 1 (Resilience), Presence 3
+                         (Awe, Lingering Kiss, Entrancement)
+                           Advantages: Haven 1, Herd 2, Looks 2 (Beautiful), Mask 1, Mawla 1, Resources 1,
+                         Linguistics 1 (Spanish), Status 3 (Maréchal)
+                           Flaws: Enemy 1 (Bianca, Jilted Former Lover), Folkloric Bane 1 (Cannot Cross a
+                         Threshold Uninvited), Stalkers 1
+
+
+
+
+                                                                     26
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                          LOVE BITES
+
+
+
+
+                                         Montgomery Boucher
+                                         (Indomitable Hockey Player, Master at Arms)
+                        A crushing bodycheck against the boards ended Montgomery Boucher’s career in the hockey
+                        rink, shattering his femur in three spots and cracking his kneecap. A grueling nine-hour
+                        surgery mended his bones but couldn’t return him to the ice. So, he swapped his skates for a
+                        coach’s whistle while taking on side gigs as a personal trainer and bouncer. But his formidable
+                        fighting skills and tenacious spirit eventually earned him the Embrace, disorienting and
+                        horrifying as it was.
+                           Montgomery may not understand the intricacies of undead politics or why the Gangrel
+                        have almost entirely aligned themselves with the Anarch Movement, but he likes being
+                        part of a team. And the Maréchal coterie has become more than just a group of Kindred to
+                        him. It’s his family, his pack, a place where he isn’t just acknowledged but valued.
+
+                        Motivation: Team Player
+                        Motivated by team unity, Montgomery thrives when working alongside others and strives
+                        to foster a sense of camaraderie within his coterie. He believes in their collective strength
+                        and is determined to maintain cohesion against all odds.
+                          Clan: Gangrel
+                          Embraced: 2003 (Born 1976)
+                          Ambition: Bridge the gap between the Camarilla and Anarch Movement
+                          Desire: Coach a coterie-mate to help them master a new skill
+                          Predator: Farmer
+                          Convictions: Payback is always justified
+                          Touchstones: Laura Simmons, the physical therapist who helped him recover from his
+                        career-ending injury
+                          Humanity: 8
+                          Generation: 12th
+                          Blood Potency: 1
+                          Attributes: Strength 4, Dexterity 2, Stamina 3; Charisma 2, Manipulation 2,
+                        Composure 3; Intelligence 2, Wits 2, Resolve 3
+                          Secondary Attributes: Health 8, Willpower 6
+                          Skills: Athletics 3, Brawl 4 (Grappling), Melee 3, Survival 3 (Hunting); Animal Ken 3,
+                        Intimidation 2, Leadership 1; Awareness 2, Medicine 1, Technology 1
+                          Disciplines: Animalism 2 (Bond Famulus, Feral Whispers), Protean 3 (Eyes of the Beast, Feral
+                        Weapons, Shapechange), Fortitude 2 (Resilience, Toughness)
+                          Advantages: Haven 1, Herd 2, Mask 1, Resources 2, Linguistics 1 (French), Status 3
+                        (Maréchal)
+                          Flaws: Shunned 2 (Anarchs), Vegan 2
+
+
+
+
+                                                                  27
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    VAMPIRE: THE MASQUERADE
+
+
+
+
+                                  Dania Nowak
+                                  (Insightful Novelist, Veteran Member)
+                                   Dania Nowak threw herself into the lion’s den of the literary world, determined
+                                   to see her name on a book cover. After countless rejections, an agent finally
+                         agreed to represent her, and Dania published her Adelina Fairfax series about a reclusive
+                         bibliophile and linguist who uses her vast knowledge of languages, symbols, and codes to
+                         solve crimes. While she was by no means famous, she had a growing audience of devoted
+                         readers, one of whom tried to murder Dania when Adelina Fairfax died in the final book.
+                           She remembers little from that violent night but can recall someone pushing her over
+                         a bridge and a stranger dragging her out of the river, culminating in a shocking Embrace.
+                         Existence as a vampire has been difficult for Dania, but she is slowly leaving her old life
+                         behind. In the meantime, Dania uses her knack for unearthing secrets and mysteries for
+                         her sect and coterie.
+
+                         Motivation: New Chapters
+                         Lately, Dania has chosen to view her transformation into a vampire as an unexpected
+                         plot twist in her own narrative. Each night presents a chance to add to her ongoing story,
+                         inspiring her to write a novel like no other.
+                           Clan: Nosferatu
+                           Embraced: 2015 (Born 1982)
+                           Ambition: Publish a novel about unlife as a Kindred
+                           Desire: Chronicle an unforgettable encounter
+                           Predator: Sandman
+                           Convictions: You can’t be blamed for following your fate
+                           Touchstones: Kofi Wells, a local ghost tour guide who tells stories about the city’s
+                         haunted history
+                           Humanity: 7
+                           Generation: 12th
+                           Blood Potency: 1
+                           Attributes: Strength 2, Dexterity 2, Stamina 2; Charisma 2, Manipulation 2,
+                         Composure 3; Intelligence 4, Wits 3, Resolve 3
+                           Secondary Attributes: Health 5, Willpower 6
+                           Skills: Larceny 2, Stealth 3 (Break-Ins); Insight 4 (Determining Motive), Subterfuge 1;
+                         Academics 2 (Literature), Awareness 3, Investigation 3, Occult 1, Politics 2, Technology 1
+                           Disciplines: Animalism 1 (Bond Famulus), Obfuscate 4 (Cloak of Shadows, Unseen
+                         Passage, Mask of a Thousand Faces, Vanish)
+                           Advantages: Haven 2, Herd 2, Resources 3, Linguistics 1 (Sign Language), Status 3
+                         (Maréchal)
+                           Flaws: Known Corpse 1, Prey Exclusion 1 (Children)
+
+
+
+
+                                                                   28
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                            LOVE BITES
+
+
+
+
+                               Ethan Holloway
+                               (Unhinged Investigator,
+                               Veteran Member)
+                               Ethan Holloway and Tom Gerrity were far from the proud, respectable police
+                               detectives the public believed them to be. The pair routinely used their badges as
+                               shields covering indiscretions ranging from accepting bribes to tampering with
+                      evidence. As the money rolled in, their moral compasses faded into oblivion. However, the
+                      wrong side of the law caught up with them when Tom was mysteriously murdered.
+                        Stricken with guilt, grief, and paranoia, Ethan’s life spiraled out of control. Revenge
+                      consumed him, and his relentless pursuit of his partner’s killer became an obsession that cost
+                      him his job, his family, and his sanity. But Ethan’s sire saw his potential like a flame flickering
+                      amid the darkness. And in the aftermath of his Embrace, Ethan has crafted a chillingly tidy
+                      unlife where he comes home each night to eat dinner alongside his perfect (and wholly
+                      subjugated) wife and kids.
+
+
+                      Motivation: Work-Life Balance
+                      Ethan’s need to maintain the illusion of an everyday home life often conflicts with his
+                      duties to the coterie and the Camarilla. However, his skill as a detective regularly proves
+                      more valuable than the irritation caused by the check-in phone calls and the errands he
+                      runs for his family.
+                         Clan: Malkavian
+                         Embraced: 2007 (Born 1975)
+                         Ambition: Find Tom Gerrity’s killer and deliver justice
+                         Desire: Bring home a fun surprise for the wife and kids
+                         Predator: Cleaver
+                         Convictions: Love is worth any sacrifice
+                         Touchstones: Nora Holloway, Ethan’s wife and a constant reminder of the normalcy he
+                      once had
+                         Humanity: 6
+                         Generation: 13th
+                         Blood Potency: 1
+                         Attributes: Strength 2, Dexterity 3, Stamina 2; Charisma 3, Manipulation 3,
+                      Composure 2; Intelligence 2, Wits 4, Resolve 2
+                         Secondary Attributes: Health 5, Willpower 4
+                         Skills: Drive 1, Firearms 3, Larceny 2, Stealth 1; Intimidation 2, Streetwise 3, Subterfuge
+                      3 (Coverups); Awareness 2, Investigation 4 (Crime Scenes), Technology 1
+                         Disciplines: Auspex 1 (Heightened Senses), Dominate 3 (Cloud Memory, Mesmerize, The
+                      Forgetful Mind), Obfuscate 2 (Cloak of Shadows, Unseen Passage)
+                         Advantages: Allies 1 (Jenny Castillo, a beat cop on the take), Contacts 2 (Snitches),
+                      Haven 2, Herd 2, Mask 2, Resources 2, Status 3 (Maréchal)
+                         Flaws: Dark Secret 2 (Cleaver), Obvious Predator 2
+
+
+
+
+                                                                    29
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    VAMPIRE: THE MASQUERADE
+
+
+
+
+                                      Rhatha Khan
+                                      (Subversive Cybersecurity Expert, Rookie
+                                      Member)
+                                       As a cybersecurity consultant, Rhatha Khan stumbled on a hidden network of
+                         encrypted data streams and cloaked IP addresses. Her curiosity led her down the digital rabbit
+                         hole, unearthing an archive of arcane symbols and ancient languages beyond the realm of
+                         mundane cybercrime. One fateful night, she decrypted a file named “Gehenna,” and her world
+                         shifted. Her apartment door creaked open, and she knew she was no longer alone.
+                            The Tremere’s name was Emerick, and while he was intrigued by Rhatha’s skill and
+                         ingenuity, he also grasped the danger she posed. So, he offered her a choice: eternal
+                         silence or eternal unlife. With a mix of terror and fascination, she chose the latter. When
+                         Emerick’s fangs pierced her neck, Rhatha’s ordinary life ended, and her journey as a
+                         follower of Carna began.
+
+                         Motivation: Unshackled Freedom
+                         Even within the relative freedom of House Carna, Rhatha remains wary of any form of
+                         hierarchical control. But recently, her sire Emerick has secured her a place in this prestigious
+                         coterie for a reason she has yet to unravel.
+                            Clan: Tremere
+                            Embraced: 2019 (Born 1994)
+                            Ambition: Break down the hierarchical structures of the Camarilla
+                            Desire: Understand her place in the coterie
+                            Predator: Bagger
+                            Convictions: Never submit to undeserved authority
+                            Touchstones: Ameena Khan, Rhatha’s grandmother, a strong, independent woman
+                         who tells captivating stories about the struggles of her younger years
+                            Humanity: 7
+                            Generation: 13th
+                            Blood Potency: 1
+                            Attributes: Strength 1, Dexterity 3, Stamina 2; Charisma 2, Manipulation 2,
+                         Composure 2; Intelligence 4, Wits 3, Resolve 3
+                            Secondary Attributes: Health 5, Willpower 5
+                            Skills: Drive 1, Firearms 3, Larceny 3 (Lockpicking), Stealth 1; Insight 2, Intimidation
+                         1; Awareness 2, Investigation 2, Occult 3, Technology 4 (Surveillance Security)
+                            Disciplines: Auspex 3 (Sense the Unseen, Premonition, Scry the Soul), Blood Sorcery 2
+                         (A Taste for Blood, Extinguish Vitae, Ritual: Blood Walk)
+                            Advantages: Contacts 2 (Security Company), Influence 2 (Security Company), Haven
+                         2, Herd 2, Iron Gullet 3, Loresheet: Carna 1, Mask 2, Resources 2, Status 3 (Maréchal)
+                            Flaws: Enemy 2 (Greg Ashwood, former head of Chantry Security), Folkloric Bane 1
+                         (Silver), Long Bond 1
+
+
+
+
+                                                                     30
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                        LOVE BITES
+
+
+
+
+                                      Nonso Okorie
+                                      (Impulsive Street Racer, Rookie Member)
+                                       For Nonso Okorie, the thunderous roar of engines always elicits fond
+                                       memories of his father, a race car driver. Nonso had dreamt of continuing
+                                       the legacy, but after a fatal accident claimed his father’s life and the prize
+                       money dried up, Nonso and his mother fell on hard times. When he couldn’t afford to
+                       race cars, he boosted them. And over time, he earned a reputation as a skilled car thief and
+                       street racer.
+                          However, destiny, dressed in a Porsche 911, caught up with Nonso when he impressed
+                       its owner, a Ventrue named Marcus Vandenberg, with his ability to handle the expensive
+                       machine. So, Marcus Embraced him without undue emotion beyond the terror of dying
+                       and coming back as a bloodsucking creature and put him to work. Still new to his unlife,
+                       Nonso has yet to fully appreciate the lethal food chain he finds himself at the bottom of.
+
+                       Motivation: Dutiful Childe
+                       As the newest and youngest coterie member, Nonso wants to show that he belongs. He
+                       also knows Marcus wants a major boon over the Prince, and this is his best chance to
+                       secure it — especially if the Prince finds herself in need of a getaway driver.
+                          Clan: Ventrue
+                          Embraced: 2020 (Born 1998)
+                          Ambition: Score a major boon from the Prince
+                          Desire: Earn the respect of a coterie mate
+                          Predator: Scene Queen (Illegal Racing Circuit)
+                          Convictions: Dare to push the limits
+                          Touchstones: Sachi, a fellow street racer whose daring feats and appetite for risk have
+                       been a source of inspiration for Nonso
+                          Humanity: 7
+                          Generation: 13th
+                          Blood Potency: 1
+                          Attributes: Strength 2, Dexterity 3, Stamina 2; Charisma 3, Manipulation 3,
+                       Composure 4; Intelligence 2, Wits 2, Resolve 2
+                          Secondary Attributes: Health 7, Willpower 6
+                          Skills: Craft 2 (Car Repair), Drive 4, Firearms 3, Larceny 3 (Hotwiring); Etiquette 1,
+                       Persuasion 2, Streetwise 3 (Car Thieves), Subterfuge 1; Politics 1, Technology 2
+                          Disciplines: Dominate 2 (Compel, Mesmerize), Fortitude 2 (Resilience, Toughness),
+                       Presence 2 (Daunt, Lingering Kiss)
+                          Advantages: Contacts 1 (Fences), Contacts 2 (Chop Shops), Fame 1 (Illegal Racing
+                       Circuit), Influence 2 (Car Thieves), Haven 1, Herd 2, Resources 2, Status 3 (Maréchal)
+                          Flaws: Disliked 1, Infamy 2 (Known Criminal)
+
+
+
+
+                                                                   31
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+              Name                                                                 Concept                                    Predator
+                         Catalina Luca                                                       Jaded Actor                                 Siren
+              Chronicle                                                            Ambition                                   Clan
+                              Love Bites                                                       Establish reputation                  Toreador
+              Sire                                                                 Desire                                     Generation
+                                                                                            Keep the coterie safe                                12
+                                                                                               AT T R I BU T E S
+                                       Physical                                                       Social                                      Mental
+                     Strength                         ¡¡¡¡¡                               Charisma             ¡¡¡¡¡              Intelligence             ¡¡¡¡ ¡
+
+                    Dexterity                         ¡¡¡¡¡                        Manipulation                ¡¡¡¡¡                  Wits                 ¡¡¡¡ ¡
+
+                     Stamina                          ¡¡¡¡¡                           Composure                ¡¡¡¡¡                 Resolve               ¡¡¡¡ ¡
+                                                                                 Health                               Willpower
+                                                                ¨ ¨ ¨ ¨ ¨ ¨ ¨¨¨¨                           ¨¨¨¨¨ ¨¨¨¨¨
+                                                                                                    SK I L L S
+
+            Athletics                                     ¡ ¡ ¡ ¡ ¡ Animal Ken                                   ¡¡¡¡¡ Academics                             ¡¡¡ ¡ ¡
+
+            Brawl                                         ¡ ¡ ¡ ¡ ¡ Etiquette                                    ¡¡¡¡¡ Awareness                             ¡¡¡ ¡ ¡
+
+            Craft                                         ¡ ¡ ¡ ¡ ¡ Insight                                      ¡¡¡¡¡ Finance                               ¡¡¡ ¡ ¡
+
+            Drive                                         ¡ ¡ ¡ ¡ ¡ Intimidation                                 ¡¡¡¡¡ Investigation                         ¡¡¡ ¡ ¡
+
+            Firearms                                      ¡ ¡ ¡ ¡ ¡ Leadership                                   ¡¡¡¡¡ Medicine                              ¡¡¡ ¡ ¡
+
+            Melee                                         ¡ ¡ ¡ ¡ ¡ Performance                                  ¡¡¡¡¡ Occult                                ¡¡¡ ¡ ¡
+
+            Larceny                                       ¡ ¡ ¡ ¡ ¡ Persuasion                                   ¡¡¡¡¡ Politics                              ¡¡¡ ¡ ¡
+
+            Stealth                                       ¡ ¡ ¡ ¡ ¡ Streetwise                                   ¡¡¡¡¡ Science                               ¡¡¡ ¡ ¡
+
+            Survival                                      ¡ ¡ ¡ ¡ ¡ Subterfuge                                   ¡¡¡¡¡ Technology                            ¡¡¡ ¡ ¡
+
+                                                                                               DI S C I PL I N E S
+              Celerity                                     ¡ ¡ ¡ ¡ ¡ Fortitude                                   ¡¡¡¡¡ Presence                             ¡¡ ¡ ¡ ¡
+              Cat’s Grace                                                         Resilience                                  Awe
+              Fleetness                                                                                                       Lingering Kiss
+                                                                                                                              Entrancement
+
+
+
+                                                           ¡¡¡¡¡                                                 ¡¡¡¡¡                                      ¡¡ ¡ ¡ ¡
+
+
+
+
+            Resonance                                                                         Hunger ¨¨¨¨¨                        Humanity ¨¨¨¨¨ ¨¨¨¨¨
+
+     © 2023 Renegade Game Studios. All Rights Reserved. © Paradox Interactive AB (publ)
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                 Chronicle Tenets                                          Touchstones & Convictions                  Clan Bane
+                                                                                    Convictions: Protect your connections
+
+
+
+
+                                            Advantages & Flaws                                                  Blood Potency ¡¡¡¡¡ ¡¡¡¡¡
+                                                                                           ¡¡¡¡¡         Blood Surge               Mend Amount
+               Haven
+
+               Herd                                                                        ¡¡¡¡¡
+                                                                                                         Power Bonus               Rouse Re-Roll
+               Looks (Beautiful)                                                           ¡¡¡¡¡
+
+               Folkloric Bane                                                              ¡¡¡¡¡
+                                                                                                         Feeding Penalty           Bane Severity
+               Stalkers                                                                    ¡¡¡¡¡
+
+                                                                                           ¡¡¡¡¡
+                                                                                                        Total Experience
+                                                                                           ¡¡¡¡¡
+
+                                                                                           ¡¡¡¡¡
+                                                                                                        Spent Experience
+
+                                                                                           ¡¡¡¡¡         True age
+
+                                                                                                         Apparent age
+                                                                                           ¡¡¡¡¡
+                                                                                                         Date of birth
+                                                                                           ¡¡¡¡¡
+                                                                                                         Date of death
+               Notes
+                                                                                                         Appearance
+
+
+
+                                                                                                         Distinguishing features
+
+
+
+                                                                                                         History
+
+
+
+
+      © 2023 Renegade Game Studios. All Rights Reserved. © Paradox Interactive AB (publ)
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+              Name                                                                 Concept                                   Predator
+                         Dania Nowak                                                         Insightful Novelist                        Sandman
+              Chronicle                                                            Ambition                                  Clan
+                              Love Bites                                                      Publish a novel                       Nosferatu
+              Sire                                                                 Desire                                    Generation
+                                                                                            Chronicle an encounter                        12
+                                                                                               AT T R I BU T E S
+                                       Physical                                                      Social                                     Mental
+                     Strength                         ¡¡¡¡¡                               Charisma            ¡¡¡¡¡              Intelligence            ¡¡¡¡ ¡
+
+                    Dexterity                         ¡¡¡¡¡                        Manipulation               ¡¡¡¡¡                  Wits                ¡¡¡¡ ¡
+
+                     Stamina                          ¡¡¡¡¡                           Composure               ¡¡¡¡¡                 Resolve              ¡¡¡¡ ¡
+                                                                                 Health                              Willpower
+                                                                ¨ ¨ ¨ ¨ ¨ ¨ ¨¨¨¨                           ¨¨¨¨¨ ¨¨¨¨¨
+                                                                                                   SK I L L S
+
+            Athletics                                     ¡ ¡ ¡ ¡ ¡ Animal Ken                                     ¡¡¡¡¡ Academics                         ¡¡¡ ¡ ¡
+
+            Brawl                                         ¡ ¡ ¡ ¡ ¡ Etiquette                                      ¡¡¡¡¡ Awareness                         ¡¡¡ ¡ ¡
+
+            Craft                                         ¡ ¡ ¡ ¡ ¡ Insight                                        ¡¡¡¡¡ Finance                           ¡¡¡ ¡ ¡
+
+            Drive                                         ¡ ¡ ¡ ¡ ¡ Intimidation                                   ¡¡¡¡¡ Investigation                     ¡¡¡ ¡ ¡
+
+            Firearms                                      ¡ ¡ ¡ ¡ ¡ Leadership                                     ¡¡¡¡¡ Medicine                          ¡¡¡ ¡ ¡
+
+            Melee                                         ¡ ¡ ¡ ¡ ¡ Performance                                    ¡¡¡¡¡ Occult                            ¡¡¡ ¡ ¡
+
+            Larceny                                       ¡ ¡ ¡ ¡ ¡ Persuasion                                     ¡¡¡¡¡ Politics                          ¡¡¡ ¡ ¡
+
+            Stealth                                       ¡ ¡ ¡ ¡ ¡ Streetwise                                     ¡¡¡¡¡ Science                           ¡¡¡ ¡ ¡
+
+            Survival                                      ¡ ¡ ¡ ¡ ¡ Subterfuge                                     ¡¡¡¡¡ Technology                        ¡¡¡ ¡ ¡
+
+                                                                                               DI S C I PL I N E S
+              Animalism                                    ¡ ¡ ¡ ¡ ¡ Obfuscate                                     ¡¡¡¡¡                                  ¡¡ ¡ ¡ ¡
+              Bond Famulus                                                        Cloak of Shadows
+                                                                                  Unseen Passage
+                                                                                  Mask of a Thousand Faces
+                                                                                  Vanish
+
+                                                           ¡¡¡¡¡                                                   ¡¡¡¡¡                                  ¡¡ ¡ ¡ ¡
+
+
+
+
+            Resonance                                                                         Hunger ¨¨¨¨¨                       Humanity ¨¨¨¨¨ ¨¨¨¨¨
+
+     © 2023 Renegade Game Studios. All Rights Reserved. © Paradox Interactive AB (publ)
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                 Chronicle Tenets                                          Touchstones & Convictions                  Clan Bane
+                                                                                    Convictions: You can’t be blamed for
+                                                                                    following your fate
+
+
+
+
+                                            Advantages & Flaws                                                  Blood Potency ¡¡¡¡¡ ¡¡¡¡¡
+                                                                                           ¡¡¡¡¡         Blood Surge               Mend Amount
+               Haven
+
+               Herd                                                                        ¡¡¡¡¡
+                                                                                                         Power Bonus               Rouse Re-Roll
+               Resources                                                                   ¡¡¡¡¡
+
+               Linguistics (Sign Language)                                                 ¡¡¡¡¡
+                                                                                                         Feeding Penalty           Bane Severity
+               Status (Marechal)                                                           ¡¡¡¡¡
+
+                                                                                           ¡¡¡¡¡
+                                                                                                        Total Experience
+                                                                                           ¡¡¡¡¡
+
+                                                                                           ¡¡¡¡¡
+                                                                                                        Spent Experience
+
+                                                                                           ¡¡¡¡¡         True age
+
+                                                                                                         Apparent age
+                                                                                           ¡¡¡¡¡
+                                                                                                         Date of birth
+                                                                                           ¡¡¡¡¡
+                                                                                                         Date of death
+               Notes
+                                                                                                         Appearance
+
+
+
+                                                                                                         Distinguishing features
+
+
+
+                                                                                                         History
+
+
+
+
+      © 2023 Renegade Game Studios. All Rights Reserved. © Paradox Interactive AB (publ)
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+              Name                                                                 Concept                                   Predator
+                         Ethan Holloway                                                      Unhinged Investigator                      Cleaver
+              Chronicle                                                            Ambition                                  Clan
+                              Love Bites                                                       Find a killer                        Malkavian
+              Sire                                                                 Desire                                    Generation
+                                                                                            Bring home a surprise                         13
+                                                                                               AT T R I BU T E S
+                                       Physical                                                       Social                                   Mental
+                     Strength                         ¡¡¡¡¡                               Charisma             ¡¡¡¡¡             Intelligence           ¡¡¡¡ ¡
+
+                    Dexterity                         ¡¡¡¡¡                        Manipulation                ¡¡¡¡¡                 Wits               ¡¡¡¡ ¡
+
+                     Stamina                          ¡¡¡¡¡                           Composure                ¡¡¡¡¡                Resolve             ¡¡¡¡ ¡
+                                                                                 Health                              Willpower
+                                                                ¨ ¨ ¨ ¨ ¨ ¨ ¨¨¨¨                               ¨¨¨¨¨ ¨¨¨¨¨
+                                                                                                    SK I L L S
+
+            Athletics                                     ¡ ¡ ¡ ¡ ¡ Animal Ken                                   ¡¡¡¡¡ Academics                          ¡¡¡ ¡ ¡
+
+            Brawl                                         ¡ ¡ ¡ ¡ ¡ Etiquette                                    ¡¡¡¡¡ Awareness                          ¡¡¡ ¡ ¡
+
+            Craft                                         ¡ ¡ ¡ ¡ ¡ Insight                                      ¡¡¡¡¡ Finance                            ¡¡¡ ¡ ¡
+
+            Drive                                         ¡ ¡ ¡ ¡ ¡ Intimidation                                 ¡¡¡¡¡ Investigation                      ¡¡¡ ¡ ¡
+
+            Firearms                                      ¡ ¡ ¡ ¡ ¡ Leadership                                   ¡¡¡¡¡ Medicine                           ¡¡¡ ¡ ¡
+
+            Melee                                         ¡ ¡ ¡ ¡ ¡ Performance                                  ¡¡¡¡¡ Occult                             ¡¡¡ ¡ ¡
+
+            Larceny                                       ¡ ¡ ¡ ¡ ¡ Persuasion                                   ¡¡¡¡¡ Politics                           ¡¡¡ ¡ ¡
+
+            Stealth                                       ¡ ¡ ¡ ¡ ¡ Streetwise                                   ¡¡¡¡¡ Science                            ¡¡¡ ¡ ¡
+
+            Survival                                      ¡ ¡ ¡ ¡ ¡ Subterfuge                                   ¡¡¡¡¡ Technology                         ¡¡¡ ¡ ¡
+
+                                                                                               DI S C I PL I N E S
+              Auspex                                       ¡ ¡ ¡ ¡ ¡ Dominate                                    ¡¡¡¡¡ Obfuscate                         ¡¡ ¡ ¡ ¡
+              Heightened Senses                                                   Cloud Memory                               Cloak of Shadows
+                                                                                  Mesmerize                                  Unseen Passage
+                                                                                  The Forgetful Mind
+
+
+
+                                                           ¡¡¡¡¡                                                 ¡¡¡¡¡                                   ¡¡ ¡ ¡ ¡
+
+
+
+
+            Resonance                                                                         Hunger ¨¨¨¨¨                       Humanity ¨¨¨¨¨ ¨¨¨¨¨
+
+     © 2023 Renegade Game Studios. All Rights Reserved. © Paradox Interactive AB (publ)
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                 Chronicle Tenets                                          Touchstones & Convictions                  Clan Bane
+                                                                                    Convictions: Love is worth any
+                                                                                    sacrifice
+
+
+
+
+                                            Advantages & Flaws                                                  Blood Potency ¡¡¡¡¡ ¡¡¡¡¡
+                                                                                           ¡¡¡¡¡         Blood Surge               Mend Amount
+               Allies
+
+               Contacts                                                                    ¡¡¡¡¡
+                                                                                                         Power Bonus               Rouse Re-Roll
+               Haven                                                                       ¡¡¡¡¡
+
+               Herd                                                                        ¡¡¡¡¡
+                                                                                                         Feeding Penalty           Bane Severity
+               Mask                                                                        ¡¡¡¡¡
+
+               Resources                                                                   ¡¡¡¡¡
+                                                                                                        Total Experience
+               Status (Marechal)                                                           ¡¡¡¡¡
+                                                                                                        Spent Experience
+               Dark Secret (Cleaver)                                                       ¡¡¡¡¡
+
+                                                                                           ¡¡¡¡¡         True age
+               Obvious Predator
+                                                                                                         Apparent age
+                                                                                           ¡¡¡¡¡
+                                                                                                         Date of birth
+                                                                                           ¡¡¡¡¡
+                                                                                                         Date of death
+               Notes
+                                                                                                         Appearance
+
+
+
+                                                                                                         Distinguishing features
+
+
+
+                                                                                                         History
+
+
+
+
+      © 2023 Renegade Game Studios. All Rights Reserved. © Paradox Interactive AB (publ)
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+              Name                                                                 Concept                                   Predator
+                         Montgomery Boucher                                                  Indomitable Athlete                        Farmer
+              Chronicle                                                            Ambition                                  Clan
+                              Love Bites                                                      Bridge political gap                  Gangrel
+              Sire                                                                 Desire                                    Generation
+                                                                                            Coach a coterie-mate                          12
+                                                                                               AT T R I BU T E S
+                                       Physical                                                      Social                                      Mental
+                     Strength                         ¡¡¡¡¡                               Charisma            ¡¡¡¡¡              Intelligence             ¡¡¡¡ ¡
+
+                    Dexterity                         ¡¡¡¡¡                        Manipulation               ¡¡¡¡¡                  Wits                 ¡¡¡¡ ¡
+
+                     Stamina                          ¡¡¡¡¡                           Composure               ¡¡¡¡¡                 Resolve               ¡¡¡¡ ¡
+                                                                                 Health                              Willpower
+                                                                ¨ ¨ ¨ ¨ ¨ ¨ ¨¨¨¨                          ¨¨¨¨¨ ¨¨¨¨¨
+                                                                                                   SK I L L S
+
+            Athletics                                     ¡ ¡ ¡ ¡ ¡ Animal Ken                                  ¡¡¡¡¡ Academics                             ¡¡¡ ¡ ¡
+
+            Brawl                                         ¡ ¡ ¡ ¡ ¡ Etiquette                                   ¡¡¡¡¡ Awareness                             ¡¡¡ ¡ ¡
+
+            Craft                                         ¡ ¡ ¡ ¡ ¡ Insight                                     ¡¡¡¡¡ Finance                               ¡¡¡ ¡ ¡
+
+            Drive                                         ¡ ¡ ¡ ¡ ¡ Intimidation                                ¡¡¡¡¡ Investigation                         ¡¡¡ ¡ ¡
+
+            Firearms                                      ¡ ¡ ¡ ¡ ¡ Leadership                                  ¡¡¡¡¡ Medicine                              ¡¡¡ ¡ ¡
+
+            Melee                                         ¡ ¡ ¡ ¡ ¡ Performance                                 ¡¡¡¡¡ Occult                                ¡¡¡ ¡ ¡
+
+            Larceny                                       ¡ ¡ ¡ ¡ ¡ Persuasion                                  ¡¡¡¡¡ Politics                              ¡¡¡ ¡ ¡
+
+            Stealth                                       ¡ ¡ ¡ ¡ ¡ Streetwise                                  ¡¡¡¡¡ Science                               ¡¡¡ ¡ ¡
+
+            Survival                                      ¡ ¡ ¡ ¡ ¡ Subterfuge                                  ¡¡¡¡¡ Technology                            ¡¡¡ ¡ ¡
+
+                                                                                               DI S C I PL I N E S
+              Animalism                                    ¡ ¡ ¡ ¡ ¡ Protean                                    ¡¡¡¡¡ Fortitude                            ¡¡ ¡ ¡ ¡
+              Bond Famulus                                                        Eyes of the Beast                          Resilience
+              Feral Whispers                                                      Feral Weapons                              Toughness
+                                                                                  Shapechange
+
+
+
+                                                           ¡¡¡¡¡                                                ¡¡¡¡¡                                      ¡¡ ¡ ¡ ¡
+
+
+
+
+            Resonance                                                                        Hunger ¨¨¨¨¨                        Humanity ¨¨¨¨¨ ¨¨¨¨¨
+
+     © 2023 Renegade Game Studios. All Rights Reserved. © Paradox Interactive AB (publ)
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                 Chronicle Tenets                                          Touchstones & Convictions                  Clan Bane
+                                                                                    Convictions: Payback is always
+                                                                                    justified
+
+
+
+
+                                            Advantages & Flaws                                                  Blood Potency ¡¡¡¡¡ ¡¡¡¡¡
+                                                                                           ¡¡¡¡¡         Blood Surge               Mend Amount
+               Haven
+
+               Herd                                                                        ¡¡¡¡¡
+                                                                                                         Power Bonus               Rouse Re-Roll
+               Mask                                                                        ¡¡¡¡¡
+
+               Resources                                                                   ¡¡¡¡¡
+                                                                                                         Feeding Penalty           Bane Severity
+               Linguistics (French)                                                        ¡¡¡¡¡
+
+               Status (Marechal)                                                           ¡¡¡¡¡
+                                                                                                        Total Experience
+               Shunned (Anarchs)                                                           ¡¡¡¡¡
+                                                                                                        Spent Experience
+               Vegan                                                                       ¡¡¡¡¡
+
+                                                                                           ¡¡¡¡¡         True age
+
+                                                                                                         Apparent age
+                                                                                           ¡¡¡¡¡
+                                                                                                         Date of birth
+                                                                                           ¡¡¡¡¡
+                                                                                                         Date of death
+               Notes
+                                                                                                         Appearance
+
+
+
+                                                                                                         Distinguishing features
+
+
+
+                                                                                                         History
+
+
+
+
+      © 2023 Renegade Game Studios. All Rights Reserved. © Paradox Interactive AB (publ)
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+              Name                                                                 Concept                                   Predator
+                         Nonso Okorie                                                        Impulsive Racer                            Scene Queen
+              Chronicle                                                            Ambition                                  Clan
+                              Love Bites                                                      Score a major boon                    Ventrue
+              Sire                                                                 Desire                                    Generation
+                                                                                            Earn respect                                  13
+                                                                                               AT T R I BU T E S
+                                       Physical                                                      Social                                    Mental
+                     Strength                         ¡¡¡¡¡                               Charisma            ¡¡¡¡¡              Intelligence           ¡¡¡¡ ¡
+
+                    Dexterity                         ¡¡¡¡¡                        Manipulation               ¡¡¡¡¡                  Wits               ¡¡¡¡ ¡
+
+                     Stamina                          ¡¡¡¡¡                           Composure               ¡¡¡¡¡                 Resolve             ¡¡¡¡ ¡
+                                                                                 Health                              Willpower
+                                                                ¨ ¨ ¨ ¨ ¨ ¨ ¨¨¨¨                           ¨¨¨¨¨ ¨¨¨¨¨
+                                                                                                   SK I L L S
+
+            Athletics                                     ¡ ¡ ¡ ¡ ¡ Animal Ken                                  ¡¡¡¡¡ Academics                           ¡¡¡ ¡ ¡
+
+            Brawl                                         ¡ ¡ ¡ ¡ ¡ Etiquette                                   ¡¡¡¡¡ Awareness                           ¡¡¡ ¡ ¡
+
+            Craft                                         ¡ ¡ ¡ ¡ ¡ Insight                                     ¡¡¡¡¡ Finance                             ¡¡¡ ¡ ¡
+
+            Drive                                         ¡ ¡ ¡ ¡ ¡ Intimidation                                ¡¡¡¡¡ Investigation                       ¡¡¡ ¡ ¡
+
+            Firearms                                      ¡ ¡ ¡ ¡ ¡ Leadership                                  ¡¡¡¡¡ Medicine                            ¡¡¡ ¡ ¡
+
+            Melee                                         ¡ ¡ ¡ ¡ ¡ Performance                                 ¡¡¡¡¡ Occult                              ¡¡¡ ¡ ¡
+
+            Larceny                                       ¡ ¡ ¡ ¡ ¡ Persuasion                                  ¡¡¡¡¡ Politics                            ¡¡¡ ¡ ¡
+
+            Stealth                                       ¡ ¡ ¡ ¡ ¡ Streetwise                                  ¡¡¡¡¡ Science                             ¡¡¡ ¡ ¡
+
+            Survival                                      ¡ ¡ ¡ ¡ ¡ Subterfuge                                  ¡¡¡¡¡ Technology                          ¡¡¡ ¡ ¡
+
+                                                                                               DI S C I PL I N E S
+              Dominate                                     ¡ ¡ ¡ ¡ ¡ Fortitude                                  ¡¡¡¡¡ Presence                           ¡¡ ¡ ¡ ¡
+              Compel                                                              Resilience                                 Daunt
+              Mesmerize                                                           Toughness                                  Lingering Kiss
+
+
+
+
+                                                           ¡¡¡¡¡                                                ¡¡¡¡¡                                    ¡¡ ¡ ¡ ¡
+
+
+
+
+            Resonance                                                                         Hunger ¨¨¨¨¨                       Humanity ¨¨¨¨¨ ¨¨¨¨¨
+
+     © 2023 Renegade Game Studios. All Rights Reserved. © Paradox Interactive AB (publ)
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                 Chronicle Tenets                                          Touchstones & Convictions                  Clan Bane
+                                                                                    Convictions: Dare to push the limits
+
+
+
+
+                                            Advantages & Flaws                                                  Blood Potency ¡¡¡¡¡ ¡¡¡¡¡
+                                                                                           ¡¡¡¡¡         Blood Surge               Mend Amount
+               Contacts (Fences)
+
+               Contacts (Chop Shops)                                                       ¡¡¡¡¡
+                                                                                                         Power Bonus               Rouse Re-Roll
+               Fame (Illegal Racing Circuit)                                               ¡¡¡¡¡
+
+               Influence (Car Thieves)                                                     ¡¡¡¡¡
+                                                                                                         Feeding Penalty           Bane Severity
+               Haven                                                                       ¡¡¡¡¡
+
+               Herd                                                                        ¡¡¡¡¡
+                                                                                                        Total Experience
+               Resources                                                                   ¡¡¡¡¡
+                                                                                                        Spent Experience
+               Status (Marechal)                                                           ¡¡¡¡¡
+
+                                                                                           ¡¡¡¡¡         True age
+               Disliked
+                                                                                                         Apparent age
+               Infamy (Known Criminal)                                                     ¡¡¡¡¡
+                                                                                                         Date of birth
+                                                                                           ¡¡¡¡¡
+                                                                                                         Date of death
+               Notes
+                                                                                                         Appearance
+
+
+
+                                                                                                         Distinguishing features
+
+
+
+                                                                                                         History
+
+
+
+
+      © 2023 Renegade Game Studios. All Rights Reserved. © Paradox Interactive AB (publ)
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+              Name                                                                 Concept                                   Predator
+                         Rhatha Khan                                                         Subversive Expert                          Bagger
+              Chronicle                                                            Ambition                                  Clan
+                              Love Bites                                                      Break hierarchy                       Tremere
+              Sire                                                                 Desire                                    Generation
+                                                                                            Understand her place                          13
+                                                                                               AT T R I BU T E S
+                                       Physical                                                      Social                                      Mental
+                     Strength                         ¡¡¡¡¡                               Charisma            ¡¡¡¡¡              Intelligence             ¡¡¡¡ ¡
+
+                    Dexterity                         ¡¡¡¡¡                        Manipulation               ¡¡¡¡¡                  Wits                 ¡¡¡¡ ¡
+
+                     Stamina                          ¡¡¡¡¡                           Composure               ¡¡¡¡¡                 Resolve               ¡¡¡¡ ¡
+                                                                                 Health                              Willpower
+                                                                ¨ ¨ ¨ ¨ ¨ ¨ ¨¨¨¨                          ¨¨¨¨¨ ¨¨¨¨¨
+                                                                                                   SK I L L S
+
+            Athletics                                     ¡ ¡ ¡ ¡ ¡ Animal Ken                                   ¡¡¡¡¡ Academics                            ¡¡¡ ¡ ¡
+
+            Brawl                                         ¡ ¡ ¡ ¡ ¡ Etiquette                                    ¡¡¡¡¡ Awareness                            ¡¡¡ ¡ ¡
+
+            Craft                                         ¡ ¡ ¡ ¡ ¡ Insight                                      ¡¡¡¡¡ Finance                              ¡¡¡ ¡ ¡
+
+            Drive                                         ¡ ¡ ¡ ¡ ¡ Intimidation                                 ¡¡¡¡¡ Investigation                        ¡¡¡ ¡ ¡
+
+            Firearms                                      ¡ ¡ ¡ ¡ ¡ Leadership                                   ¡¡¡¡¡ Medicine                             ¡¡¡ ¡ ¡
+
+            Melee                                         ¡ ¡ ¡ ¡ ¡ Performance                                  ¡¡¡¡¡ Occult                               ¡¡¡ ¡ ¡
+
+            Larceny                                       ¡ ¡ ¡ ¡ ¡ Persuasion                                   ¡¡¡¡¡ Politics                             ¡¡¡ ¡ ¡
+
+            Stealth                                       ¡ ¡ ¡ ¡ ¡ Streetwise                                   ¡¡¡¡¡ Science                              ¡¡¡ ¡ ¡
+
+            Survival                                      ¡ ¡ ¡ ¡ ¡ Subterfuge                                   ¡¡¡¡¡ Technology                           ¡¡¡ ¡ ¡
+
+                                                                                               DI S C I PL I N E S
+              Auspex                                       ¡ ¡ ¡ ¡ ¡ Blood Sorcery                               ¡¡¡¡¡                                     ¡¡ ¡ ¡ ¡
+              Sense the Unseen                                                    A Taste for Blood
+              Premonition                                                         Extinguish Vitae
+              Scry the Soul                                                       Ritual: Blood Walk
+
+
+
+                                                           ¡¡¡¡¡                                                 ¡¡¡¡¡                                     ¡¡ ¡ ¡ ¡
+
+
+
+
+            Resonance                                                                        Hunger ¨¨¨¨¨                        Humanity ¨¨¨¨¨ ¨¨¨¨¨
+
+     © 2023 Renegade Game Studios. All Rights Reserved. © Paradox Interactive AB (publ)
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                 Chronicle Tenets                                          Touchstones & Convictions                  Clan Bane
+                                                                                    Convictions: Never submit to
+                                                                                    undeserved authority
+
+
+
+
+                                            Advantages & Flaws                                                     Blood Potency ¡¡¡¡¡ ¡¡¡¡¡
+                                                                                           ¡¡¡¡¡         Blood Surge               Mend Amount
+               Contacts
+
+               Influence                                                                   ¡¡¡¡¡
+                                                                                                         Power Bonus               Rouse Re-Roll
+               Haven                                                                       ¡¡¡¡¡
+
+               Herd                                                                        ¡¡¡¡¡
+                                                                                                         Feeding Penalty           Bane Severity
+               Iron Gullet                                                                 ¡¡¡¡¡
+
+               Loresheet: Carna                                                            ¡¡¡¡¡
+                                                                                                        Total Experience
+               Mask                                                                        ¡¡¡¡¡
+                                                                                                        Spent Experience
+               Resources                                                                   ¡¡¡¡¡
+
+                                                                                           ¡¡¡¡¡         True age
+               Status (Mareschal)
+                                                                                                         Apparent age
+               Enemy                                                                       ¡¡¡¡¡
+                                                                                                         Date of birth
+               Folkloric Bane                                                              ¡¡¡¡¡
+                                                                                                         Date of death
+               Notes
+                                                                                                         Appearance
+               Long Bond 1
+
+                                                                                                         Distinguishing features
+
+
+
+                                                                                                         History
+
+
+
+
+      © 2023 Renegade Game Studios. All Rights Reserved. © Paradox Interactive AB (publ)
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                       Join us at
+
+
+
+
+                                                                        FREE ENTRY
+                                                                         Scan to join:
+
+
+
+                                                                                  www.renegadegames.com
+                                                  www.worldofdarkness.com
+
+
+
+
+                                               Reserved.
+     © 2022 Renegade Game Studios. All Rights
+                                               rade®, World of Darkness®,
+     Paradox Interactive®, Vampire: The Masque
+                                        AB (publ). All rights reserved.
+     Copyright 2022 Paradox Interactive
+
+
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+

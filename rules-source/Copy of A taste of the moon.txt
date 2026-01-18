@@ -1,0 +1,2416 @@
+                                                                                           2023
+                                                                                           FREE
+                                                                                           RPG DAY
+
+
+
+
+                 A TASTE                                                             OF
+
+
+
+                MOON
+                                                                                     THE
+
+
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                              A TASTE                                                                      OF
+
+
+
+                                            MOON
+                                                                                                                           THE
+
+
+
+
+                                         Whispers abound of a strange, intoxicating type of blood
+                                         called Cherry Moon. Everyone is clamoring for a taste,
+                                         but few can say how to find it or even what it is. Will you
+                                         slake your Hunger and see what the buzz is all about? A
+                                         Taste of the Moon is a modular, easily rerunnable story for
+                                         Vampire: The Masquerade 5th Edition. While suited for a
+                                         single session of play using the provided player characters,
+                                         you can also integrate it into your own chronicle for a single
+                                         night or use it to build a larger story.
+
+
+
+
+       renegadegames.com                                                                                                              LOT# 122022-01
+                                                                                                                                      ISBN 978-1-957311-28-9
+           /PlayRGS         @PlayRenegade            @Renegade_Game_Studios           /PlayRenegade
+                                                                                                                                                               90000>
+       Manufacturer: Renegade Games, LLC. 306N West El Norte Parkway #325,
+       Escondido, California 92026. Importers: Renegade France 52 Avenue Pierre
+       Semard 94200 Ivry sur Seine France. P:+33 (0)1 77 37 60 47. Renegade Games,
+       LLC. Solar House 915 High Road London, London, England N12 8QJ.               Mature Advisory: contains graphic and
+       © 2023 Renegade Game Studios. All Rights Reserved.                            written content of a mature nature, including
+       Paradox Interactive®, Vampire: The Masquerade®, World of Darkness®,
+       Copyright 2023 Paradox Interactive AB (publ). All Rights Reserved.            violence, sexual themes, and strong
+       MADE IN SHENZHEN, CHINA.                                                      language. Reader discretion is advised.         9 781957 311289
+
+
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                          A TASTE                                               OF
+
+
+
+                         MOON
+                                                                                THE
+
+
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    A TASTE OF THE MOON
+
+
+
+
+                                                A Taste of the Moon
+                                                                           Legal and Credits
+                                                  W RIT TE N BY Jonaya Kemper and Juhana Pettersson
+                                            LE A D D E V E LO PE R , WO RLD O F DA RKN ESS: Juhana Pettersson
+                                                       ASSO C I ATE PRO D U C E R , RP GS: Kevin Schluter
+                                                                   E D ITI N G Freja Gyldenstrøm
+                                                             I N TE RI O R A RT Paradox provided art
+                                                    G R A PH I C D ES I G N A N D L AYO UT Sarah Robinson
+                      PL AY TES TI N G Mika Loponen, Anne Liljeström, Emi Maeda, Mikko Rautalahti and Satu Heliö
+
+
+                                                                     World of Darkness Team
+                                                                V I C E PRES I D E N T: Sean Greaney
+                                                               C RE ATI V E D I REC TO R: Justin Achilli
+                                                                    E D ITO R: Karim Muammar
+                                                                   A RT D I REC TO R: Tomas Arfert
+                                                              M A RKE TI N G M A N AG E R: Jason Carl
+                                                        PA RTN E RS H I PS M A N AG E R: Dhaunae De Vir
+                                                    COMMU N IT Y D E V E LO PE R: Marty “Outstar” Zych
+                                                            LI C E NS I N G M A N AG E R: Nikola Filipov
+                                                           C A MPA I G N M A N AG E R: Viktor Bovallius
+
+
+                                                                          Paradox Licensing
+                                                           BUS I N ESS D E V E LO PE R: Dhaunae De Vir
+
+
+                                                                      Renegade Game Studios
+                    President & Publisher: Scott Gaeta                                                     Product Developer, RPGs: Jason Keeley
+              Vice President Sales & Marketing: Sara Erickson                                                 Senior Game Designer: Matt Hyra
+                          Controller: Robyn Gaeta                                              Game Designers: Dan Blanchett & Christopher Chung
+                 Director of Operations: Leisha Cummins                                                    Director of Visual Design: Anita Osburn
+                Associate Project Manager: Katie Gjesdahl                                                 Creative Director, Games: Jeanne Torres
+                       Sales Manager: Kaitlin Ellis                                                       Creative Director, RPGs: Sarah Robinson
+                      E-Commerce: Nick Medinger                                                   Creative Production: Todd Crapper, Noelle Lopez,
+            Sales & Marketing Program Manager: Matt Holland                                                             & Gordon Tucker
+                   Community Manager: Jordan Gaeta                                                        Video Production Associate: Katie Schmitt
+          Senior Producer of Board & Card Games: Dan Bojanowski                                        Customer Service Manager: Jenni Janikowski
+             Associate Producer, Board & Card Games: Jimmy Le                                               Customer Service: Bethany Bauthues
+                 Associate Producer, RPGs: Kevin Schluter                                                    Finance Clerk: Madeline Minervini
+           Lead Developer, World of Darkness: Juhana Pettersson
+
+                                  © 2023 Paradox Interactive® AB. Vampire: The Masquerade® – are trademarks and/or registered
+                       trademarks of Paradox Interactive AB in Europe, the U.S., and other countries. ©2023 Renegade Game Studios. All Rights Reserved.
+                                                                           Made in Shenzhen China.
+                                                       Visit the World of Darkness online at www.worldofdarkness.com
+
+
+
+
+                                                                                      2
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                  TABLE OF CONTENTS
+            A TASTE OF THE MOON                                   4   Pax: Brawler, Shot Caller          20
+            A Free RPG Day Story                                  4   Victor/Veronica Alon: the spiral   20
+            How to Use This Story                                 5   Further Complications              20
+            The Characters                                        6   Buying Blood                       20
+            Putting the Group Together                            6   Drive-By Shooting                  20
+            Existing Chronicles                                   6   Surprise Werewolf                  21
+            Structure                                             7
+                                                                      THE END                            22
+            PUSHING BLOOD                                         8   Thin-Blood Adversaries             24
+            Under the Influence                                   9   Futher Hooks                       25
+            Original Flavor (Cobalt Vial)                         9   The Coterie                        26
+            New Flavor (Scarlet Vial)                             9
+            Overdose                                             11
+            The Velveteen Bunny                                  11
+
+
+            DRINK UP: OPENING SCENES 12
+            The Default Opening Scene: A Night to Remember…
+            That You’d Rather Forget                             13
+            Additional Opening Scenes                            13
+            The Blood of Caine                                   13
+            The Hookup                                           14
+            A Taste of an Old Friend                             14
+            Brief Beginnings                                     15
+            Opening Scenes for Chronicles                        15
+
+
+            COMPLICATIONS                                        16
+            The Sires                                            17
+            Zidane al-Najjar: The Amused Bouche                  17
+            Asher Hall: The Neonate Noddist                      17
+            Valery Green: The Family That Noshes Together…       18
+            Dominik/Dominique Barbero: The Forgetful Ritualist   18
+            Everybody Wants Some                                 19
+            Brick Jones: The Laid-Back Lover                     19
+            Isabelle Adewole: The Fashionista                    20
+
+
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    A TASTE OF THE MOON
+
+
+
+
+                                    A Taste of
+                                    the Moon
+                          A Free RPG Day Story
+                          Some have tasted it, many more talk about it: Cherry Moon. Something unusual has hit the streets:
+                          blood. That doesn’t happen every night. As far as anyone knows, blood spoils and turns rancid. You
+                          can’t sell it; you can’t store it. Only Kindred with robust gullets are able to subsist on blood. Yet here
+                          we are, with vials of the sweet stuff on the streets.
+
+                          Those who have chugged a vial of Cherry Moon report wild and conflicting experiences, from achieving
+                          Golconda to temporarily mastering the Beast. The only constant among these stories has been the
+                          berry-stained tongues of those who’ve imbibed. No one seems to know where Cherry Moon comes
+                          from, what it is, or most importantly, why it’s so addictively intoxicating.
+
+                          One thing is clear, though: Those who have partaken of Cherry Moon want more.
+
+
+
+
+                                                                                 4
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                             A TASTE OF THE MOON
+
+
+
+
+            A Taste of the Moon is a story for Vampire: The
+            Masquerade best suited for a coterie of 4–6 neonate              How to Use This Story
+            Anarchs. It’s been designed for a single evening of play
+            but can run over several sessions as well, depending on          If you’re new to storytelling Vampire and want to run
+            what you want to get out of it. Newcomers to Vampire             this story as a one-shot or over a few sessions, you can
+            can use it to explore some of the game’s basic themes,           use the prewritten characters provided for the players
+            while those who already have a chronicle running can             here. Apart from that, you need the core Vampire: The
+            thread it into the stories of their regular characters.          Masquerade rulebook and some ten-sided dice.
+                 The story revolves around an unusually addictive            Run your game as follows:
+            new type of blood that has created a buzz among the
+            local Kindred: Cherry Moon. The young, inexperienced             1.   Distribute the characters (see page 26) among the
+            players’ characters are tempted to try to get their hands             players or let them choose the ones they like best.
+            on the mysterious (and strangely intoxicating) substance.        2.   Explain the circumstances of the player characters’
+            As they do so, they discover that everyone they know                  unlives: Their shared haven, street-level existence,
+            among the city’s Kindred has the same goal, including                 fledgling status. (See page 6.)
+            authority figures such as their sires and Mawlas. Soon
+            they may learn that age and experience don’t necessarily         3.   Do a round of introductions where each player
+            bring wisdom, and their sires and mentors may need to                 introduces their character. Get the players to have a
+            be saved from themselves.                                             short discussion where they figure out what keeps them
+                 If the players’ characters turn to their sires for               together and how their newly undead existence threads
+            advice, the sires want a vial or three for themselves —               together with the nightclub The Velveteen Bunny (page
+            and the player characters should probably make sure                   11). Are they regulars, do they perform odd jobs?
+            they get it. Soon. Unless they want to be pressured and
+            threatened by ostensibly older and wiser Kindred.                4.   Describe some of the potential sires (page 17) and get
+                                                                                  one or two players to choose one for their character.
+                 Can the coterie score what they desire? Or will
+                                                                                  Axel Bennington and Thomas Ng share a sire. If
+            they meet a gruesome end, having found out that the
+                                                                                  more than two players want a sire, you can agree to
+            blood of a newly-turned werewolf is Cherry Moon’s chief
+                                                                                  it but it’s difficult to keep more than two in play
+            ingredient?
+                                                                                  effectively.
+                 The story has been designed to be rerunnable.
+            Particularly in the early and middle sections, the               5.   Choose the opening scene (page 13) and begin play.
+            Storyteller has a wide selection of options to choose
+            from, and fitting all or even most of them into a single         6.   As players react to events in the game and follow up
+            game is impossible. Use the ones you like and save the                on the information they receive, slot more elements
+            rest for if you want to run it again later. Its focus on              from the story into the simple scene structure
+            simple vampiric themes, such as the lust for blood,                   presented on page 7.
+            makes it useful as an introductory story for Vampire: The
+            Masquerade.                                                      7.   Once the player characters have reached the final
+                                                                                  scene, end the game when all essential conflicts have
+                 The story consists of a set of beginnings you can
+                                                                                  been resolved.
+            choose from, complicating scenes that make the story
+            interesting, and a finale towards which all arrows                    The story is built to lead the player characters
+            eventually point. As the Storyteller, choose from the            towards the realization that they’re more suited to
+            ingredients presented and assemble them into something           surviving in the modern world than their sires are. They
+            your players will enjoy. You can plan how to play this           surely want to taste the new blood that has hit the streets
+            story or wing it, selecting the elements on the fly.             but this simple desire becomes complicated when their
+                 The more problems there are for the player                  progenitors get to pitch in with their own demands.
+            characters to solve between the beginning and the end,                At the end, when the characters have traced the
+            the longer play will last. You can adjust the story during       blood to its source, they discover three thin-blood
+            play. If you want to cut the action short (perhaps because       cookers who have a chained werewolf they’re slowly
+            you’re running out of time), just seed clues pointing to         bleeding to create the blood they’re pushing. They can
+            the finale and let the players take it from there.               shut down the operation, narc on it to their sires, or even
+                                                                             try to take it over themselves.
+
+
+
+
+                                                                         5
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    A TASTE OF THE MOON
+
+
+
+
+             The Characters                                                    Putting the Group Together
+             Full character descriptions are provided at the end,              After the players have read their characters, they should flesh
+             starting on page 26. Here are short synopses of the               out the coterie together. Why do the characters hang out
+             prewritten characters available to the players:                   together? What do they usually do with their nights? Do they
+             Axel Bennington - A former banker gifted a freedom of             hunt together? Ideally, the players will build on the ideas in their
+             sorts as a Brujah Anarch.                                         character descriptions but also come up with ideas of their own.
+             Melika Redd - A former dancer who lost her fear with                   Whatever the reason for the coterie to exist, the
+             the Embrace.                                                      following should hold true:
+             Cassandra Barrantes - An occultist in life who had her            •     The members of the coterie depend on their sires
+             worldview confirmed by the Embrace.                                    or Mawlas to understand how to survive as Kindred.
+             Finch - A social explorer who’s more interested in what’s              They express their gratitude by doing odd jobs for
+             ahead than what’s behind.                                              their benefactors.
+             Thomas Ng - A trained nurse who’s been struggling to              •     The characters are hungry to experience more of the night.
+             suppress his hedonistic urges.
+             Garnet Grier - A former aspiring comedian who finds               •     The characters are willing to take risks to satisfy
+             it much easier getting along with Anarchs than with                    their appetites.
+             Camarilla members.
+                                                                               •    The characters are fledgling Kindred who will
+                                                                                    become neonates in the course of this story.
+                 H O W T O P I E C E E V E RY T H I N G T O G E T H E R             As the Storyteller, bring these points into the discussion
+                The Storyteller has decided they want to run a quick           as the players figure out what kind of coterie they have.
+                one-shot session during the weekend with their                      The player characters share a Haven, a loft not far
+                friends. All of them are new to Vampire. The group
+                                                                               from The Velveteen Bunny. Their sires frequent the club as
+                chooses to use the prewritten player characters and
+                would like to play with a dark satiric tone. The Sto-          a feeding ground, information hub, or workplace, and it has
+                ryteller chooses the “A Night to Remember… That                become familiar to the player characters as well. The coterie
+                You’d Rather Forget” opening scene.                            members have bonded over the years while accompanying
+                                                                               their sires. It’s even possible that they work at the club.
+                1. The characters discover the dead ghoul and try
+                     to figure out what they did the night before.
+                2. The characters have to come up with an expla-
+                     nation for the corpse to one of their sires whose
+                                                                               Existing Chronicles
+                     ghoul it was.
+                                                                               If you wish to slot the story into an existing chronicle,
+                3. The sire whose ghoul has died demands to know               ignore the prewritten characters and simply choose the
+                     what happened. As the characters explain, the
+                                                                               opening scene that works best with your player characters.
+                     sire transitions to demanding they get Cherry
+                     Moon for them.                                            You can also substitute your own supporting characters for
+                                                                               the sires presented here, especially if the player characters
+                4. The thin-blood dealers show up at The Velveteen
+                                                                               already have sires. The important thing is to have more
+                     Bunny, selling vials of Cherry Moon.
+                                                                               experienced supporting characters running after Cherry
+                5. The characters manage to squeeze one of the                 Moon, possibly making bad decisions while doing so.
+                     thin-bloods’ clients for the location of their lab.
+                                                                                     You can change the sire characters presented here
+                6. The characters go to the lab, and the game ends             into ordinary habitués of The Velveteen Bunny, the local
+                     however they choose to play it.
+                                                                               Anarch hangout, who become interested in Cherry Moon.
+                It’s possible to plan out some of the things that will         An easy way to include this story in an existing chronicle is
+                happen in the story, but often it’s best to follow the
+                                                                               to let the player characters find the body of a suitable Ally,
+                lead of the players, always making sure they have
+                options for what to do next. If they appear clueless,          Contact, or Enemy who has recently died or been killed. The
+                it’s time for one of their sires or a Mawla to contact         players can then start the story somewhere where they can
+                them, asking for Cherry Moon and providing a few               go through their dead associate’s belongings. This can be just
+                clues as to where to go next.                                  rifling through the pockets of a corpse or investigating the
+                                                                               tragic site of a trusted contact’s murder.
+
+
+
+                                                                           6
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                       A TASTE OF THE MOON
+
+
+
+
+            Structure
+                        When you run the story, you should try to fit the events into the following scene structure:
+
+
+                       OPENING SCENES:
+
+
+
+                A NIGHT TO
+              REMEMBER...THAT                THE BLOOD                         THE                       A TASTE OF AN
+               YOU’D RATHER                   OF CAINE                       HOOKUP                       OLD FRIEND
+                  FORGET
+
+
+
+
+                       COMPLICATIONS:
+
+
+
+                            GOING TO A                      SIRE OR MAWLA               CONTACTING THE
+                          SIRE OR MAWLA                    DEMANDS CHERRY               THIN-BLOODS TO
+                             FOR HELP                            MOON                  ARRANGE DELIVERY
+
+
+
+
+                                                     THE VELVETEEN BUNNY
+
+
+
+
+                                             Finding           Meeting            Getting
+                                             contact           someone           hustled by
+                                           information         who has            an older
+                                           for the thin-     cherry moon          vampire
+                                              bloods
+
+
+
+
+                                                                                Discover the
+                                                                                  location
+                                             Drive-by           Suprise             of the
+                                             shooting          Werewolf         thin-blood
+                                                                                 warehouse
+
+
+
+
+                                                             THE END
+
+
+                                                                   7
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    A TASTE OF THE MOON
+
+
+
+
+                                  Pushing
+                                   Blood
+                          The first time you drank it, it tasted like sickly cherry cough syrup and battery
+                          acid. Your veins pulsed. You knew you were screaming something, but you couldn’t
+                          hear the words. When you looked up at the warehouse ceiling, you felt like you
+                          could see through it, past the smog and clouds, and see the expansive moon before
+                          you. You stared at each other for a while, the moon and you. It took a moment for
+                          you to realize it was your white-faced Beast waiting. You were both silent, while
+                          the room grew louder and louder. Then ever so slowly, the Beast opened its blood-
+                          drenched mouth and screamed with you.
+
+                          Fuck.
+
+                          Everyone was right, this blood is the good shit... even when it’s growing stale.
+
+
+
+
+                                                                       8
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                   A TASTE OF THE MOON
+
+
+
+
+            Under the Influence                                                   S E L L I N G B LO O D
+                                                                                  Selling blood to vampires sounds like a business
+            All the licks want it, but what is Cherry Moon? The                   idea that can’t fail, but there are several issues that
+            characters will slowly find out that Cherry Moon is                   make it difficult. The obvious one is sourcing the
+            the result of thin-blood alchemy: a mind-bending                      blood. It needs to come from mortals, and most
+                                                                                  mortals are resistant to the idea of having their
+            combination of cherry-flavored cough syrup, moldy
+                                                                                  blood removed.
+            maraschino cherries, citric acid, methylphenidate … and
+            the blood of a tortured werewolf who is very much alive.                 The biggest problem is that blood spoils very fast.
+                                                                                  It turns rancid and loses its ability to sustain vam-
+                 The blood itself has properties that are remarkably              pires in a matter of hours. What’s more, outside a
+            consistent among the Kindred who imbibe. Acting like                  human body it also loses its taste. To the Kindred, it
+            a particularly good batch of coke, the substance allows               feels stale and unpleasant.
+            a vampire to feel an elevated sense of euphoria (which                   There are different solutions to this problem. Some
+            is priceless for some). This masks the fact that it works             enterprising souls traffic live victims to vampires, pro-
+            extremely similarly to werewolf blood. Early batches                  viding blood that’s 100% fresh because it’s still in-
+            of the blood (often stored in dark cobalt vials) work                 side a human body. Others focus on quick courier
+            differently than the later batches (in branded scarlet                services, providing blood that’s never more than an
+            vials), and a storyteller can play around with the two                hour old. The trouble with both of these solutions is
+            types of batches for impact.                                          that they’re extremely expensive, and in the case
+                 Because the blood cannot really be stored longer                 of courier-delivered blood, the taste still sucks bad
+                                                                                  enough that few Kindred of means want it. There are
+            than a few hours, the switch in recipe should occur in the
+                                                                                  rumors that Blood Sorcery can allow the storage of
+            middle of the story. The first vials of blood the characters          drinkable mortal blood, but if that is true only the up-
+            encounter will be cobalt, but later only the scarlet vials            per echelons of Camarilla courts are likely to benefit.
+            will be available.
+                                                                                  This is the basic problem the thin-blood gang in this
+                 The one consistent trait of the two types is that if             story are trying to fix using alchemy and werewolf
+            consumed frequently, a vampire craves the substance,                  blood. They try to make blood that tastes extraor-
+            taking use of it from a fun party activity to potential               dinary, feels good, and lasts a few crucial hours
+            addiction.                                                            longer in its vial before going bad.
+                                                                                  They have been unable to make it work with normal
+            Original Flavor (Cobalt Vial)                                         mortal blood, so the side effects of werewolf blood
+                                                                                  are baked into the experience, for good and ill.
+            Upon taking it, one vial slakes 2 Hunger, but for every
+            point of Hunger slaked, the Difficulty to resist frenzy
+            increases by one. For the first 6 hours, it gives the user a       full force and includes a Compulsion. Use the Random
+            Choleric Resonance boost and a deep sense of extreme               Compulsions chart (Vampire, p. 208) to determine how
+            euphoria that lasts until they slumber.                            the Kindred spends their first few hours engaging in the
+                                                                               Compulsion.
+                 Though werewolf blood and animal blood do not
+                                                                                     For those who ingest the new formula, Storytellers
+            normally provide Dyscrasias, the Storyteller can choose
+                                                                               can choose to use the Vengeful Choleric Dyscrasia. They
+            one of the Choleric Dyscrasias (Vampire, p. 230) to raise
+                                                                               may then add two dice to a single test against the thin-
+            the stakes.
+                                                                               blood cooker gang.
+
+            New Flavor (Scarlet Vial)                                                Storytellers can increase the duration of the
+                                                                               game by showing the slow effects of the blood on the
+                                                                               vampire’s innate Beast. A vampire who imbibes once
+            Upon taking it, one full vial slakes 3 Hunger, but for every       is fine, but over weeks, they become dependent on the
+            point of Hunger slaked, the Difficulty to resist frenzy            substance. Consider it the unholy child of steroids and
+            increases by one. For the first 8 hours, it gives the user a       cocaine. After an appropriately dramatic span of time,
+            Choleric Resonance boost that slowly ebbs out until they           the vampire’s Humanity has degraded to such a degree
+            sleep. Much like ordinary werewolf blood, it makes the             that the Beast consumes them and they become a wight
+            user paranoid and prone to violence.                               (Vampire, p. 375), a slave to their own Beast.
+                 Upon awakening, the Kindred suffers the real
+            comedown. The innate Animalism Resonance kicks up in
+
+
+
+                                                                           9
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    A TASTE OF THE MOON
+
+
+
+
+                                                      10
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                           A TASTE OF THE MOON
+
+
+
+
+                                                           Overdose
+                                                           Ingesting more than one vial of Cherry Moon during a
+                                                           single night causes cumulative effects. This means that the
+                                                           character’s difficulty in resisting frenzy will quickly rise
+                                                           beyond manageable levels. Psychologically, overdosing on
+                                                           Cherry Moon feels like you’re full of energy, your senses
+                                                           become incredibly sharp to the point of discomfort, and
+                                                           your temper is so short everything feels like an insult.
+                                                                The experience of having sharper senses is an illusion
+                                                           created by the drug, not an actual beneficial effect.
+
+
+                                                           The Velveteen Bunny
+                                                           In a rapidly gentrifying warehouse district, The
+                                                           Velveteen Bunny’s days are numbered, but while it’s
+                                                           there, it’s the place to be for Anarchs in the city. Owned
+                                                           by a charismatic and louche blood gourmand, Zidane
+                                                           al-Najjar, it serves as a hangout for the prewritten
+                                                           player characters and their sires. Al-Najjar is also
+                                                           one of the prospective sires. Feeding at The Velveteen
+                                                           Bunny is forbidden, but every once in a while, someone
+                                                           breaks the rules. A former meatpacking warehouse,
+                                                           the basement club is a banal hookah lounge and party
+                                                           zone where kine badly hide their coke habits and order
+                                                           expensive alcohol, they’ll vomit up later. While the
+                                                           mortals grind away on each other, listening to lackluster
+                                                           house music and contemplating a dying world, the
+                                                           upstairs is occasionally reserved for Kindred in the
+                                                           fading luxury of the club’s VIP area. On these nights,
+                                                           Toreador neonates try to prove themselves by staging
+                                                           bizarre performances, and Anarchs pretend to relax
+                                                           while eyeing each other with envy and lust.
+                                                                If you’re dropping this story into your ongoing
+                                                           chronicle, you can replace The Velveteen Bunny with a
+                                                           similar hangout of your own. It needs to be a place where
+                                                           local Anarchs visit often enough that you can run into
+                                                           Kindred randomly or witness a possible Cherry Moon
+                                                           transaction.
+
+
+
+
+                                                                  ...cherry-flavored cough syrup,
+                                                             moldy maraschino cherries, citric acid,
+                                                                       methylphenidate…
+
+
+
+
+                                                      11
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    A TASTE OF THE MOON
+
+
+
+
+             Drink Up:
+           Opening Scenes Here is a selection of opening scenes for the story, with the default opener first and then
+                          additional ones in case you wish to customize the experience. The purpose of each is to
+                          introduce Cherry Moon to the coterie and get them interested in it. If you wish, you can use
+                          one or more of the unused opening scenes later when the characters discover more about
+                          the effects of the blood concoction.
+
+
+
+
+                                                                        12
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                  A TASTE OF THE MOON
+
+
+
+
+            The Default Opening Scene:                                          If the player characters find Slick early in the story, he’ll
+                                                                                point them towards one of the other sires or Mawlas as
+
+            A Night to Remember… That                                           the source of the blood. If late in the story, he’ll give them
+                                                                                info leading directly to the thin-bloods.
+
+            You’d Rather Forget
+                                                                                Additional Opening Scenes
+            Some licks just can’t hold their blood. Last night the char-
+            acters had a little too much fun partying it up at The Vel-         If you’ve already run the story once with the default
+            veteen Bunny. A punk Anarch acquaintance called Slick,              opening scene or if it wasn’t quite to your taste, here are
+            who in retrospect the characters suspect is a Camarilla             a couple of different ones that can throw the characters
+            infiltrator, passed them some vials of Cherry Moon to               into the action.
+            share. The trip was amazing, but as the night progressed,
+
+                                                                                The Blood of Caine
+            the characters became paranoid and jumpy at everything.
+                  When play starts, the characters have just woken up
+            at nightfall. They find themselves in a back room at The
+            Velveteen Bunny, one of their sire’s (Storyteller decides                 While on a short errand for their sire, Mawla, or a
+            which one) favorite ghouls dead and bloodied on the floor.          local bully to a Kindred antiquarian, a player character
+                  In this opening scene, the characters have already            spies the proprietor leafing through a zine-like notebook
+            tried Cherry Moon. The Storyteller should describe their            filled with Noddist propaganda that suggests Cherry
+            vague, fragmentary memories of the experience.                      Moon is the distilled blood of Caine himself. Qioa Zhang,
+                                                                                the proprietor, is happy to let the characters look at it
+            LOCATION                                                            but suggests that it’s a Masquerade risk and certainly
+            The Velveteen Bunny.                                                shouldn’t be allowed to circulate.
+            SUPPORTING CHARACTERS                                                     The notebook hints that with each vial of Cherry
+                                                                                Moon imbibed, the Kindred can push back the rise of
+            Slick, a dodgy Toreador who’s slumming it as a drug
+                                                                                the Antediluvians in some mystical, ill-defined way.
+            pusher (Difficulty 4/2, Auspex 1, Celerity 1). Not actually
+                                                                                When questioned, the bookseller doesn’t know where
+            a Camarilla infiltrator, just an ordinary untrustworthy
+                                                                                the pamphlet has come from beyond finding it in a stack
+            double-dealer.
+                                                                                of volumes received from the wannabe Noddist vampire
+            Henry Nowak, the dead ghoul.                                        Asher Hall, who may be one of the characters’ sires.
+            ROLLS                                                                     If the characters want to test out whether Cherry
+            Intelligence + Streetwise, Investigation, Medicine, or              Moon works all the miracles attributed to it, perhaps
+            Awareness against Difficulty 4 to figure out what hap-              Hall would have some since they seem to know so much
+            pened to the ghoul. He was killed by one of the player              about it?
+            characters. A critical success reveals which one. (The              LOCATION
+            Storyteller decides, or you can ask the players whose               The antiquarian provides her services only for select
+            character would be most likely to do such a thing.)                 clientele. She operates out of her home, a ramshackle
+            NEXT                                                                and poorly maintained townhouse with endless narrow
+                                                                                corridors winding between bookshelves.
+            Once the proprietor of The Velveteen Bunny, Zidane al-
+            Najjar, realizes that the characters have caused a mess, he         SUPPORTING CHARACTERS
+            demands that they clean it up and let the ghoul’s domitor           Qiao Zhang, a Malkavian who used to be a rare book
+            know what has happened.                                             seller in life and continues the trade in death (Difficulty
+                 Once the sire whose ghoul died finds out, the                  4/3, Dominate 1, Auspex 2). Interested in occultism, rare
+            characters discover that the sire already knows about               books, and exciting new types of blood. The latter are of
+            Cherry Moon. The sire demands six vials provided as                 course extremely rare, making Cherry Moon interesting.
+            compensation, sounding as if the blood might be more
+            important than the just deceased ghoul.                             ROLLS
+                 Perhaps Slick knows where to get more? Zidane                  Intelligence + Occult against Difficulty 4 to assess the
+            al-Najjar might know how to find him, or a Wits +                   veracity of the notebook’s claims. The line about Caine is
+            Streetwise roll against Difficulty 4 will result in a clue.         probably bullshit, but it’s possible there is a strange type
+
+
+
+
+                                                                           13
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    A TASTE OF THE MOON
+
+
+
+
+             of blood in circulation.                                             they explain the problems involved: How blood goes bad
+                  Intelligence + Streetwise or Medicine against                   in a matter of hours and Cherry Moon seems to last a
+             Difficulty 4 to realize that the business of selling blood to        little longer, for some reason.
+             vampires has severe limitations. (Outlined in the sidebar            NEXT
+             Selling Blood on page 9.)
+                                                                                  The coterie can take the mortal to the sire who engaged
+             NEXT                                                                 the services of The Circulatory System. Hand over the
+             If the characters got Asher Hall’s name from the propri-             sample of Cherry Moon. Or drink it. It has to be used
+             etor, they can go to The Velveteen Bunny and see if they             either way because otherwise it spoils.
+             get lucky. If they didn’t, asking around at the nightclub                 They can also return to Hockney to ask where they
+             is still a good way to find out if someone is known for              got the sample. The source was the thin-bloods of course,
+             ill-advisedly writing down vampire secrets.                          and Hockney has a burner phone number for them.
+
+
+             The Hookup                                                           A Taste of an Old Friend
+             Asa Hockney, a former blood vessel for The Circulatory               One of the player characters’ sires has become tired of
+             System (Vampire, p. 386), has recently been Embraced by              their constant questioning concerning the nature of
+             one of the characters’ sires (Storyteller chooses which              undeath. (Storyteller chooses which sire.) They have
+             one), making them vampiric siblings. Hockney is still                arranged for the coterie to meet an associate of theirs, a
+             working with the System, and the characters are picking              noted Noddist and occultist who can presumably explain
+             up a drugged-up mortal from them for one of their sires.             what the vampiric condition is all about. When the
+                  The scene starts with Hockney telling the characters            characters arrive and play begins, they discover the house
+             about Cherry Moon and giving them a sample vial to                   empty except for the corpses of six elderly mortals and
+             take to the sire waiting for the mortal. Do the characters           the decomposed remains of the Noddist. There’s blood
+             sample the contents of the vial themselves?                          everywhere, broken furniture, half-full glasses of sherry,
+                  Hockney is considering getting into the blood-bag               and plates with uneaten cookies. A staid, elderly party
+             business themselves, but it seems very difficult to make it          has gone horrifically wrong.
+             work any other way except how The Circulatory System                      As the characters poke around the scene for
+             does it, i.e., with live victims.                                    information, they find two almost empty vials of Cherry
+                                                                                  Moon not far from the body of the Noddist. There’s just
+             LOCATION
+                                                                                  enough to suggest that whatever was inside must have
+             Hockney is waiting with the mortal in a swanky but                   been absolutely delicious.
+             sterile apartment discreetly rented by The Circulatory
+             System to facilitate their business in. It’s located in a            LOCATION
+             recently built tower block.                                          A musty brownstone house with thick carpets and hard-
+                                                                                  wood bookshelves full of old occult tomes. The front door
+             SUPPORTING CHARACTERS                                                is ajar when the characters arrive.
+             Asa Hockney, a recently Embraced former Circulato-
+             ry System vessel. Clan is determined by their sire. An               SUPPORTING CHARACTERS
+             entrepreneurial type, Hockey has emerged from a haze of              Armand Anchisi, a Malkavian occultist and Noddist.
+             addiction to consider their options in unlife. (Difficulty           A noted researcher into questions of what being Kin-
+             4/3, 3 levels of Disciplines determined by clan.) Doesn’t            dred really means with a penchant for trying to fit every
+             want to use Cherry Moon themselves because it seems                  half-assed Theosophical treatise into the same framework
+             dangerous but is happy to provide it to others.                      as vampiric sources. Now destroyed.
+             George Alonso, a newly fired investment banker who’s                      Six mortals, all harmless elderly occultists,
+             zonked out of his head. Feeding from him means experi-               bludgeoned and torn to death.
+             encing whatever hallucinogenic drugs he’s currently on.              ROLLS
+             ROLLS                                                                Wits + Investigate against Difficulty 3 reveals the presence
+             Charisma + Streetwise against Difficulty 4 to hold your              of the Cherry Moon vials. When tasted, their contents
+             own with Hockney in a discussion about the vagaries of               feel rancid but some of the allure lingers.
+             selling blood to vampires. If Hockney feels you’re a peer,
+
+
+
+
+                                                                             14
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                  A TASTE OF THE MOON
+
+
+
+
+                If the characters make more investigatory rolls                   coterie destroys the mural, the scared fledgling will hast-
+            with Occult, Awareness, Academics, Medicine, or even                  ily give them their stuffed wallet and a half vial of a new
+            Larceny, they can discover the following:                             blood on the streets that’s supposed to be Cherry Moon
+                                                                                  in exchange for not getting their ass handed to them.
+            •   The old mortals were bludgeoned and beaten to death.
+                                                                                  There’s only enough for everyone to get one delicious
+                It appears they still have all their blood inside them.
+                                                                                  taste… but that’s definitely not enough. If they shake
+            •   Based on context, the decomposing corpse looks                    down the Toreador further, they’ll say they got it from
+                like it’s probably that of Armand Anchisi. Although               their sire. Maybe the coterie can get some from theirs?
+                the severity of his wounds is hard to determine, his              Lips mark the spot. An acquaintance of the characters, a
+                slipover and shirt have tears, which suggest repeated             Gangrel who lives near Skid Row, joins them on the Hunt
+                knife stabbings, as if he was in a struggle.                      and tells them that a new symbol has popped up near
+                                                                                  some warehouses downtown. Two blood-red lips with a
+            •   A scribbled note in the desk planner says Anchisi                 cherry shoved between them. When asked, the Gangrel
+                had a date with someone named Lilith an hour after                suggests it’s probably related to something new that
+                nightfall. There’s a phone number. In reality, Lilith is          has the local Anarchs abuzz: Cherry Moon. All sorts of
+                the thin-blood Constance Joy, and the number is for               claims are made about it, although they’re probably just
+                a burner phone she’s using.                                       bullshit… but if they’re not, maybe asking around could
+                                                                                  lead to a huge score?
+            •   The security cameras of the bodega across the street
+                caught the elderly mortals going in shortly after
+                sundown, followed soon after by a woman in a
+                biker’s helmet. After 45 minutes, the cameras show
+                                                                                  Opening Scenes
+                the biker woman emerging again and leaving. (This is
+                Constance Joy, delivering Cherry Moon to Anchisi,
+                                                                                  for Chronicles
+                who wanted to use it in a ritual he was planning to
+                perform with his occult reading circle.)                          These opening scenes work best if you’re running the
+                                                                                  story as part of an ongoing chronicle.
+            •   The house contains a number of books that would be                Resonance. A character is trying to learn a Discipline
+                valuable to the right buyer.                                      power that requires blood with a specific Resonance.
+                                                                                  While checking for leads through their contacts, they
+            NEXT                                                                  hear about a mysterious miracle blood that could be
+            The sire who sent the characters to Anchisi will want to              exactly what they need.
+            know how it went. If told about Cherry Moon, the sire                 The desperate friend. An acquaintance of the charac-
+            recognizes what it is and suggests the characters find                ters, a neonate Anarch, visits their haven to ask whether
+            more.                                                                 they’ve had a chance to try out the new blood that’s been
+                 Calling Constance leads to her rebuffing the                     circulating among the city’s Kindred. Something tasty
+            characters if they’re crass and accusatory or in a deal for           and wonderful, worth trying even when you don’t get it
+            Cherry Moon vials if they’re friendly. She killed Anchisi             completely fresh. As the discussion progresses, it turns
+            after he lost control and attacked her, but she doesn’t like          out the acquaintance wants to get their hands on the
+            to admit it.                                                          blood and hoped the player characters would have some.
+                                                                                  When this turns out not to be the case, they reveal a
+            Brief Beginnings                                                      rumor that one or more of the coterie’s sires have access
+                                                                                  to this wonderfully tasting blood.
+                                                                                  The bloody end… becomes a bloody beginning. An
+            Here are a few more opening scenes, described briefly for             enemy of the characters has perished in a battle that has
+            the Storyteller to flesh out as needed.                               left the coterie spent. As they loot their enemy’s wrecked
+            Slumming it. While on the hunt, the coterie comes across              Haven, they find a few fresh vials of Cherry Moon. Just
+            a fledgling Camarilla Toreador on their turf surrounded               enough for everyone to get a celebratory taste. They’ve
+            by spent paint cans and seemingly in a fit of Compulsion.             heard a lot of talk on the streets about what it does even
+            When questioned, the Toreador admits that they are                    when a bit stale. The blood is dark and syrupy, and it
+            a graffiti artist who’s been staring at the same wall for             smells of cherries. Once the coterie members imbibe the
+            hours, having made a perfectly symmetrical mural of their             blood, they go on an ecstatic bender which makes them
+            personal heaven. In fact, it’s all they can talk about. If the        feel like gods. How to find more?
+
+
+
+                                                                             15
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    A TASTE OF THE MOON
+
+
+
+
+                  Complications
+                          In the first days of your Embrace, you assumed your sire knew everything about
+                          everything. They told you so, after all. Regardless of how you felt when you were ripped
+                          away from your mortal life, you relied on them. You’ve run errands for them, protected
+                          them, and generally tried your best to heed their knowledgeable advice about the dangers
+                          of each waking night. You’ve learned some tricks on your own as well: how to stay one
+                          step ahead of the increasing surveillance of the modern world, how to find comrades, and
+                          how to keep your nose mostly clean.
+
+                          But tonight, something changes. You’re watching your sire lick the inside of a blue vial like
+                          a hamster drinking from their water bottle. Suddenly things feel different. Complicated.
+                          If you didn’t know any better, you’d call this a growing pain.
+
+                          Is disillusionment with your sire a necessary part of being Kindred?
+
+
+
+
+                                                                        16
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                      A TASTE OF THE MOON
+
+
+
+
+            As a fledgling becomes a neonate, they have to confront                Zidane al-Najjar: The Amused Bouche
+            the fact that just because they theoretically have eternity
+            to learn, their sires don’t know everything. In this story,
+                                                                                   This sire has an especially refined palette and wishes to
+            the characters’ sires represent complications, issues
+                                                                                   drink only from other supernatural creatures. This is not a
+            that crop up when Cherry Moon starts to circulate.
+                                                                                   supernatural compulsion but rather a personal affectation
+            Ever seeking sensations to enliven their otherwise cold
+                                                                                   that’s very difficult to satisfy because creatures or beings
+            experience, some Kindred engage in intrigue on both a
+                                                                                   who could provide such blood are extremely rare. He’s
+            trivial and grand scale. A new blood with strange and
+                                                                                   heard about Cherry Moon and theorizes that it must
+            exciting properties could be just the thing to help one feel
+                                                                                   contain werewolf blood at the very least. If you could get
+            something… even if it’s fleeting.
+                                                                                   him a steady supply of werewolf blood, he might be willing
+                 As the night progresses, the characters may come to               to let you hunt at The Velveteen Bunny, just this once. If
+            realize that in the hunt for exotic blood, they’re the only            you can bring him the werewolf itself, you could have all
+            adults in the room. The desire for Cherry Moon makes                                          of your past transgressions at the club
+            their sires foolish.                                                                          forgiven.
+                 As the Storyteller, once you
+            have chosen a beginning that will
+                                                         They’re killers,                                      Stats: Difficulty 5/3, a total of 4
+                                                                                                          levels of clan Disciplines of levels 1
+            suit your coterie, pick one or more
+            complications to make the hunt
+                                                         but surely, they                                 and 2.
+                                                                                                               Actions and Scenes: Rhapsodize
+            for Cherry Moon more interesting.
+            These complications can be sires who
+                                                         wouldn’t slay you!                               about the taste and texture of blood
+                                                                                                          from other supernatural creatures,
+            demand more of the new blood or
+                                                                                   even if it’s somewhat unclear whether the information
+            problems arising from the thin-bloods who make it. The
+                                                                                   is theoretical or based on real experience. Speak about
+            characters may even get their own ideas about going into
+                                                                                   werewolves as if dealing with them would be completely
+            the blood business, although the difficulties involved may
+                                                                                   safe. They’re killers, but surely, they wouldn’t slay you!
+            soon disabuse them of such notions.
+                                                                                   On the off chance you’re there when the werewolf in this
+                 If play feels like it’s lagging, you can always add
+                                                                                   story is found, run away or get torn to shreds. Whatever
+            a complication to spice things up. Perhaps instead of
+                                                                                   works best in the moment.
+            providing just one vial to a hedonist sire who wants it for
+            his weekly self-care routine, the characters will also need
+            to secure a vial as penance for another sire who caught                Asher Hall: The Neonate Noddist
+            them pilfering a rare book.
+                 Once you’re ready to move on from the complications               How can you know anything about what being a vampire
+            to the story’s final phase, tip the player characters off about        really means when everything is kept secret under the
+            the location of the thin-blood warehouse.                              Masquerade? This sire has collected their ideas about
+                                                                                   Noddist lore, strange blood Resonances, and other topics
+
+            The Sires
+                                                                                   relevant to the Kindred condition in little handwritten
+                                                                                   zine-like booklets, some of which they, unfortunately,
+                                                                                   have misplaced. Asher is incapable of separating fact from
+            There are probably more prospective sires presented                    fiction and takes terrible risks with the Masquerade while
+            here than you need for the characters in the coterie. The              imagining themselves a paragon of tradecraft. They’re
+            rest can be local Kindred or even grandsires if you wish               working on an article on the new blood phenomenon
+            to create a whole lineage. The clan of each sire depends               that’s hit the streets, so if you’re looking for a sample of
+            on the player character they’re assigned to. A Brujah                  Cherry Moon, now you’re looking for two. It’s for the
+            character’s sire is also a Brujah.                                     cause of revealing the unknown!
+                 Some of the sires have alternative names depending                Stats: Difficulty 5/3, a total of 4 levels of clan Disciplines
+            on what kind of gender expression you think would work                 of levels 1 and 2.
+            best for that character.                                               Actions and Scenes: Demand more Cherry Moon from
+                 Asher Hall and Zidane al-Najjar are good default                  the characters. Show the characters your notes, which are
+            sires. If you want to use just one, go with al-Najjar since            borderline incomprehensible. (It might be better if they
+            he provides an easy connection to The Velveteen Bunny.                 were completely incomprehensible.) Late in the game,
+                                                                                   you get arrested by suspiciously well-armed police, never
+                                                                                   to be seen again.
+
+
+
+                                                                              17
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    A TASTE OF THE MOON
+
+
+
+
+                  “No thoughts, just vibes.”
+
+
+
+
+             Valery Green: The Family That Noshes                                  vampire you all wish you could be. Famous, among those
+                                                                                   in the know. Late in the game, you find out that your sire
+             Together…                                                             has cancelled their visit. The only way to deal with that is
+                                                                                   to get high as a kite.
+             Your grandsire is expected to be in the city this week, and
+             your sire would like to score something impressive for                Dominik/Dominique Barbero:
+             them since they’re famous and all. So far, your sire has
+             been thinking in terms of spiking mortal blood dolls with             The Forgetful Ritualist
+             designer drugs, but they’re willing to go with anything
+             that seems suitably cool. They hear Cherry Moon may have              This sire would forget their fangs if they weren’t
+             traces of werewolf in it, so maybe you could bring them a             permanently a part of their mouth. A noted ritualist, they
+             vial and the werewolf? That would be extra impressive.                usually have their childe set everything up and get all the
+             Stats: Difficulty 4/4, a total of 4 levels of clan Disciplines        ingredients for their occult dealings, so they only have to
+             of levels 1 and 2.                                                    perform the rites; no need to worry about anything else.
+                                                                                   However, with the player characters spending more time
+             Actions and scenes: Talk about how amazing your sire is.
+                                                                                   independently of their sires, the sire forgot they needed
+             So old, refined, sophisticated, attractive... Really, just the
+                                                                                   blood with a particular Resonance. Cherry Moon might
+
+
+
+                                                                              18
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                      A TASTE OF THE MOON
+
+
+
+
+            have it. They’re not sure which kind they need, so if the                or random clanmates. They’re all united by the fact that
+            coterie could get both, that’d be swell. Thanks.                         if they feel the players’ characters have a line on Cherry
+            Stats: Difficulty 5/2, dice pool 7, a total of 6 levels of clan          Moon, they’ll want some for themselves as well.
+            Disciplines.                                                                   Assign a clan to these characters depending on the
+            Actions and Scenes: Invent nicknames for the players’                    relationship you want them to have with the players’
+            characters because you don’t remember their actual                       characters.
+            names. Make big asks for frivolous reasons. Show up with
+            inexplicably practical solutions after it feels like all is lost.        Brick Jones: The Laid-Back Lover
+            Deny that you did it on purpose.
+                                                                                     If this vampire had a motto, it would be: “No thoughts,
+
+            Everybody Wants Some                                                     just vibes.” A gorgeous himbo type, he sees vampiric
+                                                                                     existence essentially as a buffet of sensations, an
+                                                                                     emotional extravaganza to be experienced and enjoyed.
+            As news of Cherry Moon spreads among the local Anarchs,                  He doesn’t really understand any of the dangers of the
+            it feels like everybody wants some. The following characters             night, and frankly, he doesn’t care to. If the characters
+            can be Mawlas, grandsires, Kindred siblings, enemies,                    tell him about Cherry Moon, he will immediately want
+
+
+
+                                                                                19
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    A TASTE OF THE MOON
+
+
+
+
+             to try it. If they tell him it is made with werewolf blood,            since. Blotted out of their mind, and quickly forming a
+             he will want to taste werewolf blood for himself and                   dependence, they think the formula may have changed
+             possibly try to romance the werewolf in the process. This              and want you to investigate. Their Beast has come
+             is an intensely bad idea, but fortunately, the sire is easy to         to the forefront, and they end up killing one of their
+             distract for player characters with the right approach.                Touchstones and slowly entering a destructive spiral.
+             Stats: Difficulty 4/4, dice pool 6, a total of 5 levels of clan        Can the destruction of the whole operation lead to their
+             Disciplines.                                                           redemption? Or will someone have to watch their sire,
+                                                                                    Mawla, or acquaintance become a wight?
+             Actions and Scenes: Flirt lazily with anyone who might
+             provide a taste of Cherry Moon. Talk about how hot                     Stats: Difficulty 5/3, a total of 5 levels of clan Disciplines.
+             you believe werewolves are. Maybe so hot, you’d feel                   Actions and Scenes: You’re distraught from killing
+             something real when you made love? Something to                        a Touchstone (your mortal nephew) but somehow
+             speculate about! Fall for social ploys involving flattery.             transition from that to jonesing for more Cherry Moon
+                                                                                    in the span of a single conversation. Act like you could
+             Isabelle Adewole: The Fashionista                                      explode any second. If it feels like the game could use
+                                                                                    some action, escalate to frenzy at a perceived slight.
+             You can’t expect a fledgling to understand couture. Who
+             needs Thin-Blood Alchemy when you could be wearing
+             the fresh, warm pelt of a newly-skinned werewolf? No
+                                                                                    Further Complications
+             one, that’s who. Adewole wants to wear rich luxurious
+             werewolf fur to every Kindred event this winter, and the               After the characters have dealt with the contradictory
+             only thing stopping her is the lack of ambition among                  demands of their sires and other older Kindred
+             the city’s young Anarchs. She wants the characters to kill             among the local Anarchs, you can use these further
+             the werewolf (without messing up the pelt). Any Cherry                 complications to give more substance to the story.
+             Moon left over they can have.
+             Stats: Difficulty 5/3, a total of 6 levels of clan Disciplines.        Buying Blood
+             Actions and Scenes: Act condescending to the characters.
+             Flash your money around. Be unreasonable at all times.                 The player characters decide to try buying directly from
+             Escape all consequences.                                               the thin-bloods. To make this happen, they need to be
+                                                                                    able to contact them. Possible methods include a dead
+                                                                                    drop or a burner phone, the details for which they can get
+             Pax: Brawler, Shot Caller                                              from a Mawla or another contact.
+                                                                                         Once the player characters indicate they wish to buy,
+             Pax loves to brawl at the drop of a hat. An adrenaline junkie,         one of the thin-bloods shows up on a motorcycle with the
+             they want to test themselves against something ferocious,              rapidly spoiling vial of Cherry Moon in hand. Cash only.
+             preferably lethal. Just to get the blood metaphorically
+                                                                                    Location: Wherever the characters decide the deal should
+             pumping in their veins. It’s been decades since they felt like
+                                                                                    happen.
+             they owned the night. Obviously, there’s only one way they
+             want to get their mojo back: drugs. Or fighting the werewolf.          Characters: Constance Joy of the thin-bloods. See page 25.
+             Or fighting the werewolf while on drugs.                               Next: The characters can try to follow Constance back
+             Stats: Difficulties 5/3, a total of 4 levels of primarily              to the thin-blood warehouse. It requires a successful
+             physical clan Disciplines.                                             Composure + Drive roll against Difficulty 4.
+             Actions and Scenes: Be wildly enthusiastic about fighting
+             something that could destroy you. Finally! Fuck yes!                   Drive-By Shooting
+             This is what we’ve all been waiting for! Get high and
+             get fucked! Anything to feel something! Assume that                    The thin-bloods discover that the characters are looking for
+             everyone you speak to shares your predicament.                         them and start to feel uncomfortable. They do a drive-by
+                                                                                    shooting from a motorcycle when the characters are on the
+             Victor/Veronica Alon: the spiral                                       street. Ilya Abramov shoots while Constance Joy drives.
+                                                                                    Location: A street without too many bystanders.
+             This Anarch had a taste of Cherry Moon the moment                      Characters: Constance Joy and Ilya Abramov of the thin-
+             it came out and has been downing a vial a night ever                   bloods. See page 25.
+
+
+
+                                                                               20
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                               A TASTE OF THE MOON
+
+
+
+
+            Next: The characters have one chance to shoot back with             Characters: Anna Rackova, a lupine with a day job at
+            Wits + Firearms against Difficulty 4 before the thin-               a public library. Anger issues but tries to keep them in
+            bloods escape. The characters can follow them back to the           check. (Use the werewolf stats in Vampire, p. 376.)
+            thin-blood warehouse. It requires a successful Composure            Next: If the characters tell Anna the location of the
+            + Drive roll against Difficulty 4.                                  thin-blood warehouse, there will be nothing but ruins left
+                                                                                after her; she will rescue the captive lupine and destroy
+            Surprise Werewolf                                                   the thin-bloods. If the player characters go with her to
+                                                                                the warehouse, it’s possible to make a Manipulation +
+            A local lupine has figured out that one of her kind is being        Persuasion roll against Difficulty 4 to keep her from
+            held captive by licks. She shows up at an inconvenient              getting violent, but she will demand the release of her
+            moment and tries to cajole, threaten, or bribe the                  kin. Convincing Anna to let a character drink her blood
+            characters to tell her where to go. She tries to avoid              requires a sufficiently important favor and a successful
+            fighting them but her distaste for vampires is evident.             Charisma + Persuasion roll against Difficulty 5.
+            Location: The location of another scene, preferably at an
+            awkward moment.
+
+
+
+
+                                                                           21
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    A TASTE OF THE MOON
+
+
+
+
+                                 The End
+                           Once you were told how to recognize the sigils the thin-bloods used to mark the way
+                           to the warehouse, it was a straight shot. Peeking through the frosted glass, you see
+                           two individuals, probably the Duskborn dealers, hunched over a long steel table
+                           covered in opened packages of candy and boxes of cherry cough syrup.
+
+                           That explains the taste.
+
+                           But it doesn’t explain the power.
+
+                           No, the scarred man held by chains secured to a hook in the ceiling explains that. You
+                           watch as the two thin-bloods shoot what seem to be tranquilizers into him — using
+                           way more than any human could take. Enough to keep a werewolf sedated.
+
+                           The unnerving night howls are barely drowned out by the pulsing music, but soon
+                           the drugs take effect, and the howls turn into a sad whimper that leaves the man
+                           slack in his chains.
+
+                           Approaching with caution, one of the thin-bloods begins to draw his blood.
+
+
+
+
+                                                                     22
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                     A TASTE OF THE MOON
+
+
+
+
+                                                      23
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    A TASTE OF THE MOON
+
+
+
+
+             Once the player characters have had enough                         their kin? How to deal with a situation that looks like
+             complications, they are ready to move into the end                 it’s going to devolve into violence any second?
+             phase of the story. If you used the complications,                       And of course, is it possible to get some of that blood
+             the coterie probably owe vials of blood to their sires             before everything goes to hell?
+             or local Kindred, and reneging on those deals and
+
+                                                                                Thin-Blood Adversaries
+             promises or coming back empty-handed would not
+             be wise. Besides, they might want a few vials for
+             themselves as a little treat.
+                  Cherry Moon’s power comes from werewolf blood,                In the grimy wreckage of a former automotive warehouse,
+             amplified by thin-blood alchemy. A gang of thin-bloods             a gang of thin-bloods runs an unusual cookhouse. Cherry
+             has captured a newly turned werewolf who only recently             Moon has only been on the streets for a few weeks, but
+             became aware of their true nature. To make matters                 they’ve been experimenting with thin-blood alchemy for
+             more complicated, the werewolf is a cousin of one of the           some time, by the looks of it. It’s obvious that they are
+             gang members and has been reported missing. At first,              former meth cooks, who didn’t let becoming Duskborn
+             the thin-bloods imprisoned the new werewolf to save                stop their production line.
+             them from themselves (and avoid getting immediately                     For a longer session, include more thin-bloods
+             murdered), but they soon realized that werewolf blood              willing to put up a fight (or to get in the way if the
+             has amazing qualities.                                             werewolf gets loose) and a few kine (to fight, feel remorse
+                  The longer the thin-bloods held the werewolf, the more        for, or snack on during a conflict) who happen to be
+             Cherry Moon’s makeup changed. The latest vials of Cherry           helping out for extra cash or are used as an additive to
+             Moon contain notes of anger, rage, hate, and betrayal.             Cherry Moon. Some of the supporting characters from
+                  Once the player characters show up at the thin-               earlier scenes can also be present for reasons of their own.
+             blood warehouse, the choices and rolls they make                   Maybe they just wish to buy in bulk?
+             determine what happens next: Does the werewolf                          For a quicker ending, use just the three following
+             escape, killing the thin-bloods? Is a peaceful solution            thin-blood characters as adversaries. The werewolf is
+             possible? What if more werewolves appear in search of              most likely to be the main event.
+
+
+
+                                                                           24
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                A TASTE OF THE MOON
+
+
+
+
+                                                                                 support when it came time for her to go to college.
+               P L AY I N G W I T H LU P I N E S                                 Struggling to fund herself, she agreed to help her
+               Lupines are called “the Great Enemy” for a reason.                brother in his side hustle: amateur meth cooking.
+               Many detest vampires and will do anything to rip                  When the warehouse got crashed by some neonate
+               them into tiny shreds of flesh. While vampires make               vampires, they left two Duskborn in their wake:
+               their havens in cities, werewolves tend to keep to                Constance and her brother, Caleb.
+               forests and other types of wilderness. Holding a
+               werewolf captive in the middle of the city is not only            Unlike Caleb, Constance is stoked to finally be free
+               dangerous but could bring all sorts of havoc down                 of society and would love to use her new condition to
+               on the thin-bloods and the player characters.                     improve her situation. Cherry Moon was her idea, and
+                   In addition, werewolf blood is so potent that it of-          she hopes it can finally get her and Caleb somewhere.
+               ten makes licks do absurd things, like tying a family             Weapons: A Glock with 4 bullets (+2 damage)
+               member up in a former automotive warehouse, us-
+               ing only thin chains, and taking their blood to make
+               enhanced vampire juice.
+                   The Storyteller should use the base stats for were-           CALEB HOPE:
+               wolves (Vampire, p. 377). Storytellers should keep                THIN-BLOOD ALCHEMIST
+               in mind that when vampires imbibe werewolf blood,
+               it increases the chance they will frenzy. In addition,            Archetype: Guilty Embrace
+               a character who drinks directly from this werewolf
+               picks up a Compulsion, since it’s particularly pissed             Difficulty: 3/3
+               off. Unlike the unpredictable effects of Cherry                   Keywords: Haunted, Self-loathing, Sweet
+               Moon itself, for characters who decide to sip from
+               the source, the Harm Compulsion leads them to de-                 Like Constance, Caleb came from the bad side of
+               stroy, incapacitate, or scare away a target.                      a good family. He was once close with his cousin
+                                                                                 Robbie, who is now unfortunately a werewolf.
+                                                                                 Caleb was sweet and kind as a kid, but the effects
+                                                                                 of crushing poverty led him down a spiral of
+                                                                                 addiction he felt he’d never escape. When he got a
+              ILYA ABRAMOV:                                                      hook-up from a friend to become a meth cook, he
+              THIN-BLOOD MUSCLE                                                  was desperate enough to agree. He didn’t want to
+                                                                                 introduce Constance to the underworld he lived in,
+              Archetype: Weapon of Convenience                                   but she kept pressing him about his newfound cash.
+              Difficulty: 4/2                                                    He carries the guilt of their current condition, even
+                                                                                 more now that Robbie’s become a monster. It was his
+              Keywords: Cocky, Rough, Wiseass                                    idea to chain Robbie up for their own good after he
+              Ilya is a former ghoul who used to run security for his            realized their condition, but it was Constance who got
+              sire. Abandoned when the Embrace didn’t fully work                 the bright idea to turn their cousin into a cash cow.
+              out, he’s had to survive the only way he’s ever known              Weapons: A switchblade (+2 damage)
+              … working security for people he shouldn’t be. A
+              lick’s gotta do what he’s gotta do.
+              Weapons: Gun, switchblade (both do +2 damage)                          The thin-bloods are foolhardy and in over their
+                                                                               heads, but they do have an instinct for self-preservation.
+                                                                               They want eliminate immediate danger, preserve their
+                                                                               business, and make some money. They’ll run away if they
+              CONSTANCE JOY:                                                   feel like things are becoming too dangerous.
+              THIN-BLOOD ALCHEMIST
+              Archetype: Guilty Embrace
+                                                                               Futher Hooks
+              Difficulty: 4/2                                                  Once the player characters reach the end of the story, the
+              Keywords: Intelligent, Aggressive, Tenacious                     Storyteller has a few options. If the story is run as a one-
+              Constance came from the bad side of a good family.               shot session, you’re done. Tie up any lingering threads
+              Though brilliant at science, she was offered no family           and consider if you’d like to turn this into the start of a
+
+
+
+                                                                          25
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    A TASTE OF THE MOON
+
+
+
+
+                                                                                  loud and rowdy, the police may come to investigate. Can
+                 T H E B U S I N E SS O F B LO O D                                the player characters avoid ending up in the crosshairs of
+                 Selling blood is a very difficult business, and the              the Second Inquisition’s many agencies?
+                 thin-bloods are trying to make it work by using their
+
+                                                                                  The Coterie
+                 alchemy to make a new type of blood called Cherry
+                 Moon. The specifics of their business are as follows:
+                 • One vial of either type of blood costs 1000
+                      USD or the equivalent. This requires using                  A Taste of the Moon includes six prewritten characters
+                      using up two dots . The thin-bloods are not into            you can use to play the story. All the characters share a
+                      bartering or discounts because the demand has               Haven, and all are fledgling Anarchs still trying to figure
+                      been strong.                                                out how to survive. They still run errands for their sires
+                 • They are able to produce three vials a night.                  or Mawlas and help them out when they can, but as their
+                 • The bottlenecks for the production are both the                confidence grows, they begin to feel like they don’t have
+                      demands of the alchemical process and the amount            to rely on older Kindred as much as they used to. In fact,
+                      of werewolf blood needed. The thin-bloods would             in some cases it’s better not to rely on them at all.
+                      love to scale up but don’t know how.                             All the prewritten characters have two dots in Mawla
+                 • The supply chain consists of Constance and her                 (mentor), signaling that even though they’re ready to get
+                      motorcycle. The thin-bloods are aware that this             pushed out of the nest, maybe having an older vampire
+                      is a problem.                                               around who looks after you can still be advantageous. This
+                 • They have a moderate sum of money in cash at                   can be the character’s sire or a similar older vampire. Bear
+                      the warehouse.                                              in mind that from the perspective of these characters, a
+                                                                                  neonate Embraced in 2009 is an older vampire.
+
+             chronicle. If so, consider the following hooks to take you
+             further into the night.Money for nothing. In the process                K E Y W O R D S A N D S U G G E S T E D AC T I O N S
+             of getting the vials, the player characters find out that               Usually when you create your character, you
+             one of the thin-bloods has been marked by the Camarilla                 have time to think about the type of person they
+             and promised a full Embrace. As they investigate the                    were before being Embraced and how they have
+             warehouse, they’ll realize the entire operation has been                evolved. The more you play the character, the more
+             funded by a Ventrue ancilla who won’t be pleased their                  you understand how they work and the type of
+             side hustle has been found out, let alone destroyed.                    actions they will take in play. In order to get a head
+                  Bloody kisses. One of the mortals found stashed                    start on getting to know your character, in addition
+             away in a side room and nearly drained is the ghoul of                  to the stats and basic concept of it, we have
+                                                                                     provided Keywords and Suggested Actions
+             a Noddist ancilla. The ghoul’s body is heavily tattooed
+                                                                                     to get you deeper into character during play.
+             with scripts and symbols that the characters don’t seem
+             to recognize, including a large bleeding rose on their hip.             Keywords are adjectives that describe the
+             The kine promises an introduction to their mistress, who                character, including positive and negative
+                                                                                     attributes. Is the character prone to nervousness?
+             will reveal the secrets of Caine and the coming Gehenna,
+                                                                                     Do they laugh in the face of extreme violence? Do
+             if the player characters save them. The ghoul is desperate              they have a wistful, melancholy heart? Keywords
+             enough that the characters may realize the promises are                 can help you shape the inner world of a character
+             too great for anyone to make good on.                                   and also dictate what they show to other licks.
+                  Wolf like us. Werewolves aren’t solitary creatures.                Suggested Actions are ideas a player may
+             The howls and screams of the tortured wolf have brought                 want to use if they don’t know what to do on their
+             a pack to the edges of the city. By day they resemble good-             turn. Even the most experienced roleplayers may
+             natured college kids in the big city for the first time, and            have moments in which they aren’t sure how their
+             now they have found the warehouse. When the pack picks                  character should react or what to do. If you find
+             up the scent of one of the player characters, the coterie may           yourself in that spot, or you simply want some more
+             have a bigger problem on their hands than they thought.                 ideas on how to up the ante, you can have your
+                  Is that the sound of the police? The new mayor of                  character engage in a suggested action.
+             the city wants to look tough on crime for the midterm                   Neither Keywords nor Suggested Actions have any
+             elections, so he’s increased the police budget (again) and              mechanical value. They’re simply roleplaying tools
+             set a patrol in the warehouse districts looking for chop                to get the story flowing.
+             shops. When the fight with the werewolf gets a bit too
+
+
+
+                                                                             26
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                     A TASTE OF THE MOON
+
+
+
+
+                                                      27
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    A TASTE OF THE MOON
+
+
+
+
+                            AXEL BENNINGTON
+                          Keywords: Dependable, Wiseass, Overthinker, Impatient
+                               Axel never wanted to be a banker. He wanted to play bass in a band and cruise coastal
+                          highways on his rickety motorcycle. Instead, he found himself in a fluorescent cubicle pushing
+                          numbers around; the only thing between a family losing everything and the bank turning a
+                          profit. The situation was beyond corruption; the numbers never added up in anyone’s favor
+                          except the bank’s. Since being Embraced as a Brujah Anarch, Axel has actually enjoyed his
+                          nights, and he has taken to vampiric existence quickly. It’s far easier to embezzle funds from a
+                          bank and funnel it through multinational shell companies and back into the communities that
+                          need it when you have no fear of being unable to eat.
+                          THINGS TO DO AS AXEL:
+                          • Be the adult in the room, reminding everyone of the consequences.
+                          • Enjoy the finer things in unlife — just this once.
+                          • Lose your cool and punch a hole through someone who definitely deserves it.
+
+                            Clan: Brujah
+                            Embraced: 2021 (Born 1996)
+                            Ambition: I want someone in power to get what they deserve.
+                            Predator: Consensualist
+                            Convictions: People matter more than laws. Steal from the rich and give to the poor.
+                            Touchstones: Mimi Barrantes, an ER nurse and neighbor. Justin Chan, local game store
+                            owner.
+                            Humanity: 8
+                            Generation: 13th
+                            Blood Potency: 1
+                            Attributes: Strength 4, Dexterity 3, Stamina 2; Charisma 3, Manipulation 2, Composure
+                            1; Intelligence 3, Wits 2, Resolve 2
+                            Secondary Attributes: Health 6, Willpower 3
+                            Skills: Athletics 1, Brawl (Kindred) 3, Drive 1, Finance 4, Larceny 2, Insight 3, Intimidation
+                            2, Persuasion 2, Streetwise 3, Awareness 2, Medicine (phlebotomy) 3
+                            Disciplines: Celerity 2 (Cat’s Grace, Fleetness), Potence 1 (Lethal Body), Fortitude 1
+                            (Resilience)
+                            Advantages: Mask 1, Resources 2, Mawla (mentor: sire) 2, Nuit Mode (Vampire Players
+                            Guide)
+                            Flaws: Dark Secret (Masquerade breacher) 1, Prey-Exclusion (non-consenting) 1, Stake Bait
+
+
+
+
+                                                                            28
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                        A TASTE OF THE MOON
+
+
+
+
+               Name Axel Bennington                            Concept                                        Predator Consensualist
+
+               Chronicle                                       Ambition                                       Clan Brujah
+
+               Sire                                            Desire                                         Generation
+                                                                                                                           13th
+                                                                           AT T R I BU T E S
+                                        Physical                                 Social                                        Mental
+                      Strength                 ¡¡¡¡¡   ●   ●
+                                                                  Charisma                ¡¡ ¡¡ ¡
+                                                                                          ●   ●   ●
+                                                                                                                   Intelligence         ¡¡
+                                                                                                                                        ● ●
+                                                                                                                                            ¡¡¡
+                                                                                                                                            ●
+
+
+
+
+                    Dexterity                  ¡
+                                               ●
+                                                 ¡
+                                                 ●
+                                                   ¡¡¡ ●
+                                                                Manipulation              ¡¡
+                                                                                          ● ●
+                                                                                              ¡¡ ¡                    Wits              ¡¡
+                                                                                                                                        ● ●
+                                                                                                                                            ¡¡¡
+
+                      Stamina                  ¡
+                                               ●
+                                                 ¡¡¡¡            Composure                ¡¡
+                                                                                          ●
+                                                                                             ¡¡ ¡                    Resolve            ¡¡
+                                                                                                                                         ●
+                                                                                                                                           ¡¡¡
+                                                               Health                                 Willpower
+                                                       ¨ ¨ ¨ ¨ ¨ ¨ ¨¨¨ ¨               ¨¨ ¨ ¨ ¨ ¨¨ ¨ ¨ ¨
+                                                                               SK I L L S
+
+             Athletics                             ¡
+                                                   ●
+                                                     ¡ ¡ ¡ ¡ Animal Ken                       ¡¡ ¡¡ ¡ Academics                           ¡ ¡¡¡¡
+
+             Brawl                                 ¡
+                                                   ●
+                                                     ¡
+                                                     ●
+                                                       ¡
+                                                       ●
+                                                         ¡ ¡ Etiquette                        ¡¡ ¡¡ ¡ Awareness                           ¡ ¡¡¡¡
+                                                                                                                                            ●
+
+
+
+
+             Craft                                 ¡ ¡ ¡ ¡ ¡ Insight                          ¡¡
+                                                                                              ●
+                                                                                                 ¡¡
+                                                                                                 ●
+                                                                                                    ¡ Finance                             ¡
+                                                                                                                                          ●
+                                                                                                                                            ¡¡¡¡
+                                                                                                                                            ● ●
+
+
+
+
+             Drive                                 ¡
+                                                   ●
+                                                     ¡ ¡ ¡ ¡ Intimidation                     ¡¡
+                                                                                              ● ●
+                                                                                                  ¡¡ ¡ Investigation                      ¡ ¡¡¡¡
+
+             Firearms                              ¡ ¡ ¡ ¡ ¡ Leadership                       ¡¡ ¡¡ ¡ Medicine                            ¡
+                                                                                                                                          ●
+                                                                                                                                            ¡¡¡¡
+                                                                                                                                            ● ●
+
+
+
+
+             Melee                                 ¡ ¡ ¡ ¡ ¡ Performance                      ¡¡ ¡¡ ¡ Occult                              ¡ ¡¡¡¡
+
+             Larceny                               ¡
+                                                   ●
+                                                     ¡
+                                                     ●
+                                                       ¡ ¡ ¡ Persuasion                       ¡¡
+                                                                                               ●
+                                                                                                 ¡¡ ¡ Politics                            ¡ ¡¡¡¡
+
+             Stealth                               ¡ ¡ ¡ ¡ ¡ Streetwise                       ¡¡
+                                                                                              ● ●
+                                                                                                  ¡¡
+                                                                                                  ●
+                                                                                                     ¡ Science                            ¡ ¡¡¡¡
+
+             Survival                              ¡ ¡ ¡ ¡ ¡ Subterfuge                       ¡¡ ¡¡ ¡ Technology                          ¡ ¡¡¡¡
+
+                                                                           DI S C I PL I N E S
+              Celerity             ¡ ¡ ¡ ¡ ¡ Potence
+                                                   ●
+                                                                                              ¡¡
+                                                                                              ●
+                                                                                                 ¡¡ ¡ Fortitude                          ¡
+                                                                                                                                         ●
+                                                                                                                                           ¡¡¡¡
+              Cat's Grace, Fleetness         Lethal Body                                                      Resilience
+
+
+
+
+                                                   ¡¡¡¡¡                                      ¡¡ ¡¡ ¡                                    ¡¡¡¡¡
+
+
+
+
+             Resonance                                                    Hunger ¨¨ ¨ ¨ ¨                         Humanity ¨¨
+                                                                                                                           ■ ■
+                                                                                                                               ¨
+                                                                                                                               ■
+                                                                                                                                 ¨
+                                                                                                                                 ■
+                                                                                                                                   ¨
+                                                                                                                                   ■
+                                                                                                                                     ¨¨
+                                                                                                                                     ■
+                                                                                                                                        ¨
+                                                                                                                                        ■
+                                                                                                                                          ¨¨
+                                                                                  29
+      © 2018 White Wolf Entertainment
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    A TASTE OF THE MOON
+
+
+
+
+                            MELIKA REDD
+                          Keywords: Charming, Confident, Brutally Honest, Suspicious
+                               Melika Redd puts the lick in lick. Statuesque and always dressed in the best, Melika’s
+                          confidence exudes from every perfectly formed part of her. Her mortal life could have ended
+                          in the same way those of many of her friends did. Growing up in the roughest parts of the
+                          city in the ‘00s meant she was an easy target while walking home from her job as a dancer,
+                          keys clutched in her hands, ready to swing. However, a chance meeting with a Kindred client
+                          took off a cloak of fear she didn’t even know she wore. Taking to the night with zeal, Melika
+                          has spent her nights since the Embrace secretly funneling money back to her community and
+                          dancing for Kindred who assume she’s a Toreador.
+                          THINGS TO DO AS MELIKA:
+                          • Try something new with little to no fear of the consequences. You’ve spent enough time afraid.
+                          • Throw caution to the wind and hedonistically give in to every pleasure — then worry whatever
+                            you’ve done won’t be enough to satisfy you in the future.
+                          • Seduce someone cute for information, and then ask if they’d like to become a snack.
+
+                            Clan: Caitiff
+                            Embraced: 2020 (Born 1992)
+                            Ambition: To be the baddest bitch in the game. Any game. All games.
+                            Predator: Consensualist.
+                            Convictions: Innocence should be protected. Everyone deserves a beautiful life.
+                            Touchstones: Cinnamon, a go-go dancer and blood doll at the Velveteen Bunny. Mrs.
+                            Johnson, an elderly neighbor.
+                            Humanity: 8
+                            Generation: 12th
+                            Blood Potency: 1
+                            Attributes: Strength 1, Dexterity 2, Stamina 3; Charisma 4, Manipulation 3, Composure 2;
+                            Intelligence 2, Wits 3, Resolve 2
+                            Secondary Attributes: Health 6, Willpower 4
+                            Skills: Athletics 1, Brawl 1, Streetwise 2, Persuation 3 (vessels), Etiquette 2, Insight 3,
+                            Leadership 1, Performance (dancing) 4, Awareness 3, Finance 1, Academics 2, Medicine 2,
+                            Survival (urban exploration) 1
+                            Disciplines: Potence 1 (Lethal Body), Presence 2 (Awe, Lingering Kiss), Auspex 1
+                            (Heightened Senses)
+                            Advantages: Mawla (mentor: sire) 2, Beautiful 2, Mask 1, Money 2
+                            Flaws: Prey Exclusion (sex workers) 1, Dark Secret (Masquerade breacher) 1,
+                            Prey-Exclusion (non-consenting) 1, Long Bond 1
+
+
+
+
+                                                                          30
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                        A TASTE OF THE MOON
+
+
+
+
+              Name Melika Redd                                    Concept                                      Predator Consensualist
+
+              Chronicle                                           Ambition                                     Clan Caitiff
+
+              Sire                                                Desire                                       Generation
+                                                                                                                            12th
+                                                                             AT T R I BU T E S
+                                       Physical                                    Social                                      Mental
+                     Strength                 ¡¡ ¡ ¡ ¡
+                                                  ●
+                                                                     Charisma               ¡¡¡¡¡
+                                                                                              ●    ●   ●
+                                                                                                                   Intelligence         ¡¡¡
+                                                                                                                                        ● ●
+                                                                                                                                            ¡¡
+
+                   Dexterity                  ¡¡
+                                              ● ●
+                                                  ¡¡¡             Manipulation              ¡¡¡¡¡
+                                                                                            ● ●    ●
+                                                                                                                      Wits              ¡¡¡
+                                                                                                                                        ● ●●
+                                                                                                                                            ¡¡
+
+                     Stamina                  ¡¡
+                                               ●
+                                                 ¡
+                                                 ●
+                                                   ¡¡              Composure                ¡¡¡¡¡
+                                                                                            ● ●
+                                                                                                                     Resolve            ¡¡¡
+                                                                                                                                        ● ●
+                                                                                                                                            ¡¡
+                                                                 Health                                Willpower
+                                                        ¨ ¨ ¨ ¨ ¨ ¨ ¨¨¨¨                ¨¨¨¨¨ ¨¨¨¨¨
+                                                                                 SK I L L S
+
+            Athletics                                 ¡¡
+                                                      ●
+                                                         ¡ ¡ ¡ Animal Ken                     ¡¡¡¡¡ Academics                             ¡¡
+                                                                                                                                          ● ●
+                                                                                                                                              ¡¡¡
+
+            Brawl                                     ¡¡
+                                                      ●
+                                                         ¡ ¡ ¡ Etiquette                      ¡¡¡¡¡
+                                                                                              ● ●
+                                                                                                    Awareness                             ¡¡
+                                                                                                                                           ●
+                                                                                                                                             ¡
+                                                                                                                                             ●
+                                                                                                                                               ¡¡
+
+            Craft                                     ¡¡ ¡ ¡ ¡ Insight                        ¡¡¡¡¡
+                                                                                              ● ●
+                                                                                                    Finance                               ¡¡
+                                                                                                                                          ●
+                                                                                                                                             ¡¡¡
+
+            Drive                                     ¡¡ ¡ ¡ ¡ Intimidation                   ¡¡¡¡¡ Investigation                         ¡¡ ¡ ¡ ¡
+
+            Firearms                                  ¡¡
+                                                       ●
+                                                         ¡ ¡ ¡ Leadership                     ¡¡¡¡¡
+                                                                                              ●
+                                                                                                    Medicine                              ¡¡
+                                                                                                                                          ● ●
+                                                                                                                                              ¡¡¡
+
+            Melee                                     ¡¡ ¡ ¡ ¡ Performance                    ¡¡¡¡¡
+                                                                                              ● ● ● ●
+                                                                                                      Occult                              ¡¡ ¡ ¡ ¡
+
+            Larceny                                   ¡¡ ¡ ¡ ¡ Persuasion                     ¡¡¡¡¡ Politics                              ¡¡ ¡ ¡ ¡
+
+            Stealth                                   ¡¡ ¡ ¡ ¡ Streetwise                     ¡¡¡¡¡
+                                                                                              ●
+                                                                                                    Science                               ¡¡ ¡ ¡ ¡
+
+            Survival                                  ¡¡
+                                                      ●
+                                                         ¡ ¡ ¡ Subterfuge                     ¡¡¡¡¡ Technology                            ¡¡ ¡ ¡ ¡
+
+                                                                             DI S C I PL I N E S
+             Potence                                  ¡
+                                                      ●
+                                                        ¡ ¡ ¡ ¡ Presence                      ¡¡¡¡¡
+                                                                                              ● ●
+                                                                                                    Auspex                               ¡¡
+                                                                                                                                         ●
+                                                                                                                                            ¡¡¡
+             Lethal Body                                         Awe, Lingering Kiss                           Heightened Senses
+
+
+
+
+                                                      ¡¡ ¡ ¡ ¡                                ¡¡¡¡¡                                      ¡¡ ¡ ¡ ¡
+
+
+
+
+            Resonance                                                       Hunger ¨¨¨¨¨
+                                                                                   31                              Humanity ¨¨¨¨¨
+                                                                                                                            ■ ■ ■ ■ ■
+                                                                                                                                      ¨¨¨¨¨
+                                                                                                                                      ■ ■
+
+
+
+
+     © 2018 White Wolf Entertainment
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    A TASTE OF THE MOON
+
+
+
+
+                            CASSANDRA BARRANTES
+                          Keywords: Responsible, Wise, Romantic, Neurotic
+                               Cassandra knows her name fits perfectly with what happened to her — in a way doomed
+                          her to become a Malkavian. In fact, as someone who’s never felt entirely right in the world of
+                          the living, Cassandra knows that if she hadn’t become a lick, she would have become something
+                          else… probably a werewolf, a ghost, or something like that. Considering she believes she can see
+                          the lines of fate in all things, she may be correct.
+                               Already a practicing occultist when she was Embraced by her Malkavian sire, Cassandra
+                          didn’t see any reason to change anything about herself except being based in Miami, so she
+                          decided to start unlife in a new city. Trying to break out of the demure shell she carried in life,
+                          Cassandra flies under the radar as a popular YouTube tarot reader while amassing an impressive
+                          collection of books on every occult subject she can think of. Of course, she hasn’t read them all,
+                          but fate has personally told her she will.
+                          THINGS TO DO AS CASSANDRA:
+                          • Use Obfuscate to leave an awkward situation you don’t want to be a part of.
+                          • Try a new drug, blood, or physical sensation in the spirit of exposing yourself to something
+                            new. Instantly regret it as you worry about the threads of fate you altered while out of control.
+                          • Feel compelled to look into someone’s soul without asking for permission. Tell them the worst
+                            bits. It’s for their own good, honestly.
+
+                            Clan: Malkavian
+                            Embraced: 2019 (Born 1989)
+                            Ambition: To discover and fulfill your fate.
+                            Predator: Scene Queen (occultists)
+                            Convictions: The innocent should be protected from beings beyond their ken. Children
+                            should not suffer.
+                            Touchstones: Jaxon Barrantes, mortal nephew. Fatima Barrantes, mortal sister.
+                            Humanity: 7
+                            Generation: 12th
+                            Blood Potency: 1
+                            Attributes: Strength 2, Dexterity 2, Stamina 2; Charisma 3, Manipulation 1, Composure 3;
+                            Intelligence 4, Wits 2, Resolve 3
+                            Secondary Attributes: Health 5, Willpower 6
+                            Skills: Athletics 1, Larceny 1, Stealth 2 (shadowing), Etiquette 2 (occult), Insight 3,
+                            Leadership 1, Persuasion 3, Streetwise 2, Subterfuge 1 (innocence), Academics 3
+                            (research), Awareness 2, Investigation 2, Occult 3, Technology 1, Finance 1 (occult
+                            business),Investigation 1
+                            Disciplines: Auspex 2 (Heightened Senses, Premonition), Obfuscate 1 (Cloak of
+                            Shadows), Dominate 1 (Cloud Memory)
+                            Advantages: Mawla (mentor: sire) 2, Fame 1, Contacts 2, Mask 2 (astrologist), Resources 2
+                            Flaws: Prey Exclusion (clergy) 1, Long Bond 1, Folkloric Bane 1 (holy water)
+
+
+
+
+                                                                            32
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                          A TASTE OF THE MOON
+
+
+
+
+              Name Cassandra Barrantes Concept                                                                  Predator Scene Queen
+
+              Chronicle                                           Ambition                                      Clan Malkavian
+
+              Sire                                                Desire                                        Generation
+                                                                                                                             12th
+                                                                             AT T R I BU T E S
+                                       Physical                                    Social                                       Mental
+                     Strength                 ¡¡ ¡ ¡ ¡
+                                                  ●   ●
+                                                                     Charisma               ¡¡¡¡¡
+                                                                                            ●   ●   ●
+                                                                                                                    Intelligence         ¡¡¡
+                                                                                                                                         ● ● ●
+                                                                                                                                               ¡
+                                                                                                                                               ●
+                                                                                                                                                 ¡
+
+                   Dexterity                  ¡¡
+                                              ● ●
+                                                  ¡¡¡              Manipulation             ¡¡¡¡¡
+                                                                                            ●
+                                                                                                                       Wits              ¡¡¡
+                                                                                                                                         ● ●
+                                                                                                                                             ¡¡
+
+                     Stamina                  ¡¡
+                                              ● ●
+                                                  ¡¡¡               Composure               ¡¡¡¡¡
+                                                                                            ● ● ●
+                                                                                                                      Resolve            ¡¡¡
+                                                                                                                                           ●
+                                                                                                                                             ¡¡
+                                                                  Health                                Willpower
+                                                          ¨ ¨ ¨ ¨ ¨ ¨ ¨¨¨¨              ¨¨¨¨¨ ¨¨¨¨¨
+                                                                                 SK I L L S
+
+            Athletics                                 ¡¡
+                                                      ●
+                                                         ¡ ¡ ¡ Animal Ken                       ¡¡¡¡¡ Academics                             ¡¡
+                                                                                                                                            ● ●
+                                                                                                                                                ¡
+                                                                                                                                                ●
+                                                                                                                                                  ¡¡
+
+            Brawl                                     ¡¡ ¡ ¡ ¡ Etiquette                        ¡¡¡¡¡
+                                                                                                ● ●
+                                                                                                      Awareness                             ¡¡
+                                                                                                                                            ● ●
+                                                                                                                                                ¡¡¡
+
+            Craft                                     ¡¡ ¡ ¡ ¡ Insight                          ¡¡¡¡¡
+                                                                                                ● ● ●
+                                                                                                      Finance                               ¡¡
+                                                                                                                                            ●
+                                                                                                                                               ¡¡¡
+
+            Drive                                     ¡¡ ¡ ¡ ¡ Intimidation                     ¡¡¡¡¡ Investigation                         ¡¡
+                                                                                                                                            ●
+                                                                                                                                               ¡¡¡
+
+            Firearms                                  ¡¡
+                                                       ●
+                                                         ¡ ¡ ¡ Leadership                       ¡¡¡¡¡
+                                                                                                ●
+                                                                                                      Medicine                              ¡¡ ¡ ¡ ¡
+
+            Melee                                     ¡¡ ¡ ¡ ¡ Performance                      ¡¡¡¡¡ Occult                                ¡¡
+                                                                                                                                            ● ●
+                                                                                                                                                ¡
+                                                                                                                                                ●
+                                                                                                                                                  ¡¡
+
+            Larceny                                   ¡¡
+                                                      ●
+                                                         ¡ ¡ ¡ Persuasion                       ¡¡¡¡¡
+                                                                                                ● ● ●
+                                                                                                      Politics                              ¡¡ ¡ ¡ ¡
+
+            Stealth                                   ¡¡
+                                                      ● ●
+                                                          ¡ ¡ ¡ Streetwise                      ¡¡¡¡¡
+                                                                                                ● ●
+                                                                                                      Science                               ¡¡ ¡ ¡ ¡
+
+            Survival                                  ¡¡ ¡ ¡ ¡ Subterfuge                       ¡¡¡¡¡
+                                                                                                ●
+                                                                                                      Technology                            ¡¡
+                                                                                                                                            ●
+                                                                                                                                               ¡¡¡
+
+                                                                             DI S C I PL I N E S
+             Auspex            ¡ ¡ ¡ ¡ ¡ Obfuscate        ●
+                                                                                                ¡¡¡¡¡
+                                                                                                ●
+                                                                                                      Dominate                             ¡¡
+                                                                                                                                           ●
+                                                                                                                                              ¡¡¡
+             Heightened Senses           Cloak of Shadows                                                       Cloud Memory
+             Premonition
+
+
+
+
+                                                      ¡¡ ¡ ¡ ¡                                  ¡¡¡¡¡                                      ¡¡ ¡ ¡ ¡
+
+
+
+
+            Resonance                                                        Hunger ¨¨¨¨¨
+                                                                                    33                              Humanity ¨¨¨¨¨
+                                                                                                                             ■ ■ ■ ■ ■
+                                                                                                                                       ¨¨¨¨¨
+                                                                                                                                        ■
+
+
+
+
+     © 2018 White Wolf Entertainment
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    A TASTE OF THE MOON
+
+
+
+
+                            FINCH
+                          Keywords: Suave, Adventurous, Dominating, Fickle
+                               They don’t really like to talk about where they’re from, or what life existed beyond the
+                          unlife they have right now, tonight. It’s not that they were from a broken home. It’s not that
+                          they were Embraced by mistake. It’s that for Finch, every night is a new adventure, a new
+                          chance to discover untold stories.
+                               Finch radiates excitement and dangerous animalistic beauty, like the feeling of a bad idea
+                          you’re going to do anyway. They’ve been in the city for some time with their sire, and they feel
+                          like they’re ready to leave the proverbial nest. Their current mask as a bartender is wearing thin.
+                          Maybe they’ll break up with their blood doll girlfriend and have one last big night on the town.
+                          The road is calling.
+                          THINGS TO DO AS FINCH:
+                          • See if you can score a vial of something fresh that could satisfy your addiction and keep your
+                            mind on task.
+                          • Make someone a promise. Immediately choose to break it.
+                          • Give into the Beast and revel in turning an enemy into pulp.
+
+                            Clan: Gangrel
+                            Embraced: 2018 (Born 1999)
+                            Ambition: To see the world and make a name for myself.
+                            Predator: Siren
+                            Convictions: Rebelling is always good.
+                            Touchstones: Juan Alamanzar, local bodega owner. Emmy Stardust, blood doll girlfriend.
+                            Humanity: 6
+                            Generation: 13th
+                            Blood Potency: 1
+                            Attributes: Strength 4, Dexterity 3, Stamina 3; Charisma 2, Manipulation 2,
+                            Composure 2; Intelligence 1, Wits 2, Resolve 3
+                            Secondary Attributes: Health 7 (with Resilience), Willpower 5
+                            Skills: Athletics 1, Brawl (armed mortals) 4, Melee 3, Survival (urban wilderness) 2,
+                            Animal Ken 1, Intimidation 2, Streetwise 3, Awareness 2, Persuasion (seduction) 3
+                            Disciplines: Animalism 3 (Sense the Beast, Feral Whispers, Quell the Beast), Fortitude 1
+                            (Resilience)
+                            Advantages: Mawla (mentor: sire) 2, Beauty 2, Mask 1, Resources 1, Short Bond 2,
+                            Bloodhound 1
+                            Flaws: Enemy (jealous partner) 1, Addiction (methylphenidate) 1, Folkloric Bane 1 (silver)
+
+
+
+
+                                                                           34
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                                 A TASTE OF THE MOON
+
+
+
+
+              Name Finch                                              Concept                                       Predator Siren
+
+              Chronicle                                               Ambition                                      Clan Gangrel
+
+              Sire                                                    Desire                                        Generation
+                                                                                                                                 13th
+                                                                                 AT T R I BU T E S
+                                       Physical                                        Social                                       Mental
+                     Strength                 ¡¡¡¡¡
+                                                  ●   ●   ●   ●
+                                                                         Charisma               ¡¡¡¡¡
+                                                                                                ●   ●
+                                                                                                                        Intelligence         ¡¡¡ ¡ ¡
+                                                                                                                                             ●
+
+
+
+
+                   Dexterity                  ¡¡¡¡¡
+                                                  ●   ●   ●
+                                                                       Manipulation             ¡¡¡¡¡
+                                                                                                ●   ●
+                                                                                                                           Wits              ¡¡¡ ¡ ¡
+                                                                                                                                             ●    ●
+
+
+
+
+                     Stamina                  ¡¡¡¡¡   ●   ●
+                                                                        Composure               ¡¡¡¡¡
+                                                                                                ●   ●
+                                                                                                                          Resolve            ¡¡¡ ¡ ¡
+                                                                                                                                             ●    ●   ●
+
+
+
+
+                                                                      Health                                Willpower
+                                                          ¨¨¨¨¨ ¨¨¨¨¨                       ¨¨¨¨¨ ¨¨¨¨¨
+                                                                                     SK I L L S
+
+            Athletics                                 ¡¡¡¡¡ Animal Ken
+                                                      ●
+                                                                                                    ¡¡¡¡¡ Academics
+                                                                                                        ●
+                                                                                                                                                      ¡¡¡¡¡
+
+            Brawl                                     ¡¡¡¡¡ Etiquette
+                                                      ●   ●   ●   ●
+                                                                                                    ¡¡¡¡¡ Awareness                                   ¡¡¡¡¡
+                                                                                                                                                      ●   ●
+
+
+
+
+            Craft                                     ¡¡¡¡¡ Insight                                 ¡¡¡¡¡ Finance                                     ¡¡¡¡¡
+
+            Drive                                     ¡¡¡¡¡ Intimidation                            ¡¡¡¡¡ Investigation
+                                                                                                            ●
+                                                                                                                                                      ¡¡¡¡¡
+
+            Firearms                                  ¡¡¡¡¡ Leadership
+                                                          ●
+                                                                                                    ¡¡¡¡¡ Medicine                                    ¡¡¡¡¡
+
+            Melee                                     ¡¡¡¡¡ Performance
+                                                      ●   ●   ●
+                                                                                                    ¡¡¡¡¡ Occult                                      ¡¡¡¡¡
+
+            Larceny                                   ¡¡¡¡¡ Persuasion                              ¡¡¡¡¡ Politics
+                                                                                                        ●   ●   ●
+                                                                                                                                                      ¡¡¡¡¡
+
+            Stealth                                   ¡¡¡¡¡ Streetwise                              ¡¡¡¡¡ Science
+                                                                                                        ●   ●
+                                                                                                                                                      ¡¡¡¡¡
+
+            Survival                                  ¡¡¡¡¡ Subterfuge
+                                                      ●   ●
+                                                                                                    ¡¡¡¡¡ Technology                                  ¡¡¡¡¡
+
+                                                                                 DI S C I PL I N E S
+             Animalism                                ¡¡¡¡¡
+                                                      ●   ●   ●
+                                                                      Fortitude                     ¡¡¡¡¡
+                                                                                                        ●
+                                                                                                                                                  ¡¡¡¡¡
+             Sense the Beast                                          Resilience
+             Feral Whispers
+             Quell the Beast
+
+
+
+                                                      ¡¡¡¡¡                                         ¡¡¡¡¡                                         ¡¡¡¡¡
+
+
+
+
+            Resonance                                                           Hunger ¨
+                                                                                       3 5¨ ¨ ¨ ¨                       Humanity ¨
+                                                                                                                                 ■
+                                                                                                                                   ¨
+                                                                                                                                   ■
+                                                                                                                                     ¨
+                                                                                                                                     ■
+                                                                                                                                       ¨
+                                                                                                                                       ■
+                                                                                                                                         ¨
+                                                                                                                                         ■
+                                                                                                                                           ¨
+                                                                                                                                           ■
+                                                                                                                                             ¨¨¨¨
+     © 2018 White Wolf Entertainment
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    A TASTE OF THE MOON
+
+
+
+
+                            THOMAS NG
+                          Keywords: Curious, Enthusiastic, Innovative, Petty
+                               Work hard and play harder was a motto Thomas held in life, but since his Embrace, his
+                          palette has greatly increased with it comes to play. Previously a nurse at a local free clinic,
+                          Thomas spends half his time offering check-ups to the kine on skid row who could use a doctor.
+                          The other half is for doing all the things he used to stop himself from doing because it could
+                          fuck him over.
+                               A hedonist within reason, Thomas knows he has to be careful lest the Beast leads him too
+                          far down the dangerous path he’s trying to walk. That’s why the idea of drinking from blood
+                          bags attracts him, even though his experience with them has, so far, been decidedly lackluster.
+                          Innately curious about combining drugs and blood, Thomas keeps a helpful spreadsheet of all
+                          his experiments with drinking from drugged-up mortals.
+                          THINGS TO DO AS THOMAS:
+                          • Seek out new sensations, weighing the pros and cons before diving in.
+                          • Touch, handle, or poke around something you shouldn’t.
+                          • Accidentally share everything you know about a subject because you’re too excited to keep it in.
+
+                            Clan: Brujah
+                            Embraced: 2016 (Born 1985)
+                            Ambition: To leave a legacy of knowledge.
+                            Predator: Bagger
+                            Convictions: Knowledge is sacred. Provide help to the forgotten.
+                            Touchstones: Pat Khan, elderly neighbor. Franck, houseless college student.
+                            Humanity: 7
+                            Generation: 13th
+                            Blood Potency: 1
+                            Attributes: Strength 2, Dexterity 2, Stamina 2; Charisma 3, Manipulation 1, Composure 4;
+                            Intelligence 2, Wits 3, Resolve 3
+                            Secondary Attributes: Health 5, Willpower 4
+                            Skills: Medicine 3, Insight 3, Leadership 1, Persuasion 4, Academics 1 (blood types),
+                            Awareness 2, Investigation 3, Technology 2, Science 2 (data management), Streetwise 1
+                            (black market)
+                            Disciplines: Potence 1 (Prowess), Presence 1 (Awe), Celerity 1 (Cat’s Grace), Obfuscate 1
+                            (Silence of Death)
+                            Advantages: Mawla 2 (mentor: sire), Resources 1, Mask 2 (houseless outreach provider),
+                            Iron Gullet 3, Contacts 2
+                            Flaws: Prey Exclusion (houseless people) 1 , Enemy (a thin-blood junkie) 2,
+                            Known Corpse 1
+
+
+
+
+                                                                           36
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                                      A TASTE OF THE MOON
+
+
+
+
+              Name Thomas Ng                                    Concept                                                   Predator Bagger
+
+              Chronicle                                         Ambition                                                  Clan Brujah
+
+              Sire                                              Desire                                                    Generation
+                                                                                                                                       13th
+                                                                           AT T R I BU T E S
+                                       Physical                                  Social                                                  Mental
+                     Strength                 ¡¡¡¡¡
+                                                  ●   ●
+                                                                   Charisma               ¡¡¡¡¡
+                                                                                          ●   ●       ●
+                                                                                                                           Intelligence           ¡¡¡ ¡ ¡
+                                                                                                                                                  ●    ●
+
+
+
+
+                   Dexterity                  ¡¡¡¡¡
+                                                  ●   ●
+                                                                Manipulation              ¡¡¡¡¡
+                                                                                          ●
+                                                                                                                                Wits              ¡¡¡ ¡ ¡
+                                                                                                                                                  ●    ●       ●
+
+
+
+
+                     Stamina                  ¡¡¡¡¡
+                                                  ●   ●
+                                                                 Composure                ¡¡¡¡¡
+                                                                                          ●   ●       ●       ●
+                                                                                                                              Resolve             ¡¡¡ ¡ ¡
+                                                                                                                                                  ●    ●       ●
+
+
+
+
+                                                               Health                                     Willpower
+                                                          ¨¨¨¨¨ ¨¨¨¨¨                 ¨¨¨¨¨ ¨¨¨¨¨
+                                                                               SK I L L S
+
+            Athletics                                 ¡¡¡¡¡ Animal Ken                        ¡¡¡¡¡ Academics                                              ¡¡¡¡¡
+                                                                                                                                                           ●
+
+
+
+
+            Brawl                                     ¡¡¡¡¡ Etiquette                         ¡¡¡¡¡ Awareness                                              ¡¡¡¡¡
+                                                                                                                                                           ●       ●
+
+
+
+
+            Craft                                     ¡¡¡¡¡ Insight                           ¡¡¡¡¡ Finance
+                                                                                                  ●       ●       ●
+                                                                                                                                                           ¡¡¡¡¡
+
+            Drive                                     ¡¡¡¡¡ Intimidation                      ¡¡¡¡¡ Investigation                                          ¡¡¡¡¡
+                                                                                                                                                           ●       ●   ●
+
+
+
+
+            Firearms                                  ¡¡¡¡¡ Leadership
+                                                          ●
+                                                                                              ¡¡¡¡¡ Medicine
+                                                                                                  ●
+                                                                                                                                                           ¡¡¡¡¡
+                                                                                                                                                           ●       ●   ●
+
+
+
+
+            Melee                                     ¡¡¡¡¡ Performance                       ¡¡¡¡¡ Occult                                                 ¡¡¡¡¡
+
+            Larceny                                   ¡¡¡¡¡ Persuasion                        ¡¡¡¡¡ Politics
+                                                                                                  ●       ●       ●   ●
+                                                                                                                                                           ¡¡¡¡¡
+
+            Stealth                                   ¡¡¡¡¡ Streetwise                        ¡¡¡¡¡ Science
+                                                                                                  ●
+                                                                                                                                                           ¡¡¡¡¡
+                                                                                                                                                           ●       ●
+
+
+
+
+            Survival                                  ¡¡¡¡¡ Subterfuge                        ¡¡¡¡¡ Technology                                             ¡¡¡¡¡
+                                                                                                                                                           ●       ●
+
+
+
+
+                                                                           DI S C I PL I N E S
+             Potence                                  ¡¡¡¡¡ Presence
+                                                      ●
+                                                                                              ¡¡¡¡¡ Celerity
+                                                                                                  ●
+                                                                                                                                                       ¡¡¡¡¡
+                                                                                                                                                           ●
+
+
+
+
+             Prowess                                            Awe                                                       Cat's Grace
+
+
+
+
+             Obfuscate                                ¡¡¡¡¡
+                                                      ●
+                                                                                              ¡¡¡¡¡                                                    ¡¡¡¡¡
+             Silence of Death
+
+
+
+
+            Resonance                                                            3 7¨ ¨ ¨ ¨
+                                                                          Hunger ¨                                        Humanity ¨
+                                                                                                                                   ■
+                                                                                                                                     ¨
+                                                                                                                                     ■
+                                                                                                                                       ¨
+                                                                                                                                       ■
+                                                                                                                                         ¨
+                                                                                                                                         ■
+                                                                                                                                           ¨
+                                                                                                                                           ■
+                                                                                                                                             ¨
+                                                                                                                                             ■
+                                                                                                                                               ¨
+                                                                                                                                               ■
+                                                                                                                                                 ¨¨¨
+     © 2018 White Wolf Entertainment
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    A TASTE OF THE MOON
+
+
+
+
+                            GARNET GRIER
+                          Keywords: Funny, Insightful, Chaotic, Vengeful
+                               Garnet Grier was Embraced at a concert the night she made up her mind that she was
+                          leaving law for comedy. This is a fact she finds deeply amusing. Garnet does her best to find the
+                          humor in death, and nothing is more absurd to her than knowing her sire Embraced her for her
+                          Rubenesque beauty… which appeared to them as they fell into the acid trip hiding in her blood.
+                               When her sire left the Camarilla, Garnet followed with a sigh of relief. Existing among
+                          them always felt like one wrong step would bring everything crashing down around her,
+                          and honestly, that was too much pressure. Naturally gifted with a quick wit and writing
+                          prowess, sometimes Garnet wishes she could take her routines outside of Kindred clubs where
+                          entertaining monsters is a drag. So many ancillae can’t take a joke.
+                          THINGS TO DO AS GARNET:
+                          • Distract an enemy with a joke and if they don’t laugh, rip them apart because they
+                            disrespected your brilliant timing.
+                          • Find the humor in even the bleakest of situations.
+                          • Convince someone powerful to laugh at themselves.
+
+                            Clan: Toreador
+                            Embraced: 2016 (Born 1991)
+                            Ambition: To reach my full potential
+                            Predator: Scene Queen
+                            Convictions: Go your own way. Art is liberation.
+                            Touchstones: Robbie Mills, local gas station attendant. Flavia Davit, retired burlesque
+                            artist.
+                            Humanity: 7
+                            Generation: 12th
+                            Blood Potency: 1
+                            Attributes: Strength 1, Dexterity 2, Stamina 2; Charisma 4, Manipulation 3, Composure 2;
+                            Intelligence 3, Wits 3, Resolve 2
+                            Secondary Attributes: Health 6, Willpower 4
+                            Skills: Etiquette (comedy) 3, Performance 3, Tech 1, Investigation 1, Academics (law) 3,
+                            Persuasion 4, Streetwise 2, Driving 2, Melee 2, Awareness 1
+                            Disciplines: Celerity 1 (Cat’s Grace), Presence 2 (Awe, Daunt), Fortitude 1 (Resilience)
+                            Advantages: Mawla (mentor: sire) 2, Fame 1, Contacts 3, Mask 1, Short Bond
+                            Flaws: Prey Exclusion (hippies) 1, Folkloric Bane (silver) 1, Dark Secret 1 (debt)
+
+
+
+
+                                                                           38
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                          A TASTE OF THE MOON
+
+
+
+
+              Name Garnet Grier                                   Concept                                       Predator Scene Queen
+
+              Chronicle                                           Ambition                                      Clan Toreador
+
+              Sire                                                Desire                                        Generation
+                                                                                                                             12th
+                                                                             AT T R I BU T E S
+                                       Physical                                    Social                                       Mental
+                     Strength                 ¡¡ ¡ ¡ ¡
+                                                  ●
+                                                                     Charisma               ¡¡¡¡¡
+                                                                                            ●   ●   ●   ●
+                                                                                                                    Intelligence         ¡¡¡
+                                                                                                                                         ● ● ●
+                                                                                                                                               ¡¡
+
+                   Dexterity                  ¡¡
+                                              ● ●
+                                                  ¡¡¡              Manipulation             ¡¡¡¡¡
+                                                                                            ●       ●
+                                                                                                                       Wits              ¡¡¡
+                                                                                                                                         ● ●
+                                                                                                                                             ¡¡
+                                                                                                                                             ●
+
+
+
+
+                     Stamina                  ¡¡
+                                              ●
+                                                 ¡¡¡                Composure               ¡¡¡¡¡
+                                                                                            ● ●
+                                                                                                                      Resolve            ¡¡¡
+                                                                                                                                         ● ●
+                                                                                                                                             ¡¡
+                                                                  Health                                Willpower
+                                                        ¨ ¨ ¨ ¨ ¨ ¨ ¨¨¨¨                ¨¨¨¨¨ ¨¨¨¨¨
+                                                                                 SK I L L S
+
+            Athletics                                 ¡¡ ¡ ¡ ¡ Animal Ken                       ¡¡¡¡¡ Academics                             ¡¡
+                                                                                                                                            ● ●
+                                                                                                                                                ¡
+                                                                                                                                                ●
+                                                                                                                                                  ¡¡
+
+            Brawl                                     ¡¡ ¡ ¡ ¡ Etiquette                        ¡¡¡¡¡
+                                                                                                ● ● ●
+                                                                                                      Awareness                             ¡¡
+                                                                                                                                            ●
+                                                                                                                                               ¡¡¡
+
+            Craft                                     ¡¡ ¡ ¡ ¡ Insight                          ¡¡¡¡¡ Finance                               ¡¡ ¡ ¡ ¡
+
+            Drive                                     ¡¡
+                                                      ● ●
+                                                          ¡ ¡ ¡ Intimidation                    ¡¡¡¡¡ Investigation                         ¡¡
+                                                                                                                                            ●
+                                                                                                                                               ¡¡¡
+
+            Firearms                                  ¡¡ ¡ ¡ ¡ Leadership                       ¡¡¡¡¡ Medicine                              ¡¡ ¡ ¡ ¡
+
+            Melee                                     ¡¡
+                                                      ● ●
+                                                          ¡ ¡ ¡ Performance                     ¡¡¡¡¡
+                                                                                                ● ● ●
+                                                                                                      Occult                                ¡¡ ¡ ¡ ¡
+
+            Larceny                                   ¡¡ ¡ ¡ ¡ Persuasion                       ¡¡¡¡¡
+                                                                                                ● ● ● ●
+                                                                                                        Politics                            ¡¡ ¡ ¡ ¡
+
+            Stealth                                   ¡¡ ¡ ¡ ¡ Streetwise                       ¡¡¡¡¡
+                                                                                                ● ●
+                                                                                                      Science                               ¡¡ ¡ ¡ ¡
+
+            Survival                                  ¡¡ ¡ ¡ ¡ Subterfuge                       ¡¡¡¡¡ Technology                            ¡¡
+                                                                                                                                            ●
+                                                                                                                                               ¡¡¡
+
+                                                                             DI S C I PL I N E S
+             Celerity                                 ¡
+                                                      ●
+                                                        ¡ ¡ ¡ ¡ Presence                        ¡¡¡¡¡
+                                                                                                ● ●
+                                                                                                      Fortitude                            ¡¡
+                                                                                                                                           ●
+                                                                                                                                              ¡¡¡
+             Cat's Grace                                          Awe                                           Resilience
+                                                                  Daunt
+
+
+
+
+                                                      ¡¡ ¡ ¡ ¡                                  ¡¡¡¡¡                                      ¡¡ ¡ ¡ ¡
+
+
+
+
+            Resonance                                                       Hunger ¨¨¨¨¨
+                                                                                   39                               Humanity ¨¨¨¨¨
+                                                                                                                             ■ ■ ■ ■ ■
+                                                                                                                                       ¨¨¨¨¨
+                                                                                                                                       ■ ■
+
+
+
+
+     © 2018 White Wolf Entertainment
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    A TASTE OF THE MOON
+
+
+
+
+                                             VAMPIRE:
+                                             THE MASQUERADE
+                                             5TH EDITION CORE RULEBOOK
+                                             • Core rulebook for players and Storytellers
+                                             • Play as a vampire struggling for survival
+                                               and supremacy
+                                             • Navigate undead politics while avoiding            VAMPIRE:                 VAMPIRE:                     VAMPIRE:
+                                                                                                  THE MASQUERADE           THE MASQUERADE               THE MASQUERADE
+                                               deadly hunters                                     5TH EDITION              5TH EDITION                  5TH EDITION
+                                                                                                  DICE SET                 STORYTELLER’S                EXPANDED
+                                             $55                                                  $20
+                                                                                                                           SCREEN & TOOLKIT             CHARACTER
+                                                                                                                                                        JOURNAL
+                                                                                                                           $30
+                                                                                                                                                        $21.99
+
+
+
+
+   VAMPIRE:                                   VAMPIRE:                                     VAMPIRE:                                    VAMPIRE:
+   THE MASQUERADE                             THE MASQUERADE                               THE MASQUERADE                              THE MASQUERADE
+   5TH EDITION                                5TH EDITION                                  5TH EDITION                                 5TH EDITION
+   ANARCH                                     CHICAGO BY NIGHT                             CAMARILLA                                   FALL OF LONDON
+   • Features lore on the Anarch Movement,    • Features the Kindred history of            • Features lore on the Camarilla faction,   • Explores the events that led to the
+     rules for clan Ministry, and more          Chicago, rules for clan Lasombra,            rules for clan Banu Haqim, and more         destruction of London’s Kindred by
+                                                and guidance for Storytellers for                                                        mortal hunters
+   $50                                          stories in the city                        $50
+                                                                                                                                       $45
+                                              $55
+
+
+
+
+   VAMPIRE:                                    VAMPIRE:                                     VAMPIRE:                                    VAMPIRE:
+   THE MASQUERADE                              THE MASQUERADE                               THE MASQUERADE                              THE MASQUERADE
+   5TH EDITION                                 5TH EDITION                                  5TH EDITION                                 5TH EDITION
+   CULTS OF THE BLOOD GODS                     SECOND INQUISITION                           THE BOOK OF NOD                             SABBAT: THE BLACK HAND
+   • Features lore on the Hecata clan,         • Expand your chronicles with                • A collection of rich mythology on         • Features lore for the Sabbat
+     rules for the Oblivion Discipline,          dangerous antagonists and tactics            the creation of vampires for use in         and rules on introducing them as
+     and more                                    your coterie can use to fight back           your chronicles                             antagonists in your chronicles
+   $45                                         $45                                          $50                                         $45
+
+
+
+
+                                                          © 2022 RENEGADE GAME STUDIOS. © 2022 PARADOX INTERACTIVE AB.
+
+                                                                                      40
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+

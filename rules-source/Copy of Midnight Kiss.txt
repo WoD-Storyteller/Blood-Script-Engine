@@ -1,0 +1,1751 @@
+                     Midnight
+                       Kiss
+
+
+                                                A STORY FOR
+
+
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    MIDNIGHT KISS
+
+
+
+
+                                                         MIDNIGHT KISS
+                                                                             Legal and Credits
+                                                                       W RIT TE N BY Jose Garcia
+                                              LE A D D E V E LO PE R , WO RLD O F DA RKN ESS: Juhana Pettersson
+                                                         ASSO C I ATE PRO D U C E R , RP GS: Kevin Schluter
+                                                                     E D ITI N G Freja Gyldenstrøm
+                                                               I N TE RI O R A RT Paradox provided art
+                                                      G R A PH I C D ES I G N A N D L AYO UT Sarah Robinson
+                              PL AY TES TI N G Jaakko Stenros, Henri Hakkarainen, Anne Liljeström and Emi Maeda
+
+
+                                                                       World of Darkness Team
+                                                                  V I C E PRES I D E N T: Sean Greaney
+                                                                 C RE ATI V E D I REC TO R: Justin Achilli
+                                                                      E D ITO R: Karim Muammar
+                                                                     A RT D I REC TO R: Tomas Arfert
+                                                                M A RKE TI N G M A N AG E R: Jason Carl
+                                                          PA RTN E RS H I PS M A N AG E R: Dhaunae De Vir
+                                                      COMMU N IT Y D E V E LO PE R: Marty “Outstar” Zych
+                                                              LI C E NS I N G M A N AG E R: Nikola Filipov
+                                                             C A MPA I G N M A N AG E R: Viktor Bovallius
+
+
+                                                                            Paradox Licensing
+                                                             BUS I N ESS D E V E LO PE R: Dhaunae De Vir
+
+
+                                                                        Renegade Game Studios
+
+                        President & Publisher: Scott Gaeta                                                     Product Developer, RPGs: Jason Keeley
+               Vice President Sales & Marketing: Sara Erickson                                                    Senior Game Designer: Matt Hyra
+                            Controller: Robyn Gaeta                                               Game Designers: Dan Blanchett & Christopher Chung
+                     Director of Operations: Leisha Cummins                                                    Director of Visual Design: Anita Osburn
+                    Associate Project Manager: Katie Gjesdahl                                                 Creative Director, Games: Jeanne Torres
+                           Sales Manager: Kaitlin Ellis                                                       Creative Director, RPGs: Sarah Robinson
+                         E-Commerce: Nick Medinger                                                    Creative Production: Todd Crapper, Noelle Lopez,
+              Sales & Marketing Program Manager: Matt Holland                                                               & Gordon Tucker
+                       Community Manager: Jordan Gaeta                                                        Video Production Associate: Katie Schmitt
+           Senior Producer of Board & Card Games: Dan Bojanowski                                           Customer Service Manager: Jenni Janikowski
+              Associate Producer, Board & Card Games: Jimmy Le                                                  Customer Service: Bethany Bauthues
+                    Associate Producer, RPGs: Kevin Schluter                                                     Finance Clerk: Madeline Minervini
+            Lead Developer, World of Darkness: Juhana Pettersson
+
+
+                                    © 2022 Paradox Interactive® AB. Vampire: The Masquerade® – are trademarks and/or registered
+                         trademarks of Paradox Interactive AB in Europe, the U.S., and other countries. ©2022 Renegade Game Studios. All Rights Reserved.
+                                                                             Made in Shenzhen China.
+                                                         Visit the World of Darkness online at www.worldofdarkness.com
+
+
+
+
+                                                                                        2
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                  TABLE OF CONTENTS
+            MIDNIGHT KISS                          5    CHAPTER 5: THE CHANCEL AND 21
+            A Story for Vampire: The Masquerade     5   THE MAUSOLEUM
+            Story Map                               6   Tomas’s Haven                21
+            Background                              8   The Trial of Obedience       22
+            The Nephilim                            8   Finding Albertine            22
+            A Tabernacle of Lies                    8
+            Story Structure                         8   CHAPTER 6: BAPTISM IN BLOOD 24
+            Treatment                               8   When’s Midnight?             24
+            A Focused Sandbox                       9   The Ball Drops               24
+            Entrances                              10   The Bloody Chrism            24
+            Tenets                                 10   Who Goes On Stage?           25
+            Default Tenets                         10   What Happens?                25
+            Story Tenets                           10   Stopping the Chrism          25
+            Custom Tenets                          10   Albertine Restored           26
+            Coterie Splits and Conflict            10   Epilogue: Happy New Year     26
+            Prologue: Getting Ready                11
+                                                        APPENDIX: PLAYER             28
+            CHAPTER 1: A GUIDED TOUR 12                 CHARACTER COTERIE
+            Meeting Rebecca                        12
+            Sneak Preview                          12
+            Morgan                                 13
+            Go Anywhere                            14
+
+            CHAPTER 2: THE ATRIUM                 15
+            Trial of the Wicked                    15
+            The Hunters                            16
+
+            CHAPTER 3: THE NAVE                   17
+            Trial of Blades                        17
+            Don’t I Know You?                      18
+
+            CHAPTER 4: TRANSEPTS AND 19
+            PASSAGES
+            Secret Passageways                    19
+            Finding Morgan                        19
+            The Trial of Heavenly Supper          20
+
+
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    MIDNIGHT KISS
+
+
+
+
+                                                      4
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                  MIDNIGHT KISS
+
+
+
+
+                 Midnight Kiss
+                                A Story for Vampire: The Masquerade
+
+                                                                New Year, New You!
+
+
+                           You’re trying to survive as one of the Kindred night to night, dealing with the sects, the
+                        hunters, your own fading connection to the mortal world you used to inhabit. Ask yourself: Is
+                        this all it’s ever going to be? It’s New Year’s Eve and as the city around you celebrates, you’re
+                                                faced with another twelve months of the same old.
+
+
+                        Unless you have a choice. You have received an invitation from the Nephilim, the Children of
+                         the Angel, to attend a New Year’s celebration at their temple. A mysterious, glamorous and
+                        powerful vampiric cult, they’re opening their doors to the Kindred of the city, providing a rare
+                                                   chance to marvel at the wonders within.
+
+
+                        During the festivities, you’re offered a chance to be part of something greater. Will you accept at the
+                                     cost of your humanity or greet the new year with your principles intact?
+
+
+
+
+                                   C O N T E N T WA R N I N G
+                                   Vampire: The Masquerade addresses the darkness in the real
+                                   world through horror stories. This story includes in-world references and
+                                   expressions of the following: addiction, violence, abduction, ritualistic
+                                   murder, religious abuse, sexual situations, and death.
+                                   JUMPING RIGHT IN
+                                   If this story isn’t part of an established chronicle and the players don’t
+                                   have time to make their own characters, we’ve provided you with a co-
+                                   terie of six ready-to-play vampires. They’re a newly established Que-
+                                   stari coterie (see Vampire, p. 199). The coterie’s a blend of thin-blood-
+                                   ed and true vampires.
+
+
+
+
+                                                                           5
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    MIDNIGHT KISS
+
+
+
+
+             Story Map
+                                                               THE HUNTERS
+             PROLOGUE                            11
+             MEETING REBECCA                     12
+             THE TOUR                            14
+             MEETING MORGAN                      19
+             EXPLORATION                         14
+             THE HUNTERS                         16
+             THE TRIAL OF THE HEAVENLY SUPPER    20
+             THE TRIAL OF THE WICKED             15
+             THE TRIAL OF THE BLADES             17
+             THE TRIAL OF OBEDIENCE              22
+             DON'T I KNOW YOU?                   18
+             THE BALL DROPS                      24
+             TOMAS' HAVEN                        21
+             FINDING MORGAN                      18
+             ALBERTINE'S PRISON                  22
+             ALBERTINE RESTORED                  26
+             THE BLOODY CHRISM                   24
+             EPILOGUE                            26
+
+
+
+
+                                       MEETING                                       MEETING
+                PROLOGUE                                      THE TOUR
+                                       REBECCA                                       MORGAN
+
+
+
+
+                                                      6
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                   MIDNIGHT KISS
+
+
+
+
+                                                                              DON’T I KNOW
+                                                                                 YOU?
+
+
+
+
+                                                      THE TRIAL OF THE
+                                                           BLADES
+
+                       THE TRIAL OF THE
+                           WICKED
+                                                                              THE BALL DROPS
+
+
+
+
+                         THE TRIAL OF
+                                                  THE TRIAL OF
+                        THE HEAVENLY
+                                                   OBEDIENCE
+                           SUPPER
+                                                                                          THE BLOODY
+                                                                                            CHRISM
+
+
+
+
+                                                                                                  EPILOGUE
+        EXPLORATION                              TOMAS’ HAVEN
+
+
+
+
+          FINDING                       ALBERTINE’S                      ALBERTINE
+          MORGAN                          PRISON                         RESTORED
+
+
+
+
+                                                            7
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    MIDNIGHT KISS
+
+
+
+
+             Background
+                                                                              Emilio, a mortal interloper with ties to the local Catholic
+                                                                              church, will serve either as a holy meal or a new Child
+                                                                              depending on Tomas’s whim.
+                                                                                   Using his knowledge of Blood Sorcery and
+             This section contains all the background information             Albertine’s stolen Blood, Tomas has concocted a ritual
+             you’ll need to run Midnight Kiss.                                of rebirth. He’ll enact it at midnight upon a guest who
+                                                                              passes his special trials. He’s certain that in the new
+             The Nephilim                                                     year, the entire city will join his flock, and he’ll be able
+                                                                              to continue to pursue Michael’s vision of a world under
+                                                                              Nephilim rule in peace.
+             The Nephilim, better known to outsiders as the Children               He’s wrong. Morgan won’t go quietly, Emilio has
+             of the Angel, is a religious movement in Kindred society.        powerful friends, and Albertine isn’t as helpless as she
+             Established by the childer of the methuselah Michael, its        seems.
+             adherents worship the ancient vampire and value beauty,
+             prowess, and excess. They maintain a rigid hierarchy that            Tomas’s dreams are destined to burn down around him,
+             they call the Basilica, with Michael’s closest descendants            and the coterie carries the match that’ll start the fire.
+             on top, followed by adherents of all kinds save for the
+             Nosferatu. Nosferatu adherents, with ghoul servants and
+
+
+                                                                              Story Structure
+             mortal prospects, are at the very bottom of the Basilica.
+                  The Children of the Angel seek to bring all Kindred,
+             regardless of faction, into their loving embrace. Their
+             most devoted adherents develop angelic beauty. Even
+             the Nosferatu notice a softening of their curse. What            This section provides a birds-eye view of the story and a
+             the Nephilim don’t mention is the price. These blessings         few ways to personalize it for your table.
+             come from imbibing the vitae of elders, creating Blood
+             Bonds so powerful that none have seen them break.
+                  If you’re interested in using the Nephilim beyond
+                                                                              Treatment
+             this story, you can find more information in Cults of the
+             Blood Gods.                                                      On New Year’s Eve, Tomas Visser throws a party at
+                                                                              Sterner Hall, the Nephilim’s place of power. The entire
+                                                                              domain is invited. The coterie arrives at the party,
+             A Tabernacle of Lies                                             unaware that Tomas is hoping to bring some or all
+                                                                              Kindred attendees into the faith by the end of the night.
+                                                                              The coterie, along with the other attendees, are subjected
+             This story takes place inside a tabernacle, a building
+                                                                              to a series of morally questionable trials representing
+             owned by the Nephilim and converted into a place of
+                                                                              tenants of the faith. The “winner” of these trials is invited
+             worship and a haven for a close, direct descendant of
+                                                                              to join the Nephilim and take part in the Bloody Chrism,
+             Michael. This tabernacle is Sterner Hall, a storied former
+                                                                              a mystical rite created by Tomas.
+             performing arts center in the heart of the city. After the
+             center fell on hard times during the Great Recession, the              At the same time, Albertine, the true leader of the
+             elder Albertine claimed the building.                            Nephilim, uses what’s left of her strength to guide her
+                                                                              last loyal servant, Morgan, into finding partygoers willing
+                  Some time ago, one of the Children’s most beloved
+                                                                              to free her. Agents of the Society of St. Leopold have
+             members pulled a coup. Tomas Visser and his coterie
+                                                                              also infiltrated the mortal-facing portions of the party,
+             imprisoned a weakened Albertine deep within the
+                                                                              hoping to rescue Emilio, a fellow member captured and
+             tabernacle and convinced the rest of the flock that she
+                                                                              corrupted by Tomas. As the coterie is wrapped up in
+             had been Beckoned. Tomas claimed that before she left,
+                                                                              Tomas’s schemes, they have opportunities to aid or hinder
+             Albertine taught him a ritual that would transubstantiate
+                                                                              the elder and the hunters.
+             his Blood into Michael’s. In truth, once the members are
+             bonded to him and unwilling to reveal his secrets, he                  At midnight, the coterie’s choices come together to
+             brings them to Albertine’s prison to feed them her Blood.        determine the fate of the Nephilim.
+                  The Nephilim’s New Year’s Eve party is the
+             culmination of this coup. Morgan, the last unbonded
+             dissenter, will be offered to a lucky guest for diablerie.
+
+
+
+
+                                                                          8
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                       MIDNIGHT KISS
+
+
+
+
+            A Focused Sandbox                                                    •   The Atrium: A description of the tabernacle’s
+                                                                                     reception, where Kindred and kine mingle.
+
+            Midnight Kiss is presented in a chapter-by-chapter format            •   The Nave: A description of the tabernacle’s arena,
+            like other Vampire stories, but it doesn’t have to run in                where the party reaches decadent heights.
+            that order. There are narrative paths, but Sterner Hall is
+                                                                                 •   Transepts and Passages: A description of the
+            a sandbox. The story runs on player initiative. Depending
+                                                                                     tabernacle’s backstage, where the Nephilim pursue
+            on where the players are in the story and what they
+                                                                                     horrifying perfection.
+            choose to do, you may run pieces of one, two, or even
+            several chapters at once!                                            •   The Chancel and the Mausoleum: A description
+                                                                                     of the tabernacle’s private quarters, including
+                In this story, the players will lead their characters into           Albertine’s prison.
+                             hell. You just prepare the path.
+                                                                                 •   Baptism in Blood: How to bring everything together
+                Here’s a rundown on how this story is organized:                     at Tomas’s midnight ritual, based on the choices your
+                                                                                     players’ characters made.
+            •   Prologue: A short scene that lets your players introduce
+                their characters and prepare for what lies ahead.                •   Happy New Year: A few ways to use the
+                                                                                     consequences of this story in future stories
+            •   A Guided Tour: A traditional scene, where the
+                characters are given a tour of the premises. This
+                allows you to set up the story and determine your
+                coterie’s first steps.
+
+
+
+
+                                                                             9
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    MIDNIGHT KISS
+
+
+
+
+             Entrances                                                             threats to a vampire’s Humanity, but none of them should
+                                                                                   feel like an easy moral choice or a pointless gotcha.
+                                                                                         That’s where the Tenets come in.
+             If this story is part of a greater chronicle, or if you prefer
+             a little more setup to the story, here are a few ways to              Default Tenets
+             hook your coterie:
+             •      The Party to Die For: The Nephilim’s hedonistic                If you’re using the chronicle Tenets from the core
+                    shindigs are the talk of the city, and you finally have        rulebook (Vampire, p. 172), this story works best with
+                    a chance to see it for yourself. What better way to            the Humanist or Gothic/Romantic Tenets. The Creed
+                    end a hard year than to party with the beautiful               of Justice or Street Code should also interact well but
+                    people?                                                        may lead to more physical altercations than this story is
+                                                                                   prepared for.
+             •      Helping an Ally: An ally of the coterie is interested
+                    in the Nephilim’s doctrine but is too afraid to
+                    approach them alone. They’d like you to accompany              Story Tenets
+                    them so they can learn more about the faith without
+                    getting trapped in a hard sell.                                If you’re running Midnight Kiss as a one-shot game,
+                                                                                   consider this custom Tenet set:
+             •      Reverse Psychology: One or more of the coterie’s
+                    sires or Mawali know all about the Nephilim, and               •   Be loyal to the community, and the community to you.
+                    they want no part in it. You’ve been forbidden from            •   Access to higher truths must be available to all.
+                    the church’s New Year’s reception, but what your
+                    mentors don’t know won’t hurt them, right?                     •   Moral transgressions are justified when in search of
+                  Depending on how you want to introduce the                           escape from the vampiric condition.
+             Nephilim, you may consider how specifically they
+             extend the invitation to visit. An open declaration at a              Custom Tenets
+             Camarilla Elysium carries different connotations than
+             an informal heads up at a few select Anarch parties.
+                                                                                   If your coterie uses a custom set of chronicle Tenets,
+             If the Nephilim send out invitations to the havens of
+                                                                                   make sure that at least one of Tomas’s trials either
+             individual Kindred by courier, it shows they’re both
+                                                                                   conflict with a Tenet or fall in line with one. Remember,
+             serious and very well informed.
+                                                                                   that Tenets mark the boundary between the human and
+                                                                                   the monstrous. Breaking them means succumbing to the
+                                                                                   Beast within. It’s possible that partaking in a trial might
+                 O T H E R T I M E S , O T H E R S E AS O N S
+                                                                                   be a moral imperative in the eyes of the world even if it
+                 This story doesn’t have to be set during New Year’s
+                                                                                   breaks against the specific Tenets used in the game. Feel
+                 Eve. All the story requires is that the Nephilim open
+                 their doors for a party that ends with a ritual at                free to adjust these trials to create the moral tension
+                 midnight. As the Nephilim appropriate Christian                   that’s right for your troupe.
+                 imagery and aesthetics, holidays such as Easter
+                 or Christmas could work, especially on the dates
+                 observed by the Eastern Orthodox Church. You                      Coterie Splits and Conflict
+                 could also set it on the anniversary of Michael’s
+                 diablerie at the hands of Mary the Black, observed                Midnight Kiss lets characters move through Sterner Hall
+                 on April 14th.                                                    at their leisure and gives them a chance to do some
+                                                                                   questionable things. It’s very possible that your coterie
+                                                                                   will want to split up or that the characters will come into
+             Tenets                                                                conflict over one another’s choices. To an extent, that’s
+                                                                                   the purpose of this story. Blood cults like the Nephilim
+                               No two temptations are alike.                       are not only wedges to established Kindred sects but to
+                                                                                   coteries as well.
+             The actions the coterie take in this story, especially if                  If you’re not used to splitting coteries for an
+             they’re taking part in Tomas’s trials, should risk Stain              extended time, try to switch perspective to another
+             accumulation. The practices of the Nephilim are potential             player or separate group of players after the results of a
+
+
+
+                                                                              10
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                        MIDNIGHT KISS
+
+
+
+
+            test or conflict. Encourage players of off-screen characters              The invitation has an address leading to Sterner Hall.
+            to portray incidental characters in the current scene,               A closer inspection of the invitation reveals nothing out
+            especially if they’re part of the Nephilim’s rank and file.          of the ordinary save for a golden star sticker placed on the
+            Give space in a scene for off-screen characters to enter             top right corner. If the players are playing a coterie that
+            whenever narrative logic allows, especially if someone’s             already know each other before the events of this Story,
+            about to make an important decision.                                 let them call, text, or talk to one another to compare
+                  Give your players enough space to let inter-coterie            notes. Each invitation is exactly alike; even the sticker is
+            conflicts play out. It’s prime character spotlight time, and         placed in the same spot with perfect accuracy.
+            it gives you a chance to think of the consequences. Keep                  The Children of the Archangel is a known element
+            any dice rolling to a minimum; Three Turns and Out                   in the city, so if a character doesn’t know they sent it,
+            (Vampire, p. 130) or One Roll Conflicts (Vampire, p. 298) are        a Mawla or a sire will. Those well-versed in blood cults
+            key. After player character conflicts, make sure to check            might know the Children by their actual name, the
+            in with the troupe and ensure that in-game hard feelings             Nephilim, and might even explain basic facts, like their
+            aren’t bleeding out into out-of-game hard feelings.                  worship of the methuselah Michael.
+                                                                                      Unless you’re using the Reverse Psychology hook
+
+
+
+            Prologue:
+                                                                                 (p. 10), if a character asks a mentor if they should go
+                                                                                 and they don’t already have an established enmity with
+                                                                                 the Nephilim, the mentor will suggest going but advise
+                                                                                 caution.
+
+
+            Getting Ready
+                                                                                      Take some time to ask the players how their
+                                                                                 characters prepare to go to the party. If they want to
+                                                                                 describe the outfits they’ve prepared or play out a small
+                                                                                 scene of finding party clothes on short notice, let them.
+            If you’re running this scenario as a one-shot, begin with            Imagery is important to the Nephilim, and how the
+            the characters already having received the invitation                characters dress and carry themselves may affect the
+            below, either at the Elysium, at an Anarch party or from             blood cult’s view on them for the rest of the story.
+            a courier. Try to avoid making it seem sinister as that can
+            derail the scenario because it makes players feel paranoid.                     The right look can open the right doors.
+                 If you insert the scenario into a chronicle, choose
+            a method of invitation which works best for your                          If your players aren’t interested in the minutiae of
+            circumstances, again trying to avoid making the Children             fashion, ask if the characters dress up at all, and if so,
+            seem too threatening.                                                how much effort they put in. Unless the player describes
+                 The invitation is on a piece of handmade, high                  their character spending a lot of effort on attire meant
+            quality artisanal paper, sealed with wax and stamped with            to annoy or distress the Nephilim, in general assume that
+            a sigil. A successful Intelligence + Occult test against 2           the more effort spent, the better looking the character
+            reveals the sigil as associated with the Archangel Michael           appears to the Nephilim.
+            in modern occult circles.                                                 Once the characters are ready to go to the party,
+                 Inside is an invitation printed in gold-colored text            move on to Chapter 1.
+            over beige paper, which reads:
+
+                The Children of the Archangel request your presence.
+               Come and partake of our beauty and grace as we hold a
+                             vigil on New Year’s Eve.
+
+                 Doors open at 7 PM. Refreshments will be provided.
+
+                Please arrive in your best attire and stay to celebrate
+                     the midnight glorification of the New Year.
+
+
+
+
+                                                                            11
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    MIDNIGHT KISS
+
+
+
+
+                                                              Chapter 1:
+
+                    A Guided Tour
+             Once the characters arrive at Sterner Hall, read or
+             paraphrase the following:                                              Meeting Rebecca
+                     The building that stands before you now is a far cry           The figure waving down the coterie is Rebecca, a
+                    from the humble, modernist place that served the city           Nosferatu. If the coterie decides to avoid her and
+                      for years. The Children have fully transformed this           present their invitations to the ghoul in the booth, the
+                    former performing arts center into their holy ground.           ghoul looks at their invitations and directs them to her.
+                                                                                    Whichever way they meet her, she’s delighted to see
+                      Spotlights of golden light illuminate a Neo-Gothic            them. She adores expensive-looking suits and dresses,
+                       exterior. If it weren’t for the flashing lights and          and anyone wearing them may use them as a +1 dice-pool
+                    thumping modern music coming from the inside, you’d             bonus to any Social test against her.
+                               almost think it was a cathedral.                           Rebecca introduces herself and tells the coterie that
+                                                                                    her job is to give them a guided tour. She says it’s because
+                    Before you there is a booth manned by a masked figure           it’s a special service for “gold stars.” She says that every
+                     in a cloak. There’s a crowd around the booth. Some of          mortal invited has a bronze star, most Kindred have a
+                      the faces are Kindred you know or recognize. Most of          silver star, but a few vampires have gold stars.
+                     the others are mortals, beautiful people who look like               A Wits + Insight test at Difficulty 3 reveals that to be
+                    they’ve walked out of an influencer’s social media page.        a partial truth. If pressed, she’ll admit that they get to play
+                                                                                    “party games,” but says she’s saving that for the end of the tour.
+                     Another cloaked and masked figure comes out of the
+
+                                                                                    Sneak Preview
+                    building. This figure looks at you, waves, and gestures
+                          for you to come to them. What do you do?
+
+                                                                                    Rebecca guides the coterie around Sterner Hall, clearly relishing
+                  The figures in cloaks and masks are the bottom of                 the opportunity. It’s obvious to anyone that this might be
+             the Nephilim’s Basilica: ghoul servants and Nosferatu                  the first time in a long while she’s gotten to take charge of
+             adherents. Every member of these rungs of the hierarchy                something. As she gives the tour, she peppers in bits of what she
+             are masked and cloaked outside the tabernacle as well                  refers to as the “Lex Angelorum,” the society’s holy code.
+             as in the Atrium (p. 15) and the Nave (p. 17). The figure                    She begins by leading them around the Atrium (p.
+             in the booth is a ghoul, and three fellow guards outside               15). She justifies the presence of mortals here and in the
+             are also ghouls (Vampire, p. 372). Unless a character                  Nave by saying that some are “potential Childer,” and
+             wins a Manipulation + Subterfuge test against 3 to hide                others are “potential dinner.” If the characters note on the
+             something or a Dexterity + Stealth test against 3 to fast-             presumption of picking out mortals for the Embrace, she
+             talk a guard, they’re made to relinquish any weapons                   says that the Nephilim have always enjoyed good relations
+             and cellphones.                                                        with the Prince.
+
+
+
+
+                                                                               12
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                            MIDNIGHT KISS
+
+
+
+
+                                                                                           Rebecca takes the group into the Chancel (p. 21) for
+               Ob e y a l l s u per io rs . Rejec t w ic ke d n es s a nd            a few brief moments, noting that only with “my superiors’
+               ug l i ne ss. N e v er v io la t e t he s an c t it y o f a           permission” is she allowed to set foot in this space. She
+               te mp l e . Ne v er rev ea l t he a n g els t o t he liv ing .
+                                                                                     tells them that this is where Tomas makes his haven while
+               B r i ng e ve r yon e in t o t he f a it h .
+                                                                                     their patron, Albertine, “protects us from elsewhere in the
+                                                                                     world.” Tomas (see page 14) emerges from a back room to
+              LEX ANGELORUM                                                          make a quick introduction. Rebecca keeps herself quiet and
+                                                                                     obedient while he speaks. Her superior barely notes her
+              5 Bullets: Obey all superiors.                                         existence. He invites the coterie to come back later if they
+                                                                                     have any questions about the Nephilim.
+              Reject wickedness and ugliness.
+                                                                                           During this tour, pick one or two things from each
+              Never violate the sanctity of a temple.                                of the following chapters and make hints towards them.
+              Never reveal the angels to the living.                                 Perhaps one of the mortal guests is starting to get rowdy
+                                                                                     in the Atrium, or the coterie hear Emilio screaming
+              Bring everyone into the faith.                                         praises to Michael in the Transepts.
+
+
+
+                  Then she enters the Nave (p. 17). While the dance
+                                                                                     Morgan
+            party inside hasn’t gotten hot and heavy yet, she tells the
+            coterie that in a little while, “it’ll get slippery in here.”            As Rebecca leads the coterie back to the Atrium, she
+                                                                                     slams into Morgan as he runs from the Chancel. She
+                  In the Transepts (p. 19), Rebecca tries to draw
+                                                                                     recognizes him immediately, bows, and begs forgiveness.
+            attention away from the twisting passages around the
+                                                                                     She explains that she was showing the special guests
+            group, leftovers from the building’s dramatic conversion. A
+                                                                                     around before “the games.” He gives the coterie a hard
+            Wits + Craft or Intelligence + Awareness test at Difficulty
+                                                                                     look, but before he can say anything, two voices shout for
+            3 lets a vampire notice and memorize a shortcut to one of
+                                                                                     him further down the hallway.
+            the other rooms, and a critical success lets them memorize
+            a shortcut to one additional room or to an exit.
+
+
+
+                                                                                13
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    MIDNIGHT KISS
+
+
+
+
+                  He tells Rebecca that she “didn’t see him” and the coterie
+             that “we’ll talk later.” He then sprints into a passageway, giving        Go Anywhere
+             the players another chance to discover one.
+                  Rebecca rushes the coterie back to the entrance.                     Leaving the group in the Atrium, Rebecca tells them to
+             She tells the coterie about the party games or elaborates                 enjoy the party, then heads back outside to greet another
+             further if they got anything out of her before the tour.                  batch of gold stars. She’ll be there the whole night, save
+             She tells them that there are four trials, and that those                 for the Trail of Heavenly Supper (p. 20) and the rebirth
+             who succeed in them will receive a prize. If asked what                   ritual (p. 24), and can either gives clues to where the trials
+             the prize is, her only response is:                                       are or say it outright with a Charisma + Persuasion or a
+                                                                                       Manipulation + Intimidation test at Difficulty 4.
+                    “The reward is something greater than money, greater                    For the rest of this story, the players lead the way.
+                     than redemption, greater than our existence itself.”              Remember to use the Scene Map (p. 6–7) to prepare for
+                                                                                       where the coterie goes next.
+                 She doesn’t specify what or where the trials are and
+             encourages the coterie to discover them for themselves.
+                                                                                         REBECCA, DEVOTED NEWBIE
+                                                                                         Clan: Nosferatu
+                                                                                         General Difficulty: 4/3
+                                                                                         Standard Dice Pools: Physical 4, Social 5, Mental 6
+                                                                                         Secondary Dice Pools: Health 4, Willpower 3
+                                                                                         Exceptional Dice Pools: Stealth 7, Performance 7,
+                                                                                         Awareness 6, Subterfuge 6
+                                                                                         Disciplines: Animalism 2, Obfuscate 2, Potence 2
+
+
+                                                                                         TOMAS, ZEALOUS BETRAYER
+                                                                                         Clan: Toreador
+                                                                                         General Difficulty: 5/4
+                                                                                         Standard Dice Pools: Physical 6, Social 8, Mental 7
+                                                                                         Secondary Attributes: Health 6, Willpower 6
+                                                                                         Exceptional Dice Pools: Brawl 7, Leafership 9,
+                                                                                         Subterfuge 9, Occult 8
+                                                                                         Disciplines: Auspex 2, Blood Sorcery 2, Celerity 3,
+                                                                                         Presence 4
+
+
+                                                                                         MORGAN, LOYAL FUGITIVE
+                                                                                         Clan: Toreador
+                                                                                         General Difficulty: 4/3
+                                                                                         Standard Dice Pools: Physical 5, Social 6, Mental 5
+                                                                                         Secondary Dice Pools: Health 5, Willpower 5
+                                                                                         Exceptional Dice Pools: Athletics 7, Leadership 8,
+                                                                                         Occult 6
+                                                                                         Disciplines: Auspex 2, Celerity 3, Presence 4
+
+
+
+                                                                                  14
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                          MIDNIGHT KISS
+
+
+
+
+                                                         Chapter 2:
+
+                             The Atrium
+            The Atrium of the tabernacle is Sterner Hall’s reception             questionable and it’s something a character could do
+            hall. In the center of the hall is a large open bar. The             without realizing they’re taking part in a trial at all.
+            mortals present seem to enjoy the food and drink. A jazz                  Pick one of these targets or create your own. Targets
+            band set up during the tour and are playing a setlist of             in this trial are best represented as Simple Antagonists
+            torch songs.                                                         (Vampire, p. 370).
+                  The mood is supposed to be classy, but between the             •   Shelia (Belligerent •••) thinks this party blows and
+            copious drinking and the Nephilim’s manipulation of                      decides that if she can’t leave, she’ll make her own fun.
+            their guests, things are taking a turn for the indulgent.                She’s started a livestream with a smuggled cellphone.
+            Every so often, someone takes a partner by the hand and                  She mocks the staff and the décor. This could become
+            slips through the doors to the arena.                                    a Masquerade breach if she isn’t stopped.
+                  Consensualists, Scene Queens, and Osiri have little
+            problem feeding here, and even a Sandman could pick                  •   Kyle (Belligerent •••) is having a bad night. He’s
+            up someone who had a little too much to drink. Many of                   struck out, the bar’s dried out, and now he’s going
+            the mortals here have Melancholic or Phlegmatic Blood                    to take it out on anyone who gets close to him. His
+            Resonance from the drinks or the music.                                  rudeness threatens to escalate into harassment or
+                                                                                     even violence.
+
+            Trial of the Wicked                                                        The players can deal with the target in a few ways.
+                                                                                 Convincing the target to stop or ushering them out
+                                                                                 in a peaceful way is a Manipulation + Persuasion or a
+            The Nephilim have intentionally invited more mortals                 Charisma + Etiquette test. Humiliating or threatening
+            than their food and drink supply, usually reserved for               them to leave is a Manipulation + Intimidation test.
+            mortal recruits or for occasional personal indulgence, can           Resorting to physical means is a Strength or Dexterity
+            handle. It isn’t long until demand outweighs supply, and             + Intimidation test. If any Nephilim character who isn’t
+            some of the mortal guests aren’t happy. Any guest who                Morgan is present for this, they’ll try to egg the vampire
+            tries to leave finds that the guards won’t let them.                 on into getting the target out in the worst possible way.
+               The mood harshens, and the Children want their special                  Winning the test puts the target in the hands of the
+                         guests to do something about it.                        guards, who promise to “bring them outside.” They’re
+                                                                                 either enthralled, mind-wiped, or, if it hasn’t occurred
+                 The Trial of the Wicked looks for someone willing               yet, brought to the Transepts as part of the Heavenly
+            to drive out anyone who is either acting rude, getting               Supper (p. 20).
+            violent, making a scene, or carries themselves in a crude,                 If none of the players participate in the trial, the
+            disgusting manner. Forceful or humiliating expulsions                ally from Helping an Ally (p. 10) or a vampire storyteller
+            grant participants more favor among the Nephilim. It’s               character the coterie has allied with does it and wins in
+            a good choice for a first trial in this story; it’s the least        the worst possible way.
+
+
+
+
+                                                                            15
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    MIDNIGHT KISS
+
+
+
+
+             The Hunters                                                            The other two are visibly uncomfortable with Sammy’s
+                                                                                    negotiation but let him try.
+                                                                                          Whether the coterie accepts probably depends on how
+             Among the supermodels and fashion stars, three average                 their relationship with the Children has been shaping so
+             individuals stand out. These are Frank, Christine, and                 far. If they’ve liked what they see so far, they can give up
+             Sammy, amateur hunters and disposable associates of                    the hunters to Tomas. If they need more tools against him
+             the Society of Leopold. They’re in over their heads, and               or all Children, they may decide to work with the hunters.
+             they’re here to save their friend Emilio. They came to do                    If the coterie accepts, the hunters stay close by until
+             reconnaissance, saw an opportunity, and paid off some                  they next enter the Transepts. Sammy plans to honor
+             guests outside for their invitations.                                  his word but might change his mind if he sees a coterie
+                                                                                    member engage in a cruel act, like one of the trials. A
+                        They’re trapped in the belly of the beast.                  truly monstrous act gets the hunters to turn on the
+                                                                                    coterie, even if it brings certain death. If the coterie’s
+                  At first, the hunters were operating on the theory that           willing to risk the Hunger, Mental Disciplines like
+             the enemy had kidnapped their friend and taken him to a                Dominate or Presence might smooth over any problems.
+             New Year’s celebration hosted by a niche sect of celebrities                 If the coterie’s already gone through the Trial of
+             and wealthy wastrels for some fell purpose. Now that they’ve           Heavenly Supper (p. 20), they could lead the hunters to an
+             mingled among the other party guests, they’ve come to                  Embraced Emilio to serve as his first taste of mortal blood.
+             suspect that the whole event is controlled by vampires.                If he has been drained and the coterie tells the hunters so,
+                  Because they acted in haste, the hunters are weaponless           Christine believes it but Sammy and Frank do not. She
+             and badly prepared, but they’re not complete fools. They left          tries to flee the building, and the other two hunters pursue
+             weapons in a car parked nearby with the hope of retrieving             her. When the guards catch them, they’ll meet a similar
+             them as necessary and they’re keeping an eye out for anyone            fate as the target from the Trial of the Wicked (p. 15).
+             who doesn’t have Blush of Life or carries themselves with                    If the coterie never meets the hunters, they’ll work
+             a confident air. Unfortunately, in a crowd full of coked up            up their courage, sneak around the building, and get
+             investment bankers this is a poor strategy. Upon finding a             caught before the end of the night.
+             suspected vampire, one of them chats up the target. They
+             claim that they got separated from their friend Emilio and             The Hunters
+             that they think he’s in “in the back.” Their goal is to trick a
+             vampire into confirming Emilio’s presence in the building,             Frank, Christine, Sammy, and Emilio are Catholic
+             perhaps scouting along if they get lucky with a suitably               laity recruited by Father Diego Molina of the Society
+             unwary vampire. While one of them does the talking, the                of Leopold. They were supposed to serve as Molina’s
+             other two act as discreet backup should trouble arise.                 eyes and ears in the city, but Emilio got too close to the
+                  Seeing through their con is a contest of Wits +                   Children and vanished a week ago. The other three are
+             Insight against a Difficulty of 4. A win reveals that they             disobeying Father Molina’s orders not to rescue him,
+             have an undeniable ulterior motive. Getting them to                    believing that he will be sacrificed in a ritual of some sort
+             admit their agenda is a Manipulation + Persuasion or                   at New Year. All four supporting characters use the dice
+             Subterfuge test at Difficulty 4. A critical win in the first           pools and secondary attributes listed here.
+             contest gets them to admit their agenda outright, with no
+             second roll necessary.                                                   Standard Dice Pools: Physical 3, Social 4, Mental 4
+                  If discovered, Sammy proposes a deal: if the coterie                Secondary Attributes: Health 5, Willpower 5
+             leads them into the back and doesn’t interfere with their                Exceptional Dice Pools: Athletics 6, Brawl 5,
+             rescue attempt, they’ll make sure to keep the coterie off                Melee 6, Stealth 7, Subterfuge 8, Awareness 9
+             any reports they’ll have to make should they survive.
+
+
+
+
+                                                                               16
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                         MIDNIGHT KISS
+
+
+
+
+                                                          Chapter 3:
+
+                                       The Nave
+            The Nave of the tabernacle is Sterner Hall’s arena. It’s             Blades looks for someone who can hunt using something
+            an open floor where the Nephilim perform their rituals.              that isn’t their teeth.
+            Right now, it’s serving as a dance floor. A sound system                  The trial begins when a character hunts in the Nave
+            blasts electronic dance music with hypnotic, sensual                 or appears unusually hungry to the subjective eyes of the
+            beats. Flashing lights illuminate the room, burning in               Children. As the character hunts or resists the temptation
+            afterimages of writhing bodies.                                      to feed in a room filled with blood, they’re approached
+                 The revelers in this room are partying without                  by a handsome Ventrue named Freddie. Freddie’s fashion
+            inhibitions. They come in two forms. The first are                   tastes are driven by his baser urges. Anyone wearing tight
+            Kindred, mostly Nephilim but also guests who have                    or revealing clothes may use that as a +1 bonus to any
+            figured out where the real party is. The second are                  Social test against him.
+            mortals, some of which might get seduced, embraced, or                    After a quick introduction, he gets to the point: he
+            devoured before long.                                                could see the vampire starving from the back of the room.
+                 The mood in the Nave is never chaste, but as                         Freddie assures the character that this room has
+            the night carries on, the dance party takes on full                  the best menu in the house and points out a few prime
+            Bacchanalian excess. Drugs and blood flow freely, and                choices. Like the targets in the Trial of the Wicked (p. 15),
+            guests fuck in full view of everyone. It’s the perfect place         these are also represented as Simple Antagonists:
+            for a Siren. The mortals here have Choleric and Sanguine
+                                                                                 •   Sanjay (Vessel ••) knew that this party would be wild
+            Blood Resonances in their veins.
+                                                                                     when he had to give up his cellphone, but this’ll be
+                                                                                     one for the history books (and his vlog). He’s sitting
+                   When Rebecca said it’d get slippery, she meant it.                naked against the wall and catching his breath.
+
+                 Aside from the dramatic increase in mortals, it’s not           •   Iris (Vessel •••) arrived at the party with friends, and
+            too different from an ordinary Nephilim ritual, a fact any               now she can’t find any of them. She thought she was
+            Child will disclose if asked.                                            ready to learn Michael’s truths, but the whole night’s
+                 On the furthest wall is a mural of Michael, the                     felt like swimming in a pool full of sharks. She can’t
+            Nephilim’s patron. With his right arm, he slashes at a                   pin down why. She’s half-heartedly swaying on the
+            group of grey humanoid creatures with hideous faces with                 dance floor, hoping to catch a glimpse of her friends.
+            a flaming sword. From his left arm, Blood flows from his
+                                                                                 •   Gale (Vessel ••••) came to dance, and that’s it. They
+            wrists into the mouths of kneeling worshippers. The wall has
+                                                                                     don’t know what the hell happened here, but they
+            a single golden door, which leads into the Transepts (p. 19).
+                                                                                     want out. The lights are disorienting them, and
+                                                                                     they’re wandering toward the golden door in the
+            Trial of Blades                                                          Nave’s mural.
+
+                                                                                 •   For a personal touch, consider making one of
+            The Nephilim compare feeding with fangs to eating a                      Freddie’s targets another player character’s
+            meal with your hands. It’s appropriate in some cases, a                  Touchstone, invited to the party unbeknownst to the
+            necessary evil in others, and always uncouth. The Trial of               character they belong to.
+
+
+
+                                                                            17
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    MIDNIGHT KISS
+
+
+
+
+                  If the vampire picks a target, Freddie compliments               FREDDIE, PEPPY SADIST
+             their choice, but discourages the character from using
+             their fangs. He explains how civilized Kindred use
+                                                                                   Clan: Ventrue
+             utensils to eat and presents them with a black velvet box
+             with a silver knife inside. He promises that if the vampire           General Difficulty: 4/3
+             pulls it off, the blood will taste sweeter. He also adds,             Standard Dice Pools: Physical 5, Social 6, Mental
+                                                                                   4
+                       “It’ll be easier if you make them want it.”
+                                                                                   Secondary Attributes: Health 6, Willpower 5
+
+                  With that, he waves and chats up another party goer.             Exceptional Dice Pools: Melee 6, Insight 7,
+                                                                                   Leadership 6, Medicine 5
+                  If the character takes on the trial, they can use
+             any method at their disposal to convince their target                 Disciplines: Dominate 3, Fortitude 3, Presence 2
+             to receive a cut, like smooth-talking them (Charisma +
+
+                                                                                 Don’t I Know You?
+             Subterfuge), talking it up as crossing a thrilling taboo
+             (Manipulation + Persuasion), or selling the act as a
+             religious experience (Manipulation + Occult).
+                  The knife is a +0 Physical damage weapon, but it’s             The city’s Kindred are a small community, and not every
+             too dull for the precise cuts necessary for feeding. A risky        vampire here is a Nephilim. Pick a character’s sire, Mawla,
+             but effective cut is a Dexterity + Melee test at Difficulty         Adversary, or other connected Kindred supporting
+             3. Going for a safe cut is a Dexterity + Medicine test at           character and give the coterie a chance to find them in
+             Difficulty 4. Both cuts are very painful.                           the Nave’s undulating mass of dancers. “I just came to
+                  Winning the test lets the vampire feed as normal and           party,” is a perfectly valid reason, but there are other
+             wins Freddie’s favor. He’ll aid the coterie with anything           options. They could have come to ensure the Nephilim
+             that doesn’t directly violate his strong Blood Bond to              don’t get their claws into their charge or to catch their
+             Tomas, such as asking him to betray Tomas or act against            hated rival in a delicate position.
+             the interests of the current leadership.                                 It might be a relief to see a familiar face, but this
+                  If no one takes Freddie up on the trial, he’ll do the          supporting character is just as likely to be tempted – or
+             act himself. The target the character chose is severely             in danger – as anyone else. Consider using them if no
+             injured and might die without help. If someone accepts              one chooses to go through a trial, or as Tomas’s other
+             the trial but feeds normally, they might face an angry              choice for diablerie (p. 22), should the coterie help
+             Freddie later that night.                                           Morgan evade him.
+
+
+
+
+                                                                            18
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                            MIDNIGHT KISS
+
+
+
+
+                                                           Chapter 4:
+
+                   Transepts and
+                     Passages
+            The Transepts of the tabernacle are Sterner Hall’s dressing           (p. 12). Traversing the passageways is a Physical Attribute
+            rooms, waiting rooms, and green rooms. This section has two           (Storyteller’s choice) + Athletics test with Difficulty based
+            separate wings, North and South. Nephilim of all levels of            on destination. Passageways to the Atrium and Nave are
+            the Basilica come here to take breaks, and it’s the only place        Difficulty 3, passageways to the Chancel are Difficulty 4, and
+            where the servants can walk unmasked and uncloaked.                   passageways to the Mausoleum or to an exit are Difficulty
+                 There are workshops and studios in both wings.                   5. Guiding a supporting character through a passageway the
+                                                                                  character knows increases the Difficulty by 1.
+                 Despite the rumors, the Nephilim’s nightly life isn’t a
+                                      total orgy.                                 Finding Morgan
+
+                 Michael demands perfection in all arts and                       While discovering or traversing secret passageways, the
+            aesthetics, and here the Basilica hone their crafts. There            coterie can hear Morgan moving through connected
+            are also spaces for group activities, like worship and                passageways. He’s used them the entire night, avoiding
+            communal meals.                                                       the pursuers Tomas has sent for him. If a character has
+                 If the coterie made a deal with the hunters in the               discovered the passageways through a Critical win, they
+            Atrium (p. 15), this is where they’ll part ways. Sammy hears          could reach him without a roll. Otherwise, a Composure
+            Emilio’s voice and leads the team to the North Wing.                  + Awareness test at Difficulty 3 reaches him.
+                                                                                        If Morgan hasn’t seen the coterie partake in the trials
+
+            Secret Passageways
+                                                                                  or doesn’t otherwise suspect that they’re siding with Tomas,
+                                                                                  he’ll trust them enough to give them his side of the story.
+                                                                                  He tells them that Tomas was Albertine’s most faithful
+            Converting a near century-old performing arts center into             disciple but haunted by the fact that, not being Michael’s
+            a replica of a cruciform temple was a difficult task, and not         descendant, he would never be able to truly reach the heights
+            everything was a perfect fit. The remnants of the building’s          of the Basilica. He finally usurped and imprisoned her. Now
+            old design became winding sets of passageways through the             Tomas wants to feed Morgan, the only person who knows
+            tabernacle. This presents a possible exit, should the coterie         what happened and can freely act on it, to any gold-star who
+            need to get themselves or someone else out safely.                    impresses him enough in his trials.
+                 While in the Transepts, the coterie can discover a                     If the coterie asks Morgan why he hasn’t left or gone
+            viable passageway using the methods in Sneak Preview                  public to the Kindred, Morgan answers that he can’t bear
+
+
+
+
+                                                                             19
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    MIDNIGHT KISS
+
+
+
+
+             to leave his master in Tomas’s clutches. He also fears that             He asks Emilio to renounce his faith and to embrace
+             the Prince, or even Nephilim from outside the city, will            being a sacrifice to Michael, which the young moral does
+             order the indiscriminate destruction of Sterner Hall and all        with a jubilant tone.
+             within it for this party, which breaks the Lex Angelorum
+             and might break the Traditions of the Masquerade and                    He submits a question to the assembly: shall Emilio be
+             Progeny, depending on how the Prince will see things. He                 honored as a sacrifice, or shall he become a Childe?
+             begs the coterie to help him free Albertine.
+                  If the coterie decides to work with Morgan, he’ll stay              The congregation is split, and Tomas turns to his
+             low in the passageways until they’re ready to head to the           gold stars to break the tie.
+             Mausoleum (p. 22). If the coterie chooses to never pursue                The coterie has a few options:
+             Morgan or rejects his plea, he’ll be caught and presented as
+             the sacrifice for the Trial of Obedience (p. 22).                   •   The Coterie Chooses: Tomas accepts their
+                                                                                     judgement. The congregation devours Emilio as a
+
+             The Trial of Heavenly Supper
+                                                                                     group. Depending on their choices, they toss out the
+                                                                                     body or Tomas Embraces him. As Kindred, Emilio
+                                                                                     first feeds on the Belligerent in the Atrium (p. 15) or
+             In the North Wing, an excited crowd is gathering. If                    the hunters if they were caught or led into a trap by
+             the coterie has got to know Rebecca or Freddie, they                    the coterie. Tomas dismisses his flock and reminds
+             invite the coterie to “have a meal with us.” Rebecca                    the coterie to return to the Nave at midnight for “the
+             makes the offer to make up for the tour’s rushed ending,                chrism.”
+             and Freddie as a reward for undertaking or seriously
+                                                                                 •   The Coterie Walks Away: Tomas accepts that the
+             considering the Trail of Blades. He assures the coterie
+                                                                                     coterie “isn’t quite ready yet.” As they leave, he
+             that it’s okay to use their fangs here.
+                                                                                     invites them to head to the Nave at midnight for “the
+                   If the coterie follows the crowd or accepts an                    glorification.” Emilio is drained .
+             invitation, they’re led to a large dressing room filled with
+             lit votive candles and with Christian imagery smeared               •   The Coterie Stops the Supper: If the coterie protests
+             on the mirrors in dried blood. Emilio (p. 16) is kneeling               the proceeding of the ritual, Tomas enters a Social
+             in prayer in the center of the room, singing praises to                 conflict with the coterie, aided by Rebecca and
+             Michael. The crowd circles the mortal, fangs bared. If                  Freddie. Tomas uses any trial a coterie member took
+             the coterie earlier escorted the hunters to the Transepts,              part in as a +1 Superficial Willpower damage weapon.
+             they could catch them in hiding with a Wits + Awareness                 This conflict lasts three rounds, and the party that
+             test at Difficulty 2. They’re setting up an ambush with                 took the least damage wins. If the coterie wins,
+             improvised weapons.                                                     Tomas angrily dismisses his flock and tells the coterie
+                   Tomas enters the room behind the coterie and greets               that they’ll regret their deeds during “the chrism.”
+             them. If they’ve encountered any trials, he’ll congratulate             Emilio is left alive and in emotional distress. If the
+             the coterie on their successes or gently chide them for                 coterie loses, the gathering drains Emilio.
+             their failures or rejections.
+                                                                                 •   The Hunter’s Assault: If the hunters are in the
+                                                                                     dressing room and the coterie catches them, they can
+                                                                                     either alert the congregation to their presence or keep
+                                                                                     silent. If alerted, the congregation attacks and devours
+                                                                                     all four hunters. If they keep silent, the hunters strike
+                                                                                     as Tomas awaits the coterie’s answer. The hunters
+                                                                                     are doomed but buy the coterie time to get away. If
+                                                                                     the coterie helps the hunters, it’s a fight against six
+                                                                                     opponents: Tomas, Rebecca (and one Kindred guard
+                                                                                     that uses her stats), and Freddie (and two Kindred
+                                                                                     guards that use his stats). It lasts three rounds, and the
+                                                                                     party that took the least damage wins. If the coterie
+                                                                                     wins, use the outcome for winning the social conflict
+                                                                                     in “The Coterie Stops the Supper.”
+
+
+
+
+                                                                            20
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                        MIDNIGHT KISS
+
+
+
+
+                                                          Chapter 5:
+
+                        The Chancel
+                          and the
+                        Mausoleum
+            The Chancel of the tabernacle is in the old administration
+            offices in the back, converted into a luxurious suite for a          Tomas’s Haven
+            descendant of Michael. Underneath the Chancel is a large
+            basement, which is both a boiler room and a makeshift                Tomas has an open-door policy with gold stars. He’s
+            mausoleum for “fallen Children.”                                     in the Chancel all night save for the Trial of Heavenly
+                 The Chancel is Tomas’s current residence. He claims             Supper (p. 20) and the Bloody Chrism (p. 24). He
+            that he’s only maintaining it until Albertine’s return.              appreciates elegance in all things, and anyone wearing
+            Nephilim that he hasn’t completely Blood Bonded are                  simple but well-designed fashion gains a +1 bonus to all
+            ordered to stay out of the mausoleum, out of respect for             Social tests against him.
+            the finally dead.                                                         He’s willing to answer most questions and has
+                                                                                 answers for standard ones:
+               The coterie’s presence in their holiest ground proves that        •   The Nephilim worship Michael, a vampire who led
+                               Tomas’s flock are heretics.                           a harmonious society of vampires in Constantinople
+                                                                                     together with his lovers Antonius and Dracon.
+                 Following Nephilim traditions, no one, under any
+            circumstances, should set foot in the Chancel if they’re             •   Michael is upheld due to his divine Blood flowing
+            not a Child of the Archangel. Tomas allows the gold                      through his descendants, the true leaders of the faith.
+            stars to roam his halls because he sees them as prime                    A Wits + Insight test at Difficulty 4 picks up on
+            recruitment material: Young enough to be molded to his                   Tomas’s brief look of outrage at the idea of Michael’s
+            cause, but with some accomplishments under their belts.                  childer being the faith’s inherent leaders.
+            Making a direct pitch to the gold stars outweighs the risk
+                                                                                 •   Tomas came into the faith soon after Albertine
+            of visiting lesser Nephilim discovering his operation or
+                                                                                     arrived in the city. He claims that when he looked up
+            Albertine’s prison.
+
+
+
+                                                                            21
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    MIDNIGHT KISS
+
+
+
+
+                    on her beauty, he heard the voice of Michael telling                He beckons the coterie to sit with him at a dining
+                    him to follow her. An Intelligence + Occult test at            table. Before him is a struggling figure covered in a thick
+                    Difficulty 3 cuts through the patter and makes it              cloth. Tomas asks the coterie if they’ve enjoyed the party.
+                    clear that he’s Blood Bonded to her.                           Whatever their answer, he apologizes for forgetting the
+                                                                                   most important part.
+             •      The coterie are gold stars because he’s seen them
+                    before at a previous Elysium or an Anarch party.
+                                                                                          No celebration is complete without a party favor.
+                    He claims that he and them are alike in “longing for
+                    something greater.”
+                                                                                         He pulls off the cloth to reveal the target.
+             •      He’s not worried about a Masquerade breach in the                    The target is bound with prayer ropes in an Eastern
+                    Atrium or Nave. He sees tonight’s celebration as a             Orthodox fashion. Tomas pushes a single sharp silver
+                    part of a well-maintained Basilica with an open door.          knife across the table. He tells them to “clean their plate.”
+                   If the coterie brings up Morgan or shares details of            This is an undeniable offer of diablerie.
+             his side of the story (p. 13), he stops them. He explains that              Biting or stabbing the target succeeds automatically.
+             Morgan was absent when Albertine handed power to him                  Standard rules of diablerie apply (Vampire, p. 235). When
+             and that his claims are the “manifestations of a madness borne        it’s done, Tomas assures the character who committed
+             from misplaced affection.” His demeanor sharpens, and he              diablerie that they have the full support of the Nephilim
+             subtly interrogates the coterie about Morgan’s whereabouts.           should “complications arise.” If this is part of a larger
+                   If the coterie knows where Morgan is and tells                  chronicle, this is a wedge Tomas can use to get the
+             Tomas the truth, he’ll thank them for their help and                  character to join the blood cult.
+             asks them to return later for a reward. Lying to him is a                   If the coterie walks away, Tomas is disappointed but
+             contest of Manipulation + Subterfuge against a Difficulty             lets them go. Once they’re out of his sight, he commits
+             of 5. If they don’t know where he is, he asks the coterie to          the deed himself.
+             let him know if they catch sight of him.                                    Untying the target or cutting them free succeeds
+                   If the coterie enters Tomas’s haven while he’s not              automatically, but Tomas will use every ability at his
+             present, they can discover his true nature with a Wits +              disposal to stop the coterie. This is a Social conflict to
+             Investigation test at Difficulty 3. A win discovers a locked          convince the coterie to walk away or commit diablerie.
+             secret compartment in his desk, which is unlocked with a                    Tomas can accept the coterie turning him down, but
+             Dexterity + Larceny test at Difficulty 3.                             freeing a target is a rejection he can’t stand. He orders the
+                   Inside the compartment is a series of letters between           cult to track the coterie down and capture them – perhaps
+             Albertine and Tomas, arguing over how best to run the                 to make them watch the rebirth ritual by force (p. 24).
+             Nephilim. The correspondence ends with no mention of
+             Albertine leaving the country, and the papers include an
+             invoice for restraints and chains. A critical win uncovers
+                                                                                   Finding Albertine
+             a journal describing attempts to use Blood Sorcery to
+             replicate a legendary ability of the thin-blooded.                    The pathway to the mausoleum has a few defenses. A
+                                                                                   single guard (a ghoul like the ones at the front) keeps
+             The Trial of Obedience                                                watch, and the heavy iron door is locked with an
+                                                                                   electronic lock and a padlock.
+                                                                                        The coterie can enter the mausoleum in three ways:
+             Tomas holds a special trial in his haven. If the coterie
+             doesn’t discover Morgan after the tour (p. 12), rejects his           •   The direct route is a Series test (Vampire, p. 294). The
+             plea for help (p. 12), or sells him out to Tomas, he’s the                coterie needs to avoid or distract the guard (Dexterity
+             target. If Morgan’s hidden or he escaped, other targets                   + Stealth or Manipulation + Subterfuge), crack the
+             could be Rebecca, in retaliation for not helping capture                  locks (Intelligence + Technology for the electronic lock,
+             Morgan during the tour, or Freddie, for providing a                       Dexterity + Larceny for the padlocks), and get the door
+             dull knife in the Nave. If you’re using the Helping an                    open (Strength + Stamina). All tests are at Difficulty 3.
+             Ally hook (p. 10) or ran Don’t I Know You? (p. 18), these
+             supporting characters are also valid targets.                         •   The coterie can search for a passageway to the
+                                                                                       mausoleum (p. 19).
+                  Tomas invites any thin-blooded character or any
+             character who engaged in at least one other trial in a way            •   If the coterie helps Morgan, he leads them through a
+             that pleases the Nephilim. If neither are true, they’re                   secure passageway.
+             invited because they’re gold stars.
+
+
+                                                                              22
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                     MIDNIGHT KISS
+
+
+
+
+                 The mausoleum is empty save for Albertine. She’s
+            held to the concrete floor with metal restraints and
+            chains. Weeks of blood draining have made her more
+            animal than Kindred.
+                 Freeing her is a Dexterity + Larceny test (Difficulty
+            3) to unlock her restraints and a Strength + Athletics test
+            (Difficulty 2) to pull off the chains. Doing this while she’s
+            starving increases the Difficulty of each test by 1, and
+            failure puts the character at risk of her Kiss.
+                 Albertine only needs to slake the equivalent of 1
+            Hunger to achieve a ravenous but lucid state.
+
+                 Pulling away from the Kiss of an elder is dangerous.
+
+                 A character who feeds Albertine receives +1 Hunger
+            and must make a Resolve + Brawl test at Difficulty 4 to
+            shove her away. A failure adds an additional Hunger level
+            as she continues to drain the Kindred. The character may
+            roll multiple times, the Difficulty reducing by 1 after each
+            failure until the character either wins or falls into torpor.
+                 If Morgan is present, he’ll volunteer to feed
+            Albertine. Unless the coterie saves him with a Strength +
+            Stamina test at Difficulty 4, she drains him to final death.
+                 If the three hunters are present, they won’t volunteer.
+            If Emilio is with them, he recognizes Albertine from
+            Tomas’s teachings. He rushes to her with a cry of joy and
+            offers himself to her. The hunters will try to stop him.
+                 A fed and free Albertine is the epitome of beauty,
+            manners, and grace. She thanks the coterie and apologizes
+            for any mess. She leaves the mausoleum through a
+            passageway to confront Tomas at midnight (p. 24). She
+            won’t offer the coterie to join her but will let them
+            accompany her if they decide to do so.
+                 If Albertine is free and unfed, she’ll attack the closest
+            character. If she can’t do that, she rushes to the mausoleum
+            door. The guard will open the door and if he isn’t saved,
+            he’s murdered. She dashes into the halls and goes on an
+            indiscriminate feeding frenzy. If the coterie wants to find
+            her, she’ll be in a dressing room in the south wing of the
+            Transepts, cleaning copious amounts of blood off her face.
+
+
+              ALBERTINE, TRUE NEPHILIM
+              Clan: Toreador
+              General Difficulty: 5/4
+              Standard Dice Pools: Physical 7, Social 9, Mental 8
+              Secondary Attributes: Health 7, Willpower 6
+              Exceptional Dice Pools: Brawl 6, Melee 7, Insight
+              8, Leadership 9, Persuasion 7, Occult 8
+              Disciplines: Auspex 5, Celerity 5, Presence 5
+
+
+                                                                             23
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    MIDNIGHT KISS
+
+
+
+
+                                                          Chapter 6:
+
+                                    Baptism in
+                                      Blood
+                               Every party comes to an end.
+                                                                               The Ball Drops
+                  After the coterie’s had time to explore the
+             tabernacle and encounter its trials and secrets, midnight         At midnight, Tomas calls the congregation to the Nave by
+             arrives and everything they’ve done comes back to                 using the building’s PA system. Then he plays “Auld Lang
+             haunt – or help – them.                                           Syne” over the speakers as the crowd gathers.
+                                                                                     If any Nephilim Storyteller Characters the coterie
+
+             When’s Midnight?
+                                                                               knows are with them outside the Nave, they’ll encourage the
+                                                                               coterie to come to the gathering. Rebecca and Freddie want
+                                                                               to bear witness, and Morgan decides that it’s now or never
+             Tomas’s midnight ritual is the climax to Midnight Kiss,           if she is to confront Tomas. If Tomas sought to capture the
+             but unlike some other stories, it doesn’t happen directly         coterie, they come here when caught, or the security ceases
+             after any previous scene. It also doesn’t have to happen          their pursuit when the coterie enters the Nave.
+             last; some coteries might discover a trial as they leave                If no one’s around to guide the coterie to the Nave,
+             the party or could decide to break into the mausoleum if          they don’t have to go. They could use the time to discover
+             the ritual goes wrong. Storytellers should use their best         the mausoleum (p. 21), now without a guard, or search for
+             dramatic judgement. If it feels like it should be time for        an exit.
+             the ritual, it is.
+                   Here are a few suggestions for when to hold the
+             Bloody Chrism:
+                                                                               The Bloody Chrism
+             •      After one or more coterie members encounter at             When the coterie arrives at the Nave, they find it
+                    least two out of the four trials.                          populated by Kindred and corpses. A few mortal guests
+             •      After the coterie frees Albertine.                         have been Embraced, and the rest are either dead or dying.
+                                                                                   Tomas addresses the non-believing Kindred in the
+             •      After Emilio is devoured or Embraced.                      crowd, his eyes locked on the coterie.
+
+             •      After at least one character suffers degeneration              He tells them that in a few moments, they will accept
+                    (Vampire, p. 239) due to their choices.                                         Michael’s divinity.
+
+
+
+
+                                                                          24
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                               MIDNIGHT KISS
+
+
+
+
+                 He pulls out a vial of Albertine’s blood from his                   Before everyone’s eyes, flesh melts and reshapes, bones
+            pocket. He wipes down his hands on a bleeding corpse.                      snap and reset, muscles spasm and untangle. The
+            He calls someone up to the stage to undergo “a rebirth.”                 physical sensation is an excruciating swirl of pain and
+            He promises them that Michael’s dreams will reshape                                             pleasure.
+            them into a glorious form.
+                 If any character has dots in Thin-Blood Alchemy or is                 If the subject is a player character, they must roll a
+            familiar with it, an Intelligence + Occult test at Difficulty        Stamina + Resolve test at Difficulty 6 minus 1 for each
+            2 highlights similarities between his description and the            trial they completed to Tomas’s satisfaction. A win
+            Profane Heiros Gamos Formula (Vampire, p. 286).                      reshapes the subject into an eerie fusion of their own
+                                                                                 looks and that of Michael’s for the rest of this story. A
+            Who Goes On Stage?                                                   critical win transforms them into the spitting image
+                                                                                 of Michael, no matter their previous appearance and
+            Only someone with a heart prepared to receive Michael                presentation. Nosferatu subjects experience their curse
+            is suitable for the ritual. The purpose of the trials has            creeping into the look after a few moments.
+            been to see who was most inclined to indulge in the blood                  The change in looks is temporary, but the internal
+            cult’s mindset. In order of priority, choose one person to           changes aren’t. The player may choose to reorganize their
+            receive the ritual:                                                  Discipline powers for all previously purchased dots or
+                                                                                 instantly use experience points to purchase a dot of Auspex,
+            •   A player character who’s completed all four trials to
+                                                                                 Celerity, or Presence at an in-clan rate (or automatically gain
+                Tomas’s satisfaction.
+                                                                                 one dot of each if this is a one-shot game).
+            •   A player character who’s completed at least two                        Tomas proclaims the subject a Nephilim “now and
+                trials to Tomas’s satisfaction.                                  forever.” If the subject wasn’t a member of the blood
+                                                                                 cult before, they’ll keep tabs on them from here on out,
+            •   A supporting character close to the coterie who                  pressuring them to finalize their conversion. The non-
+                has completed at least one of the trials to Tomas’s              believing Kindred are impressed, and many will start
+                satisfaction.                                                    attending Nephilim services. If this scene ends the story,
+                                                                                 Tomas dismisses everyone in triumph.
+            •   Emilio, if he was Embraced.
+                                                                                       If the subject failed the roll, they do not change at
+            •   Freddie.                                                         all, gaining no benefits and instead suffering the margin
+                                                                                 of failure in Aggravated Physical damage.
+            •   Rebecca.                                                               If the subject failed to change or rejected the ritual
+                 If the coterie freed Albertine in an earlier scene              on stage, Tomas is humiliated. The coterie has a chance to
+            (p. 23), she enters the room now, ending this scene and              twist the knife using one of the methods that could have
+            immediately starting another one (p. 26).                            stopped the Chrism (p. 25).
+
+
+            What Happens?                                                        Stopping the Chrism
+
+            If a player character accepts the ritual or if the coterie           If the coterie wants to stop the Chrism, they have a few
+            doesn’t stop a supporting character from undergoing                  options:
+            it, Tomas cradles the subject’s face in his hands. The               •    Call Him Out: The coterie could use what they
+            Toreador asks the subject if they choose to follow the Lex                might have learned from Morgan (p. 13) or from
+            Angelorum above all things. This is a player’s last chance                investigating Tomas’s haven (p. 21) to reveal Tomas’s
+            to reject the ritual.                                                     coup. The coterie may need to enter Social conflict
+                  If the subject accepts, Tomas cuts his breast open over             with Tomas and may use their evidence as +1
+            the heart and forces them to drink from the open wound.                   Superficial Willpower damage weaponry. If Morgan
+            He feeds them enough of his Blood to slake 1 Hunger. He                   is with them, he’ll assist the coterie in the conflict.
+            pours the vial of Albertine’s blood over their head as he
+            sings Michael’s praises. Then he releases the subject.               •    Strike Back: The coterie could rush the stage. They
+                  The audience bears witness to the subject’s physical                don’t have to engage in an altercation with Tomas
+            transformation.                                                           to stop the ritual; pulling the subject off the stage
+                                                                                      is enough. They may need to win a Strength + Brawl
+
+
+
+
+                                                                            25
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    MIDNIGHT KISS
+
+
+
+
+                    test against a general difficulty, if they’re grabbing an           •    She spares Tomas by imprisoning him in the
+                    unwilling supporting character, or engage in a three-                    mausoleum, the first step in a long reconciliation
+                    round Physical conflict, if grabbing an unwilling                        process. If the coterie requests for him to stay undead
+                    player character.                                                        and continue the Blood Chrism, she allows it, but
+                                                                                             feeds the subject her Blood instead. The results
+             •      Debunk Him: If the coterie discovered Tomas’s                            horrify her. She vows to never let anyone perform
+                    journal (p. 22) or noticed the similarities to a thin-                   the ritual again.
+                    blood formula (p. 25), they can use that to prove to
+                    everyone that the Chrism isn’t a miracle. This is an                •    If this scene ends the story, she dismisses everyone.
+                    Intelligence + Occult test at Difficulty 4 (if using only                Before the coterie goes, she offers them a chance to
+                    the similarities to Thin-Blood Alchemy), Difficulty 3                    join her and “see what the Nephilim are truly like.”
+                    (if using Tomas’s journal), or Difficulty 2 (if the coterie              She’ll respect the choice they make.
+                    knows the similarities and has Tomas’s journal).
+                                                                                        •    If Albertine was freed after the Chrism, this scene
+             •      Bring In the Hunters: If the hunters are still alive,                    occurs in the Chancel instead. It happens as Tomas is
+                    still in Sterner Hall, and still willing to work with the                about to dismiss the partygoers over the PA.
+                    coterie, they could be convinced with a Manipulation
+                    + Leadership test at Difficulty 5 to fight Tomas with
+
+
+                                                                                        Epilogue: Happy
+                    improvised weapons. The Difficulty drops to 4 if the
+                    characters can provide them with something better
+                    than a chair leg. If Emilio is alive, he’ll join in. They’ll
+
+
+
+                                                                                        New Year
+                    almost certainly die without help, but not before they
+                    smash Tomas’s vial and deal him some harm.
+                  No matter which method the coterie chooses,
+             stopping the Chrism ruins Tomas’s plans. While his Blood
+             Bonded adherents are willing to overlook the incident,                     If this is a one-shot game, the story ends when the party
+             the non-believers will make this the talk of the next                      ends or the coterie leaves the building. If this is part of a
+             Elysium. It’ll spur the Prince to start an investigation,                  continuing chronicle, there’s an exciting year ahead:
+             dooming this chapter of the Nephilim. If this scene ends
+             the story, Tomas dismisses everyone in shame.                              •    If Tomas got everything he wanted, he’s still in for
+                                                                                             a bad time. The ruler(s) of the domain get word of
+             Albertine Restored                                                              a number of disappearances around Sterner Hall
+                                                                                             and demands a full investigation of the Nephilim.
+                                                                                             If the coterie joined Tomas’s Nephilim, they’ll have
+                      If Albertine is free, she’s hellbent on restoring her                  to choose between hanging Tomas out to dry or
+                                             throne.                                         protecting his dream.
+
+                  The congregation is shocked to see her in person and                  •    If Albertine resumes command of the Nephilim,
+             horrified when she rushes to Tomas in the blink of an eye.                      she plans a purge to purify her congregation. If the
+             She grabs him by the collar and lifts him, demanding to                         coterie joined Albertine’s Nephilim, they’re charged
+             know if he understands what he’s done. His Blood Bond                           with determining who can keep the faith and who
+             can’t override the devotion older adherents have towards                        must go.
+             Michael and his descendants, so the crowd breaks out
+             into a fight between those defending Tomas and those                       •    If the coterie fought against Tomas and he’s still in
+             defending Albertine. Non-believing Kindred use this                             power they’ve made a very powerful enemy. He’ll
+             opportunity to get out, and the coterie could follow suit.                      strike at everything the coterie holds dear. If they can
+                                                                                             build a case against him with the city’s authorities,
+                  If the coterie stays, Albertine shows her appreciation
+                                                                                             they might be able to take him down.
+             for their help by letting them determine Tomas’s fate.
+             She’ll follows whatever decision they make but makes it                    •    If the hunters survived the night, they report their
+             clear that she’ll retake power no matter what.                                  findings to the Society of St. Leopold. The Society’s
+             •      She destroys Tomas by decapitating him with a silver                     investigation leads them towards any player
+                    knife. It is a slow, agonizing event.                                    character who succeeded a trial.
+
+
+
+
+                                                                                   26
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                     MIDNIGHT KISS
+
+
+
+
+                                                      27
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    MIDNIGHT KISS
+
+
+
+
+              Appendix: Player Character Coterie
+             While any group may play Midnight Kiss, here are some              the other type, consult the character’s “Notes” section for
+             pre-written characters to get you playing immediately.             conversion instructions.
+                  If the table doesn’t want to have a mixture of thin-               These characters are a Questari coterie, banded
+             blooded and true vampires in their coterie, or if a player         together for the purpose of finding a place for themselves
+             likes a character option for one type but wants to play            in Kindred society, something that has eluded them so far.
+
+
+
+               LEON MCKAY (TROUBLED ARTIST)
+              Leon was once a rising star in the world of photography,          like joining the ultimate elite, but since then Leon has
+              known for his keen eye for framing and his haunting               realized that not all Kindred are equal. Some get to be
+              choice of subjects. His talent, combined with his natu-           part of the beautiful people and others get relegated to
+              rally handsome looks, let him grace the covers of many            the margins. He’s desperate to be an insider and claw
+              art and photography journals. In private, he self-med-            back the status he’s lost in one form or another.
+              icated an undiagnosed panic disorder with alcohol,
+                                                                                ACTIONS:
+              which soon spiraled out of control. Belen Ramos, one of
+              his long-time patrons and an established Toreador in the          These are things you can do but don’t necessarily have to do.
+              city, found him passed out and close to death. Unwilling          • - Try to determine who are the insiders among the
+              to let the prodigy go, he Embraced him.                             Children and how you can join them.
+                    Now Leon balances his art career with his undead            • - Participate in rituals as if they were old hat.
+              nature. It’s not the newfound Hunger for blood that               • - Gossip like crazy.
+              worries him. The quality of his work is slipping, and the
+                                                                                     Notes: A thin-blooded Leon has a Generation of
+              public is starting to notice.
+                                                                                14 and a Blood Potency of 0. He doesn’t benefit from a
+                    Motivation: The thought of becoming an outsider,            Predator type or use Disciplines. He gains the Baby Teeth
+              a nobody, is terrifying. At first, becoming a vampire felt        Thin-Blood Flaw and the Lifelike Thin-Blood Merit.
+
+                    Clan: Toreador
+                    Embraced: 2019 (Born 1996)
+                    Ambition: Make sure my work lives longer than I do.
+                    Predator: Scene Queen (local art scene)
+                    Convictions: Expose the truth at any cost.
+                    Touchstones: Greta Lansbury, photo gallery owner and relentless partygoer.
+                    Humanity: 7
+                    Generation: 13th
+                    Blood Potency: 1
+                    Attributes: Strength 2, Dexterity 3, Stamina 2; Charisma 4, Manipulation 2, Composure 1; Intelligence 3,
+                    Wits 2, Resolve 3
+                    Secondary Attributes: Health 5, Willpower 4
+                    Skills: Larceny 1, Stealth 2; Etiquette 3, Intimidation (threats) 1, Performance (photography) 3, Persuasion 4,
+                    Streetwise (local art scene) 3, Subterfuge 2; Investigation 2, Medicine 1
+                    Disciplines: Auspex 1 (Heightened Senses), Presence 2 (Awe, Lingering Kiss), Potence 1 (Soaring Leap)
+                    Advantages: Beautiful, Contact (May Davis, city historian) 2, Fame (photographer) 2, High-Functioning
+                    Addict (+1 to Social pools after indulging in addiction), Mawla (Belen) 2
+                    Flaws: Prey Exclusion (non-artists) 1, Stalkers, Addiction (Alcohol)
+
+
+
+
+                                                                           28
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                         MIDNIGHT KISS
+
+
+
+
+              SHANE FISHER (ASSERTIVE FIXER)
+             Shane was a bully in childhood, a hardened criminal in             seem to be the case. Something more is needed. Status,
+             adolescence, and a veteran extortionist in adulthood.              visibility, connections. Perhaps the Children of the Angel
+             Whenever the Partnership, an organized crime group                 could provide all that?
+             in the region, needs dirty work done, they call Shane.
+             When the elderly accountant who Shane was supposed                 ACTIONS:
+             to intimidate commanded Shane to freeze mid-punch                  These are things you can do but don’t necessarily have to do.
+             so that he could break their arm in half, they were at             • Prove that you can ace any challenge the Children
+             once furious and envious. The accountant noticed and                 throw at you.
+             offered them the Embrace.                                          • Show strength by demonstrating that you can take
+                  Now Shane serves as the local Camarilla’s inside                anything.
+             agent at the Partnership. They’re still loyal to their             • Become mesmerized by all the beauty around you.
+             mortal employer but are becoming more zealous about                     Notes: A thin-blooded Shane has a Generation of
+             upholding the sect’s place in the city with each passing           14 and a Blood Potency of 0. They don’t benefit from a
+             night. It would be nice if all that loyalty was recognized.        Predator type or use Disciplines except for Dominate.
+                  Motivation: Being a loyal soldier means getting               They gain the Bestial Temper Thin-Blood Flaw and the
+             rewarded for your service. Shane takes care of the                 Discipline Affinity (Dominate) Thin-Blood Merit.
+             organization and the organization takes care of them.
+             Unfortunately, among the Kindred the same doesn’t
+
+
+                   Clan: Ventrue (Clan Bane: Can only feed on blood from humiliated or beaten people)
+                   Embraced: 2018 (Born 1990)
+                   Ambition: Take command of this organization.
+                   Predator: Alleycat
+                   Convictions: Always carry through with your promises.
+                   Touchstones: Derek Houston, server at a local late-night diner and part-time model.
+                   Humanity: 6
+                   Generation: 13th
+                   Blood Potency: 1
+                   Attributes: Strength 3, Dexterity 1, Stamina 3; Charisma 2, Manipulation 3, Composure 4;
+                   Intelligence 2, Wits 2, Resolve 3
+                   Secondary Attributes: Health 6, Willpower 7
+                   Skills: Melee 2, Stealth 2; Insight (detect lies) 1, Leadership 3, Intimidation (stick-ups) 4, Persuasion 3,
+                   Subterfuge 1; Awareness 3, Investigation 1, Politics 2
+                   Disciplines: Celerity (Rapid Reflexes) 1, Dominate 2 (Cloud Memory, Mesmerize), Presence 1 (Daunt)
+                   Advantages: Contact (Tucker “Cryptkeeper” McCarthy, body disposal technician) 3, Eat Food,
+                   Resources 3, Influence (the Partnership) 2
+                   Flaws: Infamy (known criminal) 2
+
+
+
+
+                                                                           29
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    MIDNIGHT KISS
+
+
+
+
+               JADA SANFORD (CRAFTY INFORMER)
+               Jada always felt invisible while working in the office of        concerned about her own looks, but the idea of being
+               an advertising firm. That she can now become invisible           surrounded by beauty is highly appealing.
+               is a fact she chalks up to cosmic irony. One evening,
+                                                                                ACTIONS:
+               her ride home from work was caught up in a gunfight
+               between two rival coteries. The next bits are blurry             These are things you can do but don’t necessarily have to
+               in her memory. The driver died, and so did she, but a            do.
+               vampire who was there took pity on her and gave her              • Get intimate with someone gorgeous.
+               the blood she needed to survive – and become Kindred.            • Figure out the power plays inside the Children of the
+                     Now Jada plays all sides of Kindred conflict in              Angel, and see if you can place someone in your debt.
+               the city, spying for whoever pays the most in money,             • Network with mortal influencers you recognize
+               valuables, or blood. It’s good work, but she still hopes           thanks to your Mask.
+               for peace in her unlife.                                              Notes: A thin-blooded Jada has a Generation of
+                                                                                14 and a Blood Potency of 0. She doesn’t benefit from
+                     Motivation: There are limits to how successful
+                                                                                a Predator type or use Disciplines. She gains the Dead
+               an information dealer can be, looking in from the
+                                                                                Flesh Thin-Blood Flaw and the Vampiric Resilience
+               outside. The invitation from the Children of the Angel
+                                                                                Thin-Blood Merit.
+               represents a chance to move in and start playing the
+               game for real. As a Nosferatu, Jada is not particularly
+
+
+                    Clan: Nosferatu
+                    Embraced: 2017 (Born 1992)
+                    Ambition: To live in total comfort surrounded by luxury.
+                    Predator: Sandman
+                    Convictions: It’s always okay to mess with those who have it coming.
+                    Touchstones: Savannah Holloway, investigative journalist and the sister of a deceased friend.
+                    Humanity: 7
+                    Generation: 13th
+                    Blood Potency: 1
+                    Attributes: Strength 2, Dexterity 2, Stamina 3; Charisma 1, Manipulation 4, Composure 3; Intelligence
+                    2, Wits 3, Resolve 2
+                    Secondary Attributes: Health 6, Willpower 5
+                    Skills: Brawl 2, Larceny 3, Stealth (break-in) 3; Etiquette 2, Insight 3, Persuasion 2, Streetwise 1,
+                    Subterfuge 4; Awareness (ambushes) 1, Investigation 1
+                    Disciplines: Obfuscate 3 (Silence of Death, Unseen Passage, Mask of a Thousand Faces), Potence 1
+                    (Lethal Body)
+                    Advantages: Mask (Janie Meyer, online lifestyle consultant) 2, Resources 3, Mawla (Shrew) 2,
+                    Bloodhound
+                    Flaws: Obvious Predator
+
+
+
+
+                                                                           30
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                          MIDNIGHT KISS
+
+
+
+
+              LEYLA WRIGHT (BRASH MUSICIAN)
+             When times got tough, Leyla turned to her guitar. It              least not yet. But with a little bit less white marble and
+             got her out of a rough home and into the hardscrabble             more counter-cultural credibility they might become
+             music scene of the city. She established herself as an            what Leyla needs. They just need a little push.
+             alt-country singer-songwriter with politically-charged            ACTIONS:
+             lyrics and mind-bending riffs. She made friends from all
+                                                                                   These are things you can do but don’t necessarily
+             walks of life, even a local biker gang. When a starry-eyed
+                                                                               have to do.
+             fan offered her the chance to “get some real power,” she
+             thought it was a joke until he broke into her home and            • Play an impromptu concert and demonstrate your
+             Embraced her. The Camarilla left the fan out for the sun            capacity to make things feel meaningful.
+             but let Leyla go with a stern warning and brand on her            • Try to shake up the Children of the Angel by beating
+             neck.                                                               them in their own game.
+                                                                               • Become a fan of someone you meet.
+                  Now Leyla’s ready to make a splash in a brand-new
+                                                                                   Notes: As a true vampire, Leyla has a Generation of 13
+             scene. Times are tough again, and she knows exactly
+                                                                               and a Blood Potency of 1. She is a Brujah. She loses all Thin-
+             where to turn.
+                                                                               Blood Flaws and Merits. She gains the Osiris Predator type
+                  Motivation: No performing artist can exist on their          and has the following Disciplines: Potence 2 (Lethal Body,
+             own. They need an audience, a scene to be part of. The            Prowess) and Presence 2 (Awe, Lingering Kiss).
+             Children of the Angel might not quite be that scene, at
+
+
+                   Clan: Thin-Blooded
+                   Embraced: 2019 (Born 1989)
+                   Ambition: Shake up this dead society by any means necessary.
+                   Convictions: It’s not a sin to obey someone you respect, even if they tell you to do something bad.
+                   Touchstones: River Baker, a session bassist and a nightlife habitué.
+                   Humanity: 7
+                   Generation: 14th
+                   Blood Potency: 0
+                   Attributes: Strength 3, Dexterity 3, Stamina 2; Charisma 3, Manipulation 1, Composure 2; Intelligence
+                   2, Wits 2, Resolve 4
+                   Secondary Attributes: Health 5, Willpower 6
+                   Skills: Melee 3, Stealth 2; Intimidation 3, Leadership 3, Performance (public speaking, guitar) 2,
+                   Persuasion 2, Streetwise 4, Subterfuge 1; Investigation (deduction) 1, Politics 1
+                   Advantages: Catenating Blood (Thin-Blood Merit), Allies (Hell’s Stampede, an outlaw biker gang) 3,
+                   Fame (alt-country star) 2, Herd (fan club) 2
+                   Flaws: Branded by the Camarilla (Thin-Blood Flaw), Folkloric Bane (silver) 1, Enemy (Travis “Reb” Dunn,
+                   former manager) 1, Stigmata, Bond Junkie
+
+
+
+
+                                                                          31
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    MIDNIGHT KISS
+
+
+
+
+               MILOGOST “MILO” DABEK (GENIUS OUTCAST)
+               Growing up in a niche theosophical cult, Milo got                 another. If Milo can’t find their place with the Tremere,
+               to know occult theory of different stripes at an early            perhaps the Children could offer a place where they can
+               age. They showed a knack for understanding complex                belong, succeed, and find power and admiration.
+               esoteric topics and became a favorite of the cult’s
+                                                                                 ACTIONS:
+               Kindred master, Felix Baciu. When the Prince granted
+               the Tremere permission to sire a childe, Milo was the             These are things you can do but don’t necessarily have to
+               obvious choice, and Baciu promised the Prince that                do.
+               Milo would be a powerful asset. Unfortunately, the                • Try to participate in any rituals or ceremonies the
+               Embrace didn’t quite take. To hide his shame, Baciu                  Children have.
+               purchased a place overseas and moved Milo and their               • Complain about the vampiric condition.
+               sister Alicja to the city.                                        • Treat Kindred with occult accomplishments with
+                     Now, as a thin-blood with too much knowledge                   admiration and jealousy.
+               and a taste for the thicker kind of vitae, Milo tries to          Notes: As a true vampire, Milo has a Generation of 13
+               keep their head down. Their alchemical studies ease               and a Blood Potency of 2. The character is a Tremere.
+               their curiosity somewhat but not enough.                          The character loses all Thin-Blood Flaws and Merits.
+                     Motivation: By all rights, Milo should have been a          The character loses Thin-Blood Alchemist but gains
+               true Tremere instead of a thin-blood. They were born to           the Blood Leech Predator type and the following
+               it even as a mortal, or so it feels, looking back at their        Disciplines: Auspex 1 (Sense the Unseen), Celerity
+               life and unlife. Becoming a thin-blood is fate’s cruel            1 (Cat’s Grace), Blood Sorcery 2 (A Taste for Blood,
+               joke! A travesty that must be remedied, one way or                Extinguish Vitae, Ritual: Blood Walk).
+
+
+                    Clan: Thin-Blooded
+                    Embraced: 2021 (Born 1991)
+                    Ambition: Experience all the mystical things I never could before.
+                    Convictions: It’s okay to encourage others to vile acts if it’s for the purpose of helping them attain their
+                    highest selves.
+                    Touchstones: Denise Becker, cashier at an occult bookstore.
+                    Humanity: 6
+                    Generation: 14th
+                    Blood Potency: 0
+                    Attributes: Strength 2, Dexterity 2, Stamina 1; Charisma 2, Manipulation 3, Composure 2; Intelligence
+                    4, Wits 3, Resolve 3
+                    Secondary Attributes: Health 4, Willpower 5
+                    Skills: Brawl 1, Craft (design) 2, Stealth (Kindred) 2; Insight 4, Persuasion 1, Subterfuge 2; Academics
+                    (research) 1, Awareness 3, Medicine 3, Occult 3
+                    Disciplines: Thin-Blood Alchemy 1 (Fixatio: Far Reach)
+                    Advantages: Thin-Blood Alchemist (Thin-Blood Merit), Bloodhound, Mawla (Felix) 3, Resources 2,
+                    Retainer (Alicja Ducheski) 1
+                    Flaws: Mortal Frailty (Thin-Blood Flaw), Shunned, Prey Exclusion (unwitting mortals), Stake Bait
+
+
+
+
+                                                                            32
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+                                                                                                                                         MIDNIGHT KISS
+
+
+
+
+             DEWEY HOBBS (PRINCIPLED HUNTSMAN)
+             As a child, Dewey loved everything about his family’s            Otherwise, what’s to stop existence from devolving into a
+             hunting trips except for the kill. When his wife Patricia        moral mess where everybody is either predator or prey?
+             made him promise to give it up, it was almost a relief.
+                                                                              ACTIONS:
+             He kept that promise more than a decade after she
+             passed away from leukemia. The itch for the hunt                 These are things you can do but don’t necessarily have to do.
+             eventually overtook him, and on his first trip in years          • Try new ways to hunt, just for the thrill.
+             he was mauled by something that must have been a                 • Catch and release.
+             wolf but was far too large. As he lay in the darkness,           • Compromise your values because you need to belong.
+             something asked if he wanted to live. He said yes.
+                                                                                   Notes: A full-blooded Dewey has a Generation of
+                  Now, Dewey must learn a lot of new things fast.
+                                                                              13 and a Blood Potency of 1. The character is a Gangrel.
+             He’s found a few allies, Kindred he’s holding onto for
+                                                                              The character loses all Thin-Blood Flaws and Merits.
+             dear unlife, but he desperately needs some sort of a
+                                                                              The character gains the Farmer Predator type and
+             framework for his existence.
+                                                                              has the following Disciplines: Protean 3 (Eyes of the
+                  Motivation: Dewey needs to belong. He needs to be           Beast, Feral Weapons, Shapechange) and Fortitude 1
+             part of something that makes his new unlife make sense.          (Unswayable Mind).
+
+
+                  Clan: Thin-Blooded
+                  Embraced: 2020 (Born 1968)
+                  Ambition: Find a compromise between my faith and my new nature.
+                  Convictions: Innocent life must be defended at all costs.
+                  Touchstones: Susie Chrisman, a caretaker at the graveyard where Dewey’s wife is interred.
+                  Humanity: 7
+                  Generation: 14th
+                  Blood Potency: 0
+                  Attributes: Strength 3, Dexterity 1, Stamina 3; Charisma 2, Manipulation 2, Composure 2;
+                  Intelligence 2, Wits 4, Resolve 3
+                  Secondary Attributes: Health 6, Willpower 5
+                  Skills: Brawl 2, Firearms 2, Survival (hunting) 3; Insight 2, Animal Ken 3, Intimidation 1, Streetwise 1;
+                  Awareness 4, Investigation 3, Medicine 2, Occult (blood cults) 1
+                  Advantages: Anarch Comrades (Thin-Blood Merit), Allies (local hunting club) 2, Contact (Wilbur
+                  Reed, park ranger) 2, Mask (Tom Davidson, construction worker) 1, Resources 2
+                  Flaws: Vitae Dependency (Thin-Blood Flaw), Farmer, Long Bond, Prey Exclusion (pets)
+
+
+
+
+                                                                         33
+
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+    MIDNIGHT KISS
+
+
+
+
+                                              VAMPIRE:
+                                              THE MASQUERADE
+                                              5TH EDITION CORE RULEBOOK
+                                              • Core rulebook for players and Storytellers
+                                              • Play as a vampire struggling for survival
+                                                and supremacy
+                                              • Navigate undead politics while avoiding            VAMPIRE:                 VAMPIRE:                     VAMPIRE:
+                                                                                                   THE MASQUERADE           THE MASQUERADE               THE MASQUERADE
+                                                deadly hunters                                     5TH EDITION              5TH EDITION                  5TH EDITION
+                                                                                                   DICE SET                 STORYTELLER’S                EXPANDED
+                                              $55                                                  $20
+                                                                                                                            SCREEN & TOOLKIT             CHARACTER
+                                                                                                                                                         JOURNAL
+                                                                                                                            $30
+                                                                                                                                                         $21.99
+
+
+
+
+    VAMPIRE:                                   VAMPIRE:                                     VAMPIRE:                                    VAMPIRE:
+    THE MASQUERADE                             THE MASQUERADE                               THE MASQUERADE                              THE MASQUERADE
+    5TH EDITION                                5TH EDITION                                  5TH EDITION                                 5TH EDITION
+    ANARCH                                     CHICAGO BY NIGHT                             CAMARILLA                                   FALL OF LONDON
+    • Features lore on the Anarch Movement,    • Features the Kindred history of            • Features lore on the Camarilla faction,   • Explores the events that led to the
+      rules for clan Ministry, and more          Chicago, rules for clan Lasombra,            rules for clan Banu Haqim, and more         destruction of London’s Kindred by
+                                                 and guidance for Storytellers for                                                        mortal hunters
+    $50                                          stories in the city                        $50
+                                                                                                                                        $45
+                                               $55
+
+
+
+
+    VAMPIRE:                                    VAMPIRE:                                     VAMPIRE:                                    VAMPIRE:
+    THE MASQUERADE                              THE MASQUERADE                               THE MASQUERADE                              THE MASQUERADE
+    5TH EDITION                                 5TH EDITION                                  5TH EDITION                                 5TH EDITION
+    CULTS OF THE BLOOD GODS                     SECOND INQUISITION                           THE BOOK OF NOD                             SABBAT: THE BLACK HAND
+    • Features lore on the Hecata clan,         • Expand your chronicles with                • A collection of rich mythology on         • Features lore for the Sabbat
+      rules for the Oblivion Discipline,          dangerous antagonists and tactics            the creation of vampires for use in         and rules on introducing them as
+      and more                                    your coterie can use to fight back           your chronicles                             antagonists in your chronicles
+    $45                                         $45                                          $50                                         $45
+
+
+
+
+                                                           © 2022 RENEGADE GAME STUDIOS. © 2022 PARADOX INTERACTIVE AB.
+
+                                                                                       34
+
+Downloaded by Timothy Button on 12/25/2024 . Unauthorized distribution prohibited.
+

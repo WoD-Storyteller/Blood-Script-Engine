@@ -1,0 +1,847 @@
+     s t o r y t e l l e r s y s t e m e x pa n d e d m e c h a n i c s a n d p e r m u tat i o n s
+
+
+
+
+STORYTELLER SYSTEM
+                                      
+  Expanded Mechanics
+   and Permutations
+
+
+
+
+                                             1
+                              s t o r y t e l l e r s y s t e m e x pa n d e d m e c h a n i c s a n d p e r m u tat i o n s
+
+
+
+
+P                                                                                Mental
+        art of the strength of the Storyteller
+        system that powers the World of Darkness is
+        that the Storyteller is able to make judgment                            these systems cover tasks involving the three
+calls on the fly. The Storyteller always determines                              Mental Attributes: Intelligence, Wits, and Resolve.
+which dice pool a player builds to attempt any feat or                           Mental tests can provide you with information about
+action, and they can always change it to better serve                            things your character knows but the player does not,
+the narrative.                                                                   and to also determine if the character knows some-
+    That said, characters often attempt the following                            thing the player knows.
+relatively common activities during play. These spe-
+cific dice pools and rules exist to guide the Storytell-
+er. By design, these guidelines can be used across all
+                                                                                 Artistic Creation
+the World of Darkness tabletop storytelling games.                               some characters are artists, musicians, or
+Note that specific circumstances in each game may                                poets (or were while they were alive…) and cultivate
+supersede these suggestions; that’s why they’re                                  their creative spark as a way to deal with the horrors
+guidelines. For example, a Hunter’s quarry may have                              they face or just to stave off the ennui of endless,
+a specific power that inflicts a unique type of fire                             deathless nights. Others attempt to clothe their Muse
+damage, or a rampaging spirit might be mollified by                              with inhuman glories. Camarilla Courts might com-
+a particular type of intimidation or carousing from                              pete in art as in all things, while a Hunter may pride
+a werewolf. And everyone knows that sunlight is                                  themselves on their MC skills, while a mage might
+anathema to vampires….                                                           compose vast murals of occult graffiti.
+    Which is to say, as Storyteller, you have free rein                             Normally, players can have their characters create
+to use these permutations as a baseline to design                                various pieces of art to their heart’s content, but in
+antagonists or challenges that test the capacities of                            some cases, when they wish to accomplish something
+your players’ coteries, cells, packs, and other groups                           with their art, such as impressing someone, it might
+of protagonists.                                                                 be prudent to roll.
+                                                                                    The Attribute in the pool varies: Intelligence is
+                                                                                 most common, but a clever satire might use Wits
+
+
+
+
+                                                                      2
+                              s t o r y t e l l e r s y s t e m e x pa n d e d m e c h a n i c s a n d p e r m u tat i o n s
+
+
+
+
+or Manipulation, or a delicate ivory carving might                              troupe, it and depends heavily on the level of realism
+require Dexterity or Resolve. Plastic arts use Craft as                         in your stories.
+the Skill; performing arts use Performance; architec-
+ture and literary arts use Academics.
+   Art conveying a secret message (e.g., forbidden                              Concealment
+love, political samizdat, occult codes) uses the “encod-                        disguising one’s hideout, cleaning up blood-
+ed” Skill (e.g., Insight, Politics, Occult) but requires a                      stains, disposing of bodies, camouflaging Elysium or
+higher rating in the “surface” artistic Skill.                                  a caern site — the occult nature of World of Darkness
+   The quality of the work depends on the number                                protagonists by definition demands concealment.
+of successes the artist achieves or on the risks taken.                            Camouflage in nature or burying a body there
+A particularly egregious failure critical might betray                          undetectably uses Intelligence + Survival as its pool.
+unintended secrets to a knowledgeable onlooker (such                            Urban camouflage uses Intelligence + Streetwise,
+as threatening the Masquerade for vampires); a clean                            though some characters get creative and use Academ-
+critical might be worth a boon.                                                 ics (Architecture) or Craft (Interior Design) to make
+                                                                                one building appear like another.
+                                                                                   Building false compartments or secret chambers
+Computer Use                                                                    uses Intelligence + Craft (Carpentry) or Intelligence +
+computers are as essential to modern chron-                                     Academics (Architecture), if you trust your work-
+icles as they are dangerous, and clever characters can                          force. Cleaning up a murder scene tests Resolve +
+use them for everything from finding information                                Larceny; concentration and focus are essential, if you
+to sabotaging security systems to sharing damning                               want to remove every drop of DNA.
+photos of their rivals across social media.                                        The result of your concealment test becomes the
+   Many Skills simply require (or assume) basic com-                            Difficulty for anyone trying to spot what you have
+puter use; Investigation, for example, hardly func-                             hidden.
+tions in these nights without a few database searches.
+Academics and Science likewise comprise at least a
+quick Google or JSTOR trawl. Other Skills function                              Explosives
+on a computer just like they might off it — lying in                            from ieds by a desolate roadside to an impromp-
+a bar room and lying in a chat room both involve                                tu Primacord crypt opening, explosives can play a
+Subterfuge.                                                                     dramatic part in the lives and unlives of the players’
+   Hacking into a computer system by writing or                                 characters or those who cross them.
+deploying code script to subvert it uses Intelligence                              Creating explosives uses Intelligence + Science.
++ Technology against a Difficulty dependent on the                              Building a bomb uses explosives (made or sourced) as
+system’s security (4 for decent corporate security, 6                           well as Intelligence + Technology (or Craft, for old-
+for secure databases, 8+ for the NSA). If the character                         school bombs made of clock parts and colored wires).
+rolls a total failure, they alert security to their pres-                          The pool for using a pre-made bomb or explosive
+ence. In some chronicles, hacking may be resolved as                            depends on its purpose; blowing a safe or breaching
+a conflict.                                                                     a wall uses Intelligence + Larceny, controlled demoli-
+   Most hacking in the real world is social engineer-                           tion uses Intelligence + Science (Engineering), setting
+ing: convincing an administrative assistant to re-enter                         a car bomb uses Intelligence + Technology. Just
+their password online, sending phishing emails, or                              tossing a grenade or a stick of dynamite is a regular
+just buying a bunch of passwords from an extremely                              throwing action (see below).
+online malcontent. Those hacks use different pools                                 A total failure on any roll with explosives may
+(Manipulation + Subterfuge or Intelligence + Street-                            cause an accident, ruin the materials, detonate the ex-
+wise, for example) and total failure attracts a different                       plosive prematurely, or result in something else at the
+sort of exposure.                                                               Storyteller’s discretion. Fuck around (with explosives)
+   At the end of the day, what exactly can be accom-                            and find out.
+plished by hacking and how long it takes is up to the
+
+
+
+
+                                                                      3
+                             s t o r y t e l l e r s y s t e m e x pa n d e d m e c h a n i c s a n d p e r m u tat i o n s
+
+
+
+
+Perception                                                                     the sneaky Nosferatu brought their lockpicks, and
+                                                                               so forth. Everybody has the normal sorts of things
+a character’s senses may be keenly attuned                                     people might have in their pockets: cellphone, pocket
+to their surroundings, honed by long training, or                              knife, pencil, or what-have-you. This test covers
+supernaturally acute. Depending on what sort of                                slightly outré or unusual things: rope, a shovel or oth-
+creature they are, a character may find their senses                           er larger tools, extra burner phones. The less likely the
+challenged by an enemy’s scent, distorted by rage, or                          item, the higher the Difficulty the Storyteller should
+overwhelmed by a bouquet of delectable blood.                                  set.
+   Build most perception pools with Awareness as the                               The Attribute for a preparedness test is Intelli-
+Skill. The Attribute varies depending on whether the                           gence; the Skill should relate to the item or its use
+perceiver notices something in the moment (Wits),                              in some way. Roll Intelligence + Firearms to have
+recognizes something (Intelligence), or picks some-                            brought a silencer, or Intelligence + Craft to remem-
+thing out of a cloud of distraction or detail (Resolve).                       ber a wrench, or Intelligence + Occult to produce a
+“You hear a sound” uses Wits; “You hear the guard                              tarot deck from the folds of your trench coat.
+coming” uses Intelligence; “Despite the alarm going                                Storytellers should ask for rolls only if failure is
+off, you hear soft footsteps behind you” uses Resolve.                         interesting, and preparedness is no exception. Is it
+   Feeling a puff of air from a concealed door likely                          worth a roll to see if the characters remembered to
+uses Wits; spotting an ambusher in camouflage likely                           bring their tickets to the concert? Maybe not if they
+uses Intelligence; noticing a very small detail after                          had nothing distracting them, but if they fled an
+long study likely uses Resolve. The Storyteller should                         overturned car after a high-speed chase, did they grab
+ask how much the action depends on instinct or                                 them from the glove box? Would not having the tick-
+sensory acuity, vs. memory or recognition, vs. pure                            ets bring the story to an unsatisfying halt?
+mental focus.
+   Resolve also applies in general to detecting su-
+pernatural signs amidst the mundane information                                Research
+surrounding them. For example, vampires may be able                            the pool for a research attempt, whether it’s
+to distinguish qualities in blood (or Blood) despite the                       scouring an archive or paying a human grad student
+distractions of Hunger.                                                        to look it up, is Intelligence + the relevant Skill (not
+   Tests to perceive an idle target use the target’s                           just Academics or Science but anything from Finance
+Stealth as the base Difficulty. For contests opposing                          to Occult). The character still has to direct the grad
+perception vs. actively sneaking, see Sneaking, below.                         student, after all.
+   Specifically searching a crime scene for clues or ev-                          With the advent of the internet, finding out basic
+idence uses Intelligence + Investigation. Other Skills                         facts or even fairly recondite information has never
+may encompass dedicated perception tests as well;                              been easier; the Difficulty for almost any mundane
+spotting a disease symptom on a human uses Intelli-                            research test is 3 or 4 at most. Very obscure, occult, or
+gence + Medicine, for instance.                                                deliberately concealed information increases the Diffi-
+                                                                               culty. That sort of research often requires an extended
+Preparedness                                                                   test; a critical uncovers the needed fact faster, or leads
+                                                                               to an unsuspected secret or trove of facts.
+nothing slows a story down more than a
+lengthy inventory scene in which players list every
+conceivable item or object they may need for a night’s                         Tracking
+activities. The preparedness test avoids this scenario                         unlike shadowing (see below), tracking
+by allowing players to test during the session to see if                       requires you to follow physical evidence in the wild
+they remembered to bring something along or pick it                            — footprints, blood smears, bent grass — to find a
+up earlier.                                                                    target. The tracking dice pool is Wits + Survival; the
+   Characters need not roll for signature items: Of                            base Difficulty equals the target’s Survival. Inclement
+course the Martial Hunter brought their pistol,                                weather and elapsed time since the target’s passage
+
+
+
+
+                                                                     4
+                              s t o r y t e l l e r s y s t e m e x pa n d e d m e c h a n i c s a n d p e r m u tat i o n s
+
+
+
+
+also modify the Difficulty upwards. Extra successes
+provide more information about the target: rate of
+                                                                                Climbing
+speed, estimated weight, number of people followed,                             climbing usually requires a test of Dexter-
+etc.                                                                            ity + Athletics. If the climber rolls a total failure, they
+                                                                                either get tangled and stuck or fall, at the Storyteller’s
+                                                                                discretion. Using ropes and mountaineering equip-
+
+Physical                                                                        ment lowers Difficulty by -2 or more.
+
+
+
+
+T
+         hese systems generally cover ac-                                       Cold and Freezing
+         tions involving the three Physical Attributes
+                                                                                after an hour of extreme cold, players must roll
+         (Strength, Dexterity, and Stamina). These
+                                                                                Stamina + Resolve (Difficulty 2) for their characters
+feats typically require a test.
+                                                                                to keep moving. They test again each hour, increasing
+    Not everything is overtly an action here; some
+                                                                                the Difficulty by 1 for each roll. On a failure, they
+situations are environmental hazards or the result
+                                                                                stop moving. An hour after that, their flesh freezes
+of failed actions. Note also that these systems are in-
+                                                                                solid and they very quickly die thereafter.
+tended to serve a story’s narrative flow rather than be
+                                                                                   Cold affects different creatures in the World of
+overtly realistic. If your troupe’s story involves surviv-
+                                                                                Darkness differently. For example, vampires can-
+al in winter tundra, you might prefer a more granular
+                                                                                not die from cold, but they can suffer the effects of
+system for cold and freezing, for example, and should
+                                                                                frostbite and even become entirely frozen in severe
+use the proposed system as a baseline.
+                                                                                temperatures.
+
+
+
+
+                                                                      5
+                             s t o r y t e l l e r s y s t e m e x pa n d e d m e c h a n i c s a n d p e r m u tat i o n s
+
+
+
+
+Driving                                                                           For Storytellers who prefer hard-and-fast num-
+                                                                               bers, this chart provides the minimum Strength
+note that vampires’ Drive Skill isn’t the same                                 needed to deadlift various weights or perform feats
+as Hunters’ motivational Drive. (Going forward,                                of strength without a test. Characters of lower
+other World of Darkness characters will update to the                          Strength may use a Strength + Athletics Attribute
+Driving Skill, to keep it distinct from Hunter Drives.)                        test to affect heavier weights than their Strength
+   Nobody needs a Driving roll to operate a vehicle                            ratings allow.
+normally. The pool when you do need a test depends
+on the nature of the complication; driving at high                               Strength         Feats                         Deadlift Weight (kg)
+speed, making complex maneuvers, or evading traffic
+                                                                                 1                Crush a beer can              20 (Christmas tree,
+requires Dexterity + Driving. Weather that makes it                                                                             stop sign)
+hard to see the road is a job for Wits + Driving.                                2                Break a wooden chair          45 (toilet)
+   The Difficulty depends on all those conditions,                               3                Break down a wooden           115 (manhole
+alone or in combination. By and large, each possible                                              door                          cover, empty coffin,
+complication (speed, maneuvers, traffic, weather)                                                                               refrigerator)
+adds +1 to a standard Difficulty of 3 (with a light,                             4                Break a wooden plank;         180 (full coffin, empty
+responsive vehicle) or 4 (with a heavy, unwieldy one).                                            break down a standard         dumpster)
+                                                                                                  interior door
+An extreme version of any complication adds +2 to
+                                                                                 5                Break open a metal fire       250 (motorcycle)
+the Difficulty. Failing the roll slows or even stops the                                          door; tear open a chain
+driver.                                                                                           link fence or chained gate
+   A complete failure under such adverse conditions                              6                Throw a motorcycle;           360 (tall steel street
+might mean a crash or spinning out.                                                               snap handcuffs                lamp)
+                                                                                 7                Flip over a small car; snap   410 (horse)
+                                                                                                  a padlock
+Falling                                                                          8                Break a lead pipe; punch      455 (telephone pole,
+                                                                                                  through a brick wall          grand piano)
+falling characters sustain one level of
+                                                                                 9                Punch through concrete;       545 (tree trunk, small
+Superficial damage per meter of uncontrolled fall.
+                                                                                                  break chains; rip open a      plane)
+Landing on one’s feet (negating the damage) requires                                              car door
+a Dexterity + Athletics test at a Difficulty equal to                            10               Rip open a steel pipe;        680 (speedboat)
+meters fallen.                                                                                    bend an I-beam
+                                                                                 11               Overturn a car; punch         910 (Predator drone)
+                                                                                                  through 2.5 cm thick
+Feats of Strength                                                                                 sheet metal
+                                                                                 12               Break a metal lamp post;      1.3 metric tons (police
+storytellers should feel free to set a                                                            throw a wrecking ball         helicopter, sports car)
+Difficulty to perform any given feat of strength based
+                                                                                 13               Overturn an SUV; toss a       1.8 metric tons (police
+on the character’s Strength Attribute, and completely                                             sports car                    car)
+ignore the chart below. The usual pool for lifting or                            14               Overturn a bus; rip open      2.25 metric tons
+smashing things is Strength + Athletics; for throwing                                             a vault door                  (empty shipping
+heavy things, the Storyteller might use the worst of                                                                            container; SUV, pickup
+                                                                                                                                truck)
+Strength or Dexterity + Athletics.
+   Various supernatural creatures may also have ways                             15               Overturn a truck; toss        2.75 metric tons
+                                                                                                  an SUV                        (Humvee)
+to affect their Strength scores, which is why the scale
+goes beyond 10. Note, too, that different supernatural                         Lifting is all or nothing — if you fail the roll, noth-
+creatures are often represented differently in different                       ing happens. At the Storyteller’s discretion, dragging
+core games. For example, vampires augment their                                an object may be easier than lifting it; increase the
+Strength via the Discipline power Prowess (Potence 2)                          character’s effective Strength by 1 in such a case.
+in Vampire, but would use a Standard or Exceptional
+Dice pool in Hunter.
+
+
+
+
+                                                                     6
+                              s t o r y t e l l e r s y s t e m e x pa n d e d m e c h a n i c s a n d p e r m u tat i o n s
+
+
+
+
+Fire and Burning                                                                Intelligence + Technology test is a likely prerequisite
+                                                                                for such heist staples as tapping into the closed-circuit
+unless used as a weapon (such as in the case of a                               camera feed or hacking into smart building software.
+burning torch, incendiary rounds, or a flamethrower),
+fire deals Aggravated Health damage to a character
+based on the amount of their body exposed, as dictat-                           Pursuit
+ed by the Storyteller. Having one’s hand shoved into                            sooner or later, almost every chronicle will
+an open flame might deal one point of damage, while                             have some sort of pursuit. Vampires may have to
+being engulfed in a roaring inferno would deal three                            pursue their prey, or flee from witnesses or Coalition
+or more per turn.                                                               operatives. Werewolves may chase their target across
+                                                                                urban rooftops or rural wilderness. Hunters may find
+Intrusion                                                                       themselves running to or from the quarry, depending
+                                                                                on how disastrously things have gone.
+intrusion covers breaking and entering,                                             If the race pits two roughly equally matched
+evading physical security devices, picking locks, crack-                        characters (or vehicles), or the slower party has some
+ing safes — and preventing others from doing the                                countervailing advantage (helicopter overwatch,
+same. Intrusion feat pools almost always use Larceny                            knowledge of the Cairo bazaar), resolve the pursuit as
+as the Skill.                                                                   a basic contest.
+    The Attribute in an intrusion pool depends on the                               A vehicle chase uses Wits + Driving for its dice
+precise task in the spotlight; picking a lock or dodging                        pool, given the importance of keeping the quarry (or
+a laser sensor uses Dexterity + Larceny, while cracking                         pursuer) in sight.
+a safe or bypassing an alarm circuit uses Intelligence                              A foot pursuit contest uses Athletics for the Skill.
++ Larceny. Noticing a hidden camera might require                               The Attribute in a foot pursuit varies depending on
+Wits + Larceny; breaking a lock cleanly might use                               the type of chase: A long marathon run might use
+Strength + Larceny (and perhaps some supernatural                               Stamina, a sprint over a few blocks uses Strength,
+benefit…).                                                                      and a multi-level parkour pursuit over the rooftops of
+    Whatever the test, it needs to succeed on the first                         Mumbai uses Dexterity.
+attempt against active security, or the intruder sets off                           Depending on the nature of a chase, many pursuits
+the alarm. Most commercial buildings or large public                            can benefit from teamwork if more than one character
+facilities like museums, have Difficulty 4 or 5 secu-                           is chasing a target (or can plausibly distract a pursuer).
+rity systems; bank vaults and secure facilities shelter                             Players who want more drama from a chase can run
+behind higher Difficulties. A government building                               it as a conflict, where the combatants inflict damage
+might have Difficulty 4 alarms and locks on the front                           on each other (representing things barged into or
+door, but a Difficulty 6 secure wing, with a Difficulty                         short, fleeting bursts of combat) using their pursuit
+8 hazardous materials vault inside that. Some systems                           pool. Any combatant may concede the chase at any
+simply can’t be cracked with low Larceny ratings; for                           time (allowing the quarry to escape, or the pursuer to
+example, Larceny 1 lets you pick a store-bought pad-                            catch up). Use the level of hazards in the environment
+lock but not defeat a keypad or crack a safe.                                   as weapon damage.
+    Setting up a security system uses Intelligence +
+Larceny. Add the margin from that roll to the Diffi-
+culty to penetrate the system and to the watchers’ test                         Shadowing
+to spot a sneaking attempt (see below).                                         one character shadows another by keeping
+    Intrusion requires proper tools (lockpicks, cir-                            them in sight, ideally without being noticed them-
+cuit bridgers, etc.) to avoid a Difficulty penalty of -1                        selves. The pools used vary considerably with who
+(improvised tools) or -2 (credit card and a bobby pin).                         knows what. So long as the shadower isn’t spotted, use
+At the Storyteller’s discretion, characters may be able                         Wits + Awareness vs. the target’s Resolve + Street-
+to use Intelligence + Technology to penetrate purely                            wise (representing normal precautions). If the quarry
+electronic security systems at +1 to the Difficulty. An                         succeeds, the shadower(s) is spotted. If the shadower
+
+
+
+
+                                                                      7
+                              s t o r y t e l l e r s y s t e m e x pa n d e d m e c h a n i c s a n d p e r m u tat i o n s
+
+
+
+
+                                                                                   At the Storyteller’s discretion, diversions and dis-
+                                                                                tractions, as well as crowds or darkness, can give the
+                                                                                light-fingered character bonus dice.
+
+
+                                                                                Sneaking
+                                                                                a sneaking (or hiding) character pits their
+                                                                                Dexterity + Stealth against a watching (or searching)
+                                                                                character’s Wits + Awareness in a basic contest. Dark-
+                                                                                ness, background noise or other distractions, or being
+                                                                                downwind may add a die to the sneaker’s roll; security
+                                                                                devices, scanners, or superior vantage points may add
+                                                                                dice to that of the watcher.
+                                                                                   Like shadowing, vampires using Obfuscate may
+                                                                                not have to make tests to sneak. Other special effects
+                                                                                may come into play as well, such as the rough impres-
+                                                                                sion a Hunter’s ability to Sense the Unnatural may
+                                                                                give, or a werewolf’s Gift that grants them enhanced
+                                                                                alertness.
+
+
+                                                                                Surprise
+                                                                                achieving surprise in a combat situation
+                                                                                generally requires some sort of roll, such as Dexterity
+is discovered, but doesn’t know this fact, use Wits +                           + Stealth vs. the best opposing Wits + Awareness.
+Stealth or Streetwise vs. Wits + Awareness to shake                             (Remember you can Take Half for large parties of
+the surveillance. If everyone knows, the feat is no                             Storyteller characters to speed up play.) This includes
+longer shadowing; it’s now a pursuit!                                           attacks from supernatural concealment effects such as
+    Award bonus dice to the shadower in busy areas vs.                          Obfuscate.
+an unaware target, but to the quarry instead, if they                               Surprise can extend to non-combat and other
+know and are trying to shake off the tail. Award one                            narrative situations, as well. For example, a Kindred
+additional dice in busy areas, or two additional dice                           coterie may wait in Elysium to make an accusation of
+in crowded areas or areas with many potential exits                             the ancilla bedeviling them when she arrives, before
+and blind spots (e.g., wooded parks, train stations,                            she can ingratiate herself with the Camarilla luminar-
+department stores).                                                             ies present.
+    Unless potential helpers are masters of disguise (or                            The first attack or action with successful surprise
+can somehow shapeshift to resemble the target), only                            should generally be made against a static Difficulty
+the shadower’s side benefits from teamwork. Vampires                            1, allowing for devastating strikes, witty ambushes,
+using Obfuscate may not need to test at all to shadow                           or simply having one’s tools at the ready to meet the
+mortals.                                                                        challenge before the challenge knows what hit it.
+
+
+Sleight of Hand                                                                 Swimming and Water
+picking pockets, making a brush pass with                                       Environments
+a contact, or just plain shoplifting are sleight of hand
+                                                                                characters with one dot or more in Ath-
+feats just like card tricks or palming an item. They
+                                                                                letics can swim. To determine whether a character
+use Dexterity + Larceny vs. any watcher’s Wits + the
+                                                                                makes a long swim without being pulled off course
+greater of Larceny or Awareness.
+
+
+
+
+                                                                      8
+                             s t o r y t e l l e r s y s t e m e x pa n d e d m e c h a n i c s a n d p e r m u tat i o n s
+
+
+
+
+by the current or drowning (or sinking, for vampires),                         of their autonomy, but in “mundane” circumstances,
+roll Stamina + Athletics against a Difficulty set by the                       the player’s character is free to react as they wish.
+weather conditions.
+
+                                                                               Standard Social Feat
+   Vampires caught in shallow water during the day
+take damage from sunlight as though they are under
+
+                                                                               Modifiers
+cloud cover.
+
+D rowning
+after a period of duress in water (or, uh, what-                                 Attitude                                     Difficulty modifier
+ever other liquid the environment contains), players                             Loyal/Devoted                                -1
+must roll Stamina + Resolve (Difficulty 2) for their                             Friendly/Weak                                +/- 0
+characters to not start drowning. They test again each                           Indifferent                                  +1
+period, increasing the Difficulty by 1 for each roll. On                         Suspicious                                   +2
+a failure, they begin drowning. One additional duress                            Aggressive/Unfriendly                        +3
+period after that, their lungs have filled with water                            Hostile/Violent                              +5
+(or whatever) and they drown. This is usually fatal to
+anything that breathes, though they may be revived                                Loyal/Devoted individuals may risk their careers,
+(before death) with a Resolve + Medicine test at a Dif-                        and possibly their lives, for you. They readily give
+ficulty 3-5, depending on the time spent submerged.                            any information they think will help you, whether
+    The Storyteller decides what a “period of duress”                          requested or not, and may perform services such as
+is, informed by the severity of circumstances, the                             watching captives, providing medical care, breaking
+violence of the current, the temperature of the liquid,                        down doors, or distracting the cops. They will follow
+etc.                                                                           your lead and agree to your plan with few questions
+                                                                               asked, even if it seems risky.
+Throwing Things                                                                   Friendly/ Weak individuals will not readily harm
+                                                                               you, and they may try to prevent others from harm-
+a character throwing a weapon at a target                                      ing you. They will answer any questions you ask, if
+tests Dexterity + Athletics. For especially strong                             they seem reasonable or safe. They will recommend
+supernatural creatures, this may include things not                            reliable service providers, speak up on your behalf, or
+usually considered weapons, like pieces of I-beam or                           give the occasional helpful tip. They are willing to be
+cars. For Hunters (and hunters…), this often includes                          convinced of your plans, and they will sign on if the
+Molotov cocktails or even military-grade throwables                            benefits are clear.
+like grenades.                                                                    Indifferent individuals will not go out of their way
+                                                                               to harm you without clear orders or benefit. They may
+
+Social Feats
+                                                                               answer some questions, if politeness or profit beckon.
+                                                                               They will not bestir themselves to help you without
+                                                                               clear reason. Your plans strike them as risky and fool-
+
+
+T
+         hese systems cover tasks involving the                                ish, but they are unlikely to actively prevent you from
+         three Social Attributes (Charisma, Manipu-                            trying them as long as they can stay safely out of it.
+         lation, and Composure). In general, Story-                               Suspicious individuals suspect your intentions
+teller characters react to the characters based on their                       might be unwholesome, illegal, or otherwise danger-
+actions.                                                                       ous, but they have no reason to harm you — yet. They
+   Many players don’t like having the dice dictate                             respond with minimal courtesy or professionalism.
+their character’s response to a Storyteller character,                         They are unlikely to listen to your plans, unless you
+and they often prefer playing a full social interac-                           show immediate reasons or benefits for doing so.
+tion rather than roll a basic contest. One easy rule of                           Aggressive/ Unfriendly individuals will harm
+thumb here is that a roll is reasonable if it reflects a                       you if they think they can get away with it, keep a
+supernatural power’s effect that deprives the character                        wary eye on you, and will egg others on to harm you.
+
+
+
+
+                                                                     9
+                                     s t o r y t e l l e r s y s t e m e x pa n d e d m e c h a n i c s a n d p e r m u tat i o n s
+
+
+
+
+They will clam up in your presence, or they offer
+misleading answers to questions. They will give bad
+                                                                                       Artistic Performance
+advice, if they give advice at all. They will not help                                 when a character performs live before an
+you, and they will oppose your plans, regardless of                                    audience, roll Charisma + Performance: The more
+their merits, unless helping you is the only thing keep-                               successes, the greater the quality. Just as with artistic
+ing them comparatively unharmed.                                                       creation, above, always indicate the purpose behind
+   Hostile/ Violent individuals will risk their careers,                               the roll. On a total failure, the performance was a to-
+and possibly their lives, to hurt and possibly kill you.                               tal disaster (and the performer may have new enemies
+They will actively prevent others from giving you                                      they didn’t have when the performance began…).
+answers, help, or comfort of any kind. They may even
+help your enemies; they will certainly do everything
+possible to sabotage your plans, even if they cannot                                   Carousing
+immediately torpedo them.                                                              with a simple test of Charisma + Insight, you
+   On a critical, the target becomes more favorable                                    influence others to relax and have fun. Carousing
+by one attitude level for the remainder of the scene:                                  encompasses showing a potential ally a good time,
+e.g., a suspicious bouncer becomes indifferent. On a                                   loosening an informant’s tongue, and making instant
+total failure, the target becomes less favorable by one                                drinking buddies who come to your aid when a brawl
+attitude level for the remainder of the scene: e.g., that                              starts.
+suspicious bouncer becomes unfriendly.                                                    Carousing can represent any number of situa-
+   You can also modify the Difficulty of a Social test                                 tions, from vampires Vampires seeking vessels at the
+depending on the power differential between the                                        nightclub to an evening of Hunters schmoozing an
+parties, incentives offered, and the type and manner                                   org informer on operations they have lined up to some
+of the request.                                                                        weird mage bacchanal prior to a powerful ritual.
+                                                                                          In certain circumstances, individuals who can’t or
+                                                                                       don’t drink (such as vampires) may lose one or two
+ Circumstance                                       Difficulty Modifier                dice from this roll (or have to make a sleight-of-hand
+ Target is of higher rank, status, or power         +1 or higher
+                                                                                       test (see above) to fake it), depending on how import-
+                                                                                       ant sharing a beer or the equivalent is to the subject.
+ Target is of lower rank, status, or power          -1 or lower
+                                                                                       This isn’t a value judgment on the player’s part; it
+ Character offers valuable trade or favor           -2
+ payable in advance                                                                    simply represents some cultures’ and subcultures’
+ Character offers some significant                  -1 or -2
+                                                                                       expected social activities and the consequences of not
+ motivation (such as a boon for vampires)                                              observing them.
+ Target’s personal or political agenda,             -1 or -2
+ agrees with request (for example,
+ Convictions for vampires)                                                             Credibility
+ Request is easy, safe, or profitable               -1                                 flashing a phony ID and brushing past the
+ Request is complex or risky                        +2                                 rope line, perpetrating a scam or con, presenting false
+ Request is unknown, dangerous, or costly           +3 or more                         credentials or fake ID, passing counterfeit artifacts,
+ Skill or specialty well chosen for the target      -1 or -2                           impersonating the authorities: Tests of credibility take
+ (e.g. Subterfuge (Seduction) for someone                                              many forms. The scammer’s player uses Manipulation
+ on the make)
+                                                                                       + Subterfuge while the mark’s player rolls Wits +
+ Skill or specialty poorly chosen for the           +1 or +2
+ target (e.g., Intimidation for a berserk
+                                                                                       Insight.
+ werewolf )                                                                               A roll might not even be necessary if failure isn’t
+                                                                                       important, or a low static Difficulty can represent the
+                                                                                       mark being ultimately disinterested, like a security
+                                                                                       guard who cares more about watching the clock than
+                                                                                       controlling access to the business suites.
+
+
+
+
+                                                                            10
+                              s t o r y t e l l e r s y s t e m e x pa n d e d m e c h a n i c s a n d p e r m u tat i o n s
+
+
+
+
+   Superior fake documents and other forgeries add
+dice (an additional one or two) to the scammer’s pool;
+                                                                                Intimidation
+clever hacks might do the same thing if the scam                                intimidation has two effects. Intimidation’s
+requires online backup.                                                         passive effect doesn’t involve a test — it ambiently
+   Storytellers and players interested in running a                             gives a character plenty of space, whether on a bus
+long con can set a suitably impressive Difficulty and                           or in a bar. The higher their Intimidation rating, the
+play out an extended test.                                                      wider the berth others give them.
+                                                                                   Intimidation works actively through subtle
+                                                                                coercion or outright threat. Subtle coercion (Ma-
+Fast-Talk                                                                       nipulation + Intimidation) uses a perceived threat:
+a fast-talker tries to obtain agreement from                                    losing one’s job, being arrested, pain and agony a few
+a target by deploying a barrage of half-truths and                              minutes or days later. This action is usually a quick
+engaging nonsense. Fast-talk pools use Charisma +                               contest against the target’s Composure + Resolve.
+Subterfuge vs. the target’s Composure + Insight.                                The loser backs down.
+                                                                                   Blatant threats (Strength + Intimidation) begin
+                                                                                there and can escalate to minor physical damage
+Interrogation                                                                   (biting off fingers, that sort of thing). This action is a
+anyone can simply ask questions. With inter-                                    contest against the target’s Composure + Resolve or
+rogation, the character asks questions and has leverage.                        Strength + Intimidation (whichever is higher). The
+Interrogating someone peacefully (Manipulation +                                loser backs down; regardless of who loses, the charac-
+Insight) involves asking strategic questions designed                           ter with the lower Strength takes the margin on the
+to reveal specific facts. Use a basic contest between the                       intimidation contest as Superficial damage to Health.
+interrogator’s pool and the victim’s Wits + Compo-
+sure.
+   Violent interrogation (Manipulation + Intimi-
+                                                                                Oration
+dation) involves torturing the victim’s mind and/or                             from a general’s rousing speeches to a pol-
+body until they reveal what they know. The victim                               itician’s slick double-talk, the capacity to sway the
+resists with Composure + Resolve. Regardless of the                             masses creates and destroys empires. When a character
+outcome of the contest or conflict round, torture                               speaks to an audience, from a small board meeting to
+damages the subject; they take one point of Aggra-                              a large crowd, roll Charisma + Performance.
+vated damage for each point of their own Resolve.                                   If the character has time to prepare the oration
+Physical torture damages Health; mental torture dam-                            beforehand, the player may roll Intelligence + Insight
+ages Willpower.                                                                 to tailor the speech to the crowd (assuming they know
+   On a total failure by an interrogator using torture,                         relevant information about that crowd). Success on
+the subject dies, enters torpor, or goes mad.                                   this test reduces the subsequent oration Difficulty by
+   Two or more interrogators can use teamwork (see                              1; a critical reduces it by 2. Failure has no effect, while
+the various core rulebooks); this partnership works                             a total failure increases the oration Difficulty by 1 as
+even if one interrogator uses Insight while another                             the character inserts a gaffe into the speech.
+uses Intimidation (the classic “good cop/bad cop”
+ploy).
+   The extent and relevance of shared information are
+                                                                                Seduction
+up to the Storyteller. Especially after torture, a subject                      the particular situation and style of a
+often skews the details or invents extra facts based on                         seduction determine the pool used. Negotiating a
+what they think the interrogator wants to hear.                                 prime dance at a formal cotillion involves Composure
+   In Vampire chronicles, torture is often a fast-track                         + Etiquette. Picking someone up in a bar might start
+to earning Stains; in any chronicle, it’s morally bank-                         with Charisma + Insight, while picking them up at
+rupt behavior, just like in real life.                                          the gym may depend on Manipulation + Athletics.
+                                                                                A coffee shop meet-cute could be Wits + Subterfuge.
+
+
+
+
+                                                                     11
+                             s t o r y t e l l e r s y s t e m e x pa n d e d m e c h a n i c s a n d p e r m u tat i o n s
+
+
+
+
+Whatever the situation, the Looks Merit (see each
+game’s Merits section) almost always adds dice to the                          Combat and
+pool.
+   Seduction may fit into certain types of supernat-                           Conflict Options
+                                                                               T
+ural character concepts as part of its theming. Many
+vampires, for example, are master seducers, as their                                    he World of Darkness games
+very sustenance often depends on coaxing poten-                                         generally place an emphasis on narrative over
+tial prey into a physical liaison. Many supernatural                                    tactical detail, but some troupes prefer more
+creatures also have the ability to augment social Traits                       granular combat and conflict systems. The follow-
+with Disciplines, Gifts, or other effects, such as Pres-                       ing options can add more decision-making and fine
+ence for vampires.                                                             control in combat, as well as model different types of
+   Like any other test or contest in the game, the                             conflict using narrative prompts.
+Storyteller can abstract a seduction into a simple test
+of Charisma + Subterfuge or turn it into an ongoing
+epic subplot throughout the chronicle. Attraction and
+                                                                               Additional Conflict Options
+seduction provides plenty of dramatic possibilities.                           all conflict actions need not be straight
+   Note that seduction implies some amount of sexu-                            attacks on the opposition. In fact, most engagements
+ality and desire for intimacy of some kind with others.                        involve a goal that doesn’t solely rely on eliminating
+Some players may be uncomfortable with certain                                 all enemies, and there’s no reason why players should
+expressions of seduction or descriptions of amorous                            be forced to confront their opponents head-on when
+contact. Be sure to establish boundaries and maintain                          they can achieve their ends with other means. Con-
+standards of respectful play. Each of the World of                             sider the following action variants when engaged in a
+Darkness core rulebooks has appendices devoted to                              conflict.
+this kind of respectful play and more.
+                                                                               A dvance
+                                                                               Working directly toward the goal(s) of the conflict.
+                                                                               This could be cozying up to an elder vampire when
+                                                                               vying for a seat on the council, destroying evidence
+                                                                               before the IAO goons arrest the cell, gathering
+                                                                               influence in a housing project, hacking a security
+                                                                               system before being discovered, Kindred feeding
+                                                                               from students, etc. Depending on the conflict, a prior
+                                                                               Maneuver (see below) might be required to advance
+                                                                               effectively.
+                                                                                  Advances are usually run as an extended test (see
+                                                                               the dice systems in the appropriate core rulebook)
+                                                                               with the player rolling to accumulate as many wins/
+                                                                               successes as possible.
+                                                                                  Note that Advance isn’t applicable to all conflicts,
+                                                                               the prime example being combat, where there are no
+                                                                               goals except hurting the opposition and/ or getting
+                                                                               the hell out of there.
+
+                                                                               Maneuver
+                                                                               This option involves attaining an advantaged posi-
+                                                                               tion, either in order to be able to take other actions at
+                                                                               all, or to claim an advantage, such as flanking a foe,
+                                                                               making sure one is alone with the object of their de-
+
+
+
+
+                                                                    12
+                               s t o r y t e l l e r s y s t e m e x pa n d e d m e c h a n i c s a n d p e r m u tat i o n s
+
+
+
+
+sire, gaining access to important people, finding cover                          A ll-O ut Attack
+from oncoming shots, etc.                                                        Sometimes a combatant wants to go apeshit, discard-
+   Depending on the situation, a successful maneuver                             ing safety in exchange for greater effect. In this case,
+should result in one of these benefits:                                          the attacker receives a +1 damage bonus, but cannot
+                                                                                 defend against any attacks. If using a ranged weapon,
+■   A dice bonus to the next action. A 1-3 dice pool                             this tactic also empties the weapon. This option may
+    bonus is usually enough, perhaps depending on                                not be used with surprise. If the attack fails, anyone
+    critical successes or on the margin achieved.                                acting against the combatant gains one additional die
+                                                                                 to their pools the next turn.
+    Example: a feint in melee, studying an opponent’s
+    weakness before delivering the perfect insult, or
+                                                                                 A ll-O ut D efense
+    finding just the right tools for a Hunt
+                                                                                 The opposite of going apeshit, of course. A character
+■   Gaining a superior position. Whether by
+                                                                                 concentrating solely on their protection and nothing
+    misdirection, speed, or stealth, this allows the                             else (except, perhaps, a minor action — see below)
+    attacker to strike or otherwise act upon the                                 gains a bonus die to all defense rolls for the turn. If
+    opponent unopposed (see Surprise, above),                                    the character has access to solid cover and can hide
+    though gaining the advantage might be very                                   completely behind it, this advantage can make them
+    difficult or require accumulating enough                                     impervious to ranged attacks, provided they aren’t
+    successes on an extended test.                                               flanked (see Maneuvers, above).
+    Example: flanking someone’s cover in a firefight,
+    disengaging to return with a surprise attack, or                             G rappling
+    working your way into someone’s grace as a setup for                         A combatant can attempt to grapple, hold, tackle, or
+    betrayal                                                                     otherwise restrain a foe by rolling Strength + Brawl. If
+■   In some cases a maneuver is required to make                                 they get more successes than their opponent, they do
+    an attack or advance toward the goal in the first                            no damage, but instead restrain the target, preventing
+    place. Only after a successful maneuver can the                              them from moving and engaging other opponents,
+    character attack the intended target or advance                              though the target can still act against the grappler as
+    toward the goal.                                                             normal. In the next round, the grappler may engage
+    Example: finding the cell’s Quarry during a city-                            their foe in a contest of Strength + Brawl. If the
+    wide conflict, arranging to be alone with a potential                        grappler wins, they can choose from the following
+    vessel in a conflict of seduction and intrigue, putting                      options:
+    one’s finances together to take over a company
+                                                                                 ■     Damage the foe based on their margin of
+B lock                                                                                 successes, as a normal attack;
+Actively opposing another character’s actions. This                              ■     Bite the foe (if appropriate to their supernatural
+could be by positioning one’s character in front of an                                 creature type) for an appropriate amount
+attacker, throwing distractions in the path of someone                                 (ex. Vampires inflict two Aggravated damage
+working to gather support, laying down suppressive                                     per Bite Attacks on p. 213 of Vampire: The
+fire, etc. When blocking, the player sets the result of                                Masquerade); or
+the block roll as opposition to the action you’re block-                         ■     Hold them in place.
+ing. This might be used directly in a contest (see the
+dice systems section of the appropriate core rulebook)
+                                                                                 If the grappled combatant wins, they escape and can
+or might establish a Difficulty for someone else’s
+                                                                                 move freely the next round.
+attempt at an action, at the Storyteller’s discretion.
+                                                                                     Bite attacks against a grappled foe suffer no bite
+    Sometimes it is also possible to block someone’s
+                                                                                 penalty to the attack roll.
+block. If this is the goal, test at the furthest link in the
+chain of blocks first, and if successful, the later block
+does not take place.
+
+
+
+
+                                                                      13
+                                  s t o r y t e l l e r s y s t e m e x pa n d e d m e c h a n i c s a n d p e r m u tat i o n s
+
+
+
+
+C over                                                                              tires of a car, swatting a goblet out of the hand of the
+Defending against ranged attacks is usually done with                               elder, or putting a bullet in the leg of a fleeing infor-
+Dexterity + Athletics, representing the ability to keep                             mant. Called shots are also used when attempting
+moving and making oneself a hard target using any                                   decapitation or when trying to put a stake in the heart
+and all available cover.                                                            of a vampire (see the relevant core rulebook).
+                                                                                       To do so, the attacker declares their action and
+ Cover                                            Dice Modifier
+                                                                                    target before rolling the dice for their attack.
+ No cover                                         -2                                   After the attacker tests, they subtract successes; hit-
+ Concealment only (bushes, a small tree vs        -1                                ting a specific location is not just harder, it also makes
+ rifle-caliber bullets)
+                                                                                    achieving a safe center-of-mass hit less likely. Usually,
+ Hard Cover (a car engine block, the corner       +/- 0
+                                                                                    the modifier is -2 successes, though the Storyteller can
+ of a concrete building)
+                                                                                    modify this number up or down depending on the
+ Entrenchment (sandbags, military bunker)         +1
+                                                                                    nature of the target. Hitting the tires of a car might
+ Murder Hole (IFV firing slit)                    +2
+                                                                                    incur a -1 penalty, while piercing the fuel line of a
+                                                                                    plane taking off is done at -4.
+A stationary target lacks a defense pool, instead de-                                  The exact effect of a called shot is up to the Sto-
+fending with a static Difficulty of 1.                                              ryteller, but it should not simply be more damage,
+                                                                                    as that is the assumed purpose of a normal attack.
+R anged Weapons in C lose C ombat                                                   Instead, called shots are more likely to aim for less
+If engaged in hand-to-hand combat, the wielder of a                                 damage, going for a non-lethal incapacitation at the
+firearm uses Strength + Firearms against the oppo-                                  expense of effectiveness: inability to run and flee, flat
+nent’s Brawl or Melee pool. The opponent doesn’t                                    tires, pierced fuel lines, etc.
+receive a penalty for lacking cover. Instead, the firearm
+user suffers a -2 dice penalty if targeting someone                                 C rippling I njuries
+outside the scuffle as well as a -2 penalty for firearms                            The Crippling Injury table allows for additional ef-
+larger than a pistol.                                                               fects from extreme Health damage. After taking dam-
+                                                                                    age while Impaired, roll a d10 on the Crippling Injury
+R eloading and Tracking A mmunition                                                 table, adding the number of Aggravated damage
+Combat systems in World of darkness games generally                                 currently on the track to the roll. This result can lead
+don’t bother with ammunition expenditure for small                                  to further dice pool penalties (or even instant death),
+arms, but an attack test often represents more than a                               tracked independently from the abstract damage on
+single shot, so it can be wise to require reloading after                           the Health tracker.
+a single attack with revolvers and other small-capac-
+                                                                                      Aggravated                 Crippling Injury
+ity firearms, after two attacks with most automatic                                   Damage + Roll
+pistols and rifles, and after three attacks from 30+                                  1-6                        Stunned: Spend 1 point of Willpower or
+cartridge magazines.                                                                                             lose a turn.
+    Reloading is a two-dice minor action (see below)                                  7-8                        Severe head trauma: Make Physical rolls at
+for most weapons (assuming a revolver has a speed                                                                -1; Mental rolls at -2
+loader).                                                                              9-10                       Broken limb or joint: Make rolls at -3
+                                                                                                                 when using the affected limb, or
+                                                                                                                 Blinded: Make vision-related rolls (including
+C alled S hots                                                                                                   combat) at -3
+Combat generally assumes the combatants are trying                                                               Storyteller decides which makes most sense
+to be as effective as possible. For more granularity,                                                            for this combat
+though, some troupes prefer combat that allows them                                   11                         Massive wound: Make all rolls at -2, add +1
+to target specific hit locations.                                                                                to all additional damage suffered
+   A combatant may seek to direct their attacks at a                                  12                         Crippled: Same effects as Broken, but limb
+                                                                                                                 is lost or mangled beyond use
+specific part of their target in order to produce a result
+other than maximal physical trauma: shooting out the                                  13+                        Death (mortal) or appropriate
+                                                                                                                 incapacitation (torpor for a vampire, etc.)
+
+
+
+
+                                                                         14
+                              s t o r y t e l l e r s y s t e m e x pa n d e d m e c h a n i c s a n d p e r m u tat i o n s
+
+
+
+
+Minor Actions                                                                   then makes one roll of a conflict dice pool, without
+                                                                                Willpower re-rolls or Traits specific to their supernat-
+some actions might not warrant a full ex-                                       ural creature type, at the set Difficulty. (The opposi-
+change, but are still too consequential to justify being                        tion doesn’t roll.) The more players’ characters who
+done for free. These shouldn’t be actions that require                          win, the better the results. If the majority of the play-
+a roll or that might otherwise be opposed in some                               ers’ characters win, the opposition might for example
+way. Minor actions subtract dice from your charac-                              break, fall down wounded, storm off in a fit of pique,
+ter’s main action, and the Storyteller might put a cap                          surrender, or whatever else makes dramatic sense.
+on how many are possible in one exchange. Readying
+a weapon, handling equipment, moving more than a                                Sample D ifficulties
+few steps, running an errand, and typing in a pass-                             ■ The opposition is significantly weaker or the goal
+word might all be examples of minor actions, depend-                              is simple to achieve: Difficulty 2
+ing on the scale of the conflict.                                               ■ Both parties are equally matched or the goal is a
+   A character who wants to perform only minor ac-                                significant challenge: Difficulty 4
+tions in a turn may do so, with the Storyteller setting                         ■ The opposition is much stronger or the goal is
+a cap on how many are possible in a turn.                                         extremely hard to reach: Difficulty 6
+
+Movement in Conflicts                                                           Adjust the Difficulty by 1 to the side with the advan-
+                                                                                tage in supernatural might (Disciplines, Fights, etc.).
+movement in World of Darkness stories is of-                                       Adjust the Difficulty by 1 to the side that has the
+ten abstracted, but it can nevertheless be a significant                        advantage of position, preparation, or surprise.
+part of dramatic conflict. Perhaps a frenzied werewolf                             Each character then takes (Health or Willpower as
+is trying to close with a ranged attacker, a skulking                           appropriate) damage equal to the difference between
+vampire attempts to flank an unknowing victim, or                               their successes and twice the Difficulty. This damage
+the conflict is very mobile, taking place all over the                          can not be mitigated by armor or supernatural means.
+entire city.                                                                    The nature of the damage depends on the opposi-
+    Generally, handle movement beyond the immedi-                               tion and the weapons they are using — well-armed
+ate as Minor Actions (see above), but if the movement                           Coalition agents often cause Aggravated damage, for
+is significantly opposed, it can also be handled as a                           example. Do not halve Superficial damage in this case.
+Maneuver (see further above).                                                      Optional: Where morality systems permit, instead
+    If necessary, the Storyteller can usually provide                           of applying levels of damage, allow a player to mitigate
+a simple map of the conflict. In some conflicts, the                            the damage with Trait loss or accumulation (such as
+troupe’s Relationship Map might even become an                                  Stains for vampires). This represents having accom-
+excellent conflict map!                                                         plished their goals with acts of greater callousness.
+
+One-Roll Conflicts
+a conflict need not necessarily be resolved
+as a “zoomed in” series of exchanges as in the basic
+rules. It can also be resolved in a more “zoomed out”
+manner, especially if it holds less potential for drama
+or involves fewer players. (Or incidentally, if it involves
+too many actors to turn into a meaningful conflict!)
+One-roll conflicts can resolve any sort of conflict,
+from a relentless brawl to a night of trading bon mots
+and compliments at the Succubus Club.
+    Simply set a difficulty for the opposition based on
+its power. Each player participating in the conflict
+
+
+
+
+                                                                     15
+
