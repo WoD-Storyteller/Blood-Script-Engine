@@ -24,6 +24,7 @@ export class CombatService {
     defenderCharacterId?: string;
     action: CombatAction;
   }): Promise<{ narration: string; damage: number }> {
+    // Rule source: rules-source/combat.json (combat resolution framework).
     const weapon = this.gear.getWeaponFromText(input.action.description);
     const armor = input.defenderCharacterId
       ? this.gear.getArmorForCharacter(input.defenderCharacterId)

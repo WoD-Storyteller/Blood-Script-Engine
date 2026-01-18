@@ -8,6 +8,7 @@ export type CompulsionResult = {
 
 @Injectable()
 export class CompulsionsService {
+  // Rule source: rules-source/compulsions.json (clan compulsion names/descriptions).
   private readonly clanCompulsions: Record<string, CompulsionResult[]> = {
     brujah: [
       {
