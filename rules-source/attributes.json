@@ -1,0 +1,17 @@
+{
+  "physical": [
+    "Strength",
+    "Dexterity",
+    "Stamina"
+  ],
+  "social": [
+    "Charisma",
+    "Manipulation",
+    "Composure"
+  ],
+  "mental": [
+    "Intelligence",
+    "Wits",
+    "Resolve"
+  ]
+}

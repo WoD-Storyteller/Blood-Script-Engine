@@ -1,0 +1,10 @@
+{
+  "max": 5,
+  "effects": {
+    "1": "Minor interference",
+    "2": "Increased compulsion risk",
+    "3": "Messy criticals possible",
+    "4": "Bestial failures likely",
+    "5": "Frenzy imminent"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "damage_types": [
+    "Superficial",
+    "Aggravated"
+  ],
+  "turn_order": "Dexterity + Wits",
+  "healing": {
+    "superficial": "Halved on vampires",
+    "aggravated": "Requires rouse checks"
+  }
+}

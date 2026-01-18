@@ -1,0 +1,35 @@
+{
+  "physical": [
+    "Athletics",
+    "Brawl",
+    "Craft",
+    "Drive",
+    "Firearms",
+    "Larceny",
+    "Melee",
+    "Stealth",
+    "Survival"
+  ],
+  "social": [
+    "Animal Ken",
+    "Etiquette",
+    "Insight",
+    "Intimidation",
+    "Leadership",
+    "Performance",
+    "Persuasion",
+    "Streetwise",
+    "Subterfuge"
+  ],
+  "mental": [
+    "Academics",
+    "Awareness",
+    "Finance",
+    "Investigation",
+    "Medicine",
+    "Occult",
+    "Politics",
+    "Science",
+    "Technology"
+  ]
+}
