@@ -46,7 +46,15 @@ export class BloodPotencyService {
   getEffectiveBloodPotency(sheet: any): number {
     if (this.isThinBlood(sheet)) return 0;
     const normalized = this.normalizeBloodPotency(sheet?.bloodPotency ?? sheet?.blood_potency ?? 0);
-    return this.clampToRules(normalized);
+    const temporaryBonus = this.getTemporaryBonus(sheet);
+    return this.clampToRules(normalized + temporaryBonus);
+  }
+
+  getTemporaryBonus(sheet: any): number {
+    const raw = sheet?.bloodPotencyTemporary?.amount ?? sheet?.bloodPotencyTemporaryBonus ?? 0;
+    const numeric = Number(raw);
+    if (!Number.isFinite(numeric)) return 0;
+    return Math.max(0, Math.trunc(numeric));
   }
 
   clampToRules(value: number): number {
