@@ -72,6 +72,34 @@ export class CharactersController {
     });
   }
 
+  @Get(':id/rules-state')
+  async getRulesState(
+    @Req() req: Request,
+    @Headers('authorization') auth: string,
+    @Param('id') id: string,
+  ) {
+    const token = this.token(req, auth);
+    if (!token) return { error: 'Unauthorized' };
+
+    return this.db.withClient(async (client) => {
+      const session = await this.auth.validateToken(client, token);
+      if (!session) return { error: 'Unauthorized' };
+
+      const engineRes = await client.query(
+        `SELECT banned FROM engines WHERE engine_id=$1`,
+        [session.engine_id],
+      );
+      if (!engineRes.rowCount) return { error: 'EngineNotFound' };
+      enforceEngineAccess(engineRes.rows[0], session, EngineAccessRoute.NORMAL);
+
+      const rulesState = await this.characters.getRulesState(client, {
+        characterId: id,
+      });
+
+      return { rulesState };
+    });
+  }
+
   @Post(':id/active')
   async setActive(
     @Req() req: Request,

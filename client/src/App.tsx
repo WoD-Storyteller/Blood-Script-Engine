@@ -148,7 +148,10 @@ export default function App() {
           </Routes>
 
           {isOwner ? (
-            <OwnerDashboard />
+            <>
+              <OwnerDashboard />
+              <WorldDashboard world={currentWorld} session={currentSession} />
+            </>
           ) : (
             <WorldDashboard world={currentWorld} session={currentSession} />
           )}

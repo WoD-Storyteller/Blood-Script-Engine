@@ -2,6 +2,7 @@ import {
   SessionInfo,
   CharacterSummary,
   CharacterSheet,
+  RulesState,
   WorldState,
   CoterieDetail,
   CoterieSummary,
@@ -81,6 +82,11 @@ export const fetchCharacter = async (id: string) =>
     `/companion/characters/${id}`,
   )).character;
 
+export const fetchCharacterRulesState = async (id: string) =>
+  (await call<{ rulesState: RulesState }>(
+    `/companion/characters/${id}/rules-state`,
+  )).rulesState;
+
 export const setActiveCharacter = (characterId: string) =>
   call('/companion/characters/active', {
     method: 'POST',
@@ -94,6 +100,16 @@ export const updateCharacterSheet = (
   call(`/companion/characters/${characterId}`, {
     method: 'POST',
     body: JSON.stringify({ sheet }),
+  });
+
+export const overrideBloodPotency = (
+  characterId: string,
+  value: number,
+  reason: string,
+) =>
+  call('/companion/owner/blood-potency/override', {
+    method: 'POST',
+    body: JSON.stringify({ characterId, value, reason }),
   });
 
 export const saveCharacterPortrait = (characterId: string, objectPath: string) =>

@@ -104,7 +104,7 @@ export default function WorldDashboard({
         </div>
       )}
 
-      {tab === 'characters' && <CharactersPage />}
+      {tab === 'characters' && <CharactersPage session={session} />}
       {tab === 'coteries' && <CoteriesPage />}
 
       {tab === 'admin' && showAdmin && (

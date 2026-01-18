@@ -1,6 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { BloodPotencyService } from '../blood-potency/blood-potency.service';
 
+type RulesTimelineEntry = {
+  id: string;
+  timestamp: string;
+  type: string;
+  reason: string;
+  data?: Record<string, unknown>;
+};
+
 @Injectable()
 export class CharactersService {
   constructor(
@@ -95,5 +103,73 @@ export class CharactersService {
     );
 
     return { ok: true };
+  }
+
+  async getRulesState(
+    client: any,
+    input: { characterId: string },
+  ) {
+    const res = await client.query(
+      `SELECT sheet FROM characters WHERE character_id = $1`,
+      [input.characterId],
+    );
+
+    if (!res.rowCount) return null;
+
+    const sheet = res.rows[0].sheet ?? {};
+    const stored = this.bloodPotency.getStoredBloodPotency(sheet);
+    const effective = this.bloodPotency.getEffectiveBloodPotency(sheet);
+    const temporaryBonus = this.bloodPotency.getTemporaryBonus(sheet);
+    const isThinBlood = this.bloodPotency.isThinBlood(sheet);
+
+    const timeline = this.buildRulesTimeline(sheet);
+
+    return {
+      bloodPotency: {
+        stored,
+        effective,
+        temporaryBonus,
+        isThinBlood,
+        rule: this.bloodPotency.getRule(effective),
+      },
+      resonance: sheet.resonance ?? null,
+      dyscrasia: sheet.dyscrasia ?? null,
+      timeline,
+    };
+  }
+
+  private buildRulesTimeline(sheet: any): RulesTimelineEntry[] {
+    const bloodPotencyLog = Array.isArray(sheet?.bloodPotencyLog)
+      ? sheet.bloodPotencyLog.map((entry: any) => ({
+          id: entry.id ?? '',
+          timestamp: entry.timestamp ?? '',
+          type: 'blood_potency_change',
+          reason: entry.reason ?? '',
+          data: {
+            from: entry.from,
+            to: entry.to,
+            note: entry.note,
+            requested: entry.requested,
+          },
+        }))
+      : [];
+
+    const progressionLog = Array.isArray(sheet?.bloodPotencyProgression?.log)
+      ? sheet.bloodPotencyProgression.log.map((entry: any) => ({
+          id: entry.id ?? '',
+          timestamp: entry.timestamp ?? '',
+          type: entry.type ?? 'blood_potency_progression',
+          reason: entry.reason ?? '',
+          data: entry.data ?? {},
+        }))
+      : [];
+
+    const timeline = [...bloodPotencyLog, ...progressionLog];
+
+    return timeline.sort((a, b) => {
+      const aTime = Date.parse(a.timestamp ?? '');
+      const bTime = Date.parse(b.timestamp ?? '');
+      return (Number.isFinite(bTime) ? bTime : 0) - (Number.isFinite(aTime) ? aTime : 0);
+    });
   }
 }
