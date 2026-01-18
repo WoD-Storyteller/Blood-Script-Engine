@@ -14,8 +14,9 @@ export type V5RollResult = {
 @Injectable()
 export class DiceService {
   rollV5(pool: number, hunger: number): V5RollResult {
-    const normalDice = Math.max(0, pool - hunger);
-    const hungerDice = Math.max(0, hunger);
+    // rules-source/v5_core_clean.txt p.118 "Vampires always replace normal dice with their current Hunger dice in every pool."
+    const hungerDice = Math.max(0, Math.min(hunger, pool));
+    const normalDice = Math.max(0, pool - hungerDice);
 
     const rolls = this.roll(normalDice);
     const hungerRolls = this.roll(hungerDice);
