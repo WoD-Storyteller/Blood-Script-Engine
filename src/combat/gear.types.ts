@@ -12,5 +12,5 @@ export interface WeaponProfile {
 
 export interface ArmorProfile {
   name: string;
-  soak: number; // reduces superficial damage only
+  soak: number; // converts aggravated damage to superficial on a 1-for-1 basis
 }

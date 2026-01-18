@@ -40,6 +40,7 @@ export class CombatService {
       hunger: 0,
     });
 
+    // Source: rules-source/v5_core_clean.txt p.303 (damage starts from margin of successes on the winning attack roll).
     let margin =
       attackerRoll.roll.successes - defenderRoll.roll.successes;
 
@@ -57,28 +58,34 @@ export class CombatService {
       return { narration, damage: 0 };
     }
 
-    // Apply weapon bonus
+    // Source: rules-source/v5_core_clean.txt p.303 (add weapon damage rating to the margin for total damage).
     margin += weapon.bonusDamage;
 
-    // Apply armor soak (superficial only)
-    if (weapon.damageType === 'superficial' && armor) {
-      margin = Math.max(0, margin - armor.soak);
+    let aggravated = weapon.damageType === 'aggravated' ? margin : 0;
+    let superficial = weapon.damageType === 'superficial' ? margin : 0;
+
+    // Source: rules-source/v5_core_clean.txt p.304 (each point of armor converts 1 aggravated damage from puncturing/bladed attacks to superficial).
+    if (armor && aggravated > 0) {
+      const converted = Math.min(armor.soak, aggravated);
+      aggravated -= converted;
+      superficial += converted;
     }
 
-    let narration = `${weapon.name} strikes home for ${margin} damage.`;
+    const totalDamage = aggravated + superficial;
+    let narration = `${weapon.name} strikes home for ${totalDamage} damage.`;
 
     const hungerEffect = this.hunger.getConsequence(attackerRoll.outcome);
     if (hungerEffect) narration += ` ${hungerEffect}`;
 
-    if (input.defenderCharacterId && margin > 0) {
+    if (input.defenderCharacterId && totalDamage > 0) {
       await this.tracker.applyHealthDamage(client, {
         engineId: input.engineId,
         characterId: input.defenderCharacterId,
-        superficial: weapon.damageType === 'superficial' ? margin : 0,
-        aggravated: weapon.damageType === 'aggravated' ? margin : 0,
+        superficial,
+        aggravated,
       });
 
-      if (weapon.damageType === 'aggravated') {
+      if (aggravated > 0) {
         await this.tracker.addCondition(client, {
           engineId: input.engineId,
           characterId: input.defenderCharacterId,
@@ -95,11 +102,11 @@ export class CombatService {
       sceneId: input.sceneId,
       attackerCharacterId: input.attackerCharacterId,
       defenderCharacterId: input.defenderCharacterId,
-      damage: margin,
+      damage: totalDamage,
       damageType: weapon.damageType,
       summary: narration,
     });
 
-    return { narration, damage: margin };
+    return { narration, damage: totalDamage };
   }
 }
