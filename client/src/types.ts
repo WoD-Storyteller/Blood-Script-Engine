@@ -63,6 +63,40 @@ export interface CharacterSummary {
 
 export type CharacterSheet = Record<string, any>;
 
+export interface BloodPotencyRuleView {
+  level: number;
+  bloodSurgeDice: number;
+  mendingSuperficialPerRouse: number;
+  disciplineBonusDice: number;
+  disciplineRouseMaxLevel: number;
+  feeding: {
+    animalBaggedSlakeMultiplier: number;
+    humanSlakePenalty: number;
+    minHungerAfterHumanFeedingWithoutKill?: number;
+  };
+}
+
+export interface RulesTimelineEntry {
+  id: string;
+  timestamp: string;
+  type: string;
+  reason: string;
+  data?: Record<string, unknown>;
+}
+
+export interface RulesState {
+  bloodPotency: {
+    stored: number;
+    effective: number;
+    temporaryBonus: number;
+    isThinBlood: boolean;
+    rule: BloodPotencyRuleView;
+  };
+  resonance: any;
+  dyscrasia: any;
+  timeline: RulesTimelineEntry[];
+}
+
 export interface CoterieSummary {
   coterie_id: string;
   name: string;

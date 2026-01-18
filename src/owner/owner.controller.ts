@@ -1,14 +1,17 @@
 import { Controller, Get, Post, Body, Req, Headers } from '@nestjs/common';
 import type { Request } from 'express';
+import { v4 as uuid } from 'uuid';
 import { DatabaseService } from '../database/database.service';
 import { CompanionAuthService } from '../companion/auth.service';
 import { isBotOwner } from './owner.guard';
+import { BloodPotencyService } from '../blood-potency/blood-potency.service';
 
-@Controller('owner')
+@Controller('companion/owner')
 export class OwnerController {
   constructor(
     private readonly db: DatabaseService,
     private readonly auth: CompanionAuthService,
+    private readonly bloodPotency: BloodPotencyService,
   ) {}
 
   private token(req: Request, auth?: string) {
@@ -151,6 +154,64 @@ export class OwnerController {
       );
 
       return { ok: true };
+    });
+  }
+
+  @Post('blood-potency/override')
+  async overrideBloodPotency(
+    @Req() req: Request,
+    @Headers('authorization') auth: string,
+    @Body() body: { characterId: string; value: number; reason: string },
+  ) {
+    const token = this.token(req, auth);
+    if (!token) return { error: 'Unauthorized' };
+
+    const reason = body.reason?.trim();
+    if (!reason) return { error: 'ReasonRequired' };
+
+    const nextValue = Number(body.value);
+    if (!Number.isFinite(nextValue)) return { error: 'InvalidValue' };
+
+    return this.db.withClient(async (client) => {
+      const session = await this.auth.validateToken(client, token);
+      if (!session || !isBotOwner(session)) return { error: 'Forbidden' };
+
+      const characterRes = await client.query(
+        `SELECT engine_id, sheet FROM characters WHERE character_id = $1`,
+        [body.characterId],
+      );
+      if (!characterRes.rowCount) return { error: 'CharacterNotFound' };
+
+      const { engine_id: engineId, sheet: storedSheet } = characterRes.rows[0];
+      const baseSheet = storedSheet && typeof storedSheet === 'object' ? storedSheet : {};
+      const updated = this.bloodPotency.applyBloodPotencyChange(baseSheet, {
+        nextValue,
+        reason: `owner_override: ${reason}`,
+      });
+      const mergedSheet = {
+        ...baseSheet,
+        bloodPotency: updated.bloodPotency,
+        blood_potency: updated.blood_potency,
+        bloodPotencyLog: updated.bloodPotencyLog,
+      };
+
+      await client.query(
+        `UPDATE characters SET sheet = $2, updated_at = now() WHERE character_id = $1`,
+        [body.characterId, JSON.stringify(mergedSheet)],
+      );
+
+      await client.query(
+        `INSERT INTO owner_audit_log (audit_id, engine_id, action_type, reason)
+         VALUES ($1, $2, $3, $4)`,
+        [
+          uuid(),
+          engineId,
+          'blood_potency_override',
+          `${reason} (character ${body.characterId})`,
+        ],
+      );
+
+      return { ok: true, bloodPotency: updated.bloodPotency };
     });
   }
 }

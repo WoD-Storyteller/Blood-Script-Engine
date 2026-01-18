@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import {
   fetchCharacters,
   fetchCharacter,
+  fetchCharacterRulesState,
+  overrideBloodPotency,
   setActiveCharacter,
   updateCharacterSheet,
 } from '../api';
@@ -10,9 +12,9 @@ import HungerMeter from './HungerMeter';
 import BloodPoolBar from './BloodPoolBar';
 import WillpowerTracker from './WillpowerTracker';
 import HumanityTracker from './HumanityTracker';
-import ResonanceDyscrasia from './ResonanceDyscrasia';
 import ClanBanePanel from './ClanBanePanel';
 import CompulsionPanel from './CompulsionPanel';
+import RulesStatePanel from './RulesStatePanel';
 
 import V5Attributes from './sheet/V5Attributes';
 import V5Skills from './sheet/V5Skills';
@@ -27,14 +29,17 @@ import XpSpendPanel from './XpSpendPanel';
 import V5SheetEditor from './V5SheetEditor';
 
 import { getRealtime, connectRealtime } from '../realtime';
+import type { RulesState, SessionInfo } from '../types';
 
-export default function CharactersPage() {
+export default function CharactersPage({ session }: { session: SessionInfo }) {
   const [characters, setCharacters] = useState<any[]>([]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [sheet, setSheet] = useState<any | null>(null);
   const [editSheet, setEditSheet] = useState<any | null>(null);
+  const [rulesState, setRulesState] = useState<RulesState | null>(null);
   const [page, setPage] = useState<1 | 2>(1);
   const [error, setError] = useState<string | null>(null);
+  const [rulesError, setRulesError] = useState<string | null>(null);
 
   /* -------------------------------------------------- */
   /* Fetching                                           */
@@ -62,6 +67,16 @@ export default function CharactersPage() {
     }
   };
 
+  const refreshRulesState = async (id: string) => {
+    try {
+      const state = await fetchCharacterRulesState(id);
+      setRulesState(state);
+      setRulesError(null);
+    } catch (e: any) {
+      setRulesError(e.message);
+    }
+  };
+
   /* -------------------------------------------------- */
   /* Lifecycle                                          */
   /* -------------------------------------------------- */
@@ -74,6 +89,7 @@ export default function CharactersPage() {
   useEffect(() => {
     if (selectedId) {
       refreshSheet(selectedId);
+      refreshRulesState(selectedId);
     }
   }, [selectedId]);
 
@@ -88,6 +104,7 @@ export default function CharactersPage() {
     const onCharacterUpdated = (payload: any) => {
       if (payload?.characterId === selectedId) {
         refreshSheet(selectedId);
+        refreshRulesState(selectedId);
       }
       refreshCharacters();
     };
@@ -112,6 +129,8 @@ export default function CharactersPage() {
   /* -------------------------------------------------- */
   /* Render                                             */
   /* -------------------------------------------------- */
+
+  const isOwner = session.role === 'owner';
 
   return (
     <div className="flex gap-6 mt-6">
@@ -237,10 +256,23 @@ export default function CharactersPage() {
               stains={sheet.stains ?? 0}
             />
 
-            <ResonanceDyscrasia
-              resonance={sheet.resonance}
-              dyscrasia={sheet.dyscrasia}
-            />
+            <div className="mt-6">
+              {rulesError ? (
+                <div className="text-sm text-red-400">
+                  Unable to load rules state: {rulesError}
+                </div>
+              ) : (
+                <RulesStatePanel
+                  rulesState={rulesState}
+                  isOwner={isOwner}
+                  onOverride={async (value, reason) => {
+                    if (!selectedId) return;
+                    await overrideBloodPotency(selectedId, value, reason);
+                    await refreshRulesState(selectedId);
+                  }}
+                />
+              )}
+            </div>
 
             <ClanBanePanel
               clan={sheet.clan}
