@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { v4 as uuid } from 'uuid';
 import { BloodPotencyService } from './blood-potency.service';
+import { DiceService } from '../dice/dice.service';
 import {
   BLOOD_POTENCY_CLOCKS,
   BLOOD_POTENCY_ASCENSION_TRIGGERS,
@@ -46,6 +47,22 @@ export type DiableriePending = {
   successes: number;
   xpAward: number;
   maxBloodPotency: number;
+  contest?: {
+    diableristPool: number;
+    victimPool: number;
+    diableristSuccesses: number;
+    victimSuccesses: number;
+    margin: number;
+    humanityLoss: number;
+    contestWon: boolean;
+  };
+  trueDiablerie?: {
+    pool: number;
+    difficulty: number;
+    attempts: number;
+    successes: number[];
+    completed: boolean;
+  };
   createdAt: string;
 };
 
@@ -76,7 +93,10 @@ export type BloodPotencyProgressionState = {
 
 @Injectable()
 export class BloodPotencyProgressionService {
-  constructor(private readonly bloodPotency: BloodPotencyService) {}
+  constructor(
+    private readonly bloodPotency: BloodPotencyService,
+    private readonly dice: DiceService,
+  ) {}
 
   private normalizeClockState(state?: Partial<BloodPotencyProgressionState>): BloodPotencyProgressionState {
     const clocks: Record<BloodPotencyClockId, BloodPotencyClockState> = {
@@ -308,7 +328,10 @@ export class BloodPotencyProgressionService {
     sheetIn: any,
     input: {
       victimBloodPotency: number;
-      successes: number;
+      victimResolve: number;
+      strengthResolvePool: number;
+      diableristHumanity?: number;
+      diableristBloodPotency?: number;
       trigger: DiablerieTrigger;
       reason: string;
     },
@@ -319,8 +342,44 @@ export class BloodPotencyProgressionService {
 
     const { sheet, state } = this.ensureProgression(sheetIn);
     const normalizedVictim = Math.max(0, Math.trunc(input.victimBloodPotency));
-    const successes = Math.max(0, Math.trunc(input.successes));
+    const victimResolve = Math.max(1, Math.trunc(input.victimResolve));
+    const diableristBloodPotency =
+      input.diableristBloodPotency ?? this.bloodPotency.getStoredBloodPotency(sheet);
+    const currentHumanity = Math.max(0, Math.trunc(input.diableristHumanity ?? sheet.humanity ?? 7));
+
+    // rules-source/v5_core_clean.txt "Committing Diablerie": lose 1 Humanity, then contest
+    // Humanity + Blood Potency vs victim Resolve + Blood Potency; extra Humanity loss per margin.
+    const diableristPool = Math.max(1, currentHumanity + diableristBloodPotency);
+    const victimPool = Math.max(1, victimResolve + normalizedVictim);
+    const diableristRoll = this.dice.rollV5(diableristPool, 0);
+    const victimRoll = this.dice.rollV5(victimPool, 0);
+    const margin = diableristRoll.successes - victimRoll.successes;
+    const contestWon = margin >= 0;
+    const baseHumanityLoss = 1;
+    const extraHumanityLoss = contestWon ? 0 : Math.abs(margin);
+    const humanityLoss = baseHumanityLoss + extraHumanityLoss;
+    const nextHumanity = Math.max(0, currentHumanity - humanityLoss);
+    sheet.humanity = nextHumanity;
+
+    const successes = diableristRoll.successes;
     const xpAward = successes * 5;
+
+    // rules-source/v5_core_clean.txt "Committing Diablerie": roll Strength + Resolve tests
+    // (Difficulty 3) equal to victim Blood Potency; any failure thwarts true diablerie.
+    const truePool = Math.max(1, Math.trunc(input.strengthResolvePool));
+    const trueAttempts = Math.max(0, normalizedVictim);
+    const trueResults: number[] = [];
+    let trueSucceeded = trueAttempts === 0;
+    if (trueAttempts > 0) {
+      trueSucceeded = true;
+      for (let i = 0; i < trueAttempts; i += 1) {
+        const roll = this.dice.rollV5(truePool, 0);
+        trueResults.push(roll.successes);
+        if (roll.successes < 3) {
+          trueSucceeded = false;
+        }
+      }
+    }
 
     state.diablerie = state.diablerie ?? {};
     state.diablerie.pending = {
@@ -329,6 +388,22 @@ export class BloodPotencyProgressionService {
       successes,
       xpAward,
       maxBloodPotency: Math.min(MAX_BLOOD_POTENCY, normalizedVictim),
+      contest: {
+        diableristPool,
+        victimPool,
+        diableristSuccesses: diableristRoll.successes,
+        victimSuccesses: victimRoll.successes,
+        margin,
+        humanityLoss,
+        contestWon,
+      },
+      trueDiablerie: {
+        pool: truePool,
+        difficulty: 3,
+        attempts: trueAttempts,
+        successes: trueResults,
+        completed: trueSucceeded,
+      },
       createdAt: new Date().toISOString(),
     };
 
@@ -340,6 +415,12 @@ export class BloodPotencyProgressionService {
         victimBloodPotency: normalizedVictim,
         successes,
         xpAward,
+        diableristHumanity: currentHumanity,
+        humanityLoss,
+        humanityAfter: nextHumanity,
+        contestWon,
+        contestMargin: margin,
+        trueDiablerie: trueSucceeded,
       },
     });
 
