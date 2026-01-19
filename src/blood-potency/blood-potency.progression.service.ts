@@ -19,6 +19,7 @@ export type BloodPotencyClockId = keyof typeof BLOOD_POTENCY_CLOCKS;
 export type BloodPotencyClockTrigger =
   | (typeof BLOOD_POTENCY_ASCENSION_TRIGGERS)[number]
   | (typeof BLOOD_POTENCY_DEGENERATION_TRIGGERS)[number];
+type BloodPotencyClockTriggerList = readonly BloodPotencyClockTrigger[];
 
 export type TorporEntryTrigger = (typeof TORPOR_ENTRY_TRIGGERS)[number];
 export type TorporExitTrigger = (typeof TORPOR_EXIT_TRIGGERS)[number];
@@ -535,11 +536,11 @@ export class BloodPotencyProgressionService {
     const clock = state.clocks[input.clockId];
     const delta = Math.max(0, Number(input.amount));
 
-    const allowedTriggers: readonly BloodPotencyClockTrigger[] =
+    const allowedTriggers: BloodPotencyClockTriggerList =
       input.clockId === 'ascension'
         ? BLOOD_POTENCY_ASCENSION_TRIGGERS
         : BLOOD_POTENCY_DEGENERATION_TRIGGERS;
-    // Ensure the union of trigger arrays is treated as the shared trigger type for validation.
+    // Explicitly type the trigger list so includes() accepts the shared trigger union (avoids never[]).
     if (!allowedTriggers.includes(input.trigger)) {
       throw new Error(`Unsupported clock trigger: ${input.trigger}`);
     }
