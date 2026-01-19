@@ -535,11 +535,12 @@ export class BloodPotencyProgressionService {
     const clock = state.clocks[input.clockId];
     const delta = Math.max(0, Number(input.amount));
 
-    const allowedTriggers =
+    const allowedTriggers: readonly BloodPotencyClockTrigger[] =
       input.clockId === 'ascension'
         ? BLOOD_POTENCY_ASCENSION_TRIGGERS
         : BLOOD_POTENCY_DEGENERATION_TRIGGERS;
-    if (!allowedTriggers.includes(input.trigger as any)) {
+    // Ensure the union of trigger arrays is treated as the shared trigger type for validation.
+    if (!allowedTriggers.includes(input.trigger)) {
       throw new Error(`Unsupported clock trigger: ${input.trigger}`);
     }
 
