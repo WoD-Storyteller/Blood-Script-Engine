@@ -5,6 +5,7 @@ import { DatabaseService } from '../database/database.service';
 import { CompanionAuthService } from '../companion/auth.service';
 import { isBotOwner } from './owner.guard';
 import { BloodPotencyService } from '../blood-potency/blood-potency.service';
+import { NarrativeService } from '../narrative/narrative.service';
 
 @Controller('companion/owner')
 export class OwnerController {
@@ -12,6 +13,7 @@ export class OwnerController {
     private readonly db: DatabaseService,
     private readonly auth: CompanionAuthService,
     private readonly bloodPotency: BloodPotencyService,
+    private readonly narrative: NarrativeService,
   ) {}
 
   private token(req: Request, auth?: string) {
@@ -212,6 +214,45 @@ export class OwnerController {
       );
 
       return { ok: true, bloodPotency: updated.bloodPotency };
+    });
+  }
+
+  @Get('narrative/settings')
+  async getNarrativeSettings(
+    @Req() req: Request,
+    @Headers('authorization') auth: string,
+  ) {
+    const token = this.token(req, auth);
+    if (!token) return { error: 'Unauthorized' };
+
+    return this.db.withClient(async (client) => {
+      const session = await this.auth.validateToken(client, token);
+      if (!session || !isBotOwner(session)) return { error: 'Forbidden' };
+
+      const enabled = await this.narrative.getGlobalToggle(client);
+
+      return { enabled };
+    });
+  }
+
+  @Post('narrative/settings')
+  async updateNarrativeSettings(
+    @Req() req: Request,
+    @Headers('authorization') auth: string,
+    @Body() body: { enabled?: boolean },
+  ) {
+    const token = this.token(req, auth);
+    if (!token) return { error: 'Unauthorized' };
+
+    if (body.enabled === undefined) return { error: 'MissingEnabled' };
+
+    return this.db.withClient(async (client) => {
+      const session = await this.auth.validateToken(client, token);
+      if (!session || !isBotOwner(session)) return { error: 'Forbidden' };
+
+      await this.narrative.setGlobalToggle(client, body.enabled);
+
+      return { ok: true, enabled: body.enabled };
     });
   }
 }
