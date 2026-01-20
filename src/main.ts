@@ -1,44 +1,67 @@
+/**
+ * ============================================================
+ *  Environment bootstrap MUST happen before ANY other imports
+ * ============================================================
+ */
+
 import 'reflect-metadata';
+
+// 🔑 Load environment variables first
+import * as dotenv from 'dotenv';
+
+dotenv.config({
+  path: process.env.NODE_ENV === 'production'
+    ? '.env.production'
+    : '.env',
+});
+
+/**
+ * ============================================================
+ *  NestJS imports AFTER env is loaded
+ * ============================================================
+ */
 
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { loadSecrets } from './config/secrets';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import * as cookieParser from 'cookie-parser';
 
+/**
+ * ============================================================
+ *  Bootstrap
+ * ============================================================
+ */
+
 async function bootstrap() {
   const logger = new Logger('Bootstrap');
-
-  // 🔐 Load secrets FIRST
-  try {
-    await loadSecrets();
-    logger.log('Secrets loaded successfully');
-  } catch (err) {
-    logger.error('Failed to load secrets', err);
-    process.exit(1);
-  }
 
   const app = await NestFactory.create(AppModule, {
     bufferLogs: true,
   });
 
   /**
-   * ✅ REQUIRED FOR SESSION MIDDLEWARE
-   * ---------------------------------
-   * Populates req.cookies
+   * ============================================================
+   *  Middleware
+   * ============================================================
    */
+
+  // 🍪 Required for session / auth cookies
   app.use(cookieParser());
 
   /**
-   * ✅ CORS CONFIG
+   * ============================================================
+   *  CORS
+   * ============================================================
    */
-  const allowedOrigins = process.env.NODE_ENV === 'production'
-    ? [
-        'https://bloodscriptengine.tech',
-        'https://www.bloodscriptengine.tech',
-        'https://app.bloodscriptengine.tech',
-      ]
-    : true;
+
+  const allowedOrigins =
+    process.env.NODE_ENV === 'production'
+      ? [
+          'https://bloodscriptengine.tech',
+          'https://www.bloodscriptengine.tech',
+          'https://app.bloodscriptengine.tech',
+        ]
+      : true;
 
   app.enableCors({
     origin: allowedOrigins,
@@ -46,6 +69,12 @@ async function bootstrap() {
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Authorization', 'Content-Type'],
   });
+
+  /**
+   * ============================================================
+   *  Global API config
+   * ============================================================
+   */
 
   app.setGlobalPrefix('api');
 
@@ -56,6 +85,12 @@ async function bootstrap() {
       transform: true,
     }),
   );
+
+  /**
+   * ============================================================
+   *  Start server
+   * ============================================================
+   */
 
   const port = Number(process.env.PORT) || 3000;
   await app.listen(port, '0.0.0.0');
