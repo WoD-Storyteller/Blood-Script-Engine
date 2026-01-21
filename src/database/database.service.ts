@@ -6,8 +6,12 @@ export class DatabaseService implements OnModuleDestroy {
   private readonly pool: Pool;
 
   constructor() {
-    // Use Supabase connection if DB_HOST is provided, otherwise fall back to DATABASE_URL
-    if (process.env.DB_HOST) {
+    // Use DATABASE_URL (Replit PostgreSQL) if available, otherwise fall back to DB_HOST (Supabase)
+    if (process.env.DATABASE_URL) {
+      this.pool = new Pool({
+        connectionString: process.env.DATABASE_URL,
+      });
+    } else if (process.env.DB_HOST) {
       const sslEnabled = process.env.DB_SSL === 'true' || process.env.DB_SSL === '1';
       this.pool = new Pool({
         host: process.env.DB_HOST,
@@ -18,9 +22,7 @@ export class DatabaseService implements OnModuleDestroy {
         ssl: sslEnabled ? { rejectUnauthorized: false } : false,
       });
     } else {
-      this.pool = new Pool({
-        connectionString: process.env.DATABASE_URL,
-      });
+      throw new Error('No database configuration found. Set DATABASE_URL or DB_HOST environment variables.');
     }
   }
 

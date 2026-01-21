@@ -30,13 +30,13 @@ args = "Companion"
 name = "Backend API"
 author = "agent"
 
+[workflows.workflow.metadata]
+outputType = "console"
+
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "npm run start"
 waitForPort = 3000
-
-[workflows.workflow.metadata]
-outputType = "console"
 
 [[workflows.workflow]]
 name = "Website"
@@ -67,10 +67,6 @@ localPort = 3000
 externalPort = 3000
 
 [[ports]]
-localPort = 5000
-externalPort = 80
-
-[[ports]]
 localPort = 5001
 externalPort = 3002
 
@@ -93,3 +89,5 @@ build = ["npm", "run", "build"]
 DISCORD_OAUTH_REDIRECT_URI = "https://3033fa7d-7e28-4c0c-8610-55f9f19e3722-00-3gdp2i75epk0p.kirk.replit.dev/api/auth/discord/callback"
 COMPANION_APP_URL = "https://3033fa7d-7e28-4c0c-8610-55f9f19e3722-00-3gdp2i75epk0p.kirk.replit.dev"
 GEMINI_API_KEY = "AIzaSyA85k8EdLfxVhDH-Cupov88PqnL7mtqiTY"
+APP_BASE_URL = "https://3033fa7d-7e28-4c0c-8610-55f9f19e3722-00-3gdp2i75epk0p.kirk.replit.dev"
+APP_URL = "https://3033fa7d-7e28-4c0c-8610-55f9f19e3722-00-3gdp2i75epk0p.kirk.replit.dev"

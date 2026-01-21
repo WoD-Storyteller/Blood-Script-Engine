@@ -48,18 +48,18 @@ export class DiscordOauthController {
     if (!clientId || !redirectUri || !appUrl) {
       return res.status(500).send('Missing OAuth env config.');
     }
-    if (!engineId) return res.status(400).send('Missing engineId.');
 
     const state = uuid();
 
     // Persist state → engineId mapping (prevents replay)
+    // If no engineId, use NULL for general dashboard login
     await this.db.withClient(async (client: any) => {
       await client.query(
         `
         INSERT INTO oauth_states (state_id, state, engine_id, created_at)
         VALUES ($1, $2, $3, now())
         `,
-        [uuid(), state, engineId],
+        [uuid(), state, engineId || null],
       );
     });
 
@@ -92,12 +92,16 @@ export class DiscordOauthController {
     }
     if (!code || !state) return res.status(400).send('Missing code/state.');
 
-    const engineId = await this.consumeOauthState(state);
-    if (!engineId) return res.status(400).send('Invalid/expired OAuth state.');
+    const engineIdFromState = await this.consumeOauthState(state);
+    if (!engineIdFromState) return res.status(400).send('Invalid/expired OAuth state.');
 
     const discordToken = await this.exchangeCodeForToken({ code, clientId, clientSecret, redirectUri });
     const discordUser = await this.fetchDiscordUser(discordToken.access_token);
     const guilds = await this.fetchDiscordGuilds(discordToken.access_token);
+
+    // Handle "general" login (no specific engine - NULL in database)
+    const isGeneralLogin = engineIdFromState === null;
+    const engineId = engineIdFromState;
 
     const { jwtToken, role, userId } = await this.db.withClient(async (client: any) => {
       const uId = await this.upsertUserByDiscordId(client, discordUser);
@@ -109,17 +113,20 @@ export class DiscordOauthController {
         stRoleIds: [],
       });
 
-      await this.companionAuth.createSession(client, {
-        userId: uId,
-        engineId,
-        role: resolvedRole,
-      });
+      // Only create engine-specific session if engineId is provided
+      if (engineId) {
+        await this.companionAuth.createSession(client, {
+          userId: uId,
+          engineId,
+          role: resolvedRole,
+        });
+      }
 
       const jwt = this.jwtService.sign({
         sub: uId,
         discordUserId: discordUser.id,
         engineRole: resolvedRole,
-        engineId,
+        engineId: engineId || undefined,
       });
 
       return { jwtToken: jwt, role: resolvedRole, userId: uId };
@@ -136,7 +143,9 @@ export class DiscordOauthController {
     });
 
     const redirect = new URL(appUrl);
-    redirect.searchParams.set('engineId', engineId);
+    if (engineId) {
+      redirect.searchParams.set('engineId', engineId);
+    }
     redirect.searchParams.set('role', role);
     return res.redirect(redirect.toString());
   }
