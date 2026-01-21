@@ -12,7 +12,12 @@ const navLinks = [
   { to: '/status', label: 'Status' },
 ];
 
-const DASHBOARD_URL = '/api/auth/discord/login';
+// In development, redirect to backend API on port 3000
+// In production, the app subdomain handles both companion and API
+const API_BASE = import.meta.env.PROD 
+  ? 'https://app.bloodscriptengine.tech'
+  : 'http://localhost:3000';
+const DASHBOARD_URL = `${API_BASE}/api/auth/discord/login`;
 
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
