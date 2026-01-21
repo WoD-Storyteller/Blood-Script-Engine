@@ -3,8 +3,11 @@ interface LoginProps {
 }
 
 export default function Login({ onDemoMode }: LoginProps) {
+  const apiBaseUrl =
+    import.meta.env.VITE_API_BASE_URL ?? 'https://bloodscriptengine.co.uk';
+
   const loginWithDiscord = () => {
-    window.location.href = '/api/auth/discord/login';
+    window.location.href = `${apiBaseUrl}/api/auth/discord/login`;
   };
 
   return (
