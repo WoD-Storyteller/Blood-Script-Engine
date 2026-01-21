@@ -9,6 +9,8 @@ export async function loadSecrets() {
     'DISCORD_CLIENT_SECRET',
     'DISCORD_OWNER_ID',
     'JWT_SECRET',
+    'APP_BASE_URL',
+    'APP_URL',
   ];
 
   const optional = [
@@ -16,7 +18,6 @@ export async function loadSecrets() {
     'SESSION_SECRET',
     'GEMINI_API_KEY',
     'BOT_OWNER_DISCORD_ID',
-    'DISCORD_OAUTH_REDIRECT_URI',
     'COMPANION_APP_URL',
   ];
 
