@@ -41,8 +41,9 @@ export class DiscordOauthController {
   @Get('login')
   async login(@Res() res: Response, @Query('engineId') engineId?: string) {
     const clientId = process.env.DISCORD_CLIENT_ID;
-    const redirectUri = process.env.DISCORD_OAUTH_REDIRECT_URI;
-    const appUrl = process.env.COMPANION_APP_URL;
+    const appBaseUrl = process.env.APP_BASE_URL;
+    const appUrl = process.env.APP_URL;
+    const redirectUri = appBaseUrl ? `${appBaseUrl}/auth/discord/callback` : undefined;
 
     if (!clientId || !redirectUri || !appUrl) {
       return res.status(500).send('Missing OAuth env config.');
@@ -82,8 +83,9 @@ export class DiscordOauthController {
   ) {
     const clientId = process.env.DISCORD_CLIENT_ID;
     const clientSecret = process.env.DISCORD_CLIENT_SECRET;
-    const redirectUri = process.env.DISCORD_OAUTH_REDIRECT_URI;
-    const appUrl = process.env.COMPANION_APP_URL;
+    const appBaseUrl = process.env.APP_BASE_URL;
+    const appUrl = process.env.APP_URL;
+    const redirectUri = appBaseUrl ? `${appBaseUrl}/auth/discord/callback` : undefined;
 
     if (!clientId || !clientSecret || !redirectUri || !appUrl) {
       return res.status(500).send('Missing OAuth env config.');
@@ -170,7 +172,7 @@ export class DiscordOauthController {
       path: '/',
     });
 
-    return res.redirect(process.env.COMPANION_APP_URL || '/');
+    return res.redirect(process.env.APP_URL || '/');
   }
 
   // ─────────────────────────────────────────────
