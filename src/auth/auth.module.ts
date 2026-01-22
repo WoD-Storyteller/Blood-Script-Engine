@@ -4,12 +4,14 @@ import { CompanionModule } from '../companion/companion.module';
 import { LinkTokenController } from './link-token.controller';
 import { LinkTokenService } from './link-token.service';
 import { RoleResolverService } from './role-resolver.service';
+import { AccountAuthController } from './account-auth.controller';
+import { AccountAuthService } from './account-auth.service';
 
 @Global()
 @Module({
   imports: [DatabaseModule, CompanionModule],
-  controllers: [LinkTokenController],
-  providers: [RoleResolverService, LinkTokenService],
-  exports: [RoleResolverService, LinkTokenService],
+  controllers: [LinkTokenController, AccountAuthController],
+  providers: [RoleResolverService, LinkTokenService, AccountAuthService],
+  exports: [RoleResolverService, LinkTokenService, AccountAuthService],
 })
 export class AuthModule {}
