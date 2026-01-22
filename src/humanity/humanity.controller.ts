@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Req } from '@nestjs/common';
+import { Controller, Post, Body, Req, Headers } from '@nestjs/common';
 import type { Request } from 'express';
 
 import { EngineRole } from '../common/enums/engine-role.enum';
@@ -15,16 +15,17 @@ export class HumanityController {
     private readonly humanity: HumanityService,
   ) {}
 
-  private token(req: Request) {
-    return req.cookies?.bse_token ?? null;
+  private token(auth?: string) {
+    return auth?.replace('Bearer ', '') ?? null;
   }
 
   @Post('stain')
   async addStain(
     @Req() req: Request,
+    @Headers('authorization') authHeader: string,
     @Body() body: { reason: string; stains: number },
   ) {
-    const token = this.token(req);
+    const token = this.token(authHeader);
     if (!token) return { error: 'Unauthorized' };
 
     return this.db.withClient(async (client) => {
@@ -67,8 +68,11 @@ export class HumanityController {
   }
 
   @Post('remorse')
-  async resolveRemorse(@Req() req: Request) {
-    const token = this.token(req);
+  async resolveRemorse(
+    @Req() req: Request,
+    @Headers('authorization') authHeader: string,
+  ) {
+    const token = this.token(authHeader);
     if (!token) return { error: 'Unauthorized' };
 
     return this.db.withClient(async (client) => {

@@ -1,10 +1,9 @@
 interface LoginProps {
-  onDemoMode?: () => void;
   linkError?: string | null;
   linking?: boolean;
 }
 
-export default function Login({ onDemoMode, linkError, linking }: LoginProps) {
+export default function Login({ linkError, linking }: LoginProps) {
   return (
     <div style={{ 
       minHeight: '100vh',
@@ -71,35 +70,6 @@ export default function Login({ onDemoMode, linkError, linking }: LoginProps) {
           }}>
             {linkError}
           </div>
-        )}
-
-        {onDemoMode && (
-          <button 
-            onClick={onDemoMode}
-            style={{ 
-              width: '100%',
-              padding: '12px 24px',
-              marginTop: 12,
-              fontSize: 14,
-              fontWeight: 500,
-              background: 'transparent',
-              color: '#888',
-              border: '1px solid #444',
-              borderRadius: 8,
-              cursor: 'pointer',
-              transition: 'all 0.2s',
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.borderColor = '#666';
-              e.currentTarget.style.color = '#aaa';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.borderColor = '#444';
-              e.currentTarget.style.color = '#888';
-            }}
-          >
-            Preview Demo
-          </button>
         )}
 
         <p style={{ 

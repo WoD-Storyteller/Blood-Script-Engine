@@ -26,7 +26,7 @@ export class XpController {
   ) {}
 
   private token(req: Request, auth?: string) {
-    return req.cookies?.bse_token ?? auth?.replace('Bearer ', '');
+    return auth?.replace('Bearer ', '');
   }
 
   private isStAdmin(session: any) {

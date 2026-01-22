@@ -41,7 +41,7 @@ export class CompanionController {
   ) {}
 
   private getToken(req: Request, authHeader?: string) {
-    return req.cookies?.bse_token ?? authHeader?.replace('Bearer ', '');
+    return authHeader?.replace('Bearer ', '');
   }
 
   private isStOrAdmin(role: any) {
@@ -69,6 +69,7 @@ export class CompanionController {
       if (!engineRes.rowCount) return { error: 'EngineNotFound' };
 
       return {
+        authenticated: true,
         engine: engineRes.rows[0],
         userId: session.user_id,
         engineId: session.engine_id,
