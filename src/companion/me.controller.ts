@@ -12,6 +12,7 @@ export class MeController {
       authenticated: true,
       userId: session.user_id,
       discordUserId: session.discord_user_id,
+      username: session.display_name,
       role: session.role,
       engineId: session.engine_id,
     };

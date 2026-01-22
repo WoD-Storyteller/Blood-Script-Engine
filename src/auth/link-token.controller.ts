@@ -1,12 +1,17 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { JwtService } from './jwt.service';
 import { LinkTokenService } from './link-token.service';
+import { DatabaseService } from '../database/database.service';
+import { CompanionAuthService } from '../companion/auth.service';
+import { CharactersService } from '../companion/characters.service';
+import { EngineRole } from '../common/enums/engine-role.enum';
 
 @Controller('internal/companion')
 export class LinkTokenController {
   constructor(
     private readonly linkTokens: LinkTokenService,
-    private readonly jwtService: JwtService,
+    private readonly db: DatabaseService,
+    private readonly auth: CompanionAuthService,
+    private readonly characters: CharactersService,
   ) {}
 
   @Post('consume-link-token')
@@ -21,21 +26,49 @@ export class LinkTokenController {
       };
     }
 
-    const jwtToken = this.jwtService.sign({
-      sub: result.userId,
-      discordUserId: result.discordUserId,
-      engineRole: result.role,
-      engineId: result.engineId ?? undefined,
-    });
+    const engineId = result.engineId;
+    if (!engineId) {
+      return { error: 'NoEngine' };
+    }
 
-    return {
-      token: jwtToken,
-      session: {
+    return this.db.withClient(async (client: any) => {
+      const session = await this.auth.createSession(client, {
         userId: result.userId,
-        discordUserId: result.discordUserId,
+        engineId,
         role: result.role,
-        engineId: result.engineId,
-      },
-    };
+      });
+
+      const linkedCharacters = await this.characters.listLinkedCharacters(
+        client,
+        {
+          engineId,
+          userId: result.userId,
+        },
+      );
+
+      const isStoryteller =
+        result.role === EngineRole.ST ||
+        result.role === EngineRole.ADMIN ||
+        result.role === EngineRole.OWNER;
+
+      return {
+        token: session.token,
+        session: {
+          authenticated: true,
+          userId: result.userId,
+          discordUserId: result.discordUserId,
+          role: result.role,
+          engineId,
+        },
+        identity: {
+          discordUserId: result.discordUserId,
+          engineId,
+          role: result.role,
+          isStoryteller,
+          isOwner: result.role === EngineRole.OWNER,
+          linkedCharacters,
+        },
+      };
+    });
   }
 }

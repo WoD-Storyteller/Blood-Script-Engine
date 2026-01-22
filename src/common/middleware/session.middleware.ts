@@ -1,34 +1,37 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
 import { Request, Response, NextFunction } from 'express';
-import { JwtService, JwtPayload } from '../../auth/jwt.service';
+import { DatabaseService } from '../../database/database.service';
+import { CompanionAuthService } from '../../companion/auth.service';
 
 @Injectable()
 export class SessionMiddleware implements NestMiddleware {
-  constructor(private readonly jwtService: JwtService) {}
+  constructor(
+    private readonly db: DatabaseService,
+    private readonly auth: CompanionAuthService,
+  ) {}
 
   async use(req: Request, _: Response, next: NextFunction) {
-    const token =
-      req.cookies?.bse_token ??
-      req.headers.authorization?.replace('Bearer ', '');
+    const token = req.headers.authorization?.replace('Bearer ', '');
 
     if (!token) {
       (req as any).session = null;
       return next();
     }
 
-    const payload = this.jwtService.verify(token);
+    const session = await this.db.withClient((client: any) =>
+      this.auth.validateToken(client, token),
+    );
 
-    if (payload) {
+    if (session) {
       (req as any).session = {
-        user_id: payload.sub,
-        discord_user_id: payload.discordUserId,
-        role: payload.engineRole,
-        engine_id: payload.engineId,
+        ...session,
+        userId: session.user_id,
+        engineId: session.engine_id,
+        discordId: session.discord_user_id,
       };
     } else {
       (req as any).session = null;
     }
-
     next();
   }
 }

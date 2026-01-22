@@ -5,6 +5,30 @@ import { EngineRole } from '../common/enums/engine-role.enum';
 export class CharactersService {
   private readonly logger = new Logger(CharactersService.name);
 
+  async listLinkedCharacters(
+    client: any,
+    input: { engineId: string; userId: string },
+  ) {
+    try {
+      const res = await client.query(
+        `
+        SELECT character_id, name, clan, concept, status
+        FROM characters
+        WHERE engine_id = $1 AND user_id = $2
+        ORDER BY updated_at DESC NULLS LAST, created_at DESC NULLS LAST
+        LIMIT 200
+        `,
+        [input.engineId, input.userId],
+      );
+      return res.rows;
+    } catch (e: any) {
+      this.logger.debug(
+        `listLinkedCharacters fallback: ${e?.message ?? 'unknown error'}`,
+      );
+      return [];
+    }
+  }
+
   /**
    * Best-effort schema assumptions:
    * - characters(engine_id, character_id, user_id, name, clan, concept, sire, status, created_at, updated_at)

@@ -49,7 +49,15 @@ export interface SessionInfo {
   discord_user_id?: string;
   discordUserId?: string;
   role?: 'player' | 'st' | 'owner' | 'admin';
-  csrfToken?: string | null;
+}
+
+export interface IdentityContext {
+  discordUserId?: string;
+  engineId?: string;
+  role?: SessionInfo['role'];
+  isStoryteller?: boolean;
+  isOwner?: boolean;
+  linkedCharacters?: CharacterSummary[];
 }
 
 export interface CharacterSummary {

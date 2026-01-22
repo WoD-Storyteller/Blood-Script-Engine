@@ -7,6 +7,7 @@ import {
   CoterieDetail,
   CoterieSummary,
   AiIntent,
+  IdentityContext,
 } from './types';
 import { loadToken } from './auth';
 
@@ -18,25 +19,6 @@ import { loadToken } from './auth';
  */
 const API_BASE = '/api';
 
-let csrfToken: string | null = null;
-
-async function ensureSession(): Promise<SessionInfo> {
-  const headers: Record<string, string> = {};
-  const token = loadToken();
-  if (token) headers['Authorization'] = `Bearer ${token}`;
-
-  const res = await fetch(`${API_BASE}/companion/me`, {
-    credentials: 'include',
-    headers,
-  });
-
-  if (!res.ok) throw new Error('Not authenticated');
-
-  const data = await res.json();
-  csrfToken = data.csrfToken ?? null;
-  return data;
-}
-
 async function call<T>(path: string, init?: RequestInit): Promise<T> {
   const method = init?.method ?? 'GET';
 
@@ -47,16 +29,10 @@ async function call<T>(path: string, init?: RequestInit): Promise<T> {
   const token = loadToken();
   if (token) headers['Authorization'] = `Bearer ${token}`;
 
-  if (method !== 'GET') {
-    if (!csrfToken) await ensureSession();
-    if (csrfToken) headers['x-csrf-token'] = csrfToken;
-  }
-
   const res = await fetch(`${API_BASE}${path}`, {
     ...init,
     method,
     headers,
-    credentials: 'include',
   });
 
   if (!res.ok) {
@@ -85,7 +61,11 @@ export const consumeLinkToken = async (token: string) => {
     throw new Error(text || 'Link token exchange failed');
   }
 
-  return res.json() as Promise<{ token: string; session: SessionInfo }>;
+  return res.json() as Promise<{
+    token: string;
+    session: SessionInfo;
+    identity?: IdentityContext;
+  }>;
 };
 
 export const fetchWorld = async () => {
