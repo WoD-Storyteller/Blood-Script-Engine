@@ -34,13 +34,13 @@ export async function handleLinkAccountCommand(
     process.env.APP_URL ??
     'https://app.bloodscriptengine.co.uk';
 
-  const link = `${appUrl.replace(/\/$/, '')}/?token=${result.token}`;
+  const link = `${appUrl.replace(/\/$/, '')}/link-discord?token=${result.token}`;
 
   await message.reply(
     [
       '🩸 **Blood Script Link**',
       '',
-      'Open this link to sign in to the Companion App:',
+      'Open this link to link your Discord account:',
       link,
       '',
       `This link expires in ${TOKEN_TTL_MINUTES} minutes and can only be used once.`,
