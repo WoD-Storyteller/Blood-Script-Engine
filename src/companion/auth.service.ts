@@ -1,8 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { uuid } from '../common/utils/uuid';
+import { JwtService } from '../auth/jwt.service';
 
 @Injectable()
 export class CompanionAuthService {
+  constructor(private readonly jwtService: JwtService) {}
+
   async createSession(
     client: any,
     input: {
@@ -26,13 +29,24 @@ export class CompanionAuthService {
   }
 
   async validateToken(client: any, token: string) {
+    const payload = this.jwtService.verify(token);
+    if (payload?.engineId) {
+      return {
+        user_id: payload.sub,
+        engine_id: payload.engineId,
+        role: payload.engineRole,
+        discord_user_id: payload.discordUserId,
+      };
+    }
+
     const res = await client.query(
       `
-      SELECT *
-      FROM companion_sessions
-      WHERE access_token=$1
-        AND revoked=false
-        AND expires_at > now()
+      SELECT cs.*, u.discord_user_id, u.username as display_name
+      FROM companion_sessions cs
+      JOIN users u ON u.user_id = cs.user_id
+      WHERE cs.access_token=$1
+        AND cs.revoked=false
+        AND cs.expires_at > now()
       `,
       [token],
     );

@@ -8,7 +8,8 @@ import AppealPage from './components/AppealPage';
 import WorldView from './components/world/WorldView';
 import AppShell from './components/layout/AppShell';
 
-import { fetchMe, fetchWorld } from './api';
+import { consumeLinkToken, fetchMe, fetchWorld } from './api';
+import { clearToken, saveToken } from './auth';
 import type { SessionInfo, WorldState } from './types';
 
 import FrenzyOverlay from './ui/overlays/FrenzyOverlay';
@@ -52,10 +53,41 @@ const DEMO_WORLD: WorldState = {
 export default function App() {
   const [session, setSession] = useState<SessionInfo | null>(null);
   const [world, setWorld] = useState<WorldState | null>(null);
+  const [linking, setLinking] = useState(false);
+  const [linkError, setLinkError] = useState<string | null>(null);
   const [demoMode, setDemoMode] = useState(() => {
     const params = new URLSearchParams(window.location.search);
     return params.get('demo') === 'true';
   });
+
+  useEffect(() => {
+    if (demoMode) return;
+
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get('token');
+    if (!token) return;
+
+    setLinking(true);
+    setLinkError(null);
+
+    (async () => {
+      try {
+        const response = await consumeLinkToken(token);
+        saveToken(response.token);
+      } catch (error) {
+        clearToken();
+        setLinkError(
+          'That link is invalid or expired. Please DM the bot with !linkaccount for a new link.',
+        );
+      } finally {
+        params.delete('token');
+        const query = params.toString();
+        const nextUrl = `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`;
+        window.history.replaceState({}, '', nextUrl);
+        setLinking(false);
+      }
+    })();
+  }, [demoMode]);
 
   useEffect(() => {
     if (demoMode) {
@@ -63,7 +95,9 @@ export default function App() {
       setWorld(DEMO_WORLD);
       return;
     }
-    
+
+    if (linking) return;
+
     (async () => {
       try {
         const me = await fetchMe();
@@ -77,7 +111,7 @@ export default function App() {
         setSession({ authenticated: false });
       }
     })();
-  }, [demoMode]);
+  }, [demoMode, linking]);
 
   const enterDemoMode = () => {
     setDemoMode(true);
@@ -92,7 +126,13 @@ export default function App() {
   };
 
   if (!demoMode && (!session || !session.authenticated)) {
-    return <Login onDemoMode={enterDemoMode} />;
+    return (
+      <Login
+        onDemoMode={enterDemoMode}
+        linkError={linkError}
+        linking={linking}
+      />
+    );
   }
 
   const currentSession = demoMode ? DEMO_SESSION : session!;

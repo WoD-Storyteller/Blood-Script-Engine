@@ -5,13 +5,15 @@ import { OwnerDmService } from './owner-dm.service';
 import { DiscordDmService } from './discord.dm.service';
 import { DiscordWebhookService } from './discord-webhook.service';
 import { NpcVoiceService } from './npc-voice.service';
+import { DiscordMessageListenerService } from './discord-message-listener.service';
 import { DatabaseModule } from '../database/database.module';
 import { AiModule } from '../ai/ai.module';
+import { AuthModule } from '../auth/auth.module';
 
 const logger = new Logger('DiscordModule');
 
 @Module({
-  imports: [DatabaseModule, forwardRef(() => AiModule)],
+  imports: [DatabaseModule, forwardRef(() => AiModule), AuthModule],
   providers: [
     {
       provide: Client,
@@ -43,6 +45,7 @@ const logger = new Logger('DiscordModule');
     DiscordDmService,
     DiscordWebhookService,
     NpcVoiceService,
+    DiscordMessageListenerService,
   ],
   exports: [Client, OwnerDmService, DiscordDmService, DiscordWebhookService, NpcVoiceService],
 })
