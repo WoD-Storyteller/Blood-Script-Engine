@@ -13,8 +13,8 @@ export type LinkTokenIssueResult =
     }
   | {
       ok: false;
-      reason: 'rate_limited';
-      retryAfterSeconds: number;
+      error: string;
+      retryAfterSeconds?: number;
     };
 
 export type LinkTokenConsumeResult =
@@ -24,7 +24,7 @@ export type LinkTokenConsumeResult =
     }
   | {
       ok: false;
-      reason:
+      error:
         | 'invalid'
         | 'discord_already_linked'
         | 'user_already_linked';
@@ -63,7 +63,7 @@ export class LinkTokenService {
         if (elapsedSeconds < TOKEN_COOLDOWN_SECONDS) {
           return {
             ok: false,
-            reason: 'rate_limited',
+            error: 'rate_limited',
             retryAfterSeconds: TOKEN_COOLDOWN_SECONDS - elapsedSeconds,
           } as const;
         }
@@ -125,7 +125,7 @@ export class LinkTokenService {
 
         if (!consumed.rowCount) {
           await client.query('ROLLBACK');
-          return { ok: false, reason: 'invalid' } as const;
+          return { ok: false, error: 'invalid' } as const;
         }
 
         const discordUserId = consumed.rows[0].discord_user_id as string;
@@ -137,7 +137,7 @@ export class LinkTokenService {
 
         if (linked.rowCount) {
           await client.query('ROLLBACK');
-          return { ok: false, reason: 'discord_already_linked' } as const;
+          return { ok: false, error: 'discord_already_linked' } as const;
         }
 
         const update = await client.query(
@@ -154,7 +154,7 @@ export class LinkTokenService {
 
         if (!update.rowCount) {
           await client.query('ROLLBACK');
-          return { ok: false, reason: 'user_already_linked' } as const;
+          return { ok: false, error: 'user_already_linked' } as const;
         }
 
         await client.query('COMMIT');

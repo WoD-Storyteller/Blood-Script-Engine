@@ -107,8 +107,8 @@ export class AccountAuthService {
       }
 
       const passwordValid = await verifyPassword(
-        input.password,
         user.password_hash as string,
+        input.password,
       );
 
       if (!passwordValid) {

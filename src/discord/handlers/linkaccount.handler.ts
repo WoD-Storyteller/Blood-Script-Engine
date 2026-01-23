@@ -22,9 +22,10 @@ export async function handleLinkAccountCommand(
     issuingCommand: COMMAND,
   });
 
-  if (!result.ok) {
+  if (result.ok === false) {
+    const wait = result.retryAfterSeconds ?? 30;
     await message.reply(
-      `You're doing that too quickly. Please wait ${result.retryAfterSeconds}s and try again.`,
+      `You're doing that too quickly. Please wait ${wait}s and try again.`,
     );
     return true;
   }
