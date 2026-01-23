@@ -43,6 +43,74 @@ async function call<T>(path: string, init?: RequestInit): Promise<T> {
   return res.json();
 }
 
+async function callPublic<T>(path: string, init?: RequestInit): Promise<T> {
+  const method = init?.method ?? 'GET';
+
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/json',
+  };
+
+  const res = await fetch(`${API_BASE}${path}`, {
+    ...init,
+    method,
+    headers,
+  });
+
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`Request failed ${res.status}: ${text}`);
+  }
+
+  return res.json();
+}
+
+/* ======================
+   Auth
+   ====================== */
+
+export const registerAccount = (email: string, password: string) =>
+  callPublic<{ ok: boolean; error?: string }>('/auth/register', {
+    method: 'POST',
+    body: JSON.stringify({ email, password }),
+  });
+
+export const loginAccount = (input: {
+  email: string;
+  password: string;
+  twoFactorCode?: string;
+  recoveryCode?: string;
+  engineId?: string;
+}) =>
+  callPublic<{
+    token?: string;
+    session?: SessionInfo;
+    error?: string;
+  }>('/auth/login', {
+    method: 'POST',
+    body: JSON.stringify(input),
+  });
+
+export const requestPasswordReset = (email: string) =>
+  callPublic<{ ok: boolean; error?: string }>('/auth/password/forgot', {
+    method: 'POST',
+    body: JSON.stringify({ email }),
+  });
+
+export const resetPassword = (token: string, password: string) =>
+  callPublic<{ ok: boolean; error?: string }>('/auth/password/reset', {
+    method: 'POST',
+    body: JSON.stringify({ token, password }),
+  });
+
+export const linkDiscordAccount = (token: string) =>
+  call<{ linked?: boolean; discordUserId?: string; error?: string }>(
+    '/auth/link-discord',
+    {
+      method: 'POST',
+      body: JSON.stringify({ token }),
+    },
+  );
+
 /* ======================
    Session + World
    ====================== */

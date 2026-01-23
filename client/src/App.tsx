@@ -8,7 +8,7 @@ import AppealPage from './components/AppealPage';
 import WorldView from './components/world/WorldView';
 import AppShell from './components/layout/AppShell';
 
-import { consumeLinkToken, fetchMe, fetchWorld } from './api';
+import { fetchMe, fetchWorld } from './api';
 import { clearToken, saveToken } from './auth';
 import type { SessionInfo, WorldState } from './types';
 
@@ -22,40 +22,7 @@ import STOverridePanel from './components/st/STOverridePanel';
 export default function App() {
   const [session, setSession] = useState<SessionInfo | null>(null);
   const [world, setWorld] = useState<WorldState | null>(null);
-  const [linking, setLinking] = useState(false);
-  const [linkError, setLinkError] = useState<string | null>(null);
-
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const token = params.get('token');
-    if (!token) return;
-
-    setLinking(true);
-    setLinkError(null);
-
-    (async () => {
-      try {
-        const response = await consumeLinkToken(token);
-        saveToken(response.token);
-        setSession(response.session ?? { authenticated: true });
-      } catch (error) {
-        clearToken();
-        setLinkError(
-          'That link is invalid or expired. Please DM the bot with !linkaccount for a new link.',
-        );
-      } finally {
-        params.delete('token');
-        const query = params.toString();
-        const nextUrl = `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`;
-        window.history.replaceState({}, '', nextUrl);
-        setLinking(false);
-      }
-    })();
-  }, []);
-
-  useEffect(() => {
-    if (linking) return;
-
     (async () => {
       try {
         const me = await fetchMe();
@@ -73,13 +40,26 @@ export default function App() {
         setSession({ authenticated: false });
       }
     })();
-  }, [linking]);
+  }, []);
+
+  const handleLogin = async (input: { token: string; session: SessionInfo }) => {
+    saveToken(input.token);
+    setSession(input.session);
+
+    if (input.session.authenticated) {
+      try {
+        const w = await fetchWorld();
+        if (w) setWorld(w as WorldState);
+      } catch (error) {
+        setWorld(null);
+      }
+    }
+  };
 
   if (!session || !session.authenticated) {
     return (
       <Login
-        linkError={linkError}
-        linking={linking}
+        onLogin={handleLogin}
       />
     );
   }
