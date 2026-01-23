@@ -18,13 +18,19 @@ export class AccountAuthController {
   @Post('register')
   async register(@Body() body: { email?: string; password?: string }) {
     if (!body.email || !body.password) {
-      return { error: 'MissingCredentials' };
+      return { ok: false, error: 'MissingCredentials' };
     }
 
-    return this.accountAuth.register({
+    const result = await this.accountAuth.register({
       email: body.email,
       password: body.password,
     });
+
+    if (result.ok === false) {
+      return { ok: false, error: result.error };
+    }
+
+    return { ok: true };
   }
 
   @Post('login')
@@ -78,6 +84,43 @@ export class AccountAuthController {
         twoFactorEnabled: result.twoFactorEnabled,
       },
     };
+  }
+
+  @Post('password/forgot')
+  async forgotPassword(@Body() body: { email?: string }) {
+    if (!body.email) {
+      return { ok: false, error: 'MissingEmail' };
+    }
+
+    const result = await this.accountAuth.requestPasswordReset({
+      email: body.email,
+    });
+
+    if (result.ok === false) {
+      return { ok: false, error: result.error };
+    }
+
+    return { ok: true };
+  }
+
+  @Post('password/reset')
+  async resetPassword(
+    @Body() body: { token?: string; password?: string },
+  ) {
+    if (!body.token || !body.password) {
+      return { ok: false, error: 'MissingCredentials' };
+    }
+
+    const result = await this.accountAuth.resetPassword({
+      token: body.token,
+      password: body.password,
+    });
+
+    if (result.ok === false) {
+      return { ok: false, error: result.error };
+    }
+
+    return { ok: true };
   }
 
   @Post('logout')

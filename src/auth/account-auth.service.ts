@@ -13,6 +13,7 @@ const MAX_FAILED_ATTEMPTS = 5;
 const FAILED_WINDOW_MINUTES = 15;
 const LOCKOUT_MINUTES = 15;
 const RECOVERY_CODE_COUNT = 8;
+const PASSWORD_RESET_TTL_MINUTES = 30;
 
 @Injectable()
 export class AccountAuthService {
@@ -24,7 +25,7 @@ export class AccountAuthService {
   async register(input: {
     email: string;
     password: string;
-  }): Promise<{ ok: true; userId: string; email: string } | { ok: false; error: string }> {
+  }): Promise<{ ok: true } | { ok: false; error: string }> {
     const email = input.email.trim().toLowerCase();
     const passwordError = this.validatePassword(input.password);
     if (!this.isValidEmail(email)) {
@@ -54,7 +55,134 @@ export class AccountAuthService {
         [userId, email, passwordHash],
       );
 
-      return { ok: true, userId, email } as const;
+      return { ok: true } as const;
+    });
+  }
+
+  async requestPasswordReset(input: {
+    email: string;
+  }): Promise<{ ok: true } | { ok: false; error: string }> {
+    const email = input.email.trim().toLowerCase();
+    if (!this.isValidEmail(email)) {
+      return { ok: false, error: 'InvalidEmail' };
+    }
+
+    return this.db.withClient(async (client: any) => {
+      const userRes = await client.query(
+        `
+        SELECT user_id
+        FROM users
+        WHERE email = $1
+        LIMIT 1
+        `,
+        [email],
+      );
+
+      if (!userRes.rowCount) {
+        return { ok: true } as const;
+      }
+
+      const token = randomBytes(32).toString('hex');
+      const tokenHash = createHash('sha256').update(token).digest('hex');
+
+      await client.query(
+        `
+        DELETE FROM password_reset_tokens
+        WHERE user_id = $1 AND redeemed_at IS NULL
+        `,
+        [userRes.rows[0].user_id],
+      );
+
+      await client.query(
+        `
+        INSERT INTO password_reset_tokens (user_id, token_hash, expires_at)
+        VALUES ($1, $2, now() + ($3 * interval '1 minute'))
+        `,
+        [userRes.rows[0].user_id, tokenHash, PASSWORD_RESET_TTL_MINUTES],
+      );
+
+      return { ok: true } as const;
+    });
+  }
+
+  async resetPassword(input: {
+    token: string;
+    password: string;
+  }): Promise<{ ok: true } | { ok: false; error: string }> {
+    const passwordError = this.validatePassword(input.password);
+    if (passwordError) {
+      return { ok: false, error: passwordError };
+    }
+
+    const tokenHash = createHash('sha256').update(input.token).digest('hex');
+
+    return this.db.withClient(async (client: any) => {
+      const tokenRes = await client.query(
+        `
+        SELECT id, user_id, expires_at, redeemed_at
+        FROM password_reset_tokens
+        WHERE token_hash = $1
+        LIMIT 1
+        `,
+        [tokenHash],
+      );
+
+      if (!tokenRes.rowCount) {
+        return { ok: false, error: 'InvalidToken' } as const;
+      }
+
+      const record = tokenRes.rows[0];
+      if (record.redeemed_at) {
+        return { ok: false, error: 'TokenUsed' } as const;
+      }
+
+      if (new Date(record.expires_at) <= new Date()) {
+        return { ok: false, error: 'TokenExpired' } as const;
+      }
+
+      const passwordHash = await hashPassword(input.password);
+
+      await client.query(
+        `
+        UPDATE users
+        SET password_hash = $2,
+            failed_login_attempts = 0,
+            last_failed_login_at = NULL,
+            locked_until = NULL,
+            updated_at = now()
+        WHERE user_id = $1
+        `,
+        [record.user_id, passwordHash],
+      );
+
+      await client.query(
+        `
+        UPDATE password_reset_tokens
+        SET redeemed_at = now()
+        WHERE id = $1
+        `,
+        [record.id],
+      );
+
+      await client.query(
+        `
+        UPDATE user_sessions
+        SET revoked_at = now()
+        WHERE user_id = $1 AND revoked_at IS NULL
+        `,
+        [record.user_id],
+      );
+
+      await client.query(
+        `
+        UPDATE companion_sessions
+        SET revoked = true, revoked_at = now()
+        WHERE user_id = $1 AND revoked = false
+        `,
+        [record.user_id],
+      );
+
+      return { ok: true } as const;
     });
   }
 
