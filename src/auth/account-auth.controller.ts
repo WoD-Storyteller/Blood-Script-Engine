@@ -53,16 +53,16 @@ export class AccountAuthController {
       userAgent: req.headers['user-agent'] ?? null,
     });
 
-    if (!result.ok) {
+    if (result.ok === false) {
       return { error: result.error };
     }
 
-    const roles = [result.role];
+    const roles: EngineRole[] = [result.role];
     if (result.role === EngineRole.ST || result.role === EngineRole.ADMIN) {
-      roles.push('storyteller');
+      roles.push(EngineRole.STORYTELLER);
     }
     if (result.role === EngineRole.OWNER) {
-      roles.push('owner');
+      roles.push(EngineRole.OWNER);
     }
 
     return {
@@ -138,7 +138,7 @@ export class AccountAuthController {
         code: body.code,
       });
 
-      if (!result.ok) {
+      if (result.ok === false) {
         return { error: result.error };
       }
 
@@ -164,8 +164,8 @@ export class AccountAuthController {
         userId: session.user_id,
       });
 
-      if (!result.ok) {
-        return { error: result.reason };
+      if (result.ok === false) {
+        return { error: result.error };
       }
 
       return {

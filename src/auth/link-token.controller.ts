@@ -29,8 +29,8 @@ export class LinkTokenController {
         userId: session.user_id,
       });
 
-      if (!result.ok) {
-        return { error: result.reason };
+      if (result.ok === false) {
+        return { error: result.error };
       }
 
       return { linked: true, discordUserId: result.discordUserId };
