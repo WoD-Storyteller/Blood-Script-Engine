@@ -18,7 +18,7 @@ export class AccountAuthController {
   @Post('register')
   async register(@Body() body: { email?: string; password?: string }) {
     if (!body.email || !body.password) {
-      return { ok: false, error: 'MissingCredentials' };
+      return { ok: false, error: 'MissingCredentials' } as const;
     }
 
     const result = await this.accountAuth.register({
@@ -27,10 +27,10 @@ export class AccountAuthController {
     });
 
     if (result.ok === false) {
-      return { ok: false, error: result.error };
+      return { ok: false, error: result.error } as const;
     }
 
-    return { ok: true };
+    return { ok: true } as const;
   }
 
   @Post('login')
@@ -46,7 +46,7 @@ export class AccountAuthController {
     @Req() req: Request,
   ) {
     if (!body.email || !body.password) {
-      return { error: 'MissingCredentials' };
+      return { ok: false, error: 'MissingCredentials' } as const;
     }
 
     const result = await this.accountAuth.login({
@@ -60,7 +60,7 @@ export class AccountAuthController {
     });
 
     if (result.ok === false) {
-      return { error: result.error };
+      return { ok: false, error: result.error } as const;
     }
 
     const roles: EngineRole[] = [result.role];
@@ -72,8 +72,9 @@ export class AccountAuthController {
     }
 
     return {
+      ok: true,
       token: result.token,
-      session: {
+      user: {
         authenticated: true,
         userId: result.userId,
         email: result.email,
@@ -83,13 +84,13 @@ export class AccountAuthController {
         linkedDiscordUserId: result.linkedDiscordUserId,
         twoFactorEnabled: result.twoFactorEnabled,
       },
-    };
+    } as const;
   }
 
   @Post('password/forgot')
   async forgotPassword(@Body() body: { email?: string }) {
     if (!body.email) {
-      return { ok: false, error: 'MissingEmail' };
+      return { ok: false, error: 'MissingEmail' } as const;
     }
 
     const result = await this.accountAuth.requestPasswordReset({
@@ -97,10 +98,10 @@ export class AccountAuthController {
     });
 
     if (result.ok === false) {
-      return { ok: false, error: result.error };
+      return { ok: false, error: result.error } as const;
     }
 
-    return { ok: true };
+    return { ok: true } as const;
   }
 
   @Post('password/reset')
@@ -108,7 +109,7 @@ export class AccountAuthController {
     @Body() body: { token?: string; password?: string },
   ) {
     if (!body.token || !body.password) {
-      return { ok: false, error: 'MissingCredentials' };
+      return { ok: false, error: 'MissingCredentials' } as const;
     }
 
     const result = await this.accountAuth.resetPassword({
@@ -117,10 +118,10 @@ export class AccountAuthController {
     });
 
     if (result.ok === false) {
-      return { ok: false, error: result.error };
+      return { ok: false, error: result.error } as const;
     }
 
-    return { ok: true };
+    return { ok: true } as const;
   }
 
   @Post('logout')
@@ -128,11 +129,11 @@ export class AccountAuthController {
     @Headers('authorization') authHeader?: string,
   ) {
     const token = authHeader?.replace('Bearer ', '');
-    if (!token) return { error: 'Unauthorized' };
+    if (!token) return { ok: false, error: 'Unauthorized' } as const;
 
     return this.db.withClient(async (client: any) => {
       await this.accountAuth.revokeSession(client, token);
-      return { ok: true };
+      return { ok: true } as const;
     });
   }
 
@@ -141,11 +142,11 @@ export class AccountAuthController {
     @Headers('authorization') authHeader?: string,
   ) {
     const token = authHeader?.replace('Bearer ', '');
-    if (!token) return { error: 'Unauthorized' };
+    if (!token) return { ok: false, error: 'Unauthorized' } as const;
 
     return this.db.withClient(async (client: any) => {
       const session = await this.companionAuth.validateToken(client, token);
-      if (!session) return { error: 'Unauthorized' };
+      if (!session) return { ok: false, error: 'Unauthorized' } as const;
 
       const result = await this.accountAuth.createTwoFactorSetup({
         userId: session.user_id,
@@ -153,13 +154,14 @@ export class AccountAuthController {
       });
 
       if (result.alreadyEnabled) {
-        return { error: 'TwoFactorAlreadyEnabled' };
+        return { ok: false, error: 'TwoFactorAlreadyEnabled' } as const;
       }
 
       return {
+        ok: true,
         manualEntryKey: result.secret,
         otpauthUrl: result.otpauthUrl,
-      };
+      } as const;
     });
   }
 
@@ -169,12 +171,12 @@ export class AccountAuthController {
     @Body() body: { code?: string },
   ) {
     const token = authHeader?.replace('Bearer ', '');
-    if (!token) return { error: 'Unauthorized' };
-    if (!body.code) return { error: 'MissingCode' };
+    if (!token) return { ok: false, error: 'Unauthorized' } as const;
+    if (!body.code) return { ok: false, error: 'MissingCode' } as const;
 
     return this.db.withClient(async (client: any) => {
       const session = await this.companionAuth.validateToken(client, token);
-      if (!session) return { error: 'Unauthorized' };
+      if (!session) return { ok: false, error: 'Unauthorized' } as const;
 
       const result = await this.accountAuth.confirmTwoFactorSetup({
         userId: session.user_id,
@@ -182,10 +184,10 @@ export class AccountAuthController {
       });
 
       if (result.ok === false) {
-        return { error: result.error };
+        return { ok: false, error: result.error } as const;
       }
 
-      return { recoveryCodes: result.recoveryCodes };
+      return { ok: true, recoveryCodes: result.recoveryCodes } as const;
     });
   }
 
@@ -195,12 +197,12 @@ export class AccountAuthController {
     @Body() body: { token?: string },
   ) {
     const token = authHeader?.replace('Bearer ', '');
-    if (!token) return { error: 'Unauthorized' };
-    if (!body.token) return { error: 'MissingToken' };
+    if (!token) return { ok: false, error: 'Unauthorized' } as const;
+    if (!body.token) return { ok: false, error: 'MissingToken' } as const;
 
     return this.db.withClient(async (client: any) => {
       const session = await this.companionAuth.validateToken(client, token);
-      if (!session) return { error: 'Unauthorized' };
+      if (!session) return { ok: false, error: 'Unauthorized' } as const;
 
       const result = await this.linkTokens.consumeToken({
         token: body.token,
@@ -208,13 +210,14 @@ export class AccountAuthController {
       });
 
       if (result.ok === false) {
-        return { error: result.error };
+        return { ok: false, error: result.error } as const;
       }
 
       return {
+        ok: true,
         linked: true,
         discordUserId: result.discordUserId,
-      };
+      } as const;
     });
   }
 }

@@ -48,7 +48,7 @@ export class LinkTokenService {
       const recent = await client.query(
         `
         SELECT issued_at
-        FROM discord_link_tokens
+        FROM link_tokens
         WHERE discord_user_id = $1
         ORDER BY issued_at DESC
         LIMIT 1
@@ -71,7 +71,7 @@ export class LinkTokenService {
 
       await client.query(
         `
-        UPDATE discord_link_tokens
+        UPDATE link_tokens
         SET redeemed_at = now()
         WHERE discord_user_id = $1
           AND redeemed_at IS NULL
@@ -81,16 +81,25 @@ export class LinkTokenService {
 
       const insert = await client.query(
         `
-        INSERT INTO discord_link_tokens (
+        INSERT INTO link_tokens (
           token_hash,
           discord_user_id,
+          guild_id,
+          engine_id,
           issued_at,
-          expires_at
+          expires_at,
+          issuing_command
         )
-        VALUES ($1, $2, now(), now() + interval '${TOKEN_TTL_MINUTES} minutes')
+        VALUES ($1, $2, $3, $4, now(), now() + interval '${TOKEN_TTL_MINUTES} minutes', $5)
         RETURNING expires_at
         `,
-        [tokenHash, input.discordUserId],
+        [
+          tokenHash,
+          input.discordUserId,
+          input.guildId ?? null,
+          input.engineId ?? null,
+          input.issuingCommand,
+        ],
       );
 
       return {
@@ -113,7 +122,7 @@ export class LinkTokenService {
       try {
         const consumed = await client.query(
           `
-          UPDATE discord_link_tokens
+          UPDATE link_tokens
           SET redeemed_at = now()
           WHERE token_hash = $1
             AND redeemed_at IS NULL

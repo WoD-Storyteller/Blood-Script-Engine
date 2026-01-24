@@ -43,12 +43,16 @@ export interface SessionInfo {
   authenticated: boolean;
   userId?: string;
   user_id?: string;
+  email?: string;
   username?: string;
   engine_id?: string;
   engineId?: string;
   discord_user_id?: string;
   discordUserId?: string;
   role?: 'player' | 'st' | 'owner' | 'admin';
+  roles?: Array<'player' | 'st' | 'owner' | 'admin'>;
+  linkedDiscordUserId?: string | null;
+  twoFactorEnabled?: boolean;
 }
 
 export interface IdentityContext {

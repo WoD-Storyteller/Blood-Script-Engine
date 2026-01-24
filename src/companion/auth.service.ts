@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { uuid } from '../common/utils/uuid';
+import { EngineRole } from '../common/enums/engine-role.enum';
 
 @Injectable()
 export class CompanionAuthService {
@@ -8,7 +9,7 @@ export class CompanionAuthService {
     input: {
       userId: string;
       engineId: string;
-      role: string;
+      role: EngineRole;
       expiresAt: Date;
       ip?: string | null;
       userAgent?: string | null;

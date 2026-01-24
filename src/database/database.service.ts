@@ -6,7 +6,7 @@ export class DatabaseService implements OnModuleDestroy {
   private readonly pool: Pool;
 
   constructor() {
-    // Use DATABASE_URL (Replit PostgreSQL) if available, otherwise fall back to DB_HOST (Supabase)
+    // Use DATABASE_URL if available, otherwise fall back to explicit DB_* settings
     if (process.env.DATABASE_URL) {
       this.pool = new Pool({
         connectionString: process.env.DATABASE_URL,
