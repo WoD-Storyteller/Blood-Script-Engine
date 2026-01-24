@@ -42,11 +42,11 @@ export default function App() {
     })();
   }, []);
 
-  const handleLogin = async (input: { token: string; session: SessionInfo }) => {
+  const handleLogin = async (input: { token: string; user: SessionInfo }) => {
     saveToken(input.token);
-    setSession(input.session);
+    setSession(input.user);
 
-    if (input.session.authenticated) {
+    if (input.user.authenticated) {
       try {
         const w = await fetchWorld();
         if (w) setWorld(w as WorldState);

@@ -82,8 +82,9 @@ export const loginAccount = (input: {
   engineId?: string;
 }) =>
   callPublic<{
+    ok: boolean;
     token?: string;
-    session?: SessionInfo;
+    user?: SessionInfo;
     error?: string;
   }>('/auth/login', {
     method: 'POST',
@@ -103,7 +104,12 @@ export const resetPassword = (token: string, password: string) =>
   });
 
 export const linkDiscordAccount = (token: string) =>
-  call<{ linked?: boolean; discordUserId?: string; error?: string }>(
+  call<{
+    ok: boolean;
+    linked?: boolean;
+    discordUserId?: string;
+    error?: string;
+  }>(
     '/auth/link-discord',
     {
       method: 'POST',

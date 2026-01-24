@@ -19,9 +19,12 @@ export class DiscordWebhookService {
   constructor(private readonly client: Client) {}
 
   private getDefaultDomain(): string {
-    return process.env.REPLIT_DEV_DOMAIN || process.env.REPL_SLUG 
-      ? `https://${process.env.REPLIT_DEV_DOMAIN || `${process.env.REPL_SLUG}.${process.env.REPL_OWNER}.repl.co`}`
-      : 'http://localhost:5000';
+    const baseUrl =
+      process.env.APP_BASE_URL ??
+      process.env.APP_URL ??
+      process.env.COMPANION_APP_URL ??
+      'http://localhost:5000';
+    return baseUrl.replace(/\/$/, '');
   }
 
   async sendCharacterEmbed(channelId: string, embed: CharacterEmbed): Promise<boolean> {

@@ -16,13 +16,13 @@ export class LinkTokenController {
     @Body() body: { token?: string },
     @Headers('authorization') authHeader?: string,
   ) {
-    if (!body.token) return { error: 'MissingToken' };
+    if (!body.token) return { ok: false, error: 'MissingToken' } as const;
     const token = authHeader?.replace('Bearer ', '');
-    if (!token) return { error: 'Unauthorized' };
+    if (!token) return { ok: false, error: 'Unauthorized' } as const;
 
     return this.db.withClient(async (client: any) => {
       const session = await this.auth.validateToken(client, token);
-      if (!session) return { error: 'Unauthorized' };
+      if (!session) return { ok: false, error: 'Unauthorized' } as const;
 
       const result = await this.linkTokens.consumeToken({
         token: body.token,
@@ -30,10 +30,14 @@ export class LinkTokenController {
       });
 
       if (result.ok === false) {
-        return { error: result.error };
+        return { ok: false, error: result.error } as const;
       }
 
-      return { linked: true, discordUserId: result.discordUserId };
+      return {
+        ok: true,
+        linked: true,
+        discordUserId: result.discordUserId,
+      } as const;
     });
   }
 }

@@ -9,7 +9,7 @@ import {
 } from '../api';
 
 interface LoginProps {
-  onLogin: (payload: { token: string; session: SessionInfo }) => void | Promise<void>;
+  onLogin: (payload: { token: string; user: SessionInfo }) => void | Promise<void>;
 }
 
 type Mode = 'login' | 'register' | 'forgot' | 'reset';
@@ -87,22 +87,22 @@ export default function Login({ onLogin }: LoginProps) {
         recoveryCode: recoveryCode || undefined,
       });
 
-      if (result.error) {
+      if (!result.ok) {
         if (result.error === 'TwoFactorRequired') {
           setNeedsTwoFactor(true);
           setError('Two-factor authentication is required.');
           return;
         }
-        setError(mapError(result.error));
+        setError(mapError(result.error ?? 'LoginFailed'));
         return;
       }
 
-      if (!result.token || !result.session) {
+      if (!result.token || !result.user) {
         setError('Login failed. Please try again.');
         return;
       }
 
-      await onLogin({ token: result.token, session: result.session });
+      await onLogin({ token: result.token, user: result.user });
     } catch (err) {
       setError('Unable to sign in right now. Please try again.');
     } finally {
@@ -214,6 +214,8 @@ export default function Login({ onLogin }: LoginProps) {
         return 'Invalid two-factor or recovery code.';
       case 'AccountLocked':
         return 'Account locked due to too many failed attempts. Try again later.';
+      case 'NoEngine':
+        return 'No active engine membership found for this account.';
       case 'InvalidToken':
         return 'That reset token is invalid.';
       case 'TokenExpired':
