@@ -29,27 +29,27 @@ export default function XpApprovalPanel() {
   }, []);
 
   return (
-    <div style={{ marginTop: 16, border: '1px solid #ddd', padding: 12, borderRadius: 8 }}>
-      <h3>Pending XP Approvals (ST)</h3>
+    <div className="card mt-4">
+      <h3 className="card-header">Pending XP Approvals (ST)</h3>
 
-      <button onClick={refresh}>Refresh</button>
-      {error && <div style={{ marginTop: 8 }}>Error: {error}</div>}
+      <button className="btn-secondary mb-4" onClick={refresh}>Refresh</button>
+      {error && <div className="text-red-400 mb-2">Error: {error}</div>}
 
       {pending.length === 0 ? (
-        <p>No pending XP.</p>
+        <p className="text-blood-muted">No pending XP.</p>
       ) : (
-        <div style={{ marginTop: 10 }}>
+        <div className="space-y-3">
           {pending.map((p) => (
-            <div key={p.xp_id} style={{ border: '1px solid #eee', padding: 10, borderRadius: 8, marginBottom: 10 }}>
-              <div><strong>Request</strong>: {metaLine(p.meta)}</div>
-              <div><strong>Amount</strong>: {p.amount}</div>
-              <div><strong>Reason</strong>: {p.reason || '—'}</div>
-              <div style={{ fontSize: 12, opacity: 0.75 }}>
+            <div key={p.xp_id} className="bg-blood-dark p-4 rounded-lg border border-blood-crimson/20">
+              <div className="text-blood-bone"><strong className="text-blood-crimson">Request</strong>: {metaLine(p.meta)}</div>
+              <div className="text-blood-bone"><strong className="text-blood-crimson">Amount</strong>: {p.amount}</div>
+              <div className="text-blood-bone"><strong className="text-blood-crimson">Reason</strong>: {p.reason || '—'}</div>
+              <div className="text-xs text-blood-muted mt-2">
                 Character: {String(p.character_id).slice(0, 8)} • User: {String(p.user_id).slice(0, 8)}
               </div>
 
               <button
-                style={{ marginTop: 8 }}
+                className="btn-primary mt-3 text-sm"
                 onClick={async () => {
                   try {
                     const res: any = await approveXp(p.xp_id);

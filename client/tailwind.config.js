@@ -2,6 +2,17 @@ module.exports = {
   content: ['./index.html', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
+      colors: {
+        blood: {
+          crimson: '#B91C1C',
+          red: '#DC2626',
+          dark: '#1a1a2e',
+          ash: '#16213e',
+          night: '#0f0f23',
+          bone: '#e5e5e5',
+          muted: '#9ca3af',
+        },
+      },
       keyframes: {
         frenzy: {
           '0%': { opacity: 0, transform: 'scale(1)' },

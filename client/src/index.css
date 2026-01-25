@@ -3,6 +3,35 @@
 @tailwind utilities;
 
 html, body {
-  background-color: #0f0f0f;
+  background-color: #0f0f23;
   color: #e5e5e5;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+@layer base {
+  input, select, textarea {
+    @apply bg-blood-dark border border-blood-crimson/40 rounded-lg px-3 py-2 text-blood-bone placeholder-blood-muted focus:border-blood-crimson focus:outline-none focus:ring-1 focus:ring-blood-crimson/50;
+  }
+
+  button {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-blood-ash/80 border border-blood-crimson/30 rounded-xl p-4 backdrop-blur-sm;
+  }
+
+  .card-header {
+    @apply text-lg font-semibold text-blood-crimson mb-3;
+  }
+
+  .btn-primary {
+    @apply bg-blood-crimson text-white hover:bg-blood-red shadow-lg shadow-blood-crimson/20;
+  }
+
+  .btn-secondary {
+    @apply bg-blood-dark text-blood-bone border border-blood-crimson/40 hover:bg-blood-ash;
+  }
 }

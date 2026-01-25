@@ -53,21 +53,21 @@ export default function AdminPage({
   }, []);
 
   return (
-    <div style={{ marginTop: 12 }}>
-      <h2>Admin / Storyteller</h2>
-      {error && <div style={{ marginBottom: 12 }}>Error: {error}</div>}
+    <div className="mt-3 space-y-6">
+      <h2 className="text-xl font-bold text-blood-crimson">Admin / Storyteller</h2>
+      {error && <div className="mb-3 text-red-400">Error: {error}</div>}
 
-      <div style={{ display: 'grid', gap: 16, gridTemplateColumns: '1fr 1fr' }}>
-        <section style={{ padding: 12, border: '1px solid #ddd' }}>
-          <h3>Map</h3>
+      <div className="grid gap-4 md:grid-cols-2">
+        <section className="card">
+          <h3 className="card-header">Map</h3>
           <input
             value={mapUrl}
             onChange={(e) => setMapUrl(e.target.value)}
             placeholder="Google My Maps embed URL"
-            style={{ width: '100%' }}
+            className="w-full"
           />
           <button
-            style={{ marginTop: 8 }}
+            className="btn-primary mt-3"
             onClick={async () => {
               try {
                 const w = await stSetMap(mapUrl);
@@ -81,36 +81,37 @@ export default function AdminPage({
           </button>
         </section>
 
-        <section style={{ padding: 12, border: '1px solid #ddd' }}>
-          <h3>Create Clock</h3>
+        <section className="card">
+          <h3 className="card-header">Create Clock</h3>
           <input
             value={clockTitle}
             onChange={(e) => setClockTitle(e.target.value)}
             placeholder="Title"
-            style={{ width: '100%', marginBottom: 6 }}
+            className="w-full mb-2"
           />
           <input
             type="number"
             value={clockSegments}
             onChange={(e) => setClockSegments(Number(e.target.value))}
-            style={{ width: '100%', marginBottom: 6 }}
+            className="w-full mb-2"
           />
-          <label>
+          <label className="flex items-center gap-2 text-blood-bone">
             <input
               type="checkbox"
               checked={clockNightly}
               onChange={(e) => setClockNightly(e.target.checked)}
-            />{' '}
+              className="w-4 h-4"
+            />
             Nightly
           </label>
           <input
             value={clockDesc}
             onChange={(e) => setClockDesc(e.target.value)}
             placeholder="Description"
-            style={{ width: '100%', marginTop: 6 }}
+            className="w-full mt-2"
           />
           <button
-            style={{ marginTop: 8 }}
+            className="btn-primary mt-3"
             onClick={async () => {
               try {
                 const w = await stCreateClock({
@@ -131,28 +132,28 @@ export default function AdminPage({
           </button>
         </section>
 
-        <section style={{ padding: 12, border: '1px solid #ddd' }}>
-          <h3>Tick Clock</h3>
+        <section className="card">
+          <h3 className="card-header">Tick Clock</h3>
           <input
             value={tickIdPrefix}
             onChange={(e) => setTickIdPrefix(e.target.value)}
             placeholder="Clock ID prefix"
-            style={{ width: '100%', marginBottom: 6 }}
+            className="w-full mb-2"
           />
           <input
             type="number"
             value={tickAmount}
             onChange={(e) => setTickAmount(Number(e.target.value))}
-            style={{ width: '100%', marginBottom: 6 }}
+            className="w-full mb-2"
           />
           <input
             value={tickReason}
             onChange={(e) => setTickReason(e.target.value)}
             placeholder="Reason"
-            style={{ width: '100%' }}
+            className="w-full"
           />
           <button
-            style={{ marginTop: 8 }}
+            className="btn-primary mt-3"
             onClick={async () => {
               try {
                 const w = await stTickClock({
@@ -170,22 +171,22 @@ export default function AdminPage({
           </button>
         </section>
 
-        <section style={{ padding: 12, border: '1px solid #ddd' }}>
-          <h3>Create Arc</h3>
+        <section className="card">
+          <h3 className="card-header">Create Arc</h3>
           <input
             value={arcTitle}
             onChange={(e) => setArcTitle(e.target.value)}
             placeholder="Arc title"
-            style={{ width: '100%', marginBottom: 6 }}
+            className="w-full mb-2"
           />
           <input
             value={arcSynopsis}
             onChange={(e) => setArcSynopsis(e.target.value)}
             placeholder="Synopsis"
-            style={{ width: '100%' }}
+            className="w-full"
           />
           <button
-            style={{ marginTop: 8 }}
+            className="btn-primary mt-3"
             onClick={async () => {
               try {
                 const w = await stCreateArc({ title: arcTitle, synopsis: arcSynopsis || undefined });
@@ -202,15 +203,19 @@ export default function AdminPage({
         </section>
       </div>
 
-      <section style={{ marginTop: 16, padding: 12, border: '1px solid #ddd' }}>
-        <h3>Update Arc Status</h3>
+      <section className="card">
+        <h3 className="card-header">Update Arc Status</h3>
         <input
           value={arcIdPrefix}
           onChange={(e) => setArcIdPrefix(e.target.value)}
           placeholder="Arc ID prefix"
-          style={{ width: '100%', marginBottom: 6 }}
+          className="w-full mb-2"
         />
-        <select value={arcStatus} onChange={(e) => setArcStatus(e.target.value as any)}>
+        <select 
+          value={arcStatus} 
+          onChange={(e) => setArcStatus(e.target.value as any)}
+          className="w-full mb-2"
+        >
           <option value="planned">planned</option>
           <option value="active">active</option>
           <option value="completed">completed</option>
@@ -220,10 +225,10 @@ export default function AdminPage({
           value={arcOutcome}
           onChange={(e) => setArcOutcome(e.target.value)}
           placeholder="Outcome"
-          style={{ width: '100%', marginTop: 6 }}
+          className="w-full"
         />
         <button
-          style={{ marginTop: 8 }}
+          className="btn-primary mt-3"
           onClick={async () => {
             try {
               const w = await stSetArcStatus({
@@ -241,45 +246,50 @@ export default function AdminPage({
         </button>
       </section>
 
-      <section style={{ marginTop: 24 }}>
-        <h3>AI Intents</h3>
-        <button onClick={refreshIntents}>Refresh</button>
+      <section className="card">
+        <h3 className="card-header">AI Intents</h3>
+        <button className="btn-secondary mb-4" onClick={refreshIntents}>Refresh</button>
 
         {intents.length === 0 ? (
-          <p>No intents.</p>
+          <p className="text-blood-muted">No intents.</p>
         ) : (
-          <ul>
+          <ul className="space-y-3">
             {intents.map((i) => (
-              <li key={i.intent_id} style={{ marginBottom: 12 }}>
-                <strong>{i.intent_type}</strong> — {i.status}
-                <pre style={{ whiteSpace: 'pre-wrap', background: '#111', color: '#eee', padding: 8 }}>
+              <li key={i.intent_id} className="bg-blood-dark p-3 rounded-lg border border-blood-crimson/20">
+                <strong className="text-blood-crimson">{i.intent_type}</strong> 
+                <span className="text-blood-muted ml-2">— {i.status}</span>
+                <pre className="mt-2 whitespace-pre-wrap bg-blood-night text-blood-bone p-3 rounded text-sm overflow-x-auto">
                   {JSON.stringify(i.payload, null, 2)}
                 </pre>
-                <button
-                  disabled={i.status !== 'proposed'}
-                  onClick={async () => {
-                    await stApproveIntent(i.intent_id);
-                    refreshIntents();
-                  }}
-                >
-                  Approve
-                </button>{' '}
-                <button
-                  disabled={i.status !== 'proposed'}
-                  onClick={async () => {
-                    await stRejectIntent(i.intent_id);
-                    refreshIntents();
-                  }}
-                >
-                  Reject
-                </button>
+                <div className="flex gap-2 mt-2">
+                  <button
+                    className="btn-primary text-sm"
+                    disabled={i.status !== 'proposed'}
+                    onClick={async () => {
+                      await stApproveIntent(i.intent_id);
+                      refreshIntents();
+                    }}
+                  >
+                    Approve
+                  </button>
+                  <button
+                    className="btn-secondary text-sm"
+                    disabled={i.status !== 'proposed'}
+                    onClick={async () => {
+                      await stRejectIntent(i.intent_id);
+                      refreshIntents();
+                    }}
+                  >
+                    Reject
+                  </button>
+                </div>
               </li>
             ))}
           </ul>
         )}
       </section>
 
-      <section style={{ marginTop: 24 }}>
+      <section>
         <SafetyDashboard />
       </section>
     </div>

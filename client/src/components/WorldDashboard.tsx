@@ -88,15 +88,15 @@ export default function WorldDashboard({
   }, [showAdmin, tab]);
 
   if (!worldState) {
-    return <div style={{ padding: 24 }}>Loading world...</div>;
+    return <div className="p-6 text-blood-muted">Loading world...</div>;
   }
 
   return (
-    <div className="world-dashboard" style={{ padding: '16px 16px 80px 16px' }}>
+    <div className="world-dashboard p-4 pb-20">
       <NavTabs tab={tab} onChange={setTab} showAdmin={showAdmin} />
 
       {tab === 'world' && (
-        <div style={{ display: 'grid', gap: 16 }}>
+        <div className="grid gap-4">
           <MapView mapUrl={worldState.mapUrl ?? undefined} />
           <ArcList arcs={worldState.arcs ?? []} />
           <ClockList clocks={worldState.clocks ?? []} />
