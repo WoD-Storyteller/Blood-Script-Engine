@@ -24,6 +24,9 @@ dotenv.config({
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { Logger, ValidationPipe } from '@nestjs/common';
+import { NestExpressApplication } from '@nestjs/platform-express';
+import { join } from 'path';
+import { existsSync } from 'fs';
 
 /**
  * ============================================================
@@ -34,7 +37,7 @@ import { Logger, ValidationPipe } from '@nestjs/common';
 async function bootstrap() {
   const logger = new Logger('Bootstrap');
 
-  const app = await NestFactory.create(AppModule, {
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     bufferLogs: true,
   });
 
@@ -50,14 +53,8 @@ async function bootstrap() {
    * ============================================================
    */
 
-  const allowedOrigins =
-    process.env.NODE_ENV === 'production'
-      ? [
-          'https://bloodscriptengine.tech',
-          'https://www.bloodscriptengine.tech',
-          'https://app.bloodscriptengine.tech',
-        ]
-      : true;
+  // Allow all origins - Companion is now served from the same origin
+  const allowedOrigins = true;
 
   app.enableCors({
     origin: allowedOrigins,
@@ -84,11 +81,32 @@ async function bootstrap() {
 
   /**
    * ============================================================
+   *  Serve Companion SPA (static files) in production
+   * ============================================================
+   */
+
+  const clientDistPath = join(__dirname, '..', 'client', 'dist');
+  if (existsSync(clientDistPath)) {
+    app.useStaticAssets(clientDistPath);
+    logger.log(`Serving Companion SPA from ${clientDistPath}`);
+    
+    // SPA fallback - serve index.html for non-API routes
+    app.use((req: any, res: any, next: any) => {
+      if (!req.path.startsWith('/api') && !req.path.includes('.')) {
+        res.sendFile(join(clientDistPath, 'index.html'));
+      } else {
+        next();
+      }
+    });
+  }
+
+  /**
+   * ============================================================
    *  Start server
    * ============================================================
    */
 
-  const port = Number(process.env.PORT) || 3000;
+  const port = Number(process.env.PORT) || 5000;
   await app.listen(port, '0.0.0.0');
 
   logger.log(`Blood Script Engine API running on port ${port}`);

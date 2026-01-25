@@ -10,7 +10,9 @@
   "scripts": {
     "start": "node dist/main.js",
     "start:dev": "nest start --watch",
-    "build": "nest build",
+    "build": "nest build && cd client && npm run build",
+    "build:backend": "nest build",
+    "build:client": "cd client && npm run build",
     "db:migrate": "knex migrate:latest",
     "db:rollback": "knex migrate:rollback",
     "db:status": "knex migrate:status",
