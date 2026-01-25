@@ -8,15 +8,16 @@ export class CompanionAuthService {
     client: any,
     input: {
       userId: string;
-      engineId: string;
+      engineId: string | null;
       role: EngineRole;
-      expiresAt: Date;
+      expiresAt?: Date;
       ip?: string | null;
       userAgent?: string | null;
     },
   ) {
     const sessionId = uuid();
     const token = sessionId;
+    const expiresAt = input.expiresAt ?? new Date(Date.now() + 12 * 60 * 60 * 1000);
 
     await client.query(
       `
@@ -26,7 +27,7 @@ export class CompanionAuthService {
       [
         sessionId,
         input.userId,
-        input.expiresAt,
+        expiresAt,
         input.ip ?? null,
         input.userAgent ?? null,
       ],
@@ -43,7 +44,7 @@ export class CompanionAuthService {
         input.engineId,
         token,
         input.role,
-        input.expiresAt,
+        expiresAt,
       ],
     );
 

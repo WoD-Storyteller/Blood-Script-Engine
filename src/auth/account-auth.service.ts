@@ -29,7 +29,7 @@ type LoginResult =
       userId: string;
       email: string;
       role: EngineRole;
-      engineId: string;
+      engineId: string | null;
       linkedDiscordUserId?: string | null;
       twoFactorEnabled: boolean;
     }
@@ -300,14 +300,14 @@ export class AccountAuthService {
         engineId: input.engineId ?? null,
       });
 
-      if (!engineContext) {
-        return { ok: false, error: 'NoEngine' } as const;
-      }
+      // Allow login without engine membership - use PLAYER role as default
+      const role = engineContext?.role ?? EngineRole.PLAYER;
+      const engineId = engineContext?.engineId ?? null;
 
       const session = await this.companionAuth.createSession(client, {
         userId: user.user_id,
-        engineId: engineContext.engineId,
-        role: engineContext.role,
+        engineId,
+        role,
         expiresAt: new Date(Date.now() + SESSION_TTL_HOURS * 60 * 60 * 1000),
         ip: input.ip ?? null,
         userAgent: input.userAgent ?? null,
@@ -319,8 +319,8 @@ export class AccountAuthService {
         sessionId: session.sessionId,
         userId: user.user_id,
         email: user.email,
-        role: engineContext.role,
-        engineId: engineContext.engineId,
+        role,
+        engineId,
         linkedDiscordUserId: user.discord_user_id,
         twoFactorEnabled: user.two_factor_enabled,
       } as const;
