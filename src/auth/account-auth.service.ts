@@ -15,6 +15,34 @@ const LOCKOUT_MINUTES = 15;
 const RECOVERY_CODE_COUNT = 8;
 const PASSWORD_RESET_TTL_MINUTES = 30;
 
+type RegisterResult = { ok: true } | { ok: false; error: string };
+
+type PasswordResetRequestResult = { ok: true } | { ok: false; error: string };
+
+type PasswordResetConfirmResult = { ok: true } | { ok: false; error: string };
+
+type LoginResult =
+  | {
+      ok: true;
+      token: string;
+      sessionId: string;
+      userId: string;
+      email: string;
+      role: EngineRole;
+      engineId: string;
+      linkedDiscordUserId?: string | null;
+      twoFactorEnabled: boolean;
+    }
+  | { ok: false; error: string };
+
+type TwoFactorSetupResult =
+  | { ok: true; secret: string; otpauthUrl: string }
+  | { ok: false; error: 'TwoFactorAlreadyEnabled' };
+
+type TwoFactorConfirmResult =
+  | { ok: true; recoveryCodes: string[] }
+  | { ok: false; error: string };
+
 @Injectable()
 export class AccountAuthService {
   constructor(
@@ -25,7 +53,7 @@ export class AccountAuthService {
   async register(input: {
     email: string;
     password: string;
-  }): Promise<{ ok: true } | { ok: false; error: string }> {
+  }): Promise<RegisterResult> {
     const email = input.email.trim().toLowerCase();
     const passwordError = this.validatePassword(input.password);
     if (!this.isValidEmail(email)) {
@@ -43,17 +71,24 @@ export class AccountAuthService {
         [email],
       );
       if (existing.rowCount) {
-        return { ok: false, error: 'EmailInUse' };
+        return { ok: false, error: 'EmailInUse' } as const;
       }
 
       const userId = uuid();
-      await client.query(
-        `
-        INSERT INTO users (user_id, email, password_hash, created_at, updated_at)
-        VALUES ($1, $2, $3, now(), now())
-        `,
-        [userId, email, passwordHash],
-      );
+      try {
+        await client.query(
+          `
+          INSERT INTO users (user_id, email, password_hash, created_at, updated_at)
+          VALUES ($1, $2, $3, now(), now())
+          `,
+          [userId, email, passwordHash],
+        );
+      } catch (error: any) {
+        if (error?.code === '23505') {
+          return { ok: false, error: 'EmailInUse' } as const;
+        }
+        throw error;
+      }
 
       return { ok: true } as const;
     });
@@ -61,7 +96,7 @@ export class AccountAuthService {
 
   async requestPasswordReset(input: {
     email: string;
-  }): Promise<{ ok: true } | { ok: false; error: string }> {
+  }): Promise<PasswordResetRequestResult> {
     const email = input.email.trim().toLowerCase();
     if (!this.isValidEmail(email)) {
       return { ok: false, error: 'InvalidEmail' };
@@ -108,7 +143,7 @@ export class AccountAuthService {
   async resetPassword(input: {
     token: string;
     password: string;
-  }): Promise<{ ok: true } | { ok: false; error: string }> {
+  }): Promise<PasswordResetConfirmResult> {
     const passwordError = this.validatePassword(input.password);
     if (passwordError) {
       return { ok: false, error: passwordError };
@@ -194,20 +229,7 @@ export class AccountAuthService {
     ip?: string | null;
     userAgent?: string | null;
     engineId?: string | null;
-  }): Promise<
-    | {
-        ok: true;
-        token: string;
-        sessionId: string;
-        userId: string;
-        email: string;
-        role: EngineRole;
-        engineId: string;
-        linkedDiscordUserId?: string | null;
-        twoFactorEnabled: boolean;
-      }
-    | { ok: false; error: string }
-  > {
+  }): Promise<LoginResult> {
     const email = input.email.trim().toLowerCase();
 
     return this.db.withClient(async (client: any) => {
@@ -305,14 +327,17 @@ export class AccountAuthService {
     });
   }
 
-  async createTwoFactorSetup(input: { userId: string; email: string }) {
+  async createTwoFactorSetup(input: {
+    userId: string;
+    email: string;
+  }): Promise<TwoFactorSetupResult> {
     return this.db.withClient(async (client: any) => {
       const existing = await client.query(
         `SELECT two_factor_enabled FROM users WHERE user_id = $1`,
         [input.userId],
       );
       if (existing.rowCount && existing.rows[0].two_factor_enabled) {
-        return { alreadyEnabled: true } as const;
+        return { ok: false, error: 'TwoFactorAlreadyEnabled' } as const;
       }
 
       const secret = generateTotpSecret();
@@ -337,17 +362,17 @@ export class AccountAuthService {
       );
 
       return {
+        ok: true,
         secret,
         otpauthUrl,
-        alreadyEnabled: false,
-      };
+      } as const;
     });
   }
 
   async confirmTwoFactorSetup(input: {
     userId: string;
     code: string;
-  }): Promise<{ ok: true; recoveryCodes: string[] } | { ok: false; error: string }> {
+  }): Promise<TwoFactorConfirmResult> {
     return this.db.withClient(async (client: any) => {
       const pending = await client.query(
         `

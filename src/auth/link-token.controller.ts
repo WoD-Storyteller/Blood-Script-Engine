@@ -20,24 +20,29 @@ export class LinkTokenController {
     const token = authHeader?.replace('Bearer ', '');
     if (!token) return { ok: false, error: 'Unauthorized' } as const;
 
-    return this.db.withClient(async (client: any) => {
-      const session = await this.auth.validateToken(client, token);
-      if (!session) return { ok: false, error: 'Unauthorized' } as const;
+    try {
+      return await this.db.withClient(async (client: any) => {
+        const session = await this.auth.validateToken(client, token);
+        if (!session) return { ok: false, error: 'Unauthorized' } as const;
 
-      const result = await this.linkTokens.consumeToken({
-        token: body.token,
-        userId: session.user_id,
+        const result = await this.linkTokens.consumeToken({
+          token: body.token,
+          userId: session.user_id,
+        });
+
+        if (result.ok === false) {
+          return { ok: false, error: result.error } as const;
+        }
+
+        return {
+          ok: true,
+          linked: true,
+          discordUserId: result.discordUserId,
+        } as const;
       });
-
-      if (result.ok === false) {
-        return { ok: false, error: result.error } as const;
-      }
-
-      return {
-        ok: true,
-        linked: true,
-        discordUserId: result.discordUserId,
-      } as const;
-    });
+    } catch (error) {
+      console.error('Failed to consume link token', error);
+      return { ok: false, error: 'ServerError' } as const;
+    }
   }
 }

@@ -21,16 +21,21 @@ export class AccountAuthController {
       return { ok: false, error: 'MissingCredentials' } as const;
     }
 
-    const result = await this.accountAuth.register({
-      email: body.email,
-      password: body.password,
-    });
+    try {
+      const result = await this.accountAuth.register({
+        email: body.email,
+        password: body.password,
+      });
 
-    if (result.ok === false) {
-      return { ok: false, error: result.error } as const;
+      if (result.ok === false) {
+        return { ok: false, error: result.error } as const;
+      }
+
+      return { ok: true } as const;
+    } catch (error) {
+      console.error('Failed to register account', error);
+      return { ok: false, error: 'ServerError' } as const;
     }
-
-    return { ok: true } as const;
   }
 
   @Post('login')
@@ -49,42 +54,47 @@ export class AccountAuthController {
       return { ok: false, error: 'MissingCredentials' } as const;
     }
 
-    const result = await this.accountAuth.login({
-      email: body.email,
-      password: body.password,
-      twoFactorCode: body.twoFactorCode,
-      recoveryCode: body.recoveryCode,
-      engineId: body.engineId,
-      ip: req.ip,
-      userAgent: req.headers['user-agent'] ?? null,
-    });
+    try {
+      const result = await this.accountAuth.login({
+        email: body.email,
+        password: body.password,
+        twoFactorCode: body.twoFactorCode,
+        recoveryCode: body.recoveryCode,
+        engineId: body.engineId,
+        ip: req.ip,
+        userAgent: req.headers['user-agent'] ?? null,
+      });
 
-    if (result.ok === false) {
-      return { ok: false, error: result.error } as const;
-    }
+      if (result.ok === false) {
+        return { ok: false, error: result.error } as const;
+      }
 
-    const roles: EngineRole[] = [result.role];
-    if (result.role === EngineRole.ST || result.role === EngineRole.ADMIN) {
-      roles.push(EngineRole.STORYTELLER);
-    }
-    if (result.role === EngineRole.OWNER) {
-      roles.push(EngineRole.OWNER);
-    }
+      const roles: EngineRole[] = [result.role];
+      if (result.role === EngineRole.ST || result.role === EngineRole.ADMIN) {
+        roles.push(EngineRole.STORYTELLER);
+      }
+      if (result.role === EngineRole.OWNER) {
+        roles.push(EngineRole.OWNER);
+      }
 
-    return {
-      ok: true,
-      token: result.token,
-      user: {
-        authenticated: true,
-        userId: result.userId,
-        email: result.email,
-        engineId: result.engineId,
-        role: result.role,
-        roles,
-        linkedDiscordUserId: result.linkedDiscordUserId,
-        twoFactorEnabled: result.twoFactorEnabled,
-      },
-    } as const;
+      return {
+        ok: true,
+        token: result.token,
+        user: {
+          authenticated: true,
+          userId: result.userId,
+          email: result.email,
+          engineId: result.engineId,
+          role: result.role,
+          roles,
+          linkedDiscordUserId: result.linkedDiscordUserId,
+          twoFactorEnabled: result.twoFactorEnabled,
+        },
+      } as const;
+    } catch (error) {
+      console.error('Failed to login', error);
+      return { ok: false, error: 'ServerError' } as const;
+    }
   }
 
   @Post('password/forgot')
@@ -93,15 +103,20 @@ export class AccountAuthController {
       return { ok: false, error: 'MissingEmail' } as const;
     }
 
-    const result = await this.accountAuth.requestPasswordReset({
-      email: body.email,
-    });
+    try {
+      const result = await this.accountAuth.requestPasswordReset({
+        email: body.email,
+      });
 
-    if (result.ok === false) {
-      return { ok: false, error: result.error } as const;
+      if (result.ok === false) {
+        return { ok: false, error: result.error } as const;
+      }
+
+      return { ok: true } as const;
+    } catch (error) {
+      console.error('Failed to request password reset', error);
+      return { ok: false, error: 'ServerError' } as const;
     }
-
-    return { ok: true } as const;
   }
 
   @Post('password/reset')
@@ -112,16 +127,21 @@ export class AccountAuthController {
       return { ok: false, error: 'MissingCredentials' } as const;
     }
 
-    const result = await this.accountAuth.resetPassword({
-      token: body.token,
-      password: body.password,
-    });
+    try {
+      const result = await this.accountAuth.resetPassword({
+        token: body.token,
+        password: body.password,
+      });
 
-    if (result.ok === false) {
-      return { ok: false, error: result.error } as const;
+      if (result.ok === false) {
+        return { ok: false, error: result.error } as const;
+      }
+
+      return { ok: true } as const;
+    } catch (error) {
+      console.error('Failed to reset password', error);
+      return { ok: false, error: 'ServerError' } as const;
     }
-
-    return { ok: true } as const;
   }
 
   @Post('logout')
@@ -131,10 +151,15 @@ export class AccountAuthController {
     const token = authHeader?.replace('Bearer ', '');
     if (!token) return { ok: false, error: 'Unauthorized' } as const;
 
-    return this.db.withClient(async (client: any) => {
-      await this.accountAuth.revokeSession(client, token);
-      return { ok: true } as const;
-    });
+    try {
+      return await this.db.withClient(async (client: any) => {
+        await this.accountAuth.revokeSession(client, token);
+        return { ok: true } as const;
+      });
+    } catch (error) {
+      console.error('Failed to logout', error);
+      return { ok: false, error: 'ServerError' } as const;
+    }
   }
 
   @Post('2fa/setup')
@@ -144,25 +169,30 @@ export class AccountAuthController {
     const token = authHeader?.replace('Bearer ', '');
     if (!token) return { ok: false, error: 'Unauthorized' } as const;
 
-    return this.db.withClient(async (client: any) => {
-      const session = await this.companionAuth.validateToken(client, token);
-      if (!session) return { ok: false, error: 'Unauthorized' } as const;
+    try {
+      return await this.db.withClient(async (client: any) => {
+        const session = await this.companionAuth.validateToken(client, token);
+        if (!session) return { ok: false, error: 'Unauthorized' } as const;
 
-      const result = await this.accountAuth.createTwoFactorSetup({
-        userId: session.user_id,
-        email: session.email,
+        const result = await this.accountAuth.createTwoFactorSetup({
+          userId: session.user_id,
+          email: session.email,
+        });
+
+        if (result.ok === false) {
+          return { ok: false, error: result.error } as const;
+        }
+
+        return {
+          ok: true,
+          manualEntryKey: result.secret,
+          otpauthUrl: result.otpauthUrl,
+        } as const;
       });
-
-      if (result.alreadyEnabled) {
-        return { ok: false, error: 'TwoFactorAlreadyEnabled' } as const;
-      }
-
-      return {
-        ok: true,
-        manualEntryKey: result.secret,
-        otpauthUrl: result.otpauthUrl,
-      } as const;
-    });
+    } catch (error) {
+      console.error('Failed to setup two-factor', error);
+      return { ok: false, error: 'ServerError' } as const;
+    }
   }
 
   @Post('2fa/confirm')
@@ -174,21 +204,26 @@ export class AccountAuthController {
     if (!token) return { ok: false, error: 'Unauthorized' } as const;
     if (!body.code) return { ok: false, error: 'MissingCode' } as const;
 
-    return this.db.withClient(async (client: any) => {
-      const session = await this.companionAuth.validateToken(client, token);
-      if (!session) return { ok: false, error: 'Unauthorized' } as const;
+    try {
+      return await this.db.withClient(async (client: any) => {
+        const session = await this.companionAuth.validateToken(client, token);
+        if (!session) return { ok: false, error: 'Unauthorized' } as const;
 
-      const result = await this.accountAuth.confirmTwoFactorSetup({
-        userId: session.user_id,
-        code: body.code,
+        const result = await this.accountAuth.confirmTwoFactorSetup({
+          userId: session.user_id,
+          code: body.code,
+        });
+
+        if (result.ok === false) {
+          return { ok: false, error: result.error } as const;
+        }
+
+        return { ok: true, recoveryCodes: result.recoveryCodes } as const;
       });
-
-      if (result.ok === false) {
-        return { ok: false, error: result.error } as const;
-      }
-
-      return { ok: true, recoveryCodes: result.recoveryCodes } as const;
-    });
+    } catch (error) {
+      console.error('Failed to confirm two-factor', error);
+      return { ok: false, error: 'ServerError' } as const;
+    }
   }
 
   @Post('link-discord')
@@ -200,24 +235,29 @@ export class AccountAuthController {
     if (!token) return { ok: false, error: 'Unauthorized' } as const;
     if (!body.token) return { ok: false, error: 'MissingToken' } as const;
 
-    return this.db.withClient(async (client: any) => {
-      const session = await this.companionAuth.validateToken(client, token);
-      if (!session) return { ok: false, error: 'Unauthorized' } as const;
+    try {
+      return await this.db.withClient(async (client: any) => {
+        const session = await this.companionAuth.validateToken(client, token);
+        if (!session) return { ok: false, error: 'Unauthorized' } as const;
 
-      const result = await this.linkTokens.consumeToken({
-        token: body.token,
-        userId: session.user_id,
+        const result = await this.linkTokens.consumeToken({
+          token: body.token,
+          userId: session.user_id,
+        });
+
+        if (result.ok === false) {
+          return { ok: false, error: result.error } as const;
+        }
+
+        return {
+          ok: true,
+          linked: true,
+          discordUserId: result.discordUserId,
+        } as const;
       });
-
-      if (result.ok === false) {
-        return { ok: false, error: result.error } as const;
-      }
-
-      return {
-        ok: true,
-        linked: true,
-        discordUserId: result.discordUserId,
-      } as const;
-    });
+    } catch (error) {
+      console.error('Failed to link discord', error);
+      return { ok: false, error: 'ServerError' } as const;
+    }
   }
 }
