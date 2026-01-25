@@ -97,14 +97,14 @@ export class AccountAuthController {
     }
   }
 
-  @Post('password/forgot')
-  async forgotPassword(@Body() body: { email?: string }) {
+  @Post('password/check')
+  async checkPasswordReset(@Body() body: { email?: string }) {
     if (!body.email) {
       return { ok: false, error: 'MissingEmail' } as const;
     }
 
     try {
-      const result = await this.accountAuth.requestPasswordReset({
+      const result = await this.accountAuth.checkPasswordResetEligibility({
         email: body.email,
       });
 
@@ -112,25 +112,48 @@ export class AccountAuthController {
         return { ok: false, error: result.error } as const;
       }
 
-      return { ok: true } as const;
+      if (result.twoFactorEnabled) {
+        return { 
+          ok: true, 
+          twoFactorEnabled: true,
+          email: result.email,
+        } as const;
+      }
+
+      return { 
+        ok: true, 
+        twoFactorEnabled: false,
+        message: 'Contact an administrator to reset your password. You must enable 2FA to use self-service password reset.',
+      } as const;
     } catch (error) {
-      console.error('Failed to request password reset', error);
+      console.error('Failed to check password reset eligibility', error);
       return { ok: false, error: 'ServerError' } as const;
     }
   }
 
   @Post('password/reset')
   async resetPassword(
-    @Body() body: { token?: string; password?: string },
+    @Body() body: { 
+      email?: string;
+      twoFactorCode?: string;
+      recoveryCode?: string;
+      newPassword?: string;
+    },
   ) {
-    if (!body.token || !body.password) {
+    if (!body.email || !body.newPassword) {
       return { ok: false, error: 'MissingCredentials' } as const;
     }
 
+    if (!body.twoFactorCode && !body.recoveryCode) {
+      return { ok: false, error: 'TwoFactorRequired' } as const;
+    }
+
     try {
-      const result = await this.accountAuth.resetPassword({
-        token: body.token,
-        password: body.password,
+      const result = await this.accountAuth.resetPasswordWith2FA({
+        email: body.email,
+        twoFactorCode: body.twoFactorCode,
+        recoveryCode: body.recoveryCode,
+        newPassword: body.newPassword,
       });
 
       if (result.ok === false) {

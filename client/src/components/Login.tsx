@@ -4,8 +4,8 @@ import type { SessionInfo } from '../types';
 import {
   loginAccount,
   registerAccount,
-  requestPasswordReset,
-  resetPassword,
+  checkPasswordResetEligibility,
+  resetPasswordWith2FA,
 } from '../api';
 
 interface LoginProps {
@@ -41,10 +41,10 @@ export default function Login({ onLogin }: LoginProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [resetToken, setResetToken] = useState('');
   const [twoFactorCode, setTwoFactorCode] = useState('');
   const [recoveryCode, setRecoveryCode] = useState('');
   const [needsTwoFactor, setNeedsTwoFactor] = useState(false);
+  const [resetEligible, setResetEligible] = useState(false);
   const [status, setStatus] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -71,6 +71,7 @@ export default function Login({ onLogin }: LoginProps) {
     setStatus(null);
     setError(null);
     setNeedsTwoFactor(false);
+    setResetEligible(false);
     setTwoFactorCode('');
     setRecoveryCode('');
   };
@@ -139,22 +140,25 @@ export default function Login({ onLogin }: LoginProps) {
 
   const handleForgot = async () => {
     setSubmitting(true);
-    resetFeedback();
+    setStatus(null);
+    setError(null);
 
     try {
-      const result = await requestPasswordReset(email);
+      const result = await checkPasswordResetEligibility(email);
       if (!result.ok) {
         setError(mapError(result.error ?? 'ResetFailed'));
         return;
       }
-      setStatus(
-        'If an account exists, a reset token has been issued. Check your email and enter the token below.',
-      );
-      setMode('reset');
-      setPassword('');
-      setConfirmPassword('');
+      
+      if (result.twoFactorEnabled) {
+        setResetEligible(true);
+        setMode('reset');
+        setStatus('Enter your authenticator code or recovery code to reset your password.');
+      } else {
+        setError(result.message || 'You must enable 2FA to use self-service password reset. Contact an administrator.');
+      }
     } catch (err) {
-      setError('Unable to start reset right now.');
+      setError('Unable to check account right now.');
     } finally {
       setSubmitting(false);
     }
@@ -162,7 +166,8 @@ export default function Login({ onLogin }: LoginProps) {
 
   const handleReset = async () => {
     setSubmitting(true);
-    resetFeedback();
+    setStatus(null);
+    setError(null);
 
     if (passwordMismatch) {
       setError('Passwords do not match.');
@@ -170,8 +175,19 @@ export default function Login({ onLogin }: LoginProps) {
       return;
     }
 
+    if (!twoFactorCode && !recoveryCode) {
+      setError('Enter your authenticator code or a recovery code.');
+      setSubmitting(false);
+      return;
+    }
+
     try {
-      const result = await resetPassword(resetToken, password);
+      const result = await resetPasswordWith2FA({
+        email,
+        twoFactorCode: twoFactorCode || undefined,
+        recoveryCode: recoveryCode || undefined,
+        newPassword: password,
+      });
       if (!result.ok) {
         setError(mapError(result.error ?? 'ResetFailed'));
         return;
@@ -180,7 +196,9 @@ export default function Login({ onLogin }: LoginProps) {
       setMode('login');
       setPassword('');
       setConfirmPassword('');
-      setResetToken('');
+      setTwoFactorCode('');
+      setRecoveryCode('');
+      setResetEligible(false);
     } catch (err) {
       setError('Unable to reset password right now.');
     } finally {
@@ -216,12 +234,12 @@ export default function Login({ onLogin }: LoginProps) {
         return 'Account locked due to too many failed attempts. Try again later.';
       case 'NoEngine':
         return 'No active engine membership found for this account.';
-      case 'InvalidToken':
-        return 'That reset token is invalid.';
-      case 'TokenExpired':
-        return 'That reset token has expired.';
-      case 'TokenUsed':
-        return 'That reset token has already been used.';
+      case 'TwoFactorNotEnabled':
+        return 'You must enable 2FA to use self-service password reset. Contact an administrator.';
+      case 'UserNotFound':
+        return 'No account found with that email.';
+      case 'TwoFactorRequired':
+        return 'Please enter your authenticator code or recovery code.';
       default:
         return 'Something went wrong. Please try again.';
     }
@@ -332,7 +350,7 @@ export default function Login({ onLogin }: LoginProps) {
             />
           )}
 
-          {(mode === 'login' || mode === 'register' || mode === 'reset') && (
+          {(mode === 'login' || mode === 'register') && (
             <input
               style={inputStyle}
               type="password"
@@ -345,7 +363,7 @@ export default function Login({ onLogin }: LoginProps) {
             />
           )}
 
-          {(mode === 'register' || mode === 'reset') && (
+          {mode === 'register' && (
             <input
               style={inputStyle}
               type="password"
@@ -356,13 +374,36 @@ export default function Login({ onLogin }: LoginProps) {
           )}
 
           {mode === 'reset' && (
-            <input
-              style={inputStyle}
-              type="text"
-              placeholder="Reset token"
-              value={resetToken}
-              onChange={(event) => setResetToken(event.target.value)}
-            />
+            <>
+              <input
+                style={inputStyle}
+                type="text"
+                placeholder="Authenticator code"
+                value={twoFactorCode}
+                onChange={(event) => setTwoFactorCode(event.target.value)}
+              />
+              <input
+                style={inputStyle}
+                type="text"
+                placeholder="Recovery code (if no authenticator)"
+                value={recoveryCode}
+                onChange={(event) => setRecoveryCode(event.target.value)}
+              />
+              <input
+                style={inputStyle}
+                type="password"
+                placeholder="New password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+              />
+              <input
+                style={inputStyle}
+                type="password"
+                placeholder="Confirm new password"
+                value={confirmPassword}
+                onChange={(event) => setConfirmPassword(event.target.value)}
+              />
+            </>
           )}
 
           {needsTwoFactor && mode === 'login' && (
@@ -418,7 +459,7 @@ export default function Login({ onLogin }: LoginProps) {
               onClick={handleForgot}
               disabled={submitting}
             >
-              {submitting ? 'Sending...' : 'Send Reset Email'}
+              {submitting ? 'Checking...' : 'Continue'}
             </button>
           )}
 

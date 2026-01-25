@@ -91,16 +91,27 @@ export const loginAccount = (input: {
     body: JSON.stringify(input),
   });
 
-export const requestPasswordReset = (email: string) =>
-  callPublic<{ ok: boolean; error?: string }>('/auth/password/forgot', {
+export const checkPasswordResetEligibility = (email: string) =>
+  callPublic<{ 
+    ok: boolean; 
+    twoFactorEnabled?: boolean;
+    email?: string;
+    message?: string;
+    error?: string 
+  }>('/auth/password/check', {
     method: 'POST',
     body: JSON.stringify({ email }),
   });
 
-export const resetPassword = (token: string, password: string) =>
+export const resetPasswordWith2FA = (input: {
+  email: string;
+  twoFactorCode?: string;
+  recoveryCode?: string;
+  newPassword: string;
+}) =>
   callPublic<{ ok: boolean; error?: string }>('/auth/password/reset', {
     method: 'POST',
-    body: JSON.stringify({ token, password }),
+    body: JSON.stringify(input),
   });
 
 export const linkDiscordAccount = (token: string) =>

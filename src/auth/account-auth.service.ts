@@ -17,9 +17,12 @@ const PASSWORD_RESET_TTL_MINUTES = 30;
 
 type RegisterResult = { ok: true } | { ok: false; error: string };
 
-type PasswordResetRequestResult = { ok: true } | { ok: false; error: string };
+type PasswordResetCheckResult = 
+  | { ok: true; twoFactorEnabled: true; email: string }
+  | { ok: true; twoFactorEnabled: false; message: string }
+  | { ok: false; error: string };
 
-type PasswordResetConfirmResult = { ok: true } | { ok: false; error: string };
+type PasswordResetWith2FAResult = { ok: true } | { ok: false; error: string };
 
 type LoginResult =
   | {
@@ -94,9 +97,9 @@ export class AccountAuthService {
     });
   }
 
-  async requestPasswordReset(input: {
+  async checkPasswordResetEligibility(input: {
     email: string;
-  }): Promise<PasswordResetRequestResult> {
+  }): Promise<PasswordResetCheckResult> {
     const email = input.email.trim().toLowerCase();
     if (!this.isValidEmail(email)) {
       return { ok: false, error: 'InvalidEmail' };
@@ -105,7 +108,7 @@ export class AccountAuthService {
     return this.db.withClient(async (client: any) => {
       const userRes = await client.query(
         `
-        SELECT user_id
+        SELECT user_id, email, two_factor_enabled
         FROM users
         WHERE email = $1
         LIMIT 1
@@ -114,68 +117,80 @@ export class AccountAuthService {
       );
 
       if (!userRes.rowCount) {
-        return { ok: true } as const;
+        return { ok: false, error: 'UserNotFound' } as const;
       }
 
-      const token = randomBytes(32).toString('hex');
-      const tokenHash = createHash('sha256').update(token).digest('hex');
+      const user = userRes.rows[0];
+      
+      if (user.two_factor_enabled) {
+        return { 
+          ok: true, 
+          twoFactorEnabled: true,
+          email: user.email,
+        } as const;
+      }
 
-      await client.query(
-        `
-        DELETE FROM password_reset_tokens
-        WHERE user_id = $1 AND redeemed_at IS NULL
-        `,
-        [userRes.rows[0].user_id],
-      );
-
-      await client.query(
-        `
-        INSERT INTO password_reset_tokens (user_id, token_hash, expires_at)
-        VALUES ($1, $2, now() + ($3 * interval '1 minute'))
-        `,
-        [userRes.rows[0].user_id, tokenHash, PASSWORD_RESET_TTL_MINUTES],
-      );
-
-      return { ok: true } as const;
+      return { 
+        ok: true, 
+        twoFactorEnabled: false,
+        message: 'TwoFactorNotEnabled',
+      } as const;
     });
   }
 
-  async resetPassword(input: {
-    token: string;
-    password: string;
-  }): Promise<PasswordResetConfirmResult> {
-    const passwordError = this.validatePassword(input.password);
+  async resetPasswordWith2FA(input: {
+    email: string;
+    twoFactorCode?: string;
+    recoveryCode?: string;
+    newPassword: string;
+  }): Promise<PasswordResetWith2FAResult> {
+    const email = input.email.trim().toLowerCase();
+    if (!this.isValidEmail(email)) {
+      return { ok: false, error: 'InvalidEmail' };
+    }
+
+    const passwordError = this.validatePassword(input.newPassword);
     if (passwordError) {
       return { ok: false, error: passwordError };
     }
 
-    const tokenHash = createHash('sha256').update(input.token).digest('hex');
+    if (!input.twoFactorCode && !input.recoveryCode) {
+      return { ok: false, error: 'TwoFactorRequired' };
+    }
 
     return this.db.withClient(async (client: any) => {
-      const tokenRes = await client.query(
+      const userRes = await client.query(
         `
-        SELECT id, user_id, expires_at, redeemed_at
-        FROM password_reset_tokens
-        WHERE token_hash = $1
+        SELECT user_id, two_factor_enabled, two_factor_secret
+        FROM users
+        WHERE email = $1
         LIMIT 1
         `,
-        [tokenHash],
+        [email],
       );
 
-      if (!tokenRes.rowCount) {
-        return { ok: false, error: 'InvalidToken' } as const;
+      if (!userRes.rowCount) {
+        return { ok: false, error: 'UserNotFound' } as const;
       }
 
-      const record = tokenRes.rows[0];
-      if (record.redeemed_at) {
-        return { ok: false, error: 'TokenUsed' } as const;
+      const user = userRes.rows[0];
+
+      if (!user.two_factor_enabled) {
+        return { ok: false, error: 'TwoFactorNotEnabled' } as const;
       }
 
-      if (new Date(record.expires_at) <= new Date()) {
-        return { ok: false, error: 'TokenExpired' } as const;
+      const twoFactorValid = await this.verifyTwoFactor(client, {
+        userId: user.user_id,
+        secretEncrypted: user.two_factor_secret,
+        code: input.twoFactorCode,
+        recoveryCode: input.recoveryCode,
+      });
+
+      if (!twoFactorValid) {
+        return { ok: false, error: 'InvalidTwoFactorCode' } as const;
       }
 
-      const passwordHash = await hashPassword(input.password);
+      const passwordHash = await hashPassword(input.newPassword);
 
       await client.query(
         `
@@ -187,16 +202,7 @@ export class AccountAuthService {
             updated_at = now()
         WHERE user_id = $1
         `,
-        [record.user_id, passwordHash],
-      );
-
-      await client.query(
-        `
-        UPDATE password_reset_tokens
-        SET redeemed_at = now()
-        WHERE id = $1
-        `,
-        [record.id],
+        [user.user_id, passwordHash],
       );
 
       await client.query(
@@ -205,7 +211,7 @@ export class AccountAuthService {
         SET revoked_at = now()
         WHERE user_id = $1 AND revoked_at IS NULL
         `,
-        [record.user_id],
+        [user.user_id],
       );
 
       await client.query(
@@ -214,7 +220,7 @@ export class AccountAuthService {
         SET revoked = true, revoked_at = now()
         WHERE user_id = $1 AND revoked = false
         `,
-        [record.user_id],
+        [user.user_id],
       );
 
       return { ok: true } as const;
