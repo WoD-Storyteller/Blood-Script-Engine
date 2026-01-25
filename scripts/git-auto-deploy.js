@@ -115,30 +115,33 @@ function classifyChanges(files) {
   return { backend, client, website };
 }
 
-async function gitFetch() {
-  await runCommand("git", ["fetch", "--all", "--prune"]);
+async function gitFetchOrigin() {
+  await runCommand("git", ["fetch", "origin"]);
 }
 
-async function gitHead() {
-  const { stdout } = await runCommand("git", ["rev-parse", "HEAD"]);
+async function gitRevParse(ref) {
+  const { stdout } = await runCommand("git", ["rev-parse", ref]);
   return stdout.trim();
 }
 
-async function gitUpstream() {
-  const { stdout } = await runCommand("git", ["rev-parse", "@{u}"]);
-  return stdout.trim();
-}
-
-async function gitDiffFiles() {
-  const { stdout } = await runCommand("git", ["diff", "--name-only", "HEAD..@{u}"]);
+async function gitDiffFiles(baseRef, compareRef) {
+  const { stdout } = await runCommand("git", [
+    "diff",
+    "--name-only",
+    `${baseRef}..${compareRef}`,
+  ]);
   return stdout
     .split("\n")
     .map((line) => line.trim())
     .filter(Boolean);
 }
 
-async function gitPull() {
-  await runCommand("git", ["pull", "--ff-only"]);
+async function gitResetHard(ref) {
+  await runCommand("git", ["reset", "--hard", ref]);
+}
+
+async function gitClean() {
+  await runCommand("git", ["clean", "-fd"]);
 }
 
 async function buildBackend() {
@@ -187,17 +190,17 @@ async function deployWebsite() {
 
 async function performDeploy() {
   await log("Checking for updates...");
-  await gitFetch();
+  await gitFetchOrigin();
 
-  const head = await gitHead();
-  const upstream = await gitUpstream();
+  const head = await gitRevParse("HEAD");
+  const upstream = await gitRevParse("origin/main");
 
   if (head === upstream) {
     await log("No updates detected.");
     return;
   }
 
-  const changedFiles = await gitDiffFiles();
+  const changedFiles = await gitDiffFiles("HEAD", "origin/main");
   const targets = classifyChanges(changedFiles);
 
   await log(`Updates detected. Files changed: ${changedFiles.join(", ") || "none"}`);
@@ -205,8 +208,10 @@ async function performDeploy() {
     `Targets: backend=${targets.backend}, client=${targets.client}, website=${targets.website}`
   );
 
-  await log("Pulling latest changes...");
-  await gitPull();
+  await log("Resetting to origin/main...");
+  await gitResetHard("origin/main");
+  await log("Cleaning working tree...");
+  await gitClean();
 
   const buildSteps = [];
   if (targets.backend) {
