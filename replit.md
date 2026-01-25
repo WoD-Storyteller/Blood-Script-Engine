@@ -26,7 +26,7 @@ website/             - PUBLIC WEBSITE (docs, onboarding, no login)
 │   ├── pages/       - Home, About, HowItWorks, GetStarted, HelpSafety, Docs, Status, Privacy, Terms
 │   └── components/  - Nav, Footer, Layout
 
-client/              - COMPANION DASHBOARD (requires Discord OAuth)
+client/              - COMPANION DASHBOARD (requires email/password login)
 ├── src/
 │   ├── components/  - Dashboard UI components
 │   └── api.ts       - API client
@@ -116,6 +116,12 @@ All routes are prefixed with `/api`:
 ## Recent Changes
 
 ### January 2026
+- **Email/Password Authentication**: Replaced Discord OAuth with email/password registration and login
+  - Password requirements: 12+ characters, uppercase, lowercase, number, symbol
+  - Account lockout after 5 failed attempts (15-minute lockout)
+  - Optional 2FA via TOTP authenticator app
+  - Password reset requires 2FA (no email-based reset)
+  - Users without engine membership can log in (defaults to PLAYER role)
 - **AI Settings**: Added per-chronicle AI toggles (ai_enabled, ai_narration, ai_npc_voicing, ai_tone) stored in engine config
 - **NPC Management**: Batch JSON import (up to 100 NPCs), portrait upload, webhook configuration for AI voicing
 - **NPC AI Voicing**: Tupperbox-style webhooks allow NPCs to speak as themselves in Discord via Gemini AI
@@ -128,7 +134,7 @@ All routes are prefixed with `/api`:
 - **Supabase Database**: Switched from Replit PostgreSQL to Supabase with individual DB_* environment variables
 - **Demo Mode**: Added dashboard preview without authentication via "Preview Demo" button
 - **Removed Safety Ticket Button**: Safety cards now handled via Discord DM only, dashboard for ST/Owner oversight
-- **Discord OAuth Only**: Removed Engine UUID authentication - Discord is now the only login method
+- **Discord Linking**: Users can link their Discord account after login via bot command (!linkaccount)
 - **Mobile-First Dashboard**: Updated NavTabs to use bottom navigation for mobile devices
 - **Role-Based Access**: Dashboard tabs show based on user role (Player/Storyteller/Owner)
 - **Safety System Oversight**: Added ST/Owner dashboard with `/stats`, `/pending`, `/respond` endpoints
