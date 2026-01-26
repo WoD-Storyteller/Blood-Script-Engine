@@ -6,23 +6,25 @@ export class DatabaseService implements OnModuleDestroy {
   private readonly pool: Pool;
 
   constructor() {
-    // Use DATABASE_URL if available, otherwise fall back to explicit DB_* settings
-    if (process.env.DATABASE_URL) {
+    // Prefer Replit's built-in PostgreSQL using PGHOST environment variables
+    // This takes priority over DATABASE_URL which may point to external (unreachable) databases
+    if (process.env.PGHOST && process.env.PGHOST !== '' && !process.env.PGHOST.includes('supabase')) {
+      this.pool = new Pool({
+        host: process.env.PGHOST,
+        port: parseInt(process.env.PGPORT || '5432', 10),
+        database: process.env.PGDATABASE,
+        user: process.env.PGUSER,
+        password: process.env.PGPASSWORD,
+      });
+      console.log(`[DatabaseService] Using Replit PostgreSQL: ${process.env.PGHOST}/${process.env.PGDATABASE}`);
+    } else if (process.env.DATABASE_URL && !process.env.DATABASE_URL.includes('supabase')) {
+      // Fall back to DATABASE_URL if it's not pointing to unreachable Supabase
       this.pool = new Pool({
         connectionString: process.env.DATABASE_URL,
       });
-    } else if (process.env.DB_HOST) {
-      const sslEnabled = process.env.DB_SSL === 'true' || process.env.DB_SSL === '1';
-      this.pool = new Pool({
-        host: process.env.DB_HOST,
-        port: parseInt(process.env.DB_PORT || '5432', 10),
-        database: process.env.DB_NAME,
-        user: process.env.DB_USER,
-        password: process.env.DB_PASSWORD,
-        ssl: sslEnabled ? { rejectUnauthorized: false } : false,
-      });
+      console.log('[DatabaseService] Using DATABASE_URL for PostgreSQL connection');
     } else {
-      throw new Error('No database configuration found. Set DATABASE_URL or DB_HOST environment variables.');
+      throw new Error('No reachable database configuration found. Ensure Replit PostgreSQL is provisioned (PGHOST env var).');
     }
   }
 

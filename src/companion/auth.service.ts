@@ -56,7 +56,7 @@ export class CompanionAuthService {
       `
       SELECT cs.*, u.discord_user_id, u.username as display_name, u.email, u.two_factor_enabled, u.is_owner
       FROM companion_sessions cs
-      JOIN user_sessions us ON us.id = cs.access_token
+      JOIN user_sessions us ON us.id::text = cs.access_token
       JOIN users u ON u.user_id = cs.user_id
       WHERE cs.access_token=$1
         AND cs.revoked=false
@@ -82,7 +82,7 @@ export class CompanionAuthService {
       `
       UPDATE user_sessions
       SET revoked_at = now()
-      WHERE id = $1
+      WHERE id::text = $1
       `,
       [token],
     );
