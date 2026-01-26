@@ -13,7 +13,7 @@ Blood Script Engine is a Discord-first game engine for Vampire: The Masquerade 5
 
 - **Runtime**: Node.js 20
 - **Backend**: NestJS
-- **Database**: PostgreSQL (Supabase)
+- **Database**: PostgreSQL (Replit built-in)
 - **Website**: React + Vite
 - **Companion**: React + Vite
 - **Language**: TypeScript
