@@ -198,37 +198,44 @@ All routes are prefixed with `/api`:
 - `POST /api/companion/portrait/save` - Save portrait to character
 - `GET /api/companion/portrait/:objectPath` - Serve portrait image
 
-## Production Deployment
+## Production Deployment (GCP)
 
 ### Domain Structure
 ```
-bloodscriptengine.tech           → Public website (static)
-app.bloodscriptengine.tech       → Companion dashboard + API
-app.bloodscriptengine.tech/api   → NestJS backend
+api.bloodscriptengine.co.uk     → NestJS API (Compute Engine)
+app.bloodscriptengine.co.uk     → Companion Dashboard (Cloud Storage)
+www.bloodscriptengine.co.uk     → Public Website (Cloud Storage)
 ```
 
-### Deployment Files
+### GCP Deployment Files
 ```
-deploy/
-├── nginx/                      - Nginx site configurations
-│   ├── bloodscriptengine.tech.conf
-│   └── app.bloodscriptengine.tech.conf
-├── systemd/                    - Systemd service files
+deploy/gcp/
+├── Dockerfile                  - Container build (optional)
+├── README.md                   - Full deployment guide
+├── .env.production.example     - Environment template
+├── nginx/
+│   └── api.bloodscriptengine.co.uk.conf
+├── systemd/
 │   └── bloodscript-api.service
-├── scripts/                    - Deployment scripts
-│   ├── deploy.sh
-│   └── build-production.sh
-└── README.md                   - Full deployment guide
+└── scripts/
+    ├── setup-vm.sh             - Create Compute Engine VM
+    ├── setup-buckets.sh        - Create Cloud Storage buckets
+    ├── build-api.sh            - Build API locally
+    ├── build-static-sites.sh   - Build website + dashboard
+    ├── deploy-api.sh           - Deploy API to VM
+    └── deploy-static.sh        - Deploy static sites to buckets
 ```
 
 ### Required Environment Variables (Production)
 ```
 NODE_ENV=production
+PORT=3000
+DATABASE_URL=<supabase connection string>
 DISCORD_CLIENT_ID=1438563946432036904
 DISCORD_CLIENT_SECRET=<secret>
-DISCORD_OAUTH_REDIRECT_URI=https://app.bloodscriptengine.tech/api/auth/discord/callback
 DISCORD_BOT_TOKEN=<token>
-COMPANION_APP_URL=https://app.bloodscriptengine.tech
 JWT_SECRET=<32+ char secret>
-DATABASE_URL=<supabase connection string>
+GEMINI_API_KEY=<gemini api key>
+API_URL=https://api.bloodscriptengine.co.uk
+COMPANION_APP_URL=https://app.bloodscriptengine.co.uk
 ```

@@ -12,12 +12,13 @@ import {
 import { loadToken } from './auth';
 
 /**
- * IMPORTANT:
- * - Frontend MUST talk to NGINX, not the Engine directly
- * - NGINX proxies /api → Engine
- * - This avoids CORS entirely (same-origin)
+ * API Base URL Configuration
+ * - In development (Replit): Uses '/api' for same-origin proxy
+ * - In production: Uses VITE_API_URL environment variable
  */
-const API_BASE = '/api';
+const API_BASE = import.meta.env.VITE_API_URL
+  ? `${import.meta.env.VITE_API_URL}/api`
+  : '/api';
 
 async function call<T>(path: string, init?: RequestInit): Promise<T> {
   const method = init?.method ?? 'GET';

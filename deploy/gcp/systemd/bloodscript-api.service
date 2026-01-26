@@ -1,0 +1,34 @@
+[Unit]
+Description=Blood Script Engine API
+Documentation=https://github.com/bloodscriptengine
+After=network.target
+
+[Service]
+Type=simple
+User=bloodscript
+Group=bloodscript
+WorkingDirectory=/opt/bloodscript
+
+Environment=NODE_ENV=production
+Environment=PORT=3000
+EnvironmentFile=/opt/bloodscript/.env.production
+
+ExecStart=/usr/bin/node dist/main.js
+
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=bloodscript-api
+
+LimitNOFILE=65536
+MemoryMax=1G
+
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/bloodscript/logs
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
